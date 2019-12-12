@@ -1,0 +1,1759 @@
+
+hpeesofsim (*) 450.shp Jan 21 2016, MINT version 4
+    (64-bit windows built: 01/21/16 15:34:19)
+Copyright 1995 - 2015 Keysight Technologies, 1989-2016.
+
+Done with exporting 2 VerilogA device(s).
+
+CT X1.X1.SweepOuter[1] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>   X1.X1.imag_indexs11=(-293.939e-03->293.939e-03)
+
+CT X1.X1.SweepOuter[1].X1.X1.SweepInner[1/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>  X1.X1.imag_indexs11=-293.939e-03  X1.X1.real_indexs11=(-801.367e-03->-531.967e-03)
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[1/10].X1.HB1[1/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+    Number of tones:   1.
+    Number of frequencies:   10.
+    Number of time samples:  32.
+    Number of HB equations (problem size): 2337.
+    Auto mode: on.
+    Convergence mode: Auto.
+    Linear solver: direct.
+------------------------------------------------------------------------------
+Newton solver:					
+Iter	KCL residual	Damp %	Sol update
+------------------------------------------------------------------------------
+0.0*	771.641 mA  	100.0             
+        Newton iteration failed, damping activated
+1.0*	10.2252 A   	 12.5             
+2.0*	1.35687 A   	 25.0             
+3.0*	1.03028 A   	 50.0             
+4.0*	571.735 mA  	 25.0             
+5.0 	444.432 mA  	 25.0             
+5.1*	369.175 mA  	 12.5             
+6.0*	323.225 mA  	 25.0             
+7.0*	240.348 mA  	 50.0             
+8.0*	119.768 mA  	100.0             
+9.0 	1.37773 mA  	100.0             
+9.1 	53.9518 uA  	100.0             
+9.2 	1.07192 uA  	100.0	10.7755 uV   
+9.3 	47.3456 nA  	100.0	289.163 nV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.890e-05       >       6.410e-06
+X2.LDMN1.N__4           1.863e-05       >       6.373e-06
+X2.LDMN1.M1.Qcell.D0    1.863e-05       >       6.373e-06
+X2.LDMN1.M1.Qcell.D1    1.863e-05       >       6.373e-06
+X2.LDMN1.M1.Qcell.D2    1.863e-05       >       6.373e-06
+
+o Number of waveforms violating the HB truncation error check:
+        27 out of 82 waveforms.
+o Estimated max HB truncation error: 1.890e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 6.410e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[1/10].X1.HB1[2/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	816.505 mA  	100.0             
+1.0 	3.94747 mA  	100.0             
+1.1 	91.3989 uA  	100.0             
+1.2 	7.08425 uA  	100.0             
+1.3 	622.262 nA  	100.0	17.0042 uV   
+1.4 	48.388 nA   	100.0	2.91032 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.683e-05       >       6.514e-06
+X2.LDMN1.N__4           1.660e-05       >       6.472e-06
+X2.LDMN1.M1.Qcell.D0    1.660e-05       >       6.472e-06
+X2.LDMN1.M1.Qcell.D1    1.660e-05       >       6.472e-06
+X2.LDMN1.M1.Qcell.D2    1.660e-05       >       6.472e-06
+
+o Number of waveforms violating the HB truncation error check:
+        22 out of 82 waveforms.
+o Estimated max HB truncation error: 1.683e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 6.514e-06 for this waveform.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[1/10].X1.HB1[3/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	789.542 mA  	100.0             
+1.0 	2.26054 mA  	100.0             
+1.1 	7.94579 uA  	100.0             
+1.2 	96.9501 nA  	100.0	942.35 nV    
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.508e-05       >       6.609e-06
+X2.LDMN1.N__4           1.487e-05       >       6.565e-06
+X2.LDMN1.M1.Qcell.D0    1.487e-05       >       6.565e-06
+X2.LDMN1.M1.Qcell.D1    1.487e-05       >       6.565e-06
+X2.LDMN1.M1.Qcell.D2    1.487e-05       >       6.565e-06
+
+o Number of waveforms violating the HB truncation error check:
+        22 out of 82 waveforms.
+o Estimated max HB truncation error: 1.508e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 6.609e-06 for this waveform.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[1/10].X1.HB1[4/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	752.023 mA  	100.0             
+1.0 	1.17838 mA  	100.0             
+1.1 	6.9769 uA   	100.0             
+1.2 	68.3018 nA  	100.0	181.567 nV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.361e-05       >       6.703e-06
+X2.LDMN1.N__4           1.342e-05       >       6.657e-06
+X2.LDMN1.M1.Qcell.D0    1.342e-05       >       6.657e-06
+X2.LDMN1.M1.Qcell.D1    1.342e-05       >       6.657e-06
+X2.LDMN1.M1.Qcell.D2    1.342e-05       >       6.657e-06
+
+o Number of waveforms violating the HB truncation error check:
+        22 out of 82 waveforms.
+o Estimated max HB truncation error: 1.361e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 6.703e-06 for this waveform.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[1/10].X1.HB1[5/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	711.951 mA  	100.0             
+1.0 	2.44274 mA  	100.0             
+1.1 	10.3691 uA  	100.0             
+1.2 	124.954 nA  	100.0	773.332 nV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.233e-05       >       6.808e-06
+X2.LDMN1.N__4           1.216e-05       >       6.761e-06
+X2.LDMN1.M1.Qcell.D0    1.216e-05       >       6.761e-06
+X2.LDMN1.M1.Qcell.D1    1.216e-05       >       6.761e-06
+X2.LDMN1.M1.Qcell.D3    1.216e-05       >       6.761e-06
+
+o Number of waveforms violating the HB truncation error check:
+        21 out of 82 waveforms.
+o Estimated max HB truncation error: 1.233e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 6.808e-06 for this waveform.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[1/10].X1.HB1[6/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	679.885 mA  	100.0             
+1.0 	1.20872 mA  	100.0             
+1.1 	4.89686 uA  	100.0             
+1.2 	127.489 nA  	100.0	111.6 nV     
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.129e-05       >       6.903e-06
+X2.LDMN1.N__4           1.113e-05       >       6.857e-06
+X2.LDMN1.M1.Qcell.D0    1.113e-05       >       6.857e-06
+X2.LDMN1.M1.Qcell.D1    1.113e-05       >       6.857e-06
+X2.LDMN1.M1.Qcell.D3    1.113e-05       >       6.857e-06
+
+o Number of waveforms violating the HB truncation error check:
+        20 out of 82 waveforms.
+o Estimated max HB truncation error: 1.129e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 6.903e-06 for this waveform.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[1/10].X1.HB1[7/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	642.771 mA  	100.0             
+1.0 	1.69673 mA  	100.0             
+1.1 	6.18185 uA  	100.0             
+1.2 	40.112 nA   	100.0	294.08 nV    
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.037e-05       >       7.005e-06
+X2.LDMN1.N__4           1.023e-05       >       6.959e-06
+X2.LDMN1.M1.Qcell.D0    1.022e-05       >       6.959e-06
+X2.LDMN1.M1.Qcell.D1    1.022e-05       >       6.959e-06
+X2.LDMN1.M1.Qcell.D2    1.022e-05       >       6.959e-06
+
+o Number of waveforms violating the HB truncation error check:
+        20 out of 82 waveforms.
+o Estimated max HB truncation error: 1.037e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 7.005e-06 for this waveform.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[1/10].X1.HB1[8/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	612.674 mA  	100.0             
+1.0 	1.73536 mA  	100.0             
+1.1 	9.11387 uA  	100.0             
+1.2 	153.134 nA  	100.0	383.053 nV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 9.568e-06       >       7.107e-06
+X2.LDMN1.N__4           9.435e-06       >       7.061e-06
+X2.LDMN1.M1.Qcell.D0    9.435e-06       >       7.061e-06
+X2.LDMN1.M1.Qcell.D1    9.434e-06       >       7.061e-06
+X2.LDMN1.M1.Qcell.D3    9.434e-06       >       7.061e-06
+
+o Number of waveforms violating the HB truncation error check:
+        20 out of 82 waveforms.
+o Estimated max HB truncation error: 9.568e-06 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 7.107e-06 for this waveform.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[1/10].X1.HB1[9/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	585.441 mA  	100.0             
+1.0 	1.22824 mA  	100.0             
+1.1 	4.28245 uA  	100.0             
+1.2 	30.7219 nA  	100.0	202.8 nV     
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 8.897e-06       >       7.203e-06
+X2.LDMN1.N__4           8.774e-06       >       7.158e-06
+X2.LDMN1.M1.Qcell.D0    8.774e-06       >       7.158e-06
+X2.LDMN1.M1.Qcell.D1    8.773e-06       >       7.158e-06
+X2.LDMN1.M1.Qcell.D3    8.773e-06       >       7.158e-06
+
+o Number of waveforms violating the HB truncation error check:
+        20 out of 82 waveforms.
+o Estimated max HB truncation error: 8.897e-06 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 7.203e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M1.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[1/10].X1.HB1[10/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	558.091 mA  	100.0             
+1.0 	1.7022 mA   	100.0             
+1.1 	11.5826 uA  	100.0             
+1.2 	111.978 nA  	100.0	462.872 nV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 8.388e-06       >       7.286e-06
+X2.LDMN1.N__4           8.272e-06       >       7.241e-06
+X2.LDMN1.M1.Qcell.D0    8.272e-06       >       7.241e-06
+X2.LDMN1.M1.Qcell.D1    8.271e-06       >       7.241e-06
+X2.LDMN1.M1.Qcell.D3S22 8.271e-06       >       7.241e-06
+
+o Number of waveforms violating the HB truncation error check:
+        20 out of 82 waveforms.
+o Estimated max HB truncation error: 8.388e-06 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 7.286e-06 for this waveform.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+CT X1.X1.SweepOuter[1].X1.X1.SweepInner[2/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>  X1.X1.imag_indexs11=-228.62e-03  X1.X1.real_indexs11=(-895.31e-03->-438.024e-03)
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[2/10].X1.HB1[1/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	6.05725 A   	100.0             
+1.0 	331.556 mA  	100.0             
+1.1 	18.3446 mA  	100.0             
+1.2 	3.30615 mA  	100.0             
+1.3 	197.216 uA  	100.0             
+1.4 	35.072 uA   	100.0             
+1.5 	7.20937 uA  	100.0             
+1.6 	1.39551 uA  	100.0             
+1.7 	290.352 nA  	100.0	961.865 nV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 2.942e-05       >       5.772e-06
+X2.LDMN1.N__4           2.901e-05       >       5.737e-06
+X2.LDMN1.M1.Qcell.D0    2.900e-05       >       5.737e-06
+X2.LDMN1.M1.Qcell.D1    2.900e-05       >       5.737e-06
+X2.LDMN1.M1.Qcell.D2    2.900e-05       >       5.737e-06
+
+o Number of waveforms violating the HB truncation error check:
+        34 out of 82 waveforms.
+o Estimated max HB truncation error: 2.942e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 5.772e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[2/10].X1.HB1[2/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.76455 A   	100.0             
+1.0 	33.8987 mA  	100.0             
+1.1 	1.43452 mA  	100.0             
+1.2 	77.5916 uA  	100.0             
+1.3 	9.31614 uA  	100.0             
+1.4 	418.714 nA  	100.0	1.05113 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 2.253e-05       >       5.894e-06
+X2.LDMN1.N__4           2.221e-05       >       5.846e-06
+X2.LDMN1.M1.Qcell.D0    2.221e-05       >       5.846e-06
+X2.LDMN1.M1.Qcell.D1    2.221e-05       >       5.846e-06
+X2.LDMN1.M1.Qcell.D2    2.221e-05       >       5.846e-06
+
+o Number of waveforms violating the HB truncation error check:
+        28 out of 82 waveforms.
+o Estimated max HB truncation error: 2.253e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 5.894e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[2/10].X1.HB1[3/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.56718 A   	100.0             
+1.0 	13.5849 mA  	100.0             
+1.1 	608.276 uA  	100.0             
+1.2 	66.1154 uA  	100.0             
+1.3 	6.48744 uA  	100.0             
+1.4 	589.96 nA   	100.0	1.71585 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.769e-05       >       6.109e-06
+X2.LDMN1.N__4           1.745e-05       >       6.054e-06
+X2.LDMN1.M1.Qcell.D0    1.745e-05       >       6.054e-06
+X2.LDMN1.M1.Qcell.D1    1.745e-05       >       6.054e-06
+X2.LDMN1.M1.Qcell.D2    1.745e-05       >       6.054e-06
+
+o Number of waveforms violating the HB truncation error check:
+        26 out of 82 waveforms.
+o Estimated max HB truncation error: 1.769e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 6.109e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[2/10].X1.HB1[4/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.42665 A   	100.0             
+1.0 	7.00026 mA  	100.0             
+1.1 	96.9404 uA  	100.0             
+1.2 	1.0188 uA   	100.0	4.43986 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.423e-05       >       6.334e-06
+X2.LDMN1.N__4           1.403e-05       >       6.277e-06
+X2.LDMN1.M1.Qcell.D0    1.403e-05       >       6.277e-06
+X2.LDMN1.M1.Qcell.D1    1.403e-05       >       6.277e-06
+X2.LDMN1.M1.Qcell.D2    1.403e-05       >       6.277e-06
+
+o Number of waveforms violating the HB truncation error check:
+        22 out of 82 waveforms.
+o Estimated max HB truncation error: 1.423e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 6.334e-06 for this waveform.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[2/10].X1.HB1[5/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.28446 A   	100.0             
+1.0 	11.012 mA   	100.0             
+1.1 	154.274 uA  	100.0             
+1.2 	5.14753 uA  	100.0             
+1.3 	213.074 nA  	100.0	1.18939 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.168e-05       >       6.580e-06
+X2.LDMN1.N__4           1.152e-05       >       6.522e-06
+X2.LDMN1.M1.Qcell.D0    1.152e-05       >       6.522e-06
+X2.LDMN1.M1.Qcell.D1    1.152e-05       >       6.522e-06
+X2.LDMN1.M1.Qcell.D2    1.152e-05       >       6.522e-06
+
+o Number of waveforms violating the HB truncation error check:
+        21 out of 82 waveforms.
+o Estimated max HB truncation error: 1.168e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 6.580e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[2/10].X1.HB1[6/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.17628 A   	100.0             
+1.0 	6.11322 mA  	100.0             
+1.1 	57.1492 uA  	100.0             
+1.2 	389.133 nA  	100.0	1.79675 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 9.869e-06       >       6.802e-06
+X2.LDMN1.N__4           9.732e-06       >       6.744e-06
+X2.LDMN1.M1.Qcell.D0    9.732e-06       >       6.744e-06
+X2.LDMN1.M1.Qcell.D1    9.731e-06       >       6.744e-06
+X2.LDMN1.M1.Qcell.D2    9.731e-06       >       6.744e-06
+
+o Number of waveforms violating the HB truncation error check:
+        20 out of 82 waveforms.
+o Estimated max HB truncation error: 9.869e-06 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 6.802e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[2/10].X1.HB1[7/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.06703 A   	100.0             
+1.0 	5.02011 mA  	100.0             
+1.1 	37.1668 uA  	100.0             
+1.2 	854.354 nA  	100.0	2.48047 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 8.542e-06       >       7.009e-06
+X2.LDMN1.N__4           8.423e-06       >       6.954e-06
+X2.LDMN1.M1.Qcell.D0    8.423e-06       >       6.954e-06
+X2.LDMN1.M1.Qcell.D1    8.423e-06       >       6.954e-06
+X2.LDMN1.M1.Qcell.D2    8.422e-06       >       6.954e-06
+
+o Number of waveforms violating the HB truncation error check:
+        20 out of 82 waveforms.
+o Estimated max HB truncation error: 8.542e-06 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 7.009e-06 for this waveform.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[2/10].X1.HB1[8/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	972.037 mA  	100.0             
+1.0 	2.81481 mA  	100.0             
+1.1 	21.0153 uA  	100.0             
+1.2 	266.318 nA  	100.0	1.94324 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 7.650e-06       >       7.183e-06
+X2.LDMN1.N__4           7.543e-06       >       7.131e-06
+X2.LDMN1.M1.Qcell.D0    7.543e-06       >       7.131e-06
+X2.LDMN1.M1.Qcell.D1    7.543e-06       >       7.131e-06
+X2.LDMN1.M1.Qcell.D2    7.543e-06       >       7.131e-06
+
+o Number of waveforms violating the HB truncation error check:
+        20 out of 82 waveforms.
+o Estimated max HB truncation error: 7.650e-06 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 7.183e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[2/10].X1.HB1[9/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	875.569 mA  	100.0             
+1.0 	1.85929 mA  	100.0             
+1.1 	17.5361 uA  	100.0             
+1.2 	189.162 nA  	100.0	971.793 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[2/10].X1.HB1[10/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	792.536 mA  	100.0             
+1.0 	1.68118 mA  	100.0             
+1.1 	20.288 uA   	100.0             
+1.2 	404.34 nA   	100.0	491.676 nV   
+
+CT X1.X1.SweepOuter[1].X1.X1.SweepInner[3/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>  X1.X1.imag_indexs11=-163.3e-03  X1.X1.real_indexs11=(-945.732e-03->-387.601e-03)
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[3/10].X1.HB1[1/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	8.35843 A   	100.0             
+        Newton iteration failed, damping activated
+1.0*	2.85318 A   	  6.3             
+2.0*	7.83603 A   	100.0             
+3.0*	5.3473 A    	 50.0             
+    Switching to arc-length continuation...
+Fwd sourceLevel=26.4531e-03    2.65% 2/2  Step=0.5
+0.0*	496.951 uA  	100.0             
+1.0 	164.296 nA  	100.0             
+1.1 	26.7793 pA  	100.0	6.15225 pV   
+    Arclength Newton-Raphson converged at 0.0264527 in 1 iters
+
+Fwd sourceLevel=63.846e-03     6.38% 2/2  Step=0.7071067812
+0.0*	1.01098 mA  	100.0             
+1.0 	721.306 nA  	100.0             
+1.1 	121.5 pA    	100.0	85.6151 pV   
+    Arclength Newton-Raphson converged at 0.0638212 in 1 iters
+
+Fwd sourceLevel=116.589e-03   11.66% 2/2  Step=1
+0.0*	2.23396 mA  	100.0             
+1.0 	6.34841 uA  	100.0             
+1.1 	1.50921 nA  	100.0	1.79013 nV   
+    Arclength Newton-Raphson converged at 0.116473 in 1 iters
+
+Fwd sourceLevel=190.651e-03   19.07% 2/2  Step=1.414213562
+0.0*	5.09808 mA  	100.0             
+1.0 	25.9932 uA  	100.0             
+1.1 	31.7471 nA  	100.0             
+1.2 	24.4907 pA  	100.0	26.4651 pV   
+    Arclength Newton-Raphson converged at 0.190251 in 1 iters
+
+Fwd sourceLevel=293.73e-03    29.37% 2/2  Step=2
+0.0*	11.7858 mA  	100.0             
+1.0 	42.3642 uA  	100.0             
+1.1 	137.777 nA  	100.0             
+1.2 	212.093 pA  	100.0	430.947 pV   
+    Arclength Newton-Raphson converged at 0.292561 in 1 iters
+
+Fwd sourceLevel=434.989e-03   43.50% 2/2  Step=2.828427125
+0.0*	27.2181 mA  	100.0             
+1.0 	133.939 uA  	100.0             
+1.1 	929.687 nA  	100.0             
+1.2 	3.63151 nA  	100.0	7.97591 nV   
+    Arclength Newton-Raphson converged at 0.432095 in 1 iters
+
+Fwd sourceLevel=624.418e-03   62.44% 2/2  Step=4
+0.0*	65.7114 mA  	100.0             
+1.0 	298.769 uA  	100.0             
+1.1 	1.13359 uA  	100.0	2.78184 uV   
+    Arclength Newton-Raphson converged at 0.618511 in 1 iters
+
+Fwd sourceLevel=873.102e-03   87.31% 2/2  Step=5.656854249
+0.0*	153.676 mA  	100.0             
+1.0 	569.03 uA   	100.0             
+1.1 	3.62663 uA  	100.0             
+1.2 	47.0772 nA  	100.0	106.594 nV   
+    Arclength Newton-Raphson converged at 0.863288 in 1 iters
+
+Fwd sourceLevel=1.19595      119.60% 2/2  Step=8
+0.0*	347.208 mA  	100.0             
+1.0 	1.10285 mA  	100.0             
+1.1 	7.65994 uA  	100.0             
+1.2 	108.635 nA  	100.0	195.746 nV   
+    Arclength Newton-Raphson converged at 1.1822 in 1 iters
+
+    Calculating solution at 1
+0.0 	90.9285 mA  	100.0             
+0.1 	7.12729 mA  	100.0             
+0.2 	416.521 uA  	100.0             
+0.3 	28.1358 uA  	100.0             
+0.4 	2.45423 uA  	100.0             
+    Newton-Raphson converged at 1
+
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 6.814e-05       >       4.791e-06
+X2.LDMN1.M2.private_IIDS 6.810e-05       >       4.792e-06
+X2.LDMN1.N__4           6.725e-05       >       4.731e-06
+X2.LDMN1.M1.Qcell.D0    6.724e-05       >       4.731e-06
+X2.LDMN1.M1.Qcell.D3S2  6.724e-05       >       4.731e-06
+
+o Number of waveforms violating the HB truncation error check:
+        36 out of 82 waveforms.
+o Estimated max HB truncation error: 6.814e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 4.791e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[3/10].X1.HB1[2/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	3.72295 A   	100.0             
+1.0 	53.3026 mA  	100.0             
+1.1 	1.08753 mA  	100.0             
+1.2 	34.1227 uA  	100.0             
+1.3 	1.81657 uA  	100.0	1.3726 uV    
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 4.061e-05       >       5.054e-06
+X2.LDMN1.M2.private_IIDS 4.059e-05       >       5.055e-06
+X2.LDMN1.N__4           4.007e-05       >       4.953e-06
+X2.LDMN1.M1.Qcell.D0    4.007e-05       >       4.953e-06
+X2.LDMN1.M1.Qcell.D3S2  4.007e-05       >       4.953e-06
+
+o Number of waveforms violating the HB truncation error check:
+        36 out of 82 waveforms.
+o Estimated max HB truncation error: 4.061e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 5.054e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[3/10].X1.HB1[3/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	3.26732 A   	100.0             
+1.0 	31.7891 mA  	100.0             
+1.1 	558.868 uA  	100.0             
+1.2 	11.9531 uA  	100.0	10.8585 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 2.456e-05       >       5.444e-06
+X2.LDMN1.M2.private_IIDS 2.455e-05       >       5.445e-06
+X2.LDMN1.N__4           2.424e-05       >       5.329e-06
+X2.LDMN1.M1.Qcell.D0    2.424e-05       >       5.329e-06
+X2.LDMN1.M1.Qcell.D3S2  2.424e-05       >       5.329e-06
+
+o Number of waveforms violating the HB truncation error check:
+        34 out of 82 waveforms.
+o Estimated max HB truncation error: 2.456e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 5.444e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M1.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[3/10].X1.HB1[4/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.84165 A   	100.0             
+1.0 	20.7297 mA  	100.0             
+1.1 	339.992 uA  	100.0             
+1.2 	4.53644 uA  	100.0	6.31551 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.552e-05       >       5.848e-06
+X2.LDMN1.M2.private_IIDS 1.551e-05       >       5.849e-06
+X2.LDMN1.N__4           1.531e-05       >       5.733e-06
+X2.LDMN1.M1.Qcell.D0    1.531e-05       >       5.733e-06
+X2.LDMN1.M1.Qcell.D1    1.531e-05       >       5.733e-06
+
+o Number of waveforms violating the HB truncation error check:
+        22 out of 82 waveforms.
+o Estimated max HB truncation error: 1.552e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 5.848e-06 for this waveform.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[3/10].X1.HB1[5/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.47049 A   	100.0             
+1.0 	14.045 mA   	100.0             
+1.1 	196.812 uA  	100.0             
+1.2 	2.23658 uA  	100.0	3.90854 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.039e-05       >       6.222e-06
+X2.LDMN1.M2.private_IIDS 1.038e-05       >       6.223e-06
+X2.LDMN1.N__4           1.025e-05       >       6.114e-06
+X2.LDMN1.M1.Qcell.D0    1.025e-05       >       6.114e-06
+X2.LDMN1.M1.Qcell.D1    1.025e-05       >       6.114e-06
+
+o Number of waveforms violating the HB truncation error check:
+        20 out of 82 waveforms.
+o Estimated max HB truncation error: 1.039e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 6.222e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[3/10].X1.HB1[6/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.15683 A   	100.0             
+1.0 	9.31247 mA  	100.0             
+1.1 	118.508 uA  	100.0             
+1.2 	1.33707 uA  	100.0	2.30874 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 7.401e-06       >       6.553e-06
+X2.LDMN1.M2.private_IIDS 7.399e-06       >       6.554e-06
+X2.LDMN1.N__4           7.303e-06       >       6.453e-06
+X2.LDMN1.M1.Qcell.D0    7.303e-06       >       6.453e-06
+X2.LDMN1.M1.Qcell.D1    7.302e-06       >       6.453e-06
+
+o Number of waveforms violating the HB truncation error check:
+        20 out of 82 waveforms.
+o Estimated max HB truncation error: 7.401e-06 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 6.553e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[3/10].X1.HB1[7/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.89499 A   	100.0             
+1.0 	6.22966 mA  	100.0             
+1.1 	81.8648 uA  	100.0             
+1.2 	808.482 nA  	100.0	1.81015 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[3/10].X1.HB1[8/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.67692 A   	100.0             
+1.0 	4.29639 mA  	100.0             
+1.1 	54.0652 uA  	100.0             
+1.2 	511.254 nA  	100.0	1.06764 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[3/10].X1.HB1[9/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.49479 A   	100.0             
+1.0 	3.30632 mA  	100.0             
+1.1 	40.6998 uA  	100.0             
+1.2 	345.031 nA  	100.0	801.394 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[3/10].X1.HB1[10/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.35001 A   	100.0             
+1.0 	2.56203 mA  	100.0             
+1.1 	26.9859 uA  	100.0             
+1.2 	216.787 nA  	100.0	423.232 nV   
+
+CT X1.X1.SweepOuter[1].X1.X1.SweepInner[4/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>  X1.X1.imag_indexs11=-97.9798e-03  X1.X1.real_indexs11=(-974.797e-03->-358.536e-03)
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[4/10].X1.HB1[1/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	13.5865 A   	100.0             
+1.0 	1.40002 A   	100.0             
+1.1 	229.842 mA  	100.0             
+1.2 	42.2379 mA  	100.0             
+1.3 	10.0721 mA  	100.0             
+1.4 	1.833 mA    	100.0             
+1.5 	526.892 uA  	100.0             
+1.6 	153.225 uA  	100.0             
+1.7 	50.9393 uA  	100.0             
+1.8 	12.2741 uA  	100.0	5.55726 uV   
+1.9 	3.2902 uA   	100.0	3.65375 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.137e-04       >       3.758e-06
+X2.LDMN1.M2.private_IIDS 1.136e-04       >       3.758e-06
+X2.LDMN1.N__4           1.122e-04       >       3.688e-06
+X2.LDMN1.M1.Qcell.D0    1.122e-04       >       3.688e-06
+X2.LDMN1.M1.Qcell.D3S2  1.122e-04       >       3.687e-06
+
+o Number of waveforms violating the HB truncation error check:
+        52 out of 82 waveforms.
+o Estimated max HB truncation error: 1.137e-04 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 3.758e-06 for this waveform.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[4/10].X1.HB1[2/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	5.01134 A   	100.0             
+1.0 	140.25 mA   	100.0             
+1.1 	4.90794 mA  	100.0             
+1.2 	210.894 uA  	100.0             
+1.3 	15.759 uA   	100.0	5.70694 uV   
+1.4 	1.02161 uA  	100.0	882.752 nV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 5.393e-05       >       4.288e-06
+X2.LDMN1.M2.private_IIDS 5.393e-05       >       4.289e-06
+X2.LDMN1.N__4           5.324e-05       >       4.136e-06
+X2.LDMN1.M1.Qcell.D0    5.324e-05       >       4.136e-06
+X2.LDMN1.M1.Qcell.D3S2  5.324e-05       >       4.136e-06
+
+o Number of waveforms violating the HB truncation error check:
+        36 out of 82 waveforms.
+o Estimated max HB truncation error: 5.393e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 4.288e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[4/10].X1.HB1[3/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	4.13603 A   	100.0             
+1.0 	68.3666 mA  	100.0             
+1.1 	1.62962 mA  	100.0             
+1.2 	39.5905 uA  	100.0             
+1.3 	2.3691 uA   	100.0	2.0285 uV    
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 2.647e-05       >       4.991e-06
+X2.LDMN1.M2.private_IIDS 2.646e-05       >       4.991e-06
+X2.LDMN1.N__4           2.612e-05       >       4.833e-06
+X2.LDMN1.M1.Qcell.D0    2.612e-05       >       4.833e-06
+X2.LDMN1.M1.Qcell.D3S2  2.612e-05       >       4.833e-06
+
+o Number of waveforms violating the HB truncation error check:
+        34 out of 82 waveforms.
+o Estimated max HB truncation error: 2.647e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 4.991e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[4/10].X1.HB1[4/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	3.39762 A   	100.0             
+1.0 	39.3176 mA  	100.0             
+1.1 	824.487 uA  	100.0             
+1.2 	14.2609 uA  	100.0             
+1.3 	717.449 nA  	100.0	632.061 nV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.419e-05       >       5.617e-06
+X2.LDMN1.M2.private_IIDS 1.418e-05       >       5.618e-06
+X2.LDMN1.N__4           1.400e-05       >       5.473e-06
+X2.LDMN1.M1.Qcell.D0    1.400e-05       >       5.473e-06
+X2.LDMN1.M1.Qcell.D3S2  1.400e-05       >       5.473e-06
+
+o Number of waveforms violating the HB truncation error check:
+        22 out of 82 waveforms.
+o Estimated max HB truncation error: 1.419e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 5.617e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[4/10].X1.HB1[5/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.81697 A   	100.0             
+1.0 	22.002 mA   	100.0             
+1.1 	439.063 uA  	100.0             
+1.2 	6.97324 uA  	100.0	9.60849 uV   
+1.3 	267.36 nA   	100.0	288.738 nV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 8.483e-06       >       6.134e-06
+X2.LDMN1.M2.private_IIDS 8.483e-06       >       6.134e-06
+X2.LDMN1.N__4           8.371e-06       >       6.006e-06
+X2.LDMN1.M1.Qcell.D0    8.371e-06       >       6.006e-06
+X2.LDMN1.N__9           8.371e-06       >       6.006e-06
+
+o Number of waveforms violating the HB truncation error check:
+        20 out of 82 waveforms.
+o Estimated max HB truncation error: 8.483e-06 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 6.134e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[4/10].X1.HB1[6/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.36795 A   	100.0             
+1.0 	12.9728 mA  	100.0             
+1.1 	381.378 uA  	100.0             
+1.2 	3.9476 uA   	100.0	9.30927 uV   
+1.3 	183.041 nA  	100.0	205.994 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[4/10].X1.HB1[7/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.01939 A   	100.0             
+1.0 	8.76407 mA  	100.0             
+1.1 	154.647 uA  	100.0             
+1.2 	2.00221 uA  	100.0	4.17316 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[4/10].X1.HB1[8/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.80748 A   	100.0             
+1.0 	6.18637 mA  	100.0             
+1.1 	101.782 uA  	100.0             
+1.2 	1.15724 uA  	100.0	2.51186 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[4/10].X1.HB1[9/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.71408 A   	100.0             
+1.0 	4.443 mA    	100.0             
+1.1 	65.1282 uA  	100.0             
+1.2 	647.704 nA  	100.0	1.42388 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[4/10].X1.HB1[10/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.62262 A   	100.0             
+1.0 	3.24794 mA  	100.0             
+1.1 	41.8655 uA  	100.0             
+1.2 	370.804 nA  	100.0	829.861 nV   
+
+CT X1.X1.SweepOuter[1].X1.X1.SweepInner[5/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>  X1.X1.imag_indexs11=-32.6599e-03  X1.X1.real_indexs11=(-988.346e-03->-344.987e-03)
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[5/10].X1.HB1[1/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	15.2779 A   	100.0             
+1.0 	2.13955 A   	100.0             
+1.1 	526.273 mA  	100.0             
+1.2 	125.847 mA  	100.0             
+1.3 	24.5218 mA  	100.0             
+1.4 	7.74375 mA  	100.0             
+1.5 	2.92763 mA  	100.0             
+1.6 	1.17323 mA  	100.0             
+1.7 	400.888 uA  	100.0             
+1.8 	135.14 uA   	100.0             
+1.9 	51.5085 uA  	100.0             
+1.10 	20.5407 uA  	100.0	8.89734 uV   
+1.11 	7.39558 uA  	100.0	6.6193 uV    
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.854e-04       >       3.003e-06
+X2.LDMN1.M2.private_IIDS 1.853e-04       >       3.003e-06
+X2.LDMN1.M1.Qcell.D3S2  1.831e-04       >       3.001e-06
+X2.LDMN1.N__4           1.831e-04       >       3.001e-06
+X2.LDMN1.M1.Qcell.D0    1.831e-04       >       3.001e-06
+
+o Number of waveforms violating the HB truncation error check:
+        54 out of 82 waveforms.
+o Estimated max HB truncation error: 1.854e-04 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 3.003e-06 for this waveform.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[5/10].X1.HB1[2/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	6.3427 A    	100.0             
+1.0 	313.815 mA  	100.0             
+1.1 	13.5789 mA  	100.0             
+1.2 	1.01705 mA  	100.0             
+1.3 	74.3434 uA  	100.0             
+1.4 	7.82167 uA  	100.0	5.42797 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 6.431e-05       >       3.649e-06
+X2.LDMN1.M2.private_IIDS 6.430e-05       >       3.649e-06
+X2.LDMN1.M1.Qcell.D3S2  6.351e-05       >       3.406e-06
+X2.LDMN1.N__4           6.351e-05       >       3.406e-06
+X2.LDMN1.M1.Qcell.D0    6.351e-05       >       3.406e-06
+
+o Number of waveforms violating the HB truncation error check:
+        36 out of 82 waveforms.
+o Estimated max HB truncation error: 6.431e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 3.649e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[5/10].X1.HB1[3/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	4.75839 A   	100.0             
+1.0 	130.425 mA  	100.0             
+1.1 	4.33965 mA  	100.0             
+1.2 	133.453 uA  	100.0             
+1.3 	9.06777 uA  	100.0	7.43367 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 2.465e-05       >       4.767e-06
+X2.LDMN1.M2.private_IIDS 2.465e-05       >       4.768e-06
+X2.LDMN1.N__4           2.433e-05       >       4.563e-06
+X2.LDMN1.M1.Qcell.D0    2.433e-05       >       4.563e-06
+X2.LDMN1.N__9           2.433e-05       >       4.563e-06
+
+o Number of waveforms violating the HB truncation error check:
+        34 out of 82 waveforms.
+o Estimated max HB truncation error: 2.465e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 4.767e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[5/10].X1.HB1[4/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	3.65423 A   	100.0             
+1.0 	56.7696 mA  	100.0             
+1.1 	1.58476 mA  	100.0             
+1.2 	38.3002 uA  	100.0             
+1.3 	2.02737 uA  	100.0	2.09315 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.122e-05       >       5.580e-06
+X2.LDMN1.M2.private_IIDS 1.122e-05       >       5.580e-06
+X2.LDMN1.N__4           1.107e-05       >       5.409e-06
+X2.LDMN1.M1.Qcell.D0    1.107e-05       >       5.409e-06
+X2.LDMN1.M1.Qcell.D1    1.107e-05       >       5.409e-06
+
+o Number of waveforms violating the HB truncation error check:
+        22 out of 82 waveforms.
+o Estimated max HB truncation error: 1.122e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 5.580e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[5/10].X1.HB1[5/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.89541 A   	100.0             
+1.0 	29.4453 mA  	100.0             
+1.1 	797.996 uA  	100.0             
+1.2 	16.6241 uA  	100.0             
+1.3 	781.858 nA  	100.0	1.05692 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 6.136e-06               6.183e-06
+X2.LDMN1.M2.private_IIDS 6.136e-06               6.183e-06
+X2.LDMN1.N__4           6.054e-06       >       6.039e-06
+X2.LDMN1.M1.Qcell.D0    6.054e-06       >       6.039e-06
+X2.LDMN1.N__9           6.054e-06       >       6.039e-06
+
+o Number of waveforms violating the HB truncation error check:
+        18 out of 82 waveforms.
+o Estimated max HB truncation error: 6.136e-06 @ waveform X2.LDMN1.M1.private_IIDS .
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[5/10].X1.HB1[6/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.45159 A   	100.0             
+1.0 	18.0808 mA  	100.0             
+1.1 	469.976 uA  	100.0             
+1.2 	8.36451 uA  	100.0             
+1.3 	336.014 nA  	100.0	551.423 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[5/10].X1.HB1[7/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.2782 A    	100.0             
+1.0 	11.5228 mA  	100.0             
+1.1 	296.071 uA  	100.0             
+1.2 	4.25804 uA  	100.0	11.4325 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[5/10].X1.HB1[8/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.1135 A    	100.0             
+1.0 	7.62088 mA  	100.0             
+1.1 	181.129 uA  	100.0             
+1.2 	2.16562 uA  	100.0	6.026 uV     
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[5/10].X1.HB1[9/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.96312 A   	100.0             
+1.0 	5.22249 mA  	100.0             
+1.1 	91.4885 uA  	100.0             
+1.2 	1.05044 uA  	100.0	2.35345 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[5/10].X1.HB1[10/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.82803 A   	100.0             
+1.0 	3.8327 mA   	100.0             
+1.1 	68.9655 uA  	100.0             
+1.2 	617.173 nA  	100.0	1.70092 uV   
+
+CT X1.X1.SweepOuter[1].X1.X1.SweepInner[6/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>  X1.X1.imag_indexs11=32.6599e-03  X1.X1.real_indexs11=(-988.346e-03->-344.987e-03)
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[6/10].X1.HB1[1/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	16.4058 A   	100.0             
+1.0 	3.20846 A   	100.0             
+1.1 	924.783 mA  	100.0             
+1.2 	341.314 mA  	100.0             
+1.3 	82.7021 mA  	100.0             
+1.4 	30.0101 mA  	100.0             
+1.5 	13.9163 mA  	100.0             
+1.6 	6.93071 mA  	100.0             
+1.7 	2.64756 mA  	100.0             
+1.8 	1.06488 mA  	100.0             
+1.9 	485.072 uA  	100.0             
+1.10 	305.983 uA  	100.0             
+1.11 	167.862 uA  	100.0             
+1.12 	102.57 uA   	100.0             
+1.13 	49.7441 uA  	100.0             
+1.14 	15.5632 uA  	100.0	9.66883 uV   
+1.15 	6.81611 uA  	100.0	20.7412 uV   
+1.16 	6.75883 uA  	100.0	18.7463 uV   
+1.17*	5.14329 uA  	100.0	7.99843 uV   
+2.0 	78.7105 pA  	100.0	177.69 pV    
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 2.564e-04       >       3.186e-06
+X2.LDMN1.M2.private_IIDS 2.562e-04       >       3.186e-06
+X2.LDMN1.M1.Qcell.D3S2  2.537e-04       >       3.184e-06
+X2.LDMN1.N__4           2.536e-04       >       3.184e-06
+X2.LDMN1.M1.Qcell.D0    2.536e-04       >       3.184e-06
+
+o Number of waveforms violating the HB truncation error check:
+        54 out of 82 waveforms.
+o Estimated max HB truncation error: 2.564e-04 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 3.186e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[6/10].X1.HB1[2/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	7.148 A     	100.0             
+1.0 	610.388 mA  	100.0             
+1.1 	26.8592 mA  	100.0             
+1.2 	1.47911 mA  	100.0             
+1.3 	177.075 uA  	100.0             
+1.4 	21.4474 uA  	100.0             
+1.5 	2.68791 uA  	100.0	1.86297 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 5.904e-05       >       3.980e-06
+X2.LDMN1.M2.private_IIDS 5.901e-05       >       3.980e-06
+X2.LDMN1.M1.Qcell.D3S2  5.834e-05       >       3.710e-06
+X2.LDMN1.N__4           5.834e-05       >       3.710e-06
+X2.LDMN1.M1.Qcell.D0    5.834e-05       >       3.710e-06
+
+o Number of waveforms violating the HB truncation error check:
+        36 out of 82 waveforms.
+o Estimated max HB truncation error: 5.904e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 3.980e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[6/10].X1.HB1[3/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	4.74601 A   	100.0             
+1.0 	169.508 mA  	100.0             
+1.1 	11.1438 mA  	100.0             
+1.2 	268.779 uA  	100.0             
+1.3 	35.6759 uA  	100.0             
+1.4 	1.48628 uA  	100.0	3.62528 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M2.private_IIDS 1.767e-05       >       5.075e-06
+X2.LDMN1.M1.private_IIDS 1.767e-05       >       5.075e-06
+X2.LDMN1.N__9           1.744e-05       >       4.855e-06
+X2.LDMN1.M2.Qcell.D0    1.744e-05       >       4.855e-06
+X2.LDMN1.M2.Qcell.D3S2  1.744e-05       >       4.855e-06
+
+o Number of waveforms violating the HB truncation error check:
+        22 out of 82 waveforms.
+o Estimated max HB truncation error: 1.767e-05 @ waveform X2.LDMN1.M2.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 5.075e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[6/10].X1.HB1[4/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	3.53489 A   	100.0             
+1.0 	73.4851 mA  	100.0             
+1.1 	3.85731 mA  	100.0             
+1.2 	99.9844 uA  	100.0             
+1.3 	7.55405 uA  	100.0	8.82359 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 7.114e-06       >       5.845e-06
+X2.LDMN1.M2.private_IIDS 7.114e-06       >       5.846e-06
+X2.LDMN1.N__4           7.017e-06       >       5.666e-06
+X2.LDMN1.M1.Qcell.D0    7.017e-06       >       5.666e-06
+X2.LDMN1.M1.Qcell.D1    7.016e-06       >       5.666e-06
+
+o Number of waveforms violating the HB truncation error check:
+        20 out of 82 waveforms.
+o Estimated max HB truncation error: 7.114e-06 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 5.845e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[6/10].X1.HB1[5/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	3.16789 A   	100.0             
+1.0 	37.7751 mA  	100.0             
+1.1 	1.37528 mA  	100.0             
+1.2 	37.3202 uA  	100.0             
+1.3 	1.70924 uA  	100.0	3.02081 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[6/10].X1.HB1[6/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.84295 A   	100.0             
+1.0 	20.9815 mA  	100.0             
+1.1 	705.044 uA  	100.0             
+1.2 	15.2709 uA  	100.0             
+1.3 	671.857 nA  	100.0	1.17284 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[6/10].X1.HB1[7/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.56609 A   	100.0             
+1.0 	12.7127 mA  	100.0             
+1.1 	364.96 uA   	100.0             
+1.2 	6.51656 uA  	100.0	14.1745 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[6/10].X1.HB1[8/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.33188 A   	100.0             
+1.0 	8.32567 mA  	100.0             
+1.1 	234.378 uA  	100.0             
+1.2 	2.88122 uA  	100.0             
+1.3 	94.9185 nA  	100.0             
+1.4 	2.46243 nA  	100.0	4.92404 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[6/10].X1.HB1[9/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.13315 A   	100.0             
+1.0 	5.79998 mA  	100.0             
+1.1 	103.409 uA  	100.0             
+1.2 	1.3741 uA   	100.0	2.7146 uV    
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[6/10].X1.HB1[10/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.96337 A   	100.0             
+1.0 	4.15066 mA  	100.0             
+1.1 	67.265 uA   	100.0             
+1.2 	742.534 nA  	100.0	1.55965 uV   
+
+CT X1.X1.SweepOuter[1].X1.X1.SweepInner[7/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>  X1.X1.imag_indexs11=97.9798e-03  X1.X1.real_indexs11=(-974.797e-03->-358.536e-03)
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[7/10].X1.HB1[1/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	16.9422 A   	100.0             
+1.0 	4.18485 A   	100.0             
+1.1*	1.44272 A   	100.0             
+2.0 	43.5597 mA  	100.0             
+2.1 	1.22095 mA  	100.0             
+2.2 	22.8305 uA  	100.0	10.57 uV     
+2.3 	451.953 nA  	100.0	230.236 nV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 1.876e-04       >       5.533e-06
+X2.LDMN1.M2.private_IIDS 1.876e-04       >       5.534e-06
+X2.LDMN1.M1.Qcell.D3S2  1.862e-04       >       5.434e-06
+X2.LDMN1.M2.Qcell.D3S2  1.862e-04       >       5.434e-06
+X2.LDMN1.M1.Qcell.G3D3  1.862e-04       >       5.434e-06
+
+o Number of waveforms violating the HB truncation error check:
+        54 out of 82 waveforms.
+o Estimated max HB truncation error: 1.876e-04 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 5.533e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M1.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[7/10].X1.HB1[2/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	6.17075 A   	100.0             
+1.0 	656.755 mA  	100.0             
+1.1 	42.3419 mA  	100.0             
+1.2 	2.83549 mA  	100.0             
+1.3 	245.16 uA   	100.0             
+1.4 	21.3535 uA  	100.0             
+1.5 	2.67446 uA  	100.0	2.48613 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 3.111e-05       >       5.491e-06
+X2.LDMN1.M2.private_IIDS 3.110e-05       >       5.491e-06
+X2.LDMN1.M1.Qcell.D3S2  3.076e-05       >       5.291e-06
+X2.LDMN1.M2.Qcell.D3S2  3.075e-05       >       5.291e-06
+X2.LDMN1.M1.Qcell.G3D3  3.075e-05       >       5.291e-06
+
+o Number of waveforms violating the HB truncation error check:
+        34 out of 82 waveforms.
+o Estimated max HB truncation error: 3.111e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 5.491e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[7/10].X1.HB1[3/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	4.88306 A   	100.0             
+1.0 	188.239 mA  	100.0             
+1.1 	9.97753 mA  	100.0             
+1.2 	618.616 uA  	100.0             
+1.3 	37.0456 uA  	100.0             
+1.4 	4.08124 uA  	100.0	4.71122 uV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 8.228e-06       >       5.957e-06
+X2.LDMN1.M2.private_IIDS 8.226e-06       >       5.958e-06
+X2.LDMN1.N__4           8.118e-06       >       5.765e-06
+X2.LDMN1.M1.Qcell.D0    8.118e-06       >       5.765e-06
+X2.LDMN1.M1.Qcell.D3S2  8.118e-06       >       5.765e-06
+
+o Number of waveforms violating the HB truncation error check:
+        20 out of 82 waveforms.
+o Estimated max HB truncation error: 8.228e-06 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 5.957e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[7/10].X1.HB1[4/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	4.06566 A   	100.0             
+1.0 	77.4586 mA  	100.0             
+1.1 	4.08592 mA  	100.0             
+1.2 	167.402 uA  	100.0             
+1.3 	10.4249 uA  	100.0             
+1.4 	812.135 nA  	100.0	1.56564 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[7/10].X1.HB1[5/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	3.4836 A    	100.0             
+1.0 	37.3894 mA  	100.0             
+1.1 	1.75611 mA  	100.0             
+1.2 	50.2194 uA  	100.0             
+1.3 	3.02537 uA  	100.0	5.13323 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[7/10].X1.HB1[6/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	3.04537 A   	100.0             
+1.0 	20.5087 mA  	100.0             
+1.1 	799.231 uA  	100.0             
+1.2 	18.4897 uA  	100.0             
+1.3 	971.222 nA  	100.0	1.60315 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[7/10].X1.HB1[7/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.70325 A   	100.0             
+1.0 	12.7835 mA  	100.0             
+1.1 	421.794 uA  	100.0             
+1.2 	7.5736 uA   	100.0             
+1.3 	332.643 nA  	100.0             
+1.4 	9.90058 nA  	100.0	19.3391 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[7/10].X1.HB1[8/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.4289 A    	100.0             
+1.0 	8.53393 mA  	100.0             
+1.1 	245.3 uA    	100.0             
+1.2 	3.33857 uA  	100.0             
+1.3 	121.004 nA  	100.0	197.693 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[7/10].X1.HB1[9/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.20416 A   	100.0             
+1.0 	5.88059 mA  	100.0             
+1.1 	154.975 uA  	100.0             
+1.2 	1.66204 uA  	100.0             
+1.3 	53.4525 nA  	100.0	79.2582 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[7/10].X1.HB1[10/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.01684 A   	100.0             
+1.0 	4.19054 mA  	100.0             
+1.1 	65.8702 uA  	100.0             
+1.2 	827.151 nA  	100.0             
+1.3 	19.2336 nA  	100.0	30.6863 nV   
+
+CT X1.X1.SweepOuter[1].X1.X1.SweepInner[8/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>  X1.X1.imag_indexs11=163.3e-03  X1.X1.real_indexs11=(-945.732e-03->-387.601e-03)
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[8/10].X1.HB1[1/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	16.7604 A   	100.0             
+1.0 	3.56256 A   	100.0             
+1.1*	1.21968 A   	100.0             
+2.0 	20.3856 mA  	100.0             
+2.1 	949.317 uA  	100.0             
+2.2 	33.7879 uA  	100.0             
+2.3 	762.366 nA  	100.0	712.059 nV   
+An HB truncation error may be present.
+o The HB truncation error is due to using a finite order 
+  (number of harmonics) in the representation of the
+  circuit signals.
+
+Waveform                Trunc error             Tolerance
+---------------------------------------------------------
+X2.LDMN1.M1.private_IIDS 3.644e-05       >       7.762e-06
+X2.LDMN1.M2.private_IIDS 3.644e-05       >       7.765e-06
+X2.LDMN1.M1.Qcell.D3S2  3.622e-05       >       7.669e-06
+X2.LDMN1.M1.Qcell.G3D3  3.621e-05       >       7.669e-06
+X2.LDMN1.M2.Qcell.D3S2  3.621e-05       >       7.672e-06
+
+o Number of waveforms violating the HB truncation error check:
+        36 out of 82 waveforms.
+o Estimated max HB truncation error: 3.644e-05 @ waveform X2.LDMN1.M1.private_IIDS .
+o The maximal HB truncation error estimate is greater than the 
+  achieved tolerance of 7.762e-06 for this waveform.
+o A time-domain plot of the X2.LDMN1.M2.Qcell._ub_VIDS__gnd_i waveform may show the error as 
+  Gibbs ripples.
+o To reduce the error, increase the order (number of harmonics) 
+  and re-simulate.
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[8/10].X1.HB1[2/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	6.20903 A   	100.0             
+1.0 	329.971 mA  	100.0             
+1.1 	24.8885 mA  	100.0             
+1.2 	3.07799 mA  	100.0             
+1.3 	215.453 uA  	100.0             
+1.4 	32.5145 uA  	100.0             
+1.5 	4.05822 uA  	100.0	5.48397 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[8/10].X1.HB1[3/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	4.80943 A   	100.0             
+1.0 	119.613 mA  	100.0             
+1.1 	7.7464 mA   	100.0             
+1.2 	491.476 uA  	100.0             
+1.3 	36.5055 uA  	100.0             
+1.4 	4.18276 uA  	100.0	7.49912 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[8/10].X1.HB1[4/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	3.96581 A   	100.0             
+1.0 	54.766 mA   	100.0             
+1.1 	3.10459 mA  	100.0             
+1.2 	124.72 uA   	100.0             
+1.3 	9.52144 uA  	100.0             
+1.4 	640.986 nA  	100.0	1.29123 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[8/10].X1.HB1[5/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	3.38496 A   	100.0             
+1.0 	30.0177 mA  	100.0             
+1.1 	1.4047 mA   	100.0             
+1.2 	37.2543 uA  	100.0             
+1.3 	2.64937 uA  	100.0             
+1.4 	119.99 nA   	100.0	274.287 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[8/10].X1.HB1[6/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.95577 A   	100.0             
+1.0 	18.8445 mA  	100.0             
+1.1 	665.282 uA  	100.0             
+1.2 	14.2113 uA  	100.0             
+1.3 	837.397 nA  	100.0             
+1.4 	26.3414 nA  	100.0	60.551 nV    
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[8/10].X1.HB1[7/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.62413 A   	100.0             
+1.0 	12.421 mA   	100.0             
+1.1 	425.422 uA  	100.0             
+1.2 	6.23021 uA  	100.0             
+1.3 	330.417 nA  	100.0             
+1.4 	7.68969 nA  	100.0	23.0227 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[8/10].X1.HB1[8/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.35963 A   	100.0             
+1.0 	8.48048 mA  	100.0             
+1.1 	196.661 uA  	100.0             
+1.2 	2.7937 uA   	100.0             
+1.3 	102.284 nA  	100.0	160.568 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[8/10].X1.HB1[9/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.14355 A   	100.0             
+1.0 	5.97597 mA  	100.0             
+1.1 	103.912 uA  	100.0             
+1.2 	1.41656 uA  	100.0             
+1.3 	39.4185 nA  	100.0	62.4849 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[8/10].X1.HB1[10/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.96365 A   	100.0             
+1.0 	4.31708 mA  	100.0             
+1.1 	83.4736 uA  	100.0             
+1.2 	770.515 nA  	100.0             
+1.3 	20.5251 nA  	100.0	30.4321 nV   
+
+CT X1.X1.SweepOuter[1].X1.X1.SweepInner[9/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>  X1.X1.imag_indexs11=228.62e-03  X1.X1.real_indexs11=(-895.31e-03->-438.024e-03)
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[9/10].X1.HB1[1/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	15.5385 A   	100.0             
+1.0 	2.05459 A   	100.0             
+1.1 	442.912 mA  	100.0             
+1.2 	93.7282 mA  	100.0             
+1.3 	43.5754 mA  	100.0             
+1.4 	7.88663 mA  	100.0             
+1.5 	3.04687 mA  	100.0             
+1.6 	1.26313 mA  	100.0             
+1.7 	448.113 uA  	100.0             
+1.8 	93.7456 uA  	100.0             
+1.9 	31.3116 uA  	100.0             
+1.10 	9.00752 uA  	100.0             
+1.11 	3.12721 uA  	100.0             
+1.12 	1.14583 uA  	100.0	2.375 uV     
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[9/10].X1.HB1[2/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	4.28129 A   	100.0             
+1.0 	92.3428 mA  	100.0             
+1.1 	5.53474 mA  	100.0             
+1.2 	345.148 uA  	100.0             
+1.3 	28.1221 uA  	100.0             
+1.4 	2.41394 uA  	100.0	5.81649 uV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[9/10].X1.HB1[3/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	3.61931 A   	100.0             
+1.0 	49.2302 mA  	100.0             
+1.1 	2.74553 mA  	100.0             
+1.2 	96.0638 uA  	100.0             
+1.3 	8.00377 uA  	100.0             
+1.4 	446.928 nA  	100.0             
+1.5 	29.0758 nA  	100.0	69.1251 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[9/10].X1.HB1[4/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	3.13861 A   	100.0             
+1.0 	30.5141 mA  	100.0             
+1.1 	1.33036 mA  	100.0             
+1.2 	30.4754 uA  	100.0             
+1.3 	2.87042 uA  	100.0             
+1.4 	91.2968 nA  	100.0             
+1.5 	6.0864 nA   	100.0	12.5216 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[9/10].X1.HB1[5/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.77158 A   	100.0             
+1.0 	19.6659 mA  	100.0             
+1.1 	642.249 uA  	100.0             
+1.2 	13.035 uA   	100.0             
+1.3 	853.585 nA  	100.0             
+1.4 	21.4005 nA  	100.0	59.4412 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[9/10].X1.HB1[6/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.48141 A   	100.0             
+1.0 	13.3713 mA  	100.0             
+1.1 	339.509 uA  	100.0             
+1.2 	6.10663 uA  	100.0             
+1.3 	293.131 nA  	100.0	525.506 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[9/10].X1.HB1[7/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.24599 A   	100.0             
+1.0 	9.52238 mA  	100.0             
+1.1 	247.563 uA  	100.0             
+1.2 	3.0709 uA   	100.0             
+1.3 	120.063 nA  	100.0             
+1.4 	2.87671 nA  	100.0	6.17715 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[9/10].X1.HB1[8/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	2.05109 A   	100.0             
+1.0 	6.88433 mA  	100.0             
+1.1 	110.221 uA  	100.0             
+1.2 	1.62283 uA  	100.0             
+1.3 	47.2086 nA  	100.0	79.8099 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[9/10].X1.HB1[9/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.88706 A   	100.0             
+1.0 	5.10288 mA  	100.0             
+1.1 	85.5774 uA  	100.0             
+1.2 	890.057 nA  	100.0             
+1.3 	25.0539 nA  	100.0	39.6983 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[9/10].X1.HB1[10/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.74713 A   	100.0             
+1.0 	3.85173 mA  	100.0             
+1.1 	61.0933 uA  	100.0             
+1.2 	519.742 nA  	100.0             
+1.3 	12.6425 nA  	100.0	18.9605 nV   
+
+CT X1.X1.SweepOuter[1].X1.X1.SweepInner[10/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>  X1.X1.imag_indexs11=293.939e-03  X1.X1.real_indexs11=(-801.367e-03->-531.967e-03)
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[10/10].X1.HB1[1/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	12.2028 A   	100.0             
+1.0 	585.413 mA  	100.0             
+1.1 	69.5084 mA  	100.0             
+1.2 	9.77171 mA  	100.0             
+1.3 	2.22589 mA  	100.0             
+1.4 	470.915 uA  	100.0             
+1.5 	60.5661 uA  	100.0             
+1.6 	15.896 uA   	100.0             
+1.7 	2.5079 uA   	100.0             
+1.8 	560.734 nA  	100.0	948.763 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[10/10].X1.HB1[2/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.85458 A   	100.0             
+1.0 	10.1306 mA  	100.0             
+1.1 	240.465 uA  	100.0             
+1.2 	4.19928 uA  	100.0             
+1.3 	180.989 nA  	100.0	357.824 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[10/10].X1.HB1[3/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.72851 A   	100.0             
+1.0 	8.05076 mA  	100.0             
+1.1 	157.592 uA  	100.0             
+1.2 	2.3784 uA   	100.0             
+1.3 	94.1162 nA  	100.0	172.95 nV    
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[10/10].X1.HB1[4/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.61756 A   	100.0             
+1.0 	6.4442 mA   	100.0             
+1.1 	106.012 uA  	100.0             
+1.2 	1.33795 uA  	100.0             
+1.3 	52.4661 nA  	100.0	92.4548 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[10/10].X1.HB1[5/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.51929 A   	100.0             
+1.0 	5.19245 mA  	100.0             
+1.1 	88.191 uA   	100.0             
+1.2 	816.273 nA  	100.0             
+1.3 	29.5433 nA  	100.0	50.9923 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[10/10].X1.HB1[6/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.4317 A    	100.0             
+1.0 	4.21272 mA  	100.0             
+1.1 	56.4672 uA  	100.0             
+1.2 	535.024 nA  	100.0             
+1.3 	16.6199 nA  	100.0	29.3351 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[10/10].X1.HB1[7/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.35323 A   	100.0             
+1.0 	3.44515 mA  	100.0             
+1.1 	46.6623 uA  	100.0             
+1.2 	390.11 nA   	100.0             
+1.3 	9.62583 nA  	100.0	17.6769 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[10/10].X1.HB1[8/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.28255 A   	100.0             
+1.0 	2.84538 mA  	100.0             
+1.1 	33.9598 uA  	100.0             
+1.2 	272.847 nA  	100.0             
+1.3 	6.00892 nA  	100.0	10.1667 nV   
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[10/10].X1.HB1[9/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.21861 A   	100.0             
+1.0 	2.37701 mA  	100.0             
+1.1 	27.6359 uA  	100.0             
+1.2 	197.818 nA  	100.0             
+1.3 	3.39142 nA  	100.0	6.2203 nV    
+
+HB X1.X1.SweepOuter[1].X1.X1.SweepInner[10/10].X1.HB1[10/10] <BLF188XR_HF_lib:HB1Tone_LoadPull_ClassAB:schematic>
+0.0*	1.1605 A    	100.0             
+1.0 	2.00343 mA  	100.0             
+1.1 	19.4126 uA  	100.0             
+1.2 	142.684 nA  	100.0             
+1.3 	1.95134 nA  	100.0	3.71595 nV   
+
+Resource usage:
+  Total stopwatch time     =     2.85 seconds.
+

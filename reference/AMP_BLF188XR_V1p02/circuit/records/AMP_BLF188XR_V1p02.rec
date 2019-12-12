@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<COMPONENTS>
+  <COMPONENT>
+    <NAME> AMP_BLF188XR_V1p02</NAME>
+    <DESCRIPTION>Encoded model version - AMP_BLF188XR_V1p02</DESCRIPTION>
+    <VENDOR> Ampleon </VENDOR>
+    <LIBRARY>AMP_BLF188XR_V1p02</LIBRARY>
+    <PLACEMENT> No layout </PLACEMENT>
+    <AVAILABILITY> Available </AVAILABILITY>
+    <URL> www.ampleon.com/ </URL>
+  </COMPONENT>
+</COMPONENTS>

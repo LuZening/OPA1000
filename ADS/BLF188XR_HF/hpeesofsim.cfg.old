@@ -1,0 +1,5 @@
+EESOF_MODEL_PATH=%DESIGN_KIT_MODEL_PATH:$ICCAP_MODEL_PATH:%ICCAP_MODEL_PATH;{%DESIGN_KIT_MODEL_PATH}
+DESIGN_KIT_VERILOGA_PATH=C:\Users\Zening\OneDrive\RADIO\Projects\OPA1000\reference\AMP_BLF188XR_V1p02\bin_2016_01
+DESIGN_KIT_SIM_FILE_PATH=C:\Users\Zening\OneDrive\RADIO\Projects\OPA1000\reference\AMP_BLF188XR_V1p02\circuit\data;C:\Users\Zening\OneDrive\RADIO\Projects\OPA1000\reference\AMP_BLF188XR_V1p02\circuit\models
+SIM_FILE_PATH=$USER_SIM_FILE_PATH:%USER_SIM_FILE_PATH:$DE_SIM_FILE_PATH:%DE_SIM_FILE_PATH:.:..:../data:../networks:%DESIGN_KIT_SIM_FILE_PATH:$HPEESOF_DIR/adsptolemy/wtb:$HPEESOF_DIR/CustomEncoded/linlib/data:$HPEESOF_DIR/CustomEncoded/UWB_Channel/data:$HPEESOF_DIR/CustomEncoded/UWB_Receiver/data:$HPEESOF_DIR/CustomEncoded/UWB_Transmitter/data;{%DESIGN_KIT_SIM_FILE_PATH}
+DE_SIM_FILE_PATH=.\data;C:\Users\Zening\OneDrive\RADIO\Projects\OPA1000\reference\AMP_BLF188XR_V1p02\circuit\data;C:\Users\Zening\OneDrive\RADIO\Projects\OPA1000\reference\AMP_BLF188XR_V1p02\circuit\models

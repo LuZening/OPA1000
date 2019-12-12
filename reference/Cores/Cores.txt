@@ -1,0 +1,2 @@
+Model, Outer, Innter, Thickness, Material
+5943004901, 16, 9.6, 6.35, Ferrite 43

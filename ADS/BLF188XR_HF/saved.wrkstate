@@ -1,0 +1,9 @@
+<!DOCTYPE SaveWorkspaceState>
+<SaveWorkspaceState>
+    <Windows>
+        <Schematic x1="-13" view="schematic" width="3000" y1="-13" height="1875" cell="HB1Tone_LoadPull_ClassAB" lib="BLF188XR_HF_lib"/>
+        <Schematic x1="-13" view="schematic" width="3000" y1="-13" height="1875" cell="cell_1" lib="BLF188XR_HF_lib"/>
+        <DDS name="HB1Tone_LoadPull_ClassAB.dds"/>
+    </Windows>
+    <MainWindowTab tab="1"/>
+</SaveWorkspaceState>

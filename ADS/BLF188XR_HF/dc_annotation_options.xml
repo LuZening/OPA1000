@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dc_annotation_options>
+ <options cell="cell_1" ToggleVoltage="true" library="BLF188XR_HF_lib" view="schematic" ToggleCurrent="true"/>
+</dc_annotation_options>
