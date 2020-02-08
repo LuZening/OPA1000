@@ -1,4 +1,4 @@
-11736761945614602
+11739913804515329
 Battery_Holders
 Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (http://www.bulgin.com/media/bulgin/data/Battery_holders.pdf)
@@ -28077,6 +28077,13 @@ inductor Wuerth smd
 2
 2
 MyPCBLib
+Laird_28B1020_100
+
+
+0
+0
+0
+MyPCBLib
 M3_Screwhole
 
 
@@ -28146,6 +28153,13 @@ SRBV170501
 0
 12
 11
+MyPCBLib
+Symbol_HighVoltage_Type2_SilkTop_VerySmall
+Symbol, High Voltage, Type 2, Copper Top, Very Small,
+Symbol, High Voltage, Type 2, Copper Top, Very Small,
+0
+0
+0
 MyPCBLib
 TO-92-SMD
 TO-92 Surface Mount Temperature Sensing

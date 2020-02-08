@@ -1,0 +1,10 @@
+import pcbnew
+b = pcbnew.GetBoard()
+pads = b.GetPads()
+gndnet = b.GetNetsByName()['GNDPWR']
+for p in pads:
+    m = p.GetParent()
+    if m.GetReference()[0] == 'C' and  p.GetPadName()=='1' and p.GetNetName() == '':
+        print(m.GetReference())
+        p.SetNet(gndnet)
+        
