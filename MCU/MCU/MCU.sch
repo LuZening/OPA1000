@@ -1110,11 +1110,11 @@ F 3 "~" H 3450 1550 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	3300 1550 3350 1550
-Text GLabel 7700 2800 0    50   Output ~ 0
+Text GLabel 7700 2800 0    50   Input ~ 0
 ALC_trig
 Wire Wire Line
 	7700 2800 7950 2800
-Text GLabel 7700 3000 0    50   Input ~ 0
+Text GLabel 7700 3000 0    50   Output ~ 0
 Transmit
 Wire Wire Line
 	7700 3000 7950 3000
@@ -1253,17 +1253,6 @@ Wire Wire Line
 	6950 3950 6850 3950
 Wire Wire Line
 	6850 3950 6850 4050
-$Comp
-L power:GND #PWR017
-U 1 1 5F68FB04
-P 6850 4050
-F 0 "#PWR017" H 6850 3800 50  0001 C CNN
-F 1 "GND" H 6855 3877 50  0000 C CNN
-F 2 "" H 6850 4050 50  0001 C CNN
-F 3 "" H 6850 4050 50  0001 C CNN
-	1    6850 4050
-	1    0    0    -1  
-$EndComp
 Text Label 3700 1550 0    50   ~ 0
 NRST
 Text Label 6200 2850 0    50   ~ 0
@@ -1801,4 +1790,17 @@ Wire Wire Line
 	6650 1400 6650 1550
 Wire Wire Line
 	6650 1550 6550 1550
+$Comp
+L power:GNDD #PWR0125
+U 1 1 5E46449F
+P 6850 4050
+F 0 "#PWR0125" H 6850 3800 50  0001 C CNN
+F 1 "GNDD" H 6854 3895 50  0000 C CNN
+F 2 "" H 6850 4050 50  0001 C CNN
+F 3 "" H 6850 4050 50  0001 C CNN
+	1    6850 4050
+	1    0    0    -1  
+$EndComp
+Text Notes 3550 6250 0    50   ~ 0
+A18
 $EndSCHEMATC

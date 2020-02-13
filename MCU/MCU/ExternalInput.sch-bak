@@ -27,19 +27,6 @@ F 3 "~" H 1800 2250 50  0001 C CNN
 	1    1800 2250
 	0    -1   -1   0   
 $EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5EA99E44
-P 2000 2600
-AR Path="/5E7D94C5/5EA99E44" Ref="#PWR?"  Part="1" 
-AR Path="/5EA95119/5EA99E44" Ref="#PWR095"  Part="1" 
-F 0 "#PWR095" H 2000 2350 50  0001 C CNN
-F 1 "GND" H 2005 2427 50  0000 C CNN
-F 2 "" H 2000 2600 50  0001 C CNN
-F 3 "" H 2000 2600 50  0001 C CNN
-	1    2000 2600
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2000 2600 2000 2550
 Wire Wire Line
@@ -154,19 +141,6 @@ Wire Wire Line
 	1800 2450 1800 2650
 Text Notes 1750 2150 0    50   ~ 0
 TX GND
-$Comp
-L power:GND #PWR?
-U 1 1 5F1D7559
-P 3050 2600
-AR Path="/5E7D94C5/5F1D7559" Ref="#PWR?"  Part="1" 
-AR Path="/5EA95119/5F1D7559" Ref="#PWR098"  Part="1" 
-F 0 "#PWR098" H 3050 2350 50  0001 C CNN
-F 1 "GND" H 3055 2427 50  0000 C CNN
-F 2 "" H 3050 2600 50  0001 C CNN
-F 3 "" H 3050 2600 50  0001 C CNN
-	1    3050 2600
-	1    0    0    -1  
-$EndComp
 Text HLabel 2400 3050 3    50   Output ~ 0
 PTT_RTS
 Wire Wire Line
@@ -364,19 +338,6 @@ Wire Wire Line
 Connection ~ 5050 4900
 Wire Wire Line
 	5050 4900 5050 4800
-$Comp
-L power:GND #PWR?
-U 1 1 5E41AEF8
-P 4750 5000
-AR Path="/5E7D94C5/5E41AEF8" Ref="#PWR?"  Part="1" 
-AR Path="/5EA95119/5E41AEF8" Ref="#PWR0125"  Part="1" 
-F 0 "#PWR0125" H 4750 4750 50  0001 C CNN
-F 1 "GND" H 4755 4827 50  0000 C CNN
-F 2 "" H 4750 5000 50  0001 C CNN
-F 3 "" H 4750 5000 50  0001 C CNN
-	1    4750 5000
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4750 5000 4750 4900
 Text HLabel 3650 6750 0    50   Output ~ 0
@@ -605,17 +566,6 @@ F 3 "http://www.ti.com/lit/ds/symlink/lmv324.pdf" H 4200 3600 50  0001 C CNN
 	1    4200 3600
 	0    -1   1    0   
 $EndComp
-$Comp
-L Device:Ferrite_Bead_Small FB4
-U 1 1 5E498DD9
-P 2400 2850
-F 0 "FB4" H 2500 2896 50  0000 L CNN
-F 1 "1K" H 2500 2805 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805" V 2330 2850 50  0001 C CNN
-F 3 "~" H 2400 2850 50  0001 C CNN
-	1    2400 2850
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2400 2750 2400 2650
 Wire Wire Line
@@ -665,4 +615,52 @@ Wire Wire Line
 	2250 5050 2350 5050
 Wire Wire Line
 	2250 6000 2350 6000
+$Comp
+L power:GNDD #PWR0146
+U 1 1 5E65BD42
+P 3050 2600
+F 0 "#PWR0146" H 3050 2350 50  0001 C CNN
+F 1 "GNDD" H 3054 2445 50  0000 C CNN
+F 2 "" H 3050 2600 50  0001 C CNN
+F 3 "" H 3050 2600 50  0001 C CNN
+	1    3050 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E65D41A
+P 2000 2600
+AR Path="/5E7D94C5/5E65D41A" Ref="#PWR?"  Part="1" 
+AR Path="/5EA95119/5E65D41A" Ref="#PWR0148"  Part="1" 
+F 0 "#PWR0148" H 2000 2350 50  0001 C CNN
+F 1 "GND" H 2005 2427 50  0000 C CNN
+F 2 "" H 2000 2600 50  0001 C CNN
+F 3 "" H 2000 2600 50  0001 C CNN
+	1    2000 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0149
+U 1 1 5E65E6DB
+P 4750 5000
+F 0 "#PWR0149" H 4750 4750 50  0001 C CNN
+F 1 "GNDD" H 4754 4845 50  0000 C CNN
+F 2 "" H 4750 5000 50  0001 C CNN
+F 3 "" H 4750 5000 50  0001 C CNN
+	1    4750 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L MySchLib:D_Schottky_Small D?
+U 1 1 5E520B7E
+P 2400 2850
+AR Path="/5E7D94C5/5E520B7E" Ref="D?"  Part="1" 
+AR Path="/5EA95119/5E520B7E" Ref="D25"  Part="1" 
+F 0 "D25" V 2446 2782 50  0000 R CNN
+F 1 "SD103" V 2355 2782 50  0000 R CNN
+F 2 "lc_lib:SOD-123" V 2400 2850 50  0001 C CNN
+F 3 "~" V 2400 2850 50  0001 C CNN
+	1    2400 2850
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC

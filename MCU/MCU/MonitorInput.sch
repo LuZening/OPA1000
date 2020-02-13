@@ -30,9 +30,9 @@ Text GLabel 8900 4700 0    50   Input ~ 0
 REVpeak2
 Text GLabel 8900 4800 0    50   Input ~ 0
 REV2
-Text GLabel 8900 1450 0    50   Input ~ 0
+Text GLabel 8900 1450 0    50   Output ~ 0
 Im_sense
-Text GLabel 8900 1350 0    50   Input ~ 0
+Text GLabel 8900 1350 0    50   Output ~ 0
 Vm_sense
 Text GLabel 8900 2100 0    50   Input ~ 0
 Temp1
@@ -1225,17 +1225,6 @@ Wire Wire Line
 Wire Wire Line
 	9000 2250 8900 2250
 $Comp
-L power:+5V #PWR061
-U 1 1 5E323ABA
-P 8900 2250
-F 0 "#PWR061" H 8900 2100 50  0001 C CNN
-F 1 "+5V" H 8915 2423 50  0000 C CNN
-F 2 "" H 8900 2250 50  0001 C CNN
-F 3 "" H 8900 2250 50  0001 C CNN
-	1    8900 2250
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:R_Small R40
 U 1 1 5E325089
 P 9050 1950
@@ -1251,17 +1240,6 @@ Wire Wire Line
 Connection ~ 9050 2100
 Wire Wire Line
 	9050 2100 9400 2100
-$Comp
-L power:+5V #PWR062
-U 1 1 5E331602
-P 8950 1850
-F 0 "#PWR062" H 8950 1700 50  0001 C CNN
-F 1 "+5V" H 8965 2023 50  0000 C CNN
-F 2 "" H 8950 1850 50  0001 C CNN
-F 3 "" H 8950 1850 50  0001 C CNN
-	1    8950 1850
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8950 1850 9050 1850
 Wire Wire Line
@@ -2163,4 +2141,26 @@ Wire Wire Line
 	1400 6950 1800 6950
 Wire Wire Line
 	2400 7050 2600 7050
+$Comp
+L power:+5V #PWR062
+U 1 1 5E331602
+P 8950 1850
+F 0 "#PWR062" H 8950 1700 50  0001 C CNN
+F 1 "+5V" H 8965 2023 50  0000 C CNN
+F 2 "" H 8950 1850 50  0001 C CNN
+F 3 "" H 8950 1850 50  0001 C CNN
+	1    8950 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR061
+U 1 1 5E323ABA
+P 8900 2250
+F 0 "#PWR061" H 8900 2100 50  0001 C CNN
+F 1 "+5V" H 8915 2423 50  0000 C CNN
+F 2 "" H 8900 2250 50  0001 C CNN
+F 3 "" H 8900 2250 50  0001 C CNN
+	1    8900 2250
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
