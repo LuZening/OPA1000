@@ -239,17 +239,6 @@ Wire Wire Line
 	9050 2450 8850 2450
 Connection ~ 8850 2450
 $Comp
-L MySchLib:8050 Q6
-U 1 1 5EA0931E
-P 6900 2000
-F 0 "Q6" H 7091 2046 50  0000 L CNN
-F 1 "8050" H 7091 1955 50  0000 L CNN
-F 2 "lc_lib:SOT-23(SOT-23-3)" H 7100 1925 50  0001 L CIN
-F 3 "http://www.unisonic.com.tw/datasheet/S8050.pdf" H 6900 2000 50  0001 L CNN
-	1    6900 2000
-	-1   0    0    -1  
-$EndComp
-$Comp
 L power:GND #PWR092
 U 1 1 5EA09D94
 P 6800 2700
@@ -262,23 +251,8 @@ F 3 "" H 6800 2700 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6800 2700 6800 2600
-Wire Wire Line
-	6800 1800 6800 1750
-$Comp
-L Device:R_Small R54
-U 1 1 5EA120D3
-P 6800 1600
-F 0 "R54" H 6859 1646 50  0000 L CNN
-F 1 "47K" H 6859 1555 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805" H 6800 1600 50  0001 C CNN
-F 3 "~" H 6800 1600 50  0001 C CNN
-	1    6800 1600
-	1    0    0    -1  
-$EndComp
-Text GLabel 6450 1700 1    50   Input ~ 0
+Text GLabel 5050 2050 1    50   Input ~ 0
 PWR_on
-Wire Wire Line
-	7100 2000 7150 2000
 $Comp
 L MySchLib:8050 Q7
 U 1 1 5EA1B301
@@ -307,15 +281,13 @@ F 3 "~" H 7700 2350 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	7450 2350 7600 2350
-Text Notes 7150 1950 0    50   ~ 0
-Low to shutdown
+Text Notes 7600 1750 2    50   ~ 0
+Low to Turnon
 Wire Wire Line
 	8500 900  8500 1150
-Text GLabel 6700 2450 0    50   Input ~ 0
-SW_PWR
 Text GLabel 9100 1550 1    50   Output ~ 0
 Fault_Low
-Text HLabel 7350 2000 2    50   Input ~ 0
+Text HLabel 7150 1250 2    50   Input ~ 0
 PWR_on_sig
 $Comp
 L MySchLib:D D7
@@ -373,25 +345,10 @@ F 3 "http://www.unisonic.com.tw/datasheet/S8550.pdf" H 7950 1700 50  0001 L CNN
 	1    7950 1700
 	-1   0    0    1   
 $EndComp
-Text Notes 6350 1800 1    50   ~ 0
-Low Effective
-Wire Wire Line
-	6800 2450 6700 2450
-Wire Wire Line
-	6800 2200 6800 2250
-Wire Wire Line
-	7150 2000 7150 2100
-Connection ~ 6800 2250
-Wire Wire Line
-	6800 2250 6800 2450
-Wire Wire Line
-	7100 2100 7150 2100
-Connection ~ 7150 2100
+Text Notes 4950 2150 1    50   ~ 0
+High Effective
 Wire Wire Line
 	7150 2100 7150 2150
-Wire Wire Line
-	7350 2000 7150 2000
-Connection ~ 7150 2000
 Wire Wire Line
 	9100 1550 9100 1700
 Wire Wire Line
@@ -711,30 +668,109 @@ Connection ~ 10100 3100
 Wire Wire Line
 	10100 3100 10250 3100
 Wire Wire Line
-	6450 1700 6450 1750
-Wire Wire Line
-	6450 1750 6800 1750
-Connection ~ 6800 1750
-Wire Wire Line
-	6800 1750 6800 1700
+	5050 2050 5050 2100
 Wire Wire Line
 	6800 1150 7850 1150
-Wire Wire Line
-	6800 1150 6800 1500
 Connection ~ 7850 1150
-Wire Wire Line
-	6900 2250 6800 2250
-Wire Wire Line
-	7100 2250 7100 2100
 $Comp
 L Device:R_Small R55
 U 1 1 5EA1942B
-P 7000 2250
-F 0 "R55" H 6941 2204 50  0000 R CNN
-F 1 "100K" H 6941 2295 50  0000 R CNN
-F 2 "Resistors_SMD:R_0805" H 7000 2250 50  0001 C CNN
-F 3 "~" H 7000 2250 50  0001 C CNN
-	1    7000 2250
-	0    1    1    0   
+P 5450 2350
+F 0 "R55" H 5391 2304 50  0000 R CNN
+F 1 "10" H 5391 2395 50  0000 R CNN
+F 2 "Resistors_SMD:R_0805" H 5450 2350 50  0001 C CNN
+F 3 "~" H 5450 2350 50  0001 C CNN
+	1    5450 2350
+	-1   0    0    1   
 $EndComp
+Text GLabel 5450 2600 3    50   Input ~ 0
+SW_PWR
+Wire Wire Line
+	5450 2600 5450 2450
+Wire Wire Line
+	5050 2100 5450 2100
+Wire Wire Line
+	5450 2250 5450 2100
+Connection ~ 5450 2100
+$Comp
+L MySchLib:8550 Q6
+U 1 1 5E5333C0
+P 6900 1600
+F 0 "Q6" H 7091 1554 50  0000 L CNN
+F 1 "8550" H 7091 1645 50  0000 L CNN
+F 2 "lc_lib:SOT-23(SOT-23-3)" H 7100 1525 50  0001 L CIN
+F 3 "http://www.unisonic.com.tw/datasheet/S8550.pdf" H 6900 1600 50  0001 L CNN
+	1    6900 1600
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7150 1600 7100 1600
+Text Notes 5800 3100 2    50   ~ 0
+Close to Turn off
+Wire Wire Line
+	7150 1250 7150 1350
+Wire Wire Line
+	7150 1550 7150 1600
+$Comp
+L Device:R_Small R54
+U 1 1 5EA120D3
+P 7150 1450
+F 0 "R54" H 7209 1496 50  0000 L CNN
+F 1 "1K" H 7209 1405 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805" H 7150 1450 50  0001 C CNN
+F 3 "~" H 7150 1450 50  0001 C CNN
+	1    7150 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R83
+U 1 1 5E55F9C9
+P 6800 1950
+F 0 "R83" H 6859 1996 50  0000 L CNN
+F 1 "10K" H 6859 1905 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805" H 6800 1950 50  0001 C CNN
+F 3 "~" H 6800 1950 50  0001 C CNN
+	1    6800 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6800 1850 6800 1800
+Wire Wire Line
+	6800 2050 6800 2100
+Connection ~ 6800 2100
+Wire Wire Line
+	6800 2100 7150 2100
+Wire Wire Line
+	6800 1400 6800 1150
+Wire Wire Line
+	5450 2100 6300 2100
+$Comp
+L Device:R_Small R82
+U 1 1 5E57489E
+P 6300 2350
+F 0 "R82" H 6359 2396 50  0000 L CNN
+F 1 "10K" H 6359 2305 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805" H 6300 2350 50  0001 C CNN
+F 3 "~" H 6300 2350 50  0001 C CNN
+	1    6300 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 2250 6300 2100
+Connection ~ 6300 2100
+Wire Wire Line
+	6300 2100 6800 2100
+$Comp
+L power:GND #PWR0153
+U 1 1 5E5779FA
+P 6300 2650
+F 0 "#PWR0153" H 6300 2400 50  0001 C CNN
+F 1 "GND" H 6305 2477 50  0000 C CNN
+F 2 "" H 6300 2650 50  0001 C CNN
+F 3 "" H 6300 2650 50  0001 C CNN
+	1    6300 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 2450 6300 2650
 $EndSCHEMATC

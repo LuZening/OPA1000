@@ -415,7 +415,7 @@ VBL
 Wire Wire Line
 	1200 1650 1400 1650
 $Comp
-L Device:D_Zener D8
+L MySchLib:D_Zener D8
 U 1 1 5E220FED
 P 1600 2300
 F 0 "D8" V 1554 2379 50  0000 L CNN
@@ -449,22 +449,7 @@ F 3 "" H 1600 2650 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1600 2450 1600 2650
-$Comp
-L Connector_Generic:Conn_01x02 J19
-U 1 1 5E2F3078
-P 900 2150
-F 0 "J19" H 818 2367 50  0000 C CNN
-F 1 "Conn_01x02" H 818 2276 50  0000 C CNN
-F 2 "Connectors_JST:JST_XH_B02B-XH-A_02x2.50mm_Straight" H 900 2150 50  0001 C CNN
-F 3 "~" H 900 2150 50  0001 C CNN
-	1    900  2150
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	1100 2150 1200 2150
 Connection ~ 1200 1650
-Wire Wire Line
-	1100 2250 1200 2250
 $Comp
 L power:GND #PWR0102
 U 1 1 5E2F6107
@@ -476,8 +461,6 @@ F 3 "" H 1200 2450 50  0001 C CNN
 	1    1200 2450
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1200 2250 1200 2450
 $Comp
 L Device:C_Small C45
 U 1 1 5E2A0E61
@@ -1099,4 +1082,37 @@ Wire Wire Line
 	3500 6150 3500 5950
 Wire Wire Line
 	3500 5950 3650 5950
+Wire Wire Line
+	1050 2350 1200 2350
+Wire Wire Line
+	1200 2350 1200 2450
+Wire Wire Line
+	1050 2150 1200 2150
+$Comp
+L Connector:Barrel_Jack_Switch J19
+U 1 1 5E52FEDF
+P 750 2250
+F 0 "J19" H 807 2567 50  0000 C CNN
+F 1 "Barrel_Jack_Switch" H 807 2476 50  0000 C CNN
+F 2 "Connectors:BARREL_JACK" H 800 2210 50  0001 C CNN
+F 3 "~" H 800 2210 50  0001 C CNN
+	1    750  2250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1050 2250 1200 2250
+Wire Wire Line
+	1200 2250 1200 2350
+Connection ~ 1200 2350
+$Comp
+L power:+5VA #PWR?
+U 1 1 5E65574F
+P 5300 1650
+F 0 "#PWR?" H 5300 1500 50  0001 C CNN
+F 1 "+5VA" H 5315 1823 50  0000 C CNN
+F 2 "" H 5300 1650 50  0001 C CNN
+F 3 "" H 5300 1650 50  0001 C CNN
+	1    5300 1650
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
