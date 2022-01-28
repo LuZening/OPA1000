@@ -1,0 +1,4 @@
+INCLUDE $HPEESOF_DIR/oalibs/analog_rf.defs
+INCLUDE $HOME/OneDrive/RADIO/Projects/OPA1000/reference/AMP_BLF188XR_V1p02/lib.defs
+DEFINE BLF188XR_HF_lib BLF188XR_HF_lib
+ASSIGN BLF188XR_HF_lib libMode shared

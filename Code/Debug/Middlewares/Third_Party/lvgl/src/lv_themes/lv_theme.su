@@ -1,0 +1,10 @@
+lv_theme.c:42:6:lv_theme_set_act	16	static
+lv_theme.c:51:14:lv_theme_get_act	4	static
+lv_theme.c:60:19:lv_theme_get_font_small	4	static
+lv_theme.c:69:19:lv_theme_get_font_normal	4	static
+lv_theme.c:78:19:lv_theme_get_font_subtitle	4	static
+lv_theme.c:87:19:lv_theme_get_font_title	4	static
+lv_theme.c:96:12:lv_theme_get_color_primary	4	static
+lv_theme.c:105:12:lv_theme_get_color_secondary	4	static
+lv_theme.c:114:10:lv_theme_get_flags	4	static
+lv_theme.c:119:6:lv_theme_apply	16	static

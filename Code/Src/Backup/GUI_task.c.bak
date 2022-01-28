@@ -1,0 +1,742 @@
+/*
+ * GUI_task.c
+ *
+ *  Created on: Mar 2, 2020
+ *      Author: Zening
+*/
+
+#include "main.h"
+#include "R61408.h"
+#include "GUI.h"
+#include "GUI_task.h"
+#include "sensor_task.h"
+
+// TODO: design GUI widgets
+/***** GUI global state *****/
+bool GUI_page_switched = true;
+GUI_page_t GUI_current_page = MAIN_PAGE; // page num
+/* ******** Charsets	*********/
+uint8_t* Charset_ASCII24[126 - 32 + 1]; // only contains printable chars
+
+/* ******** GUI widgets Declaration ************** */
+/* *** MAIN PAGE ***/
+GUI_Rect gRectBackground;
+GUI_Rect gRectTopBanner;
+GUI_Rect gRectLeftSide;
+
+const char* FILENAME_BMP_TRANSMITTING = "transmitting.565";
+const char* FILENAME_BMP_RECEIVING = "receiving.565";
+const char* FILENAME_BMP_STANDBY = "standby.565";
+GUI_Bitmap gBmpTransState; // 发射中 接收中 待机
+const char* FILENAME_BMP_BAND = "band.565";
+GUI_Bitmap gBmpBandCaption; // 波段
+const char* FILENAME_BMP_BANDUNIT = "meter.565";
+GUI_Bitmap gBmpBandUnit; // 米
+const char* FILENAME_BMP_CORETEMP = "coretemp.565";
+GUI_Bitmap gBmpCoreTempCaption; // 晶体管温度
+const char* FILENAME_BMP_CORETEMPUNIT_C = "celsius.565";
+GUI_Bitmap gBmpCoreTempUnit; // oC
+const char* FILENAME_BMP_IMAIN = "imain.565";
+GUI_Bitmap gBmpImainCaption; // 主电流
+const char* FILENAME_BMP_IMAINUNIT = "amp.565";
+GUI_Bitmap gBmpImainUnit; // A
+const char* FILENAME_BMP_VMAIN = "vmain.565";
+GUI_Bitmap gBmpVmainCaption; // 主电压
+const char* FILENAME_BMP_VMAINUNIT = "volt.565";
+GUI_Bitmap gBmpVmainUnit; // V
+const char* FILENAME_BMP_FWDPWR = "fwdpwr.565";
+GUI_Bitmap gBmpFwdPwrCaption; // 正向功率
+const char* FILENAME_BMP_FWDPWRUNIT = "watt.565";
+GUI_Bitmap gBmpFwdPwrUnit; // W
+const char* FILENAME_BMP_REVPWR = "revpwr.565";
+GUI_Bitmap gBmpRevPwrCaption; // 反射功率
+const char* FILENAME_BMP_REVPWRUNIT = "watt.565";
+GUI_Bitmap gBmpRevPwrUnit; // W
+const char* FILENAME_BMP_SWR = "swr.565";
+GUI_Bitmap gBmpSWRCaption; // 驻波比
+GUI_TextBoxH gTextBand;
+GUI_TextBoxH gTextCoreTemp;
+GUI_TextBoxH gTextImain;
+GUI_TextBoxH gTextVmain;
+GUI_TextBoxH gTextFwdPwr;
+GUI_TextBoxH gTextRevPwr;
+GUI_TextBoxH gTextSWR;
+GUI_ProgressBarH gProgBarFwdPwr;
+const char* FILENAME_BMP_SCALE_FWDPWR = "scale_pwr.565";
+GUI_Bitmap gBmpScaleFwdPwr;
+GUI_ProgressBarH gProgBarRevPwr;
+const char* FILENAME_BMP_SCALE_REVPWR = "scale_pwr.565";
+GUI_Bitmap gBmpScaleRevPwr;
+GUI_ProgressBarH gProgBarSWR;
+const char* FILENAME_BMP_SCALE_SWR = "scale_swr.565";
+GUI_Bitmap gBmpScaleSWR;
+/* *** END OF MAIN PAGE widgets *** */
+/* *** BAND SETTING PAGE widgets *** */
+GUI_Popup_Window gPopWndBandMenu;
+const char* FILENAME_BMP_BAND_MENU_TITLE = "band_menu_title.565";
+GUI_Bitmap gBmpBandMenuTitle;
+GUI_Rect gBtn160M;
+GUI_TextBoxH gTextBtn160;
+GUI_Rect gBtn80M;
+GUI_TextBoxH gTextBtn80;
+GUI_Rect gBtn4030M;
+GUI_TextBoxH gTextBtn4030;
+GUI_Rect gBtn2017M;
+GUI_TextBoxH gTextBtn2017;
+GUI_Rect gBtn1510M;
+GUI_TextBoxH gTextBtn1510;
+GUI_Rect gBtnAutoBand;
+GUI_TextBoxH gTextBtnAutoBand;
+/* *** END OF BAND SETTING PAGE widgets *** */
+/* *** SENSOR READINGS PAGE widgets *** */
+/* *** END OF SENSOR READINGS SETTING PAGE widgets *** */
+/* *** ALERT WINDOW PAGE widgets *** */
+GUI_Popup_Window gPopWndAlert;
+const char* FILENAME_BMP_ALERT_WINDOW_TITLE = "alert_window_title.565";
+GUI_Bitmap gBmpAlertWindowTitle;
+const char* FILENAME_BMP_ALERT_CONTENT_TEMP1HIGH = "alert_content_temp1high.565";
+const char* FILENAME_BMP_ALERT_CONTENT_TEMP2HIGH = "alert_content_temp2high.565";
+const char* FILENAME_BMP_ALERT_CONTENT_SWR1HIGH = "alert_content_swr1high.565";
+const char* FILENAME_BMP_ALERT_CONTENT_SWR2HIGH = "alert_content_swr2high.565";
+const char* FILENAME_BMP_ALERT_CONTENT_IMAINHIGH = "alert_content_ihigh.565";
+const char* FILENAME_BMP_ALERT_CONTENT_VMAINHIGH = "alert_content_vhigh.565";
+const char* FILENAME_BMP_ALERT_CONTENT_OVERDRIVE = "alert_content_od.565";
+const char* FILENAME_BMP_ALERT_CONTENT_UNKNOWN = "alert_content_unknown.565";
+GUI_Bitmap gBmpAlertContent;
+GUI_Rect gBtnAlertDismiss;
+GUI_TextBoxH gTextAlertOK;
+/* *** End of ALERT WINDOW PAGE widgets *** */
+void GUI_switch_page(GUI_page_t page)
+{
+	if(page != GUI_current_page)
+	{
+		GUI_current_page = page;
+		GUI_page_switched = true;
+	}
+}
+
+void InitGUI()
+{
+	LCD_Init();
+	osDelay(2);
+	/*** Load Charset	***
+	 * Byte 1: number of characters
+	 * Byte 2: char1: width
+	 * Byte 3: char1: height
+	 * Byte 4: char1: offset_x
+	 * Byte 5: char1: offset_y
+	 * Byye 6... : char1: bitmap
+	 */
+
+	if(FS_exists(&FS, "ascii24.cst"))
+	{
+		FSfile_typedef f_charset = FS_open(&FS, "ascii24.cst");
+		uint8_t* content = f_charset.p_content;
+		uint8_t n_chars = *(content++);
+		for(uint8_t i = 0; i < n_chars; ++i)
+		{
+			// char structrue: u8 width u8 height u8[alphas]
+			Charset_ASCII24[i] = content;
+			uint8_t width = *(content++);
+			uint8_t height = *(content++);
+			content += 2 + width * height; // skip offset_x, offset_y
+		}
+	}
+
+	/*** Define GUI widgets ***/
+	/***        MAIN PAGE          ***/
+	// Background
+	gRectBackground.x_begin = 0;
+	gRectBackground.y_begin = 0;
+	gRectBackground.height = 480;
+	gRectBackground.width = 800;
+	gRectBackground.fill = COLOR_BACKGROUND;
+	// Top Banner
+	gRectTopBanner.x_begin = 0;
+	gRectTopBanner.y_begin = 0;
+	gRectTopBanner.height = 80;
+	gRectTopBanner.width = 800;
+	gRectTopBanner.fill = COLOR_BANNER_IDLE;
+	// Side Bar
+	gRectLeftSide.x_begin = 0;
+	gRectLeftSide.y_begin = 80;
+	gRectLeftSide.height = 400;
+	gRectLeftSide.width = 180;
+	gRectLeftSide.fill = COLOR_SIDEBAR;
+	// BMP: Transmission State
+	if(FS_exists(&FS, FILENAME_BMP_STANDBY))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_STANDBY);
+		uint16_t* content = ((uint16_t*)f.p_content);
+		GUI_Init_Bitmap(&gBmpTransState,
+				328, 16, // x, y
+				*content, *(content+1), // w, h
+				content+2); // bitmap
+	}
+	// BMP: Band Caption
+	if(FS_exists(&FS, FILENAME_BMP_BAND))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_BAND);
+		uint16_t* content = ((uint16_t*)f.p_content);
+		GUI_Init_Bitmap(&gBmpBandCaption,
+				66, 115, // x, y
+				*content, *(content+1), // w, h
+				content+2); // bitmap
+	}
+	// BMP: Band Unit
+	if(FS_exists(&FS, FILENAME_BMP_BANDUNIT))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_BANDUNIT);
+		uint16_t* content = ((uint16_t*)f.p_content);
+		GUI_Init_Bitmap(&gBmpBandUnit,
+				95, 150, // x, y
+				*content, *(content+1), // w, h
+				content+2); // bitmap
+	}
+	// BMP: Core Temperature Caption
+	if(FS_exists(&FS, FILENAME_BMP_CORETEMP))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_CORETEMP);
+		uint16_t* content = ((uint16_t*)f.p_content);
+		GUI_Init_Bitmap(&gBmpCoreTempCaption,
+				30, 210, // x, y
+				*content, *(content+1), // w, h
+				content+2); // bitmap
+	}
+	// BMP: Core Temperature Unit
+	if(FS_exists(&FS, FILENAME_BMP_CORETEMPUNIT_C))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_CORETEMPUNIT_C);
+		uint16_t* content = ((uint16_t*)f.p_content);
+		GUI_Init_Bitmap(&gBmpCoreTempUnit,
+				95, 245, // x, y
+				*content, *(content+1), // w, h
+				content+2); // bitmap
+	}
+	// BMP:Imain Caption
+	if(FS_exists(&FS, FILENAME_BMP_IMAIN))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_IMAIN);
+		uint16_t* content = ((uint16_t*)f.p_content);
+		GUI_Init_Bitmap(&gBmpImainCaption,
+				27, 305, // x, y
+				*content, *(content+1), // w, h
+				content+2); // bitmap
+	}
+	// BMP:Imain Unit
+	if(FS_exists(&FS, FILENAME_BMP_IMAINUNIT))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_IMAINUNIT);
+		uint16_t* content = ((uint16_t*)f.p_content);
+		GUI_Init_Bitmap(&gBmpImainUnit,
+				95, 350, // x, y
+				*content, *(content+1), // w, h
+				content+2); // bitmap
+	}
+	// BMP:Vmain Caption
+	if(FS_exists(&FS, FILENAME_BMP_VMAIN))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_VMAIN);
+		uint16_t* content = ((uint16_t*)f.p_content);
+		GUI_Init_Bitmap(&gBmpVmainCaption,
+				27, 400, // x, y
+				*content, *(content+1), // w, h
+				content+2); // bitmap
+	}
+	// BMP:Vmain Unit
+	if(FS_exists(&FS, FILENAME_BMP_VMAINUNIT))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_VMAINUNIT);
+		uint16_t* content = ((uint16_t*)f.p_content);
+		GUI_Init_Bitmap(&gBmpVmainUnit,
+				95, 435, // x, y
+				*content, *(content+1), // w, h
+				content+2); // bitmap
+	}
+	// BMP: Forward Power Caption
+	if(FS_exists(&FS, FILENAME_BMP_FWDPWR))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_FWDPWR);
+		uint16_t* content = ((uint16_t*)f.p_content);
+		GUI_Init_Bitmap(&gBmpFwdPwrCaption,
+				205, 110, // x, y
+				*content, *(content+1), // w, h
+				content+2); // bitmap
+	}
+	// BMP: Foward Power Unit
+	if(FS_exists(&FS, FILENAME_BMP_FWDPWRUNIT))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_FWDPWRUNIT);
+		uint16_t* content = ((uint16_t*)f.p_content);
+		GUI_Init_Bitmap(&gBmpFwdPwrUnit,
+				750, 165, // x, y
+				*content, *(content+1), // w, h
+				content+2); // bitmap
+	}
+	// BMP: Reverse Power Caption
+	if(FS_exists(&FS, FILENAME_BMP_REVPWR))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_REVPWR);
+		uint16_t* content = ((uint16_t*)f.p_content);
+		GUI_Init_Bitmap(&gBmpRevPwrCaption,
+				205, 235, // x, y
+				*content, *(content+1), // w, h
+				content+2); // bitmap
+	}
+	// BMP: Reverse Power Unit
+	if(FS_exists(&FS, FILENAME_BMP_REVPWRUNIT))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_REVPWRUNIT);
+		uint16_t* content = ((uint16_t*)f.p_content);
+		GUI_Init_Bitmap(&gBmpRevPwrUnit,
+				750, 290, // x, y
+				*content, *(content+1), // w, h
+				content+2); // bitmap
+	}
+	// BMP: SWR Caption
+	if(FS_exists(&FS, FILENAME_BMP_SWR))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_SWR);
+		uint16_t* content = ((uint16_t*)f.p_content);
+		GUI_Init_Bitmap(&gBmpSWRCaption,
+				205, 360, // x, y
+				*content, *(content+1), // w, h
+				content+2); // bitmap
+	}
+	// TextBoxH: Band Value
+	GUI_Init_TextBoxH(&gTextBand,
+			52, 150, // x_begin y_begin
+			42, 30, // width height
+			3,	// text len
+			1,  // spacing pixels
+			-8, // offset y
+			(uint8_t**)Charset_ASCII24, // charset
+			"---", // initial text
+			CENTER_JUSTIFIED, // align
+			COLOR_TEXT, // stroke
+			COLOR_SIDEBAR); // background
+	// TextBoxH: Core Temp Value
+	GUI_Init_TextBoxH(&gTextCoreTemp,
+			52, 245, // x_begin y_begin
+			42, 30, // width height
+			3,	// text len
+			1,  // spacing pixels
+			-8, // offset y
+			(uint8_t**)Charset_ASCII24, // charset
+			"---", // initial text
+			CENTER_JUSTIFIED, // align
+			COLOR_TEXT, // stroke
+			COLOR_SIDEBAR); // background
+	// TextBoxH: Imain Value
+	GUI_Init_TextBoxH(&gTextImain,
+			52, 340, // x_begin y_begin
+			45, 30, // width height
+			4,	// text len
+			1,  // spacing pixels
+			-8, // offset y
+			(uint8_t**)Charset_ASCII24, // charset
+			"--.-", // initial text
+			CENTER_JUSTIFIED, // align
+			COLOR_TEXT, // stroke
+			COLOR_SIDEBAR); // background
+	// TextBoxH: Vmain Value
+	GUI_Init_TextBoxH(&gTextVmain,
+			52, 435, // x_begin y_begin
+			45, 30, // width height
+			4,	// text len
+			1,  // spacing pixels
+			-8, // offset y
+			(uint8_t**)Charset_ASCII24, // charset
+			"--.-", // initial text
+			CENTER_JUSTIFIED, // align
+			COLOR_TEXT, // stroke
+			COLOR_SIDEBAR); // background
+	// TextBoxH: Forward Power Value
+	GUI_Init_TextBoxH(&gTextFwdPwr,
+			685, 165, // x_begin y_begin
+			60, 30, // width height
+			4,	// text len
+			1,  // spacing pixels
+			-8, // offset y
+			(uint8_t**)Charset_ASCII24, // charset
+			"----", // initial text
+			CENTER_JUSTIFIED, // align
+			COLOR_TEXT, // stroke
+			COLOR_BACKGROUND); // background
+	// TextBoxH: Reverse Power Value
+	GUI_Init_TextBoxH(&gTextRevPwr,
+			685, 290, // x_begin y_begin
+			60, 30, // width height
+			4,	// text len
+			1,  // spacing pixels
+			-8, // offset y
+			(uint8_t**)Charset_ASCII24, // charset
+			"----", // initial text
+			CENTER_JUSTIFIED, // align
+			COLOR_TEXT, // stroke
+			COLOR_BACKGROUND); // background
+	// TextBoxH: SWR Value
+	GUI_Init_TextBoxH(&gTextSWR,
+			685, 415, // x_begin y_begin
+			28, 30, // width height
+			3,	// text len
+			1,  // spacing pixels
+			-8, // offset y
+			(uint8_t**)Charset_ASCII24, // charset
+			"-.-", // initial text
+			CENTER_JUSTIFIED, // align
+			COLOR_TEXT, // stroke
+			COLOR_BACKGROUND); // background
+	// Progress Bar： Forward Power
+	GUI_Init_ProgressBarH(&gProgBarFwdPwr,
+			210, 160,
+			460, 36, FALLING_BAR_THICKNESS, // width, height, thickness_bar
+			0.8f, // progress when warning should be triggered(1000W)
+			COLOR_BACKGROUND_PROGBAR, COLOR_PROGBAR_NORMAL, COLOR_PROGBAR_WARNING, COLOR_PROGBAR_NORMAL);
+	// Progress Bar： Reverse Power
+	GUI_Init_ProgressBarH(&gProgBarRevPwr,
+			210, 285,
+			460, 36, FALLING_BAR_THICKNESS, // width, height, thickness_bar
+			0.8f, // progress when warning should be triggered (1000W)
+			COLOR_BACKGROUND_PROGBAR, COLOR_PROGBAR_NORMAL, COLOR_PROGBAR_WARNING, COLOR_PROGBAR_NORMAL);
+	// Progress Bar： SWR
+	GUI_Init_ProgressBarH(&gProgBarSWR,
+			210, 410,
+			460, 36, FALLING_BAR_THICKNESS, // width, height, thickness_bar
+			0.7925f, // progress when warning should be triggered()
+			COLOR_BACKGROUND_PROGBAR, COLOR_PROGBAR_NORMAL, COLOR_PROGBAR_WARNING, COLOR_PROGBAR_NORMAL);
+	// TODO: Progbar Scale
+	// BMP Scale: the scale for Forward Power progress bar
+	if(FS_exists(&FS, FILENAME_BMP_SCALE_FWDPWR))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_SCALE_FWDPWR);
+		uint16_t* content = (uint16_t*)f.p_content;
+		uint16_t w = *(content++);
+		uint16_t h = *(content++);
+		GUI_Init_Bitmap(&gBmpScaleFwdPwr,
+				gProgBarFwdPwr.x_begin - SCALE_H_PADDING,
+				gProgBarFwdPwr.y_begin + gProgBarFwdPwr.thickness_falling_bar + 1, // x_begin, y_begin
+				w, h, // w h
+				content); // bitmap content
+	}
+	// BMP Scale: the scale for Reverse Power progress bar
+	if(FS_exists(&FS, FILENAME_BMP_SCALE_REVPWR))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_SCALE_REVPWR);
+		uint16_t* content = (uint16_t*)f.p_content;
+		uint16_t w = *(content++);
+		uint16_t h = *(content++);
+		GUI_Init_Bitmap(&gBmpScaleRevPwr,
+				gProgBarRevPwr.x_begin - SCALE_H_PADDING, gProgBarRevPwr.y_begin + gProgBarRevPwr.thickness_falling_bar + 1, // x_begin, y_begin
+				w, h, // w h
+				content); // bitmap content
+	}
+	// BMP Scale: the scale for SWR progress bar
+	if(FS_exists(&FS, FILENAME_BMP_SCALE_SWR))
+	{
+		FSfile_typedef f = FS_open(&FS, FILENAME_BMP_SCALE_SWR);
+		uint16_t* content = (uint16_t*)f.p_content;
+		uint16_t w = *(content++);
+		uint16_t h = *(content++);
+		GUI_Init_Bitmap(&gBmpScaleSWR,
+				gProgBarSWR.x_begin - SCALE_H_PADDING, gProgBarSWR.y_begin + gProgBarSWR.thickness_falling_bar + 1, // x_begin, y_begin
+				w, h, // w h
+				content); // bitmap content
+	}
+	/****        BAND_SELECT_MENU_PAGE       *****/
+	// Popup window frame
+	GUI_Init_Popup_Window(&gPopWndBandMenu,
+			125, 181, // x, y
+			550, 133, // w, h
+			7, // shadow distance
+			COLOR_POPUP_WINDOW, COLOR_SHADOW);
+	// Title
+	if(FS_exists(&FS, FILENAME_BMP_BAND_MENU_TITLE))
+	{
+		const uint16_t* content = (uint16_t*)FS_open(&FS, FILENAME_BMP_BAND_MENU_TITLE).p_content;
+		GUI_Init_Bitmap(&gBmpBandMenuTitle,
+			gPopWndBandMenu.x_begin + 8, gPopWndBandMenu.y_begin + 5,
+				*(content), *(content+1),
+				(content+2));
+	}
+	// Button: 160M
+	GUI_Init_Rect(&gBtn160M,
+			gPopWndBandMenu.x_begin + 10, gPopWndBandMenu.y_begin + 45, // x, y
+			80, 80, // w, h
+			COLOR_BUTTON);
+	GUI_Init_TextBoxH(&gTextBtn160,
+			gBtn160M.x_begin, gBtn160M.y_begin,
+			gBtn160M.width, gBtn160M.height,
+			3, 1, // len_text, spacing
+			-8, // y_offset
+			(uint8_t**)Charset_ASCII24, "160", CENTER_JUSTIFIED,
+			COLOR_TEXT, COLOR_BUTTON);
+	// Button: 80M
+	GUI_Init_Rect(&gBtn80M,
+			gBtn160M.x_begin + gBtn160M.width + 10, gBtn160M.y_begin, // x, y
+			80, 80, // w, h
+			COLOR_BUTTON);
+	GUI_Init_TextBoxH(&gTextBtn80,
+			gBtn80M.x_begin, gBtn80M.y_begin,
+			gBtn80M.width, gBtn80M.height,
+			2, 1, // len_text, spacing
+			-8, // y_offset
+			(uint8_t**)Charset_ASCII24, "80", CENTER_JUSTIFIED,
+			COLOR_TEXT, COLOR_BUTTON);
+	// Button: 40-30M
+	GUI_Init_Rect(&gBtn4030M,
+			gBtn80M.x_begin + gBtn80M.width + 10, gBtn160M.y_begin, // x, y
+			80, 80, // w, h
+			COLOR_BUTTON);
+	GUI_Init_TextBoxH(&gTextBtn4030,
+			gBtn4030M.x_begin, gBtn4030M.y_begin,
+			gBtn4030M.width, gBtn4030M.height,
+			5, 1, // len_text, spacing
+			-8, // y_offset
+			(uint8_t**)Charset_ASCII24, "40-30", CENTER_JUSTIFIED,
+			COLOR_TEXT, COLOR_BUTTON);
+	// Button: 20-17M
+	GUI_Init_Rect(&gBtn2017M,
+			gBtn4030M.x_begin + gBtn4030M.width + 10, gBtn160M.y_begin, // x, y
+			80, 80, // w, h
+			COLOR_BUTTON);
+	GUI_Init_TextBoxH(&gTextBtn2017,
+			gBtn2017M.x_begin, gBtn2017M.y_begin,
+			gBtn2017M.width, gBtn2017M.height,
+			5, 1, // len_text, spacing
+			-8, // y_offset
+			(uint8_t**)Charset_ASCII24, "20-17", CENTER_JUSTIFIED,
+			COLOR_TEXT, COLOR_BUTTON);
+	// Button: 15-10M
+	GUI_Init_Rect(&gBtn1510M,
+			gBtn2017M.x_begin + gBtn2017M.width + 10, gBtn2017M.y_begin, // x, y
+			80, 80, // w, h
+			COLOR_BUTTON);
+	GUI_Init_TextBoxH(&gTextBtn1510,
+			gBtn1510M.x_begin, gBtn1510M.y_begin,
+			gBtn1510M.width, gBtn1510M.height,
+			5, 1, // len_text, spacing
+			-8, // y_offset
+			(uint8_t**)Charset_ASCII24, "15-10", CENTER_JUSTIFIED,
+			COLOR_TEXT, COLOR_BUTTON);
+	// Button: Auto
+	GUI_Init_Rect(&gBtnAutoBand,
+			gBtn1510M.x_begin + gBtn1510M.width + 10, gBtn1510M.y_begin, // x, y
+			80, 80, // w, h
+			COLOR_BUTTON);
+	GUI_Init_TextBoxH(&gTextBtnAutoBand,
+			gBtnAutoBand.x_begin, gBtnAutoBand.y_begin,
+			gBtnAutoBand.width, gBtnAutoBand.height,
+			4, 1, // len_text, spacing
+			-8, // y_offset
+			(uint8_t**)Charset_ASCII24, "Auto", CENTER_JUSTIFIED,
+			COLOR_TEXT, COLOR_BUTTON);
+	/****        BAND_SELECT_MENU_PAGE END      *****/
+
+	/****        ALERT_WINDOW_PAGE             *****/
+	// window frame
+	GUI_Init_Popup_Window(&gPopWndAlert,
+			190, 180,
+			420, 120,
+			7,
+			COLOR_POPUP_WINDOW_ALERT, COLOR_SHADOW);
+	// title
+	if(FS_exists(&FS, FILENAME_BMP_ALERT_WINDOW_TITLE))
+	{
+		const uint16_t* content = (uint16_t*)FS_open(&FS, FILENAME_BMP_ALERT_WINDOW_TITLE).p_content;
+		GUI_Init_Bitmap(&gBmpAlertWindowTitle,
+				gPopWndAlert.x_begin + 8, gPopWndAlert.y_begin + 5,
+				*content, *(content+1),
+				(content + 2));
+	}
+	// content
+	if(FS_exists(&FS, FILENAME_BMP_ALERT_CONTENT_TEMP1HIGH))
+	{
+		const uint16_t* content = (uint16_t*)FS_open(&FS, FILENAME_BMP_ALERT_CONTENT_UNKNOWN).p_content;
+		uint16_t width = *content;
+		uint16_t height = *(content+1);
+		uint16_t x_begin = gPopWndAlert.x_begin + (gPopWndAlert.width - width) / 2;
+		uint16_t y_begin = gBmpAlertWindowTitle.y_begin + gBmpAlertWindowTitle.height + 6;
+		GUI_Init_Bitmap(&gBmpAlertContent,
+				x_begin, y_begin,
+				width, height,
+				(content + 2));
+	}
+	// OK button
+	GUI_Init_Rect(&gBtnAlertDismiss, 350, 260, 100, 30, COLOR_BUTTON);
+	// button caption
+	GUI_Init_TextBoxH(&gTextAlertOK,
+			gBtnAlertDismiss.x_begin, gBtnAlertDismiss.y_begin,
+			gBtnAlertDismiss.width, gBtnAlertDismiss.height,
+			2, 1,
+			-8,
+			(uint8_t**)Charset_ASCII24, "OK", CENTER_JUSTIFIED,
+			COLOR_TEXT, COLOR_BUTTON);
+	/****    END of  ALERT_WINDOW_PAGE             *****/
+}
+
+void GUIRedrawAll_Main_Page()
+{
+	gRectBackground.need_redraw = true;
+	gRectTopBanner.need_redraw = true;
+	gRectLeftSide.need_redraw = true;
+	gBmpTransState.need_redraw = true;
+	gBmpBandCaption.need_redraw = true;
+	gBmpBandUnit.need_redraw = true;
+	gBmpCoreTempCaption.need_redraw = true;
+	gBmpCoreTempUnit.need_redraw = true;
+	gBmpImainCaption.need_redraw = true;
+	gBmpImainUnit.need_redraw = true;
+	gBmpVmainCaption.need_redraw = true;
+	gBmpVmainUnit.need_redraw = true;
+	gBmpFwdPwrCaption.need_redraw = true;
+	gBmpFwdPwrUnit.need_redraw = true;
+	gBmpRevPwrCaption.need_redraw = true;
+	gBmpRevPwrUnit.need_redraw = true;
+	gBmpSWRCaption.need_redraw = true;
+	gTextBand.need_redraw = true;
+	gTextCoreTemp.need_redraw = true;
+	gTextImain.need_redraw = true;
+	gTextVmain.need_redraw = true;
+	gTextFwdPwr.need_redraw = true;
+	gTextRevPwr.need_redraw = true;
+	gTextSWR.need_redraw = true;
+	gProgBarFwdPwr.need_redraw = true;
+	gBmpScaleFwdPwr.need_redraw = true;
+	gProgBarRevPwr.need_redraw = true;
+	gBmpScaleRevPwr.need_redraw = true;
+	gProgBarSWR.need_redraw = true;
+	gBmpScaleSWR.need_redraw = true;
+	gRectBackground.redraw(&gRectBackground);
+	gRectTopBanner.redraw(&gRectTopBanner);
+	gRectLeftSide.redraw(&gRectLeftSide);
+	gBmpTransState.redraw(&gBmpTransState); // 发射中 接收中 待机
+	gBmpBandCaption.redraw(&gBmpBandCaption); // 波段
+	gBmpBandUnit.redraw(&gBmpBandUnit); // 米
+	gBmpCoreTempCaption.redraw(&gBmpCoreTempCaption); // 晶体管温度
+	gBmpCoreTempUnit.redraw(&gBmpCoreTempUnit); // oC
+	gBmpImainCaption.redraw(&gBmpImainCaption); // 主电流
+	gBmpImainUnit.redraw(&gBmpImainUnit); // A
+	gBmpVmainCaption.redraw(&gBmpVmainCaption); // 主电压
+	gBmpVmainUnit.redraw(&gBmpVmainUnit); // V
+	gBmpFwdPwrCaption.redraw(&gBmpFwdPwrCaption); // 正向功率
+	gBmpFwdPwrUnit.redraw(&gBmpFwdPwrUnit); // W
+	gBmpRevPwrCaption.redraw(&gBmpRevPwrCaption); // 反射功率
+	gBmpRevPwrUnit.redraw(&gBmpRevPwrUnit); // W
+	gBmpSWRCaption.redraw(&gBmpSWRCaption); // 驻波比
+	gTextBand.redraw(&gTextBand);
+	gTextCoreTemp.redraw(&gTextCoreTemp);
+	gTextImain.redraw(&gTextImain);
+	gTextVmain.redraw(&gTextVmain);
+	gTextFwdPwr.redraw(&gTextFwdPwr);
+	gTextRevPwr.redraw(&gTextRevPwr);
+	gTextSWR.redraw(&gTextSWR);
+	gProgBarFwdPwr.redraw(&gProgBarFwdPwr);
+	gBmpScaleFwdPwr.redraw(&gBmpScaleFwdPwr);
+	gProgBarRevPwr.redraw(&gProgBarRevPwr);
+	gBmpScaleRevPwr.redraw(&gBmpScaleRevPwr);
+	gProgBarSWR.redraw(&gProgBarSWR);
+	gBmpScaleSWR.redraw(&gBmpScaleSWR);
+}
+
+void GUIRedrawAll_Band_Page()
+{
+	gPopWndBandMenu.need_redraw = true;
+	gBmpBandMenuTitle.need_redraw = true;
+	gBtn160M.need_redraw = true;
+	gTextBtn160.need_redraw = true;
+	gBtn80M.need_redraw = true;
+	gTextBtn80.need_redraw = true;
+	gBtn4030M.need_redraw = true;
+	gTextBtn4030.need_redraw = true;
+	gBtn2017M.need_redraw = true;
+	gTextBtn2017.need_redraw = true;
+	gBtn1510M.need_redraw = true;
+	gTextBtn1510.need_redraw = true;
+	gBtnAutoBand.need_redraw = true;
+	gTextBtnAutoBand.need_redraw = true;
+	gPopWndBandMenu.redraw(&gPopWndBandMenu);
+	gBmpBandMenuTitle.redraw(&gBmpBandMenuTitle);
+	gBtn160M.redraw(&gBtn160M);
+	gTextBtn160.redraw(&gTextBtn160);
+	gBtn80M.redraw(&gBtn80M);
+	gTextBtn80.redraw(&gTextBtn80);
+	gBtn4030M.redraw(&gBtn4030M);
+	gTextBtn4030.redraw(&gTextBtn4030);
+	gBtn2017M.redraw(&gBtn2017M);
+	gTextBtn2017.redraw(&gTextBtn2017);
+	gBtn1510M.redraw(&gBtn1510M);
+	gTextBtn1510.redraw(&gTextBtn1510);
+	gBtnAutoBand.redraw(&gBtnAutoBand);
+	gTextBtnAutoBand.redraw(&gTextBtnAutoBand);
+}
+
+void GUIRedrawAll_Alert_Page()
+{
+	gPopWndAlert.need_redraw = true;
+	gBmpAlertWindowTitle.need_redraw = true;
+	gBmpAlertContent.need_redraw = true;
+	gBtnAlertDismiss.need_redraw = true;
+	gTextAlertOK.need_redraw = true;
+	gPopWndAlert.redraw(&gPopWndAlert);
+	gBmpAlertWindowTitle.redraw(&gBmpAlertWindowTitle);
+	gBmpAlertContent.redraw(&gBmpAlertContent);
+	gBtnAlertDismiss.redraw(&gBtnAlertDismiss);
+	gTextAlertOK.redraw(&gTextAlertOK);
+}
+
+void StartGUIRefreshTask()
+{
+GUI_REFRESH_START:
+	InitGUI();
+	GUIRedrawAll_Main_Page();
+	for(;;)
+	{
+		osSemaphoreAcquire(GUIDataUpdatedSemaphore_handle, 0); // wait for the signal when the values are updated
+		osMutexAcquire(mtxGUIWidgetsHandle, 0);
+		if(GUI_current_page == MAIN_PAGE)
+		{
+			if(GUI_page_switched)
+			{
+				// Redraw all elements after switching to main page from other pages.
+				GUI_page_switched = false;
+				GUIRedrawAll_Main_Page();
+			}
+			gTextBand.redraw(&gTextBand);
+			gTextCoreTemp.redraw(&gTextCoreTemp);
+			gTextImain.redraw(&gTextImain);
+			gTextVmain.redraw(&gTextVmain);
+			gTextFwdPwr.redraw(&gTextFwdPwr);
+			gTextRevPwr.redraw(&gTextRevPwr);
+			gTextSWR.redraw(&gTextSWR);
+			gProgBarFwdPwr.redraw(&gProgBarFwdPwr);
+			gProgBarRevPwr.redraw(&gProgBarRevPwr);
+			gProgBarSWR.redraw(&gProgBarSWR);
+		}
+		else if(GUI_current_page == BAND_MENU_PAGE)
+		{
+			if(GUI_page_switched)
+			{
+				GUI_page_switched = false;
+			}
+			GUIRedrawAll_Band_Page();
+		}
+		else if(GUI_current_page == ALERT_PAGE)
+		{
+			if(GUI_page_switched)
+			{
+				GUI_page_switched = false;
+			}
+			GUIRedrawAll_Alert_Page();
+		}
+		else if(GUI_current_page == SENSOR_READINGS_PAGE)
+		{
+			if(GUI_page_switched)
+			{
+				GUI_page_switched = false;
+			}
+			// TODO: implement sensor reading page
+		}
+		osMutexRelease(mtxGUIWidgetsHandle);
+	}
+}

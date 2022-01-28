@@ -1,0 +1,16 @@
+lv_draw_mask.c:1193:49:lv_draw_mask_map	28	static
+lv_draw_mask.c:1147:49:lv_draw_mask_fade	16	static
+lv_draw_mask.c:435:49:lv_draw_mask_line	32	static
+lv_draw_mask.c:755:49:lv_draw_mask_angle	40	static
+lv_draw_mask.c:895:49:lv_draw_mask_radius	88	static
+lv_draw_mask.c:78:9:lv_draw_mask_add	24	static
+lv_draw_mask.c:108:42:lv_draw_mask_apply	40	static
+lv_draw_mask.c:135:8:lv_draw_mask_remove_id	0	static
+lv_draw_mask.c:154:8:lv_draw_mask_remove_custom	8	static
+lv_draw_mask.c:172:31:lv_draw_mask_get_cnt	0	static
+lv_draw_mask.c:193:6:lv_draw_mask_line_points_init	32	static
+lv_draw_mask.c:282:6:lv_draw_mask_line_angle_init	40	static
+lv_draw_mask.c:310:6:lv_draw_mask_angle_init	32	static
+lv_draw_mask.c:375:6:lv_draw_mask_radius_init	16	static
+lv_draw_mask.c:402:6:lv_draw_mask_fade_init	16	static
+lv_draw_mask.c:422:6:lv_draw_mask_map_init	8	static

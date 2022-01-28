@@ -1,0 +1,5 @@
+peak_detector.c:11:6:init_PeakDetector	4	static
+peak_detector.c:22:6:append_PeakDetector	8	static
+peak_detector.c:42:10:max_PeakDetector	16	static
+peak_detector.c:55:10:min_PeakDetector	16	static
+peak_detector.c:68:10:avg_top_quantile_PeakDetector	40	static

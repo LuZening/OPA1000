@@ -1,0 +1,12 @@
+lv_obj_style_dec.h:102:1:lv_obj_set_style_local_radius	16	static
+lv_obj_style_dec.h:110:1:lv_obj_set_style_local_pad_top	16	static
+lv_obj_style_dec.h:111:1:lv_obj_set_style_local_pad_bottom	16	static
+lv_obj_style_dec.h:114:1:lv_obj_set_style_local_pad_inner	16	static
+lv_obj_style_dec.h:123:1:lv_obj_set_style_local_bg_color	16	static
+lv_obj_style_dec.h:125:1:lv_obj_set_style_local_bg_opa	16	static
+lv_obj_style_dec.h:164:1:lv_obj_set_style_local_text_color	16	static
+lv_obj_style_dec.h:167:1:lv_obj_set_style_local_text_font	24	static
+lv_disp.h:97:26:lv_scr_act	8	static
+LVGL_GUI_settings_scene.c:34:13:settings_btnm_event_handler	24	static
+LVGL_GUI_settings_scene.c:55:6:dismiss_settings_menu_widgets	8	static
+LVGL_GUI_settings_scene.c:67:6:init_settings_menu_widgets	32	static

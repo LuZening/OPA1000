@@ -1,0 +1,14 @@
+GUI.c:11:6:GUI_Init_Rect	24	static
+GUI.c:25:6:GUI_Redraw_Rect	40	static
+GUI.c:36:6:GUI_Init_Bitmap	24	static
+GUI.c:51:6:GUI_Set_Bitmap	24	static
+GUI.c:59:6:GUI_Redraw_Bitmap	40	static
+GUI.c:69:6:GUI_Init_TextBoxH	32	static
+GUI.c:107:6:GUI_Set_Text_TextBoxH	32	static
+GUI.c:128:6:GUI_Get_Text_Size_TextBoxH	32	static
+GUI.c:146:6:GUI_Redraw_TextBoxH	72	static
+GUI.c:181:6:GUI_Init_ProgressBarH	24	static
+GUI.c:212:6:GUI_Set_Progress_ProgressBarH	24	static
+GUI.c:219:6:GUI_Redraw_ProgressBarH	56	static
+GUI.c:256:6:GUI_Redraw_Popup_Window	56	static
+GUI.c:275:6:GUI_Init_Popup_Window	24	static

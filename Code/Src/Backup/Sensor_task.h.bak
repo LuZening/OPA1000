@@ -1,0 +1,92 @@
+/*
+ * Sensor_task.h
+ *
+ *  Created on: Mar 2, 2020
+ *      Author: Zening
+ */
+
+#ifndef SENSOR_TASK_H_
+#define SENSOR_TASK_H_
+#define ADC1_N_CHANNELS 8
+//#define ADC2_N_CHANNELS 1
+#define ADC3_N_CHANNELS 5
+#define ADC1_N_OVERSAMPLING 8
+//#define ADC2_N_OVERSAMPLING 10
+#define ADC3_N_OVERSAMPLING 8
+
+#define VMAIN_RATIO 48.f
+
+typedef enum {
+	BAND_160M,
+	BAND_80M,
+	BAND_40M_30M,
+	BAND_20M_17M,
+	BAND_15M_10M,
+} band_t;
+
+/*** ADC DMA Buffer ***/
+uint16_t uhADC1ConvertedValues[ADC1_N_OVERSAMPLING][ADC1_N_CHANNELS];
+bool ADC1DataReady = false;
+//uint16_t uhADC2ConvertedValues[ADC2_N_OVERSAMPLING][ADC2_N_CHANNELS];
+//bool ADC2DataReady = false;
+uint16_t uhADC3ConvertedValues[ADC3_N_OVERSAMPLING][ADC3_N_CHANNELS];
+bool ADC3DataReady = false;
+
+
+/*** Sensor Processed Raw values	***/
+// ADC1_3: FWD1 forward power 1
+uint32_t FWD1_raw;
+int FWD1; // Unit 1 Watt
+
+// ADC1_4: FWDpeak1 forward power 1 peak value
+uint32_t FWDpeak1_raw;
+int FWDpeak1; // Unit 1 Watt
+
+// ADC1_5: REVpeak1 reverse power 1 peak value
+uint32_t REVpeak1_raw;
+int REVpeak1;
+
+// ADC1_6: REV1 reverse power 1 peak value
+uint32_t REV1_raw;
+int REV1;
+
+// ADC1_7:FWD2
+uint32_t FWD2_raw;
+int FWD2;
+
+// ADC1_8: FWDpeak2
+uint32_t FWDpeak2_raw;
+int FWDpeak2;
+
+// ADC1_9: REVpeak2
+uint32_t REVpeak2_raw;
+int REVpeak2;
+
+// ADC1_14: REV2
+uint32_t REV2_raw;
+int REV2;
+
+// ADC3_0: BAND
+uint32_t BAND_raw;
+band_t BAND;
+
+// ADC3_10: Vmain
+uint32_t Vmain_raw;
+int Vmain_mV; // unit mV
+
+// ADC3_11: Imain
+uint32_t Imain_raw;
+int Imain_mA; // unit mA
+
+// ADC3_12: Temperature1
+uint32_t Temp1_raw;
+int Temp1; // unit 0.1C
+
+// ADC3_13: Temperature2
+uint32_t Temp2_raw;
+int Temp2; // unit 0.1C
+
+
+void StartSensorTask();
+
+#endif /* SENSOR_TASK_H_ */

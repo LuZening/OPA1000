@@ -1,0 +1,5 @@
+SoftPWMDriver.c:12:6:soft_pwm_driver_init	8	static
+SoftPWMDriver.c:25:6:soft_pwm_driver_tick	16	static
+SoftPWMDriver.c:42:6:soft_pwm_driver_set_duty	0	static
+SoftPWMDriver.c:48:6:soft_pwm_driver_disable	0	static
+SoftPWMDriver.c:54:6:soft_pwm_driver_enable	0	static

@@ -1,0 +1,4 @@
+FS.c:11:6:FS_begin	16	static
+FS.c:24:16:FS_open	64	static
+FS.c:50:5:FS_size	32	static
+FS.c:67:6:FS_exists	32	static

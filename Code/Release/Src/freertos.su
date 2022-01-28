@@ -1,0 +1,2 @@
+freertos.c:61:13:vApplicationStackOverflowHook	0	static
+freertos.c:70:13:vApplicationMallocFailedHook	0	static

@@ -1,0 +1,7 @@
+create_item("DA_LCBandpassTransformer_cell_1","Lossless Bandpass Transformer","DA_LCBandpassTransformer",16,-1,"LCBandpassTransformer.bmp","Component Parameters",NULL,"%d:%t %# %44?0%:%31?%C%:_net%c%;%;%e %b%r%8?%29?%:%30?%p %:%k%?[%1i]%;=%p %;%;%;%e%e","DA_LCBandpassTransformer_cell_1","%t%b%r%38?%:\n%39?all_parm%A%:%30?%s%:%k%?[%1i]%;=%s%;%;%;%e%e%;","LCBandpassTransformer",3,NULL,0,
+create_parm("Fp1","Frequency at Left Passband Edge",66048,"StdFormSet",0,prm("StdForm","1 GHz")),
+create_parm("Fp2","Frequency at Right Passband Edge",66048,"StdFormSet",0,prm("StdForm","2 GHz")),
+create_parm("N","Network Order",131584,"StdFormSet",-1,prm("StdForm","3")),
+create_parm("ResponseType","Type of Frequency Response",134656,"AJ_FilterMatch_ResponseTypeFormSet",-1,prm("AJ_FilterMatch_MaxFlatForm")),
+create_parm("Rg","Source Resistance",66048,"StdFormSet",1,prm("StdForm","50 Ohm")),
+create_parm("RL","Load Resistance",66048,"StdFormSet",1,prm("StdForm","25 Ohm")));

@@ -1,0 +1,85 @@
+
+/*
+ Softwer Uart For Stm32
+ By Liyanboy74
+ https://github.com/liyanboy74
+*/
+
+// Ticked by TIM4
+
+#ifndef SOFTUART_H_
+#define SOFTUART_H_
+
+#include "main.h"
+
+extern const uint16_t BaudRates[];
+int8_t baudrate2idx(uint16_t baudrate); // return -1 if not found
+
+
+#ifndef TIM4_CLK_FREQ
+#define TIM4_CLK_FREQ 60000000LL
+#endif
+
+#ifndef TIM4_PRESCALER
+#define TIM4_PRESCALER 5
+#endif
+
+#define Number_Of_SoftUarts	1
+
+#define	SoftUartTxBufferSize	32
+#define	SoftUartRxBufferSize	64
+
+// MAX baud rate: 19200
+#define BAUD_TO_TIM_ARR_VALUE(baud) (TIM4_CLK_FREQ / TIM4_PRESCALER / baud / 5 )
+
+typedef enum {
+	SoftUart_OK,
+	SoftUart_Error
+}SoftUartState_E;
+
+typedef struct{
+	uint8_t					Tx[SoftUartTxBufferSize];
+	uint8_t					Rx[SoftUartRxBufferSize];
+}SoftUartBuffer_S;
+
+typedef struct {
+	__IO uint8_t 			TxNComplated;
+	//__IO uint8_t 			RxNComplated;
+
+	uint8_t						TxEnable;
+	uint8_t						RxEnable;
+
+	uint8_t 					TxBitShift,TxBitConter;
+	uint8_t 					RxBitShift,RxBitConter;
+
+	uint8_t						TxIndex,TxSize;
+	uint8_t						RxIndex;//,RxSize;
+
+	SoftUartBuffer_S	*Buffer;
+
+	GPIO_TypeDef  		*TxPort;
+	uint16_t 					TxPin;
+
+	GPIO_TypeDef  		*RxPort;
+	uint16_t 					RxPin;
+
+	uint8_t 					RxTimingFlag;
+	uint8_t 					RxBitOffset;
+
+	void (*cbFuncByteRecved)(uint8_t); // Call back function when one byte received
+} SoftUart_S;
+
+//Call Every (0.2)*(1/9600) = 20.83 uS
+void 			SoftUartHandler(void);
+void 			SoftUartWaitUntilTxComplate(uint8_t SoftUartNumber);
+uint8_t 		SoftUartRxAlavailable(uint8_t SoftUartNumber);
+SoftUartState_E SoftUartPuts(uint8_t SoftUartNumber,uint8_t *Str,uint8_t Len);
+SoftUartState_E SoftUartEnableRx(uint8_t SoftUartNumber);
+SoftUartState_E SoftUartDisableRx(uint8_t SoftUartNumber);
+SoftUartState_E SoftUartInit(uint8_t SoftUartNumber,GPIO_TypeDef *TxPort,uint16_t TxPin,GPIO_TypeDef *RxPort,uint16_t RxPin, void (*cbFuncRecvByte)(uint8_t));
+// Thread Unsafe
+uint8_t SoftUartReadRxBuffer(uint8_t SoftUartNumber,uint8_t *Buffer,uint8_t Len);
+void SoftUartStop();
+void SoftUartStart();
+void SoftUartChangeBaud(uint16_t baud); // Change timer4 period
+#endif /* SOFTUART_H_ */

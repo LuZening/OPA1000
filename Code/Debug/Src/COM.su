@@ -1,0 +1,6 @@
+COM.c:33:6:command_band	32	static
+COM.c:90:6:command_moni	24	static
+COM.c:108:6:parse_command	32	static
+COM.c:118:6:execute_command	24	static
+COM.c:144:6:COM_send_message	16	static
+COM.c:158:6:StartCOMRecvTask	56	dynamic

@@ -1,0 +1,246 @@
+EESchema Schematic File Version 4
+LIBS:Relay-cache
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MySchLib:G2RL-1-E K1
+U 1 1 5E5972A7
+P 4450 2450
+F 0 "K1" V 3883 2450 50  0000 C CNN
+F 1 "G2RL-1-E" V 3974 2450 50  0000 C CNN
+F 2 "MyPCBLib:G2RL-1-E" H 4900 2400 50  0001 L CNN
+F 3 "https://www.omron.com/ecb/products/pdf/en-g5q.pdf" H 4950 2050 50  0001 L CNN
+	1    4450 2450
+	0    1    1    0   
+$EndComp
+$Comp
+L Connector:Conn_Coaxial J1
+U 1 1 5E59A0B0
+P 3350 2650
+F 0 "J1" H 3278 2888 50  0000 C CNN
+F 1 "Conn_Coaxial" H 3278 2797 50  0000 C CNN
+F 2 "MyPCBLib:RF_strip" H 3350 2650 50  0001 C CNN
+F 3 " ~" H 3350 2650 50  0001 C CNN
+	1    3350 2650
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	3550 2650 4150 2650
+Wire Wire Line
+	3350 2850 3350 3100
+$Comp
+L Connector:Conn_Coaxial J3
+U 1 1 5E59ACD7
+P 5850 2750
+F 0 "J3" H 5950 2725 50  0000 L CNN
+F 1 "Conn_Coaxial" H 5950 2634 50  0000 L CNN
+F 2 "MyPCBLib:RF_strip" H 5850 2750 50  0001 C CNN
+F 3 " ~" H 5850 2750 50  0001 C CNN
+	1    5850 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5650 2750 4750 2750
+$Comp
+L Connector:Conn_Coaxial J2
+U 1 1 5E59BC7D
+P 5850 2300
+F 0 "J2" H 5950 2275 50  0000 L CNN
+F 1 "Conn_Coaxial" H 5950 2184 50  0000 L CNN
+F 2 "MyPCBLib:RF_strip" H 5850 2300 50  0001 C CNN
+F 3 " ~" H 5850 2300 50  0001 C CNN
+	1    5850 2300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5650 2300 5350 2300
+Wire Wire Line
+	5350 2300 5350 2550
+Wire Wire Line
+	5350 2550 4750 2550
+Wire Wire Line
+	5850 2500 6150 2500
+Wire Wire Line
+	6150 2500 6150 2550
+Wire Wire Line
+	5850 2950 6150 2950
+Wire Wire Line
+	6150 2950 6150 3050
+Wire Wire Line
+	4750 2250 4950 2250
+Wire Wire Line
+	4950 2250 4950 1800
+$Comp
+L power:+12V #PWR03
+U 1 1 5E59DB5F
+P 4950 1700
+F 0 "#PWR03" H 4950 1550 50  0001 C CNN
+F 1 "+12V" H 4965 1873 50  0000 C CNN
+F 2 "" H 4950 1700 50  0001 C CNN
+F 3 "" H 4950 1700 50  0001 C CNN
+	1    4950 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR01
+U 1 1 5E59EE4C
+P 3350 3100
+F 0 "#PWR01" H 3350 2850 50  0001 C CNN
+F 1 "Earth" H 3350 2950 50  0001 C CNN
+F 2 "" H 3350 3100 50  0001 C CNN
+F 3 "~" H 3350 3100 50  0001 C CNN
+	1    3350 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR05
+U 1 1 5E59F6B4
+P 6150 3050
+F 0 "#PWR05" H 6150 2800 50  0001 C CNN
+F 1 "Earth" H 6150 2900 50  0001 C CNN
+F 2 "" H 6150 3050 50  0001 C CNN
+F 3 "~" H 6150 3050 50  0001 C CNN
+	1    6150 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR04
+U 1 1 5E59FBF2
+P 6150 2550
+F 0 "#PWR04" H 6150 2300 50  0001 C CNN
+F 1 "Earth" H 6150 2400 50  0001 C CNN
+F 2 "" H 6150 2550 50  0001 C CNN
+F 3 "~" H 6150 2550 50  0001 C CNN
+	1    6150 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 2250 4000 2250
+Wire Wire Line
+	4000 2250 4000 2300
+$Comp
+L power:GND #PWR02
+U 1 1 5E5A0597
+P 4000 2300
+F 0 "#PWR02" H 4000 2050 50  0001 C CNN
+F 1 "GND" H 4005 2127 50  0000 C CNN
+F 2 "" H 4000 2300 50  0001 C CNN
+F 3 "" H 4000 2300 50  0001 C CNN
+	1    4000 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L MySchLib:D D1
+U 1 1 5E5A09E4
+P 4000 1950
+F 0 "D1" V 4000 1800 50  0000 L CNN
+F 1 "1N4007" V 4100 1650 50  0000 L CNN
+F 2 "lc_lib:SMAF_S4" H 4000 1950 50  0001 C CNN
+F 3 "~" H 4000 1950 50  0001 C CNN
+	1    4000 1950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4000 2100 4000 2250
+Connection ~ 4000 2250
+Wire Wire Line
+	4000 1800 4950 1800
+Connection ~ 4950 1800
+Wire Wire Line
+	4950 1800 4950 1700
+$Comp
+L Connector_Generic:Conn_01x01 SC1
+U 1 1 5E5A3018
+P 2250 3950
+F 0 "SC1" H 2168 3725 50  0000 C CNN
+F 1 "Conn_01x01" H 2168 3816 50  0000 C CNN
+F 2 "MyPCBLib:M3_Screwhole" H 2250 3950 50  0001 C CNN
+F 3 "~" H 2250 3950 50  0001 C CNN
+	1    2250 3950
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x01 SC2
+U 1 1 5E5A3531
+P 2250 4300
+F 0 "SC2" H 2168 4075 50  0000 C CNN
+F 1 "Conn_01x01" H 2168 4166 50  0000 C CNN
+F 2 "MyPCBLib:M3_Screwhole" H 2250 4300 50  0001 C CNN
+F 3 "~" H 2250 4300 50  0001 C CNN
+	1    2250 4300
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:Earth #PWR0101
+U 1 1 5E5A3801
+P 2550 4500
+F 0 "#PWR0101" H 2550 4250 50  0001 C CNN
+F 1 "Earth" H 2550 4350 50  0001 C CNN
+F 2 "" H 2550 4500 50  0001 C CNN
+F 3 "~" H 2550 4500 50  0001 C CNN
+	1    2550 4500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2450 4300 2550 4300
+Wire Wire Line
+	2550 4300 2550 4500
+Wire Wire Line
+	2450 3950 2550 3950
+Wire Wire Line
+	2550 3950 2550 4300
+Connection ~ 2550 4300
+$Comp
+L Connector_Generic:Conn_01x02 J4
+U 1 1 5E5AB07D
+P 2200 1350
+F 0 "J4" H 2118 1567 50  0000 C CNN
+F 1 "Conn_01x02" H 2118 1476 50  0000 C CNN
+F 2 "Connectors_JST:JST_XH_B02B-XH-A_02x2.50mm_Straight" H 2200 1350 50  0001 C CNN
+F 3 "~" H 2200 1350 50  0001 C CNN
+	1    2200 1350
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:+12V #PWR0102
+U 1 1 5E5AB8DE
+P 2600 1200
+F 0 "#PWR0102" H 2600 1050 50  0001 C CNN
+F 1 "+12V" H 2615 1373 50  0000 C CNN
+F 2 "" H 2600 1200 50  0001 C CNN
+F 3 "" H 2600 1200 50  0001 C CNN
+	1    2600 1200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2600 1200 2600 1350
+Wire Wire Line
+	2600 1350 2400 1350
+$Comp
+L power:GND #PWR0103
+U 1 1 5E5AC2DE
+P 2600 1500
+F 0 "#PWR0103" H 2600 1250 50  0001 C CNN
+F 1 "GND" H 2605 1327 50  0000 C CNN
+F 2 "" H 2600 1500 50  0001 C CNN
+F 3 "" H 2600 1500 50  0001 C CNN
+	1    2600 1500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2400 1450 2600 1450
+Wire Wire Line
+	2600 1450 2600 1500
+$EndSCHEMATC

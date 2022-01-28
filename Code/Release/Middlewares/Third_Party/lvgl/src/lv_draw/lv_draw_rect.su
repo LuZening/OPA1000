@@ -1,0 +1,3 @@
+lv_draw_rect.c:62:28:lv_draw_rect_dsc_init	8	static
+lv_draw_rect.c:90:6:lv_draw_rect	240	static
+lv_draw_rect.c:113:6:lv_draw_px	0	static

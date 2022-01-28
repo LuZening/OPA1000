@@ -1,0 +1,2 @@
+persistent.c:12:6:init_config	16	static
+persistent.c:27:6:isPersistentVarsValid	16	static

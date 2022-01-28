@@ -1,0 +1,7 @@
+"Comment","Description","Designator","Footprint","LibRef","Pins","Quantity","PartNumber","url",
+"1N4007","desc","D1,","SMAF_S4","libref","2","1","","",
+"Conn_Coaxial","desc","J3,J2,J1,","RF_strip","libref","1","3","","",
+"Through Hole Items ",
+"Conn_01x02","desc","J4,","JST_XH_B02B-XH-A_02x2.50mm_Straight","libref","2","1","","",
+"G2RL-1-E","desc","K1,","G2RL-1-E","libref","8","1","","",
+"Conn_01x01","desc","SC2,SC1,","M3_Screwhole","libref","7","2","","",

@@ -1,0 +1,290 @@
+/*
+ * GUI.c
+ *
+ *  Created on: Mar 11, 2020
+ *      Author: Zening
+ */
+
+#include "GUI.h"
+#include "R61408.h"
+
+void GUI_Init_Rect(GUI_Rect* widget,
+		uint16_t x_begin, uint16_t y_begin,
+		uint16_t width, uint16_t height,
+		Color fill)
+{
+	widget->x_begin = x_begin;
+	widget->y_begin = y_begin;
+	widget->width = width;
+	widget->height = height;
+	widget->fill = fill;
+	widget->need_redraw = true;
+	widget->redraw = GUI_Redraw_Rect;
+}
+
+void GUI_Redraw_Rect(void* v_widget)
+{
+	GUI_Rect* widget = (GUI_Rect*)v_widget;
+	if(!widget->need_redraw) return;
+	uint16_t x_end = widget->x_begin + widget->width;
+	uint16_t y_end = widget->y_begin + widget->height;
+	LCD_FillRect_2P(widget->x_begin, widget->y_begin, x_end, y_end, widget->fill);
+	widget->need_redraw = true;
+}
+
+
+void GUI_Init_Bitmap(GUI_Bitmap* widget,
+		uint16_t x_begin, uint16_t y_begin,
+		uint16_t width, uint16_t height,
+		const uint16_t* bitmap
+		)
+{
+	widget->x_begin = x_begin;
+	widget->y_begin = y_begin;
+	widget->width = width;
+	widget->height = height;
+	widget->bitmap = bitmap;
+	widget->redraw = GUI_Redraw_Bitmap;
+	widget->need_redraw = true;
+}
+
+void GUI_Set_Bitmap(GUI_Bitmap* widget, uint16_t width, uint16_t height, const uint16_t* bitmap)
+{
+	widget->width = width;
+	widget->height = height;
+	widget->bitmap = bitmap;
+	widget->need_redraw = true;
+}
+
+void GUI_Redraw_Bitmap(void* v_widget)
+{
+	GUI_Bitmap* widget = (GUI_Bitmap*)v_widget;
+	if(!widget->need_redraw) return;
+	LCD_PutPixels(widget->x_begin, widget->y_begin,
+			widget->width, widget->height,
+			widget->bitmap);
+	widget->need_redraw = false;
+}
+
+void GUI_Init_TextBoxH(GUI_TextBoxH* widget,
+		uint16_t x_begin, uint16_t y_begin,
+		uint16_t width, uint16_t height,
+		uint16_t len_text, uint8_t spacing, int8_t offset_y,
+		uint8_t** charset, const char* text, Align align,
+		Color stroke, Color background)
+{
+	widget->x_begin = x_begin;
+	widget->y_begin = y_begin;
+	widget->width = width;
+	widget->height = height;
+	widget->len_text = len_text;
+	widget->spacing = spacing;
+	widget->offset_y = offset_y;
+	widget->charset = (uint8_t**)charset;
+	widget->text = text;
+	widget->align = align;
+	widget->stroke = stroke;
+	widget->background = background;
+	// derived
+	GUI_Get_Text_Size_TextBoxH(widget, len_text, text, &(widget->width_text), &(widget->height_text));
+	// align y axis to center
+	widget->y_begin_text =  y_begin + (widget->height - widget->height_text)/ 2;
+	switch(align)
+	{
+	case LEFT_JUSTIFIED:
+		widget->x_begin_text = x_begin;
+		break;
+	case CENTER_JUSTIFIED:
+		widget->x_begin_text = x_begin + (width - widget->width_text) / 2;
+		break;
+	case RIGHT_JUSTIFIED:
+		widget->x_begin_text = x_begin + width - widget->width_text;
+	}
+	widget->need_redraw = true;
+	widget->redraw = GUI_Redraw_TextBoxH;
+}
+
+void GUI_Set_Text_TextBoxH(GUI_TextBoxH *widget, uint16_t len_text, const char* text)
+{
+	widget->len_text = len_text;
+	widget->text = text;
+	GUI_Get_Text_Size_TextBoxH(widget, len_text, text, &(widget->width_text), &(widget->height_text));
+	// align y axis to cente
+	widget->y_begin_text = widget->y_begin + (widget->height - widget->height_text)/ 2;
+	switch(widget->align)
+	{
+	case LEFT_JUSTIFIED:
+		widget->x_begin_text = widget->x_begin;
+		break;
+	case CENTER_JUSTIFIED:
+		widget->x_begin_text = widget->x_begin + (widget->width - widget->width_text) / 2;
+		break;
+	case RIGHT_JUSTIFIED:
+		widget->x_begin_text = widget->x_begin + widget->width - widget->width_text;
+	}
+	widget->need_redraw = true;
+}
+
+void GUI_Get_Text_Size_TextBoxH(GUI_TextBoxH *widget, uint16_t len_text, const char* text, uint16_t *width, uint16_t* height)
+{
+	*width = 0;
+	*height = 0;
+	while(len_text--)
+	{
+		const uint8_t* p = widget->charset[*(text++) - 32]; // Printable ASCII starts from 32
+		uint8_t w = *(p++);
+		uint8_t h = *(p++);
+		int8_t ox = *(p++);
+		int8_t oy = *(p++);
+		w = w + ox;
+		h = h + oy + widget->offset_y;
+		*width += w + widget->spacing;
+		if(h > *height) *height = h;
+	}
+}
+
+void GUI_Redraw_TextBoxH(void* v_widget)
+{
+	static uint16_t buffer[32*32];
+	GUI_TextBoxH* widget = (GUI_TextBoxH*)v_widget;
+	if(!widget->need_redraw) return;
+	// cover the content within the textbox area using background color
+	LCD_FillRect_2P(widget->x_begin, widget->y_begin,
+			widget->x_begin + widget->width, widget->y_begin + widget->height,
+			widget->background);
+	uint16_t x_begin_now = widget->x_begin_text;
+	uint16_t y_begin_now = widget->y_begin_text;
+	uint16_t i = widget->len_text;
+	const char* ptext = widget->text;
+	while(i--)
+	{
+		const uint8_t* mask = widget->charset[*(ptext++)-32]; // printable ASCII starts from 32
+		uint8_t w = *(mask++);
+		uint8_t h = *(mask++);
+		int8_t ox = *(mask++); // y offset
+		int8_t oy = *(mask++); // x offset
+		uint16_t *p = buffer;
+		for(int x=w; x--;)
+		{
+			for(int y=h; y--;)
+			{
+				// mixing background and stroke color
+				*(p++) = (((uint32_t)*mask) * (uint32_t)(widget->stroke)
+						+ (uint32_t)(255 - *mask) * (uint32_t)(widget->background)) / 255;
+			}
+		}
+		LCD_PutPixels((int16_t)x_begin_now + ox, (int16_t)y_begin_now + oy + widget->offset_y,
+				w, h, buffer);
+	}
+}
+
+void GUI_Init_ProgressBarH(GUI_ProgressBarH* widget,
+		uint16_t x_begin, uint16_t y_begin,
+		uint16_t width, uint16_t height,
+		uint16_t thickness_falling_bar,
+		float threshold_warning,
+		Color background,
+		Color color_normal,
+		Color color_warning,
+		Color color_bar
+		)
+{
+	widget->x_begin = x_begin;
+	widget->y_begin = y_begin;
+	widget->width = width;
+	widget->height = height;
+	widget->thickness_falling_bar = thickness_falling_bar;
+	widget->threshold_warning = threshold_warning;
+	widget->background = background;
+	widget->color_normal = color_normal;
+	widget->color_warning = color_warning;
+	widget->color_bar = color_bar;
+	widget->progress = 0.f;
+	widget->progress_falling_bar = 0.f;
+	// derived variables
+	widget->x_end = x_begin + width;
+	widget->y_end = y_begin + height;
+	widget->len_warning = threshold_warning * width;
+	widget->need_redraw = true;
+	widget->redraw = GUI_Redraw_ProgressBarH;
+}
+
+void GUI_Set_Progress_ProgressBarH(GUI_ProgressBarH* widget, float progress, float progress_bar)
+{
+	widget->progress = (progress < 1.f)?(progress):(1.0f);
+	widget->progress_falling_bar = (progress < 1.f)?(progress):(1.0f);
+	widget->need_redraw = true;
+}
+
+void GUI_Redraw_ProgressBarH(void* v_widget)
+{
+	GUI_ProgressBarH* widget = (GUI_ProgressBarH*)v_widget;
+	if(!widget->need_redraw) return;
+	uint16_t x_begin = widget->x_begin;
+	uint16_t y_begin = widget->y_begin;
+	uint16_t x_end = x_begin + widget->width;
+	uint16_t y_end = widget->y_begin + widget->height;
+	// Draw normal section
+	uint16_t len_normal;
+	uint16_t len_warning = 0;
+	len_normal = (widget->progress * widget->width);
+	if(len_normal > widget->len_warning)
+	{
+		len_warning = len_normal - widget->len_warning;
+		len_normal = widget->len_warning;
+	}
+	uint16_t x_end_normal = x_begin + len_normal;
+	LCD_FillRect_2P(x_begin, y_begin, x_end_normal, y_end, widget->color_normal);
+	// Draw warning section
+	uint16_t x_end_warning = x_end_normal + len_warning;
+	if(len_warning > 0)
+	{
+		LCD_FillRect_2P(x_end_normal, y_begin, x_end_warning , y_end, widget->color_warning);
+	}
+	// Draw background
+	LCD_FillRect_2P(x_end_warning, y_begin, x_end, y_end, widget->background);
+	// Draw falling bar
+	uint16_t pos_falling;
+	if(widget->progress_falling_bar > widget->progress)
+		pos_falling = x_begin + widget->progress_falling_bar * widget->width;
+	else
+		pos_falling = x_end_warning;
+	LCD_FillRect_2P(pos_falling, y_begin, pos_falling + widget->thickness_falling_bar,
+			y_end, widget->color_bar);
+}
+
+void GUI_Redraw_Popup_Window(void* v_widget)
+{
+	GUI_Popup_Window* widget = (GUI_Popup_Window*) v_widget;
+	if(!widget->need_redraw)
+		return;
+	uint16_t x_begin = widget->x_begin;
+	uint16_t y_begin = widget->y_begin;
+	uint16_t x_end = x_begin + widget->width;
+	uint16_t y_end = y_begin + widget->height;
+	uint16_t x_begin_shadow = x_begin + widget->shadow_distance;
+	uint16_t y_begin_shadow = y_begin + widget->shadow_distance;
+	uint16_t x_end_shadow = x_begin_shadow + widget->width;
+	uint16_t y_end_shadow = y_begin_shadow + widget->height;
+	// draw shadow
+	LCD_FillRect_2P(x_begin_shadow, y_begin_shadow, x_end_shadow, y_end_shadow, widget->shadow);
+	// draw window
+	LCD_FillRect_2P(x_begin, y_begin, x_end, y_end, widget->foreground);
+}
+
+void GUI_Init_Popup_Window(GUI_Popup_Window* widget,
+		uint16_t x_begin, uint16_t y_begin,
+		uint16_t width, uint16_t height,
+		uint16_t shadow_distance,
+		Color foreground, Color shadow)
+{
+	widget->x_begin = x_begin;
+	widget->y_begin = y_begin;
+	widget->width = width;
+	widget->height = height;
+	widget->shadow_distance = shadow_distance;
+	widget->foreground = foreground;
+	widget->shadow = shadow;
+	widget->need_redraw = true;
+	widget->redraw = GUI_Redraw_Popup_Window;
+}

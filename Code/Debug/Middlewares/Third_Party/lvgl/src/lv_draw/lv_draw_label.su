@@ -1,0 +1,10 @@
+lv_mem.h:153:44:_lv_memcpy_small	32	static
+lv_area.h:110:26:lv_area_get_width	16	static
+lv_font.h:119:26:lv_font_get_line_height	16	static
+lv_color.h:611:26:lv_color_make	16	static
+lv_draw_label.c:93:28:lv_draw_label_dsc_init	16	static
+lv_draw_label.c:114:28:lv_draw_label	296	static
+lv_draw_label.c:398:35:lv_draw_letter	72	static
+lv_draw_label.c:452:35:draw_letter_normal	168	static
+lv_draw_label.c:607:13:draw_letter_subpx	192	static
+lv_draw_label.c:817:16:hex_char_to_num	24	static

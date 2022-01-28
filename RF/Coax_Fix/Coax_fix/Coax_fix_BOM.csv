@@ -1,0 +1,5 @@
+"Comment","Description","Designator","Footprint","LibRef","Pins","Quantity","PartNumber","url",
+"Through Hole Items ",
+"R_fake","desc","R**,R**,R**,R**,R**,R**,R**,R**,R**,R**,R**,R**,","R_fake","libref","14","12","","",
+"R_Array_SIP6","desc","REF**,REF**,REF**,REF**,REF**,REF**,REF**,REF**,REF**,REF**,","R_Array_SIP6","libref","6","10","","",
+"CP_Axial_L10.0mm_D4.5mm_P15.00mm_Horizontal","desc","REF**,REF**,REF**,REF**,REF**,REF**,REF**,REF**,REF**,","CP_Axial_L10.0mm_D4.5mm_P15.00mm_Horizontal","libref","2","9","","",

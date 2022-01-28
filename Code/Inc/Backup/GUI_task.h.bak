@@ -1,0 +1,140 @@
+/*
+ * GUI_task.h
+ *
+ *  Created on: Mar 2, 2020
+ *      Author: Zening
+ */
+#ifndef GUI_TASK_H_
+#define GUI_TASK_H_
+#include "main.h"
+#include "GUI.h"
+
+/*** GUI global state ***/
+typedef enum {
+	MAIN_PAGE,
+	BAND_MENU_PAGE,
+	SENSOR_READINGS_PAGE,
+	ALERT_PAGE
+} GUI_page_t;
+
+extern bool GUI_page_switched;
+extern GUI_page_t GUI_current_page; // page num
+
+void GUI_switch_page(GUI_page_t page);
+void StartGUIRefreshTask();
+
+#define COLOR_BACKGROUND 0x48b1 // Dark Purple 0x481488
+#define COLOR_BANNER_NORMAL	0x294f // Deep Blue
+#define COLOR_BANNER_IDLE 0x2b68	// Dark Green 0x286c40
+#define COLOR_BANNER_WARN	0x7800 // Dark Red 0x780000
+#define COLOR_SIDEBAR 0x386c // Deep Purple 0x380c60
+#define COLOR_TEXT 0xffff	// White 0xffffff
+#define COLOR_TEXT_WARN	0x7800// Dark Red 0x780000
+#define COLOR_BACKGROUND_PROGBAR 0x386c// Dark Purple 0x380c60
+#define COLOR_PROGBAR_NORMAL 0x3ad7 // Light Blue 0x3858b0
+#define COLOR_PROGBAR_WARNING 0x7800 // Dark Red 0x780000
+#define COLOR_SCALE	0x84f9	// Light Blue 0x809cc8
+#define COLOR_POPUP_WINDOW  0x2992// Purple Blue 0x283090
+#define COLOR_POPUP_WINDOW_ALERT 0x7800 // Dark Red 0x790000
+#define COLOR_BUTTON 0x0397 // Light Blue 0x0070b8
+#define COLOR_SHADOW 0x0000 // Black
+#define FALLING_BAR_THICKNESS 6
+#define SCALE_H_PADDING 15 // horizontal paddings of GUI_Scale widget
+
+/***** GUI global state *****/
+extern bool GUI_page_switched;
+extern GUI_page_t GUI_current_page;
+/* ******** Charsets	*********/
+extern uint8_t* Charset_ASCII24[126 - 32 + 1]; // only contains printable chars;
+
+/* ******** GUI widgets Declaration ************** */
+/* *** MAIN PAGE ***/
+extern GUI_Rect gRectBackground;
+extern GUI_Rect gRectTopBanner;
+extern GUI_Rect gRectLeftSide;
+
+extern const char* FILENAME_BMP_TRANSMITTING;
+extern const char* FILENAME_BMP_RECEIVING;
+extern const char* FILENAME_BMP_STANDBY;
+extern GUI_Bitmap gBmpTransState; // 发射中 接收中 待机;
+extern const char* FILENAME_BMP_BAND;
+extern GUI_Bitmap gBmpBandCaption; // 波段;
+extern const char* FILENAME_BMP_BANDUNIT;
+extern GUI_Bitmap gBmpBandUnit; // 米;
+extern const char* FILENAME_BMP_CORETEMP;
+extern GUI_Bitmap gBmpCoreTempCaption; // 晶体管温度;
+extern const char* FILENAME_BMP_CORETEMPUNIT_C;
+extern GUI_Bitmap gBmpCoreTempUnit; // oC;
+extern const char* FILENAME_BMP_IMAIN;
+extern GUI_Bitmap gBmpImainCaption; // 主电流;
+extern const char* FILENAME_BMP_IMAINUNIT;
+extern GUI_Bitmap gBmpImainUnit; // A;
+extern const char* FILENAME_BMP_VMAIN;
+extern GUI_Bitmap gBmpVmainCaption; // 主电压;
+extern const char* FILENAME_BMP_VMAINUNIT;
+extern GUI_Bitmap gBmpVmainUnit; // V;
+extern const char* FILENAME_BMP_FWDPWR;
+extern GUI_Bitmap gBmpFwdPwrCaption; // 正向功率;
+extern const char* FILENAME_BMP_FWDPWRUNIT;
+extern GUI_Bitmap gBmpFwdPwrUnit; // W;
+extern const char* FILENAME_BMP_REVPWR;
+extern GUI_Bitmap gBmpRevPwrCaption; // 反射功率;
+extern const char* FILENAME_BMP_REVPWRUNIT;
+extern GUI_Bitmap gBmpRevPwrUnit; // W;
+extern const char* FILENAME_BMP_SWR;
+extern GUI_Bitmap gBmpSWRCaption; // 驻波比;
+extern GUI_TextBoxH gTextBand;
+extern GUI_TextBoxH gTextCoreTemp;
+extern GUI_TextBoxH gTextImain;
+extern GUI_TextBoxH gTextVmain;
+extern GUI_TextBoxH gTextFwdPwr;
+extern GUI_TextBoxH gTextRevPwr;
+extern GUI_TextBoxH gTextSWR;
+extern GUI_ProgressBarH gProgBarFwdPwr;
+extern const char* FILENAME_BMP_SCALE_FWDPWR;
+extern GUI_Bitmap gBmpScaleFwdPwr;
+extern GUI_ProgressBarH gProgBarRevPwr;
+extern const char* FILENAME_BMP_SCALE_REVPWR;
+extern GUI_Bitmap gBmpScaleRevPwr;
+extern GUI_ProgressBarH gProgBarSWR;
+extern const char* FILENAME_BMP_SCALE_SWR;
+extern GUI_Bitmap gBmpScaleSWR;
+/* *** END OF MAIN PAGE widgets *** */
+/* *** BAND SETTING PAGE widgets *** */
+extern GUI_Popup_Window gPopWndBandMenu;
+extern const char* FILENAME_BMP_BAND_MENU_TITLE;
+extern GUI_Bitmap gBmpBandMenuTitle;
+extern GUI_Rect gBtn160M;
+extern GUI_TextBoxH gTextBtn160;
+extern GUI_Rect gBtn80M;
+extern GUI_TextBoxH gTextBtn80;
+extern GUI_Rect gBtn4030M;
+extern GUI_TextBoxH gTextBtn4030;
+extern GUI_Rect gBtn2017M;
+extern GUI_TextBoxH gTextBtn2017;
+extern GUI_Rect gBtn1510M;
+extern GUI_TextBoxH gTextBtn1510;
+extern GUI_Rect gBtnAutoBand;
+extern GUI_TextBoxH gTextBtnAutoBand;
+/* *** END OF BAND SETTING PAGE widgets *** */
+/* *** SENSOR READINGS PAGE widgets *** */
+/* *** END OF SENSOR READINGS SETTING PAGE widgets *** */
+/* *** ALERT WINDOW PAGE widgets *** */
+extern GUI_Popup_Window gPopWndAlert;
+extern const char* FILENAME_BMP_ALERT_WINDOW_TITLE;
+extern GUI_Bitmap gBmpAlertWindowTitle;
+extern const char* FILENAME_BMP_ALERT_CONTENT_TEMP1HIGH;
+extern const char* FILENAME_BMP_ALERT_CONTENT_TEMP2HIGH;
+extern const char* FILENAME_BMP_ALERT_CONTENT_SWR1HIGH;
+extern const char* FILENAME_BMP_ALERT_CONTENT_SWR2HIGH;
+extern const char* FILENAME_BMP_ALERT_CONTENT_IMAINHIGH;
+extern const char* FILENAME_BMP_ALERT_CONTENT_VMAINHIGH;
+extern const char* FILENAME_BMP_ALERT_CONTENT_OVERDRIVE;
+extern const char* FILENAME_BMP_ALERT_CONTENT_UNKNOWN;
+extern GUI_Bitmap gBmpAlertContent;
+extern GUI_Rect gBtnAlertDismiss;
+extern GUI_TextBoxH gTextAlertOK;
+/* *** End of ALERT WINDOW PAGE widgets *** */
+
+
+#endif /* GUI_TASK_H_ */

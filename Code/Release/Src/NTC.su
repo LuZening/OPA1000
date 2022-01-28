@@ -1,0 +1,2 @@
+NTC.c:12:6:NTC_init	8	static
+NTC.c:24:9:NTC_get_C	24	static

@@ -1,0 +1,50 @@
+
+Options ResourceUsage=yes UseNutmegFormat=no EnableOptim=no TopDesignName="BLF188XR_HF_lib:cell_1:schematic" DcopOutputNodeVoltages=yes DcopOutputPinCurrents=yes DcopOutputAllSweepPoints=no DcopOutputDcopType=2
+C:C1  0 N__19 C=X pF 
+R:R3  N__17 0 R=50 Ohm notune{ 37.5 Ohm to 112.5 Ohm by 7.5 Ohm } Noise=yes 
+R:R2  N__18 N__17 R=22 Ohm notune{ 1 Ohm to 50 Ohm by 1 Ohm } Noise=yes 
+#uselib "ckt" , "tf"
+tf:TF2  N__9 N__20 0 0 T=3.00 
+Short:DC_Feed3  N__15 N__6 Mode=-1 
+Port:TermG2  N__5 0 Num=2 Z=50 Ohm tune{ 1 Ohm to 75 Ohm by 1 Ohm } Noise=yes 
+R:R1  N__15 N__19 R=50 Ohm Noise=yes 
+#uselib "ckt" , "tf"
+tf:TF1  N__17 N__16 0 0 T=2 
+Short:DC_Block4  N__7 N__19 Mode=1 
+Short:DC_Block3  N__15 N__1 Mode=1 
+#uselib "rf" , "BALUN1"
+BALUN1:Bal2  N__1 N__7 N__16 Z=12 Ohm Len=0.3 mm K=2.0 A=0.0 F=1.0 GHz N=5.0 AL=960.0 nH TanD=0 Mur=1 TanM=0 Sigma=0 
+Short:DC_Block2  N__4 N__10 Mode=1 
+Short:DC_Block1  N__12 N__8 Mode=1 
+S_Param:SP1 CalcS=yes CalcY=no CalcZ=no GroupDelayAperture=1e-4 FreqConversion=no FreqConversionPort=1 StatusLevel=2 CalcNoise=no SortNoise=0 BandwidthForNoise=1.0 Hz DevOpPtLevel=0 \
+SweepVar="freq" SweepPlan="SP1_stim" OutputPlan="SP1_Output" 
+
+SweepPlan: SP1_stim Start=2 MHz Stop=54 MHz Step=100 kHz 
+
+OutputPlan:SP1_Output \
+      Type="Output" \
+      UseEquationNestLevel=yes \
+      EquationNestLevel=2 \
+      UseSavedEquationNestLevel=yes \
+      SavedEquationNestLevel=2
+
+#load "python","LinearCollapse"
+Component Module="LinearCollapse" Type="ModelExtractor" NetworkRepresentation=2
+#uselib "AMP_BLF188XR_V1p02" , "AMP_BLF188XR_V1p02"
+"AMP_BLF188XR_V1p02":LDMN1  N__12 N__15 N__4 N__19 0 0 0 
+Short:DC_Feed4  N__6 N__19 Mode=-1 
+V_Source:SRC1  N__6 0 Type="V_DC" Vdc=2.2 V tune{ 0.85 V to 3.5 V by 0.05 V } SaveCurrent=1 
+V_Source:SRC2  N__13 0 Type="V_DC" Vdc=50 V SaveCurrent=1 
+Short:DC_Feed1  N__13 N__12 Mode=-1 
+Short:DC_Feed2  N__13 N__4 Mode=-1 
+Port:TermG1  N__18 0 Num=1 Z=50 Ohm Noise=yes 
+C:C2  0 N__15 C=X pF 
+
+X=1 notune{ 1 to 1500 logScale }
+L:L1  N__9 N__5 L=5 nH tune{ 5 nH to 1000 nH by 10 nH } Noise=yes  
+
+C=0.5 tune{ 0.5 to 1000 by 10 }
+C:C3  0 N__12 C=C pF 
+C:C4  0 N__4 C=C pF 
+#uselib "rf" , "BALUN1"
+BALUN1:Bal3  N__8 N__10 N__20 Z=50.0 Ohm Len=0.3 mm K=2.0 A=0.0 F=1.0 GHz N=5.0 AL=960.0 nH TanD=0 Mur=1 TanM=0 Sigma=0 

@@ -1,0 +1,6 @@
+lv_draw_arc.c:71:6:lv_draw_arc	280	static
+lv_draw_arc.c:174:13:draw_quarter_0	40	static
+lv_draw_arc.c:227:13:draw_quarter_1	40	static
+lv_draw_arc.c:280:13:draw_quarter_2	40	static
+lv_draw_arc.c:334:13:draw_quarter_3	40	static
+lv_draw_arc.c:388:13:get_rounded_area	64	static

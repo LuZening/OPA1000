@@ -1,0 +1,8 @@
+lv_btn.c:239:24:lv_btn_design	8	static
+lv_btn.c:59:12:lv_btn_create	32	static
+lv_btn.c:120:6:lv_btn_set_checkable	24	static
+lv_btn.c:134:6:lv_btn_set_state	24	static
+lv_btn.c:169:6:lv_btn_toggle	24	static
+lv_btn.c:191:16:lv_btn_get_state	24	static
+lv_btn.c:216:6:lv_btn_get_checkable	24	static
+lv_btn.c:261:17:lv_btn_signal	32	static

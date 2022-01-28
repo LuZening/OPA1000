@@ -1,0 +1,8 @@
+"Comment","Description","Designator","Footprint","LibRef","Pins","Quantity","PartNumber","url",
+"Through Hole Items ",
+"Conn_01x01","desc","J2,J1,","M3_Screwhole","libref","7","2","","",
+"RF out","desc","J3,","N-KY_PCB_EDGE_MOUNT_SMA-KWE","libref","53","1","","",
+"RF in","desc","J4,","N-KY_PCB_EDGE_MOUNT_SMA-KWE","libref","53","1","","",
+"100 50W","desc","R1,","TO-220-2_External_Thermal_Mount_Short","libref","3","1","","",
+"75 30W","desc","R2,","TO-220-2_External_Thermal_Mount_Short","libref","3","1","","",
+"100 30W","desc","R3,","TO-220-2_External_Thermal_Mount_Short","libref","3","1","","",

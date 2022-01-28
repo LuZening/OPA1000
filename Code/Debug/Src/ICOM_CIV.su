@@ -1,0 +1,3 @@
+ICOM_CIV.c:12:6:ICOM_CIV_init	16	static
+ICOM_CIV.c:20:6:ICOM_CIV_transfer	24	static
+ICOM_CIV.c:89:10:ICOM_CIV_parse_band	24	static

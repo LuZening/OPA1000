@@ -1,0 +1,36 @@
+GNU gdb (GNU Tools for STM32 7-2018-q2-update.20190328-1800) 8.1.0.20180315-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "--host=x86_64-w64-mingw32 --target=arm-none-eabi".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word".
+
+
+
+
+Warning: the current language does not match this frame.
+
+
+Temporary breakpoint 4, main () at ../Src/main.c:199
+199	  HAL_Init();
+
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x08017ce0 in draw_letter_normal (pos_x=393, pos_y=311, g=0x2000269c <Timer_Stack+7084>, clip_area=0x20002884 <Timer_Stack+7572>, map_p=0x804be12 <gylph_bitmap+8210> "???", color=..., opa=255 '?', blend_mode=0 '\000') at ../Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.c:544
+544	            letter_px = (*map_p & bitmask) >> (col_bit_max - col_bit);
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x0801b500 in draw_bg (coords=0x20002738 <Timer_Stack+7240>, clip=0x200028a0 <Timer_Stack+7600>, dsc=0x2000275c <Timer_Stack+7276>) at ../Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_rect.c:230
+230	                grad_map[i] = grad_get(dsc, coords_w, i);
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+HardFault_Handler () at ../Src/stm32f4xx_it.c:94
+94	  while (1)

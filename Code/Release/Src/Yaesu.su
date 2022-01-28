@@ -1,0 +1,3 @@
+Yaesu.c:16:6:Yaesu_CAT_init	0	static
+Yaesu.c:24:6:Yaesu_CAT_transfer_state	4	static
+Yaesu.c:52:10:Yaesu_parse_freq	0	static
