@@ -466,12 +466,6 @@ void StartSensorTask()
 				if(counter % 5 == 0)
 				{
 					//// Refresh temperature display
-					if(cfg.Fan1Auto) // Auto fan speed
-					{
-						uint8_t FanDutyNew = fan_autospeed_transfer_function(Temp1, fan1.duty);
-						soft_pwm_driver_set_duty(&fan1, FanDutyNew);
-						soft_pwm_driver_set_duty(&fan2, FanDutyNew);
-					}
 					GUI_set_core_temperature(Temp1);
 					GUI_set_ambient_temperature(Temp2);
 					//// Refresh Vmain Imain

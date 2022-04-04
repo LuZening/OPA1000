@@ -1,2 +1,5 @@
 *.pdf
-reference/
+*.zip
+*.rar
+reference
+Code_copy

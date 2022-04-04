@@ -37,7 +37,7 @@ extern "C" {
 #include "Sensor_task.h"
 #include "RadioTypes.h"
 #include "persistent.h"
-#include "SoftPWMDriver.h"
+#include "fan.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -145,7 +145,7 @@ extern Transmission_State_t  trans_state; // transmission_state: STANDBY, RECEIV
 extern bool Enable_band_remote;
 
 // Fan1, Fan2
-extern SoftPWMDriver_t fan1, fan2;
+extern Fan_t fan1, fan2;
 
 /* USER CODE END Private defines */
 

@@ -51,6 +51,7 @@ extern PeakDetector PD_FWD2;
 extern PeakDetector PD_REV2;
 extern PeakDetector PD_SWR2;
 // Temperature Sensing NTC
+extern int Temp1, Temp2;
 extern NTC_t NTC1, NTC2;
 
 // Sensor Task Thread handler

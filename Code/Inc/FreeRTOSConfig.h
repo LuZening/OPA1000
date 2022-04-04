@@ -68,7 +68,7 @@
 #define configMAX_PRIORITIES                     ( 56 )
 #define configMINIMAL_STACK_SIZE                 ((uint16_t)512)
 #define configTOTAL_HEAP_SIZE                    ((size_t)0x8000)
-#define configMAX_TASK_NAME_LEN                  ( 32 )
+#define configMAX_TASK_NAME_LEN                  ( 16 )
 #define configUSE_TRACE_FACILITY                 1
 #define configUSE_16_BIT_TICKS                   0
 #define configUSE_MUTEXES                        1
@@ -92,7 +92,8 @@
 #define configUSE_TIMERS                         1
 #define configTIMER_TASK_PRIORITY                ( 2 )
 #define configTIMER_QUEUE_LENGTH                 10
-#define configTIMER_TASK_STACK_DEPTH             2048
+//#define configTIMER_TASK_STACK_DEPTH             2048
+#define configTIMER_TASK_STACK_DEPTH             1024
 
 /* CMSIS-RTOS V2 flags */
 #define configUSE_OS2_THREAD_SUSPEND_RESUME  1
@@ -106,15 +107,15 @@
 to exclude the API function. */
 #define INCLUDE_vTaskPrioritySet             1
 #define INCLUDE_uxTaskPriorityGet            1
-#define INCLUDE_vTaskDelete                  1
+#define INCLUDE_vTaskDelete                  0
 #define INCLUDE_vTaskCleanUpResources        0
 #define INCLUDE_vTaskSuspend                 1
 #define INCLUDE_vTaskDelayUntil              1
 #define INCLUDE_vTaskDelay                   1
-#define INCLUDE_xTaskGetSchedulerState       1
+#define INCLUDE_xTaskGetSchedulerState       0
 #define INCLUDE_xEventGroupSetBitFromISR     1
 #define INCLUDE_xTimerPendFunctionCall       1
-#define INCLUDE_xQueueGetMutexHolder         1
+#define INCLUDE_xQueueGetMutexHolder         0
 #define INCLUDE_uxTaskGetStackHighWaterMark  1
 #define INCLUDE_xTaskGetCurrentTaskHandle    1
 #define INCLUDE_eTaskGetState                1
