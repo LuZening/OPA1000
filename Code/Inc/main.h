@@ -27,6 +27,8 @@
 extern "C" {
 #endif
 
+#define OPA2000
+
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 
