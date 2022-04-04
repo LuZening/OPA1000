@@ -44,10 +44,10 @@ extern "C" {
 	//LV_FONT_DECLARE(lv_font_montserrat_16);
 	//LV_FONT_DECLARE(lv_font_montserrat_24);
 	//LV_FONT_DECLARE(lv_font_montserrat_48);
-	LV_FONT_DECLARE(font_montserrat_16_tiny);
+//	LV_FONT_DECLARE(font_montserrat_16_tiny);
 	LV_FONT_DECLARE(font_montserrat_24_tiny);
 	LV_FONT_DECLARE(font_montserrat_48_tiny);
-#define LV_FONT_EN_16 font_montserrat_16_tiny
+#define LV_FONT_EN_16 lv_font_montserrat_16
 #define LV_FONT_EN_24 font_montserrat_24_tiny
 #define LV_FONT_EN_48 font_montserrat_48_tiny
 

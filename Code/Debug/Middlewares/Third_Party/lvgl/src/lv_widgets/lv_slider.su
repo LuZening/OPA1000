@@ -8,11 +8,11 @@ lv_obj_style_dec.h:112:1:lv_obj_get_style_pad_left	16	static
 lv_obj_style_dec.h:113:1:lv_obj_get_style_pad_right	16	static
 lv_slider.h:83:20:lv_slider_set_value	16	static
 lv_slider.h:199:32:lv_slider_get_type	24	static
-lv_slider.c:61:12:lv_slider_create	48	static
-lv_slider.c:127:9:lv_slider_get_value	32	static
-lv_slider.c:138:6:lv_slider_is_dragged	40	static
+lv_slider.c:61:12:lv_slider_create	40	static
+lv_slider.c:127:9:lv_slider_get_value	16	static
+lv_slider.c:138:6:lv_slider_is_dragged	24	static
 lv_slider.c:160:24:lv_slider_design	56	static
 lv_slider.c:247:17:lv_slider_signal	104	static
-lv_slider.c:435:26:lv_slider_get_style	40	static
+lv_slider.c:435:26:lv_slider_get_style	24	static
 lv_slider.c:459:13:lv_slider_position_knob	32	static
 lv_slider.c:487:13:lv_slider_draw_knob	112	static

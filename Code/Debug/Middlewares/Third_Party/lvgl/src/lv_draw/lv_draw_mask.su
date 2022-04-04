@@ -2,7 +2,7 @@ lv_mem.h:153:44:_lv_memcpy_small	32	static
 lv_area.h:100:20:lv_area_copy	16	static
 lv_area.h:110:26:lv_area_get_width	16	static
 lv_area.h:120:26:lv_area_get_height	16	static
-lv_draw_mask.c:78:9:lv_draw_mask_add	32	static
+lv_draw_mask.c:78:9:lv_draw_mask_add	24	static
 lv_draw_mask.c:108:42:lv_draw_mask_apply	56	static
 lv_draw_mask.c:135:8:lv_draw_mask_remove_id	24	static
 lv_draw_mask.c:154:8:lv_draw_mask_remove_custom	24	static

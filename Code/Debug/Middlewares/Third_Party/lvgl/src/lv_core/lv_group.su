@@ -1,7 +1,7 @@
 lv_group.c:51:6:_lv_group_init	8	static
-lv_group.c:60:14:lv_group_create	32	static
+lv_group.c:60:14:lv_group_create	16	static
 lv_group.c:86:6:lv_group_del	24	static
-lv_group.c:110:6:lv_group_add_obj	40	static
+lv_group.c:110:6:lv_group_add_obj	24	static
 lv_group.c:148:6:lv_group_remove_obj	24	static
 lv_group.c:191:6:lv_group_remove_all_objs	24	static
 lv_group.c:213:6:lv_group_focus_obj	32	static

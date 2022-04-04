@@ -93,7 +93,7 @@ void fan_tick(Fan_t* p, uint16_t tick_us, bool isAuto, int16_t tempCur)
 			uint8_t speedOld = fan_get_speed(p);
 			uint8_t speedNew = fan_speed_transfer_func(p, tempCur);
 			if (speedNew != speedOld)
-				fan_set_speed(p, speedCur);
+				fan_set_speed(p, speedNew);
 		}
 		soft_pwm_driver_tick(&(p->PWM), tick_us);
 	}

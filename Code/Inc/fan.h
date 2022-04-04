@@ -8,8 +8,8 @@
 #ifndef FAN_H_
 #define FAN_H_
 
+#include <stddef.h>
 #include "SoftPWMDriver.h"
-
 #define FAN_MAX_SPEED 100
 #define FAN_INVALID_TEMP_C -200
 
@@ -31,7 +31,7 @@ typedef struct {
 } Fan_t;
 
 void fan_init(Fan_t* p, GPIO_TypeDef* portGPIO, uint16_t pinGPIO);
-void fan_init_automode(uint8_t AutoFanSpeed_NSegments, const int16_t *AutoFanSpeed_tempC, const uint8_t *AutoFanSpeed_speed, uint8_t AutoFanSpeed_hyst);
+void fan_init_automode(Fan_t* p, uint8_t AutoFanSpeed_NSegments, const int16_t *AutoFanSpeed_tempC, const uint8_t *AutoFanSpeed_speed, uint8_t AutoFanSpeed_hyst);
 uint8_t fan_speed_transfer_func(Fan_t* p, int16_t tempCur);
 uint8_t fan_get_speed(Fan_t* p);
 void fan_set_speed(Fan_t* p, uint8_t speedCur);

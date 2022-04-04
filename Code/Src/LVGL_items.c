@@ -362,7 +362,7 @@ void show_comm_setting_page()
 	lv_obj_add_style(lvContCommSettings, LV_CONT_PART_MAIN, &lvStyleBackground);
 //	lv_cont_set_fit(lvContCommSettings, LV_FIT_TIGHT);
 	//lv_obj_set_auto_realign(lvContCommSettings, true);
-	lv_obj_set_style_local_pad_all(lvContCommSettings, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 10);
+	lv_obj_set_style_local_pad_inner(lvContCommSettings, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 10);
 	lv_cont_set_layout(lvContCommSettings, LV_LAYOUT_ROW_MID);
 	
 	// 区域1：CAT波特率设置
@@ -370,7 +370,9 @@ void show_comm_setting_page()
 	lv_obj_t* lvContCAT = lv_cont_create(lvContCommSettings, NULL);
 	lv_obj_set_style_local_bg_opa(lvContCAT, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
 	lv_obj_set_style_local_border_width(lvContCAT, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
-	lv_obj_set_style_local_pad_all(lvContCAT, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 10);
+	lv_obj_set_style_local_pad_inner(lvContCAT, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 10);
+	lv_obj_set_style_local_pad_left(lvContCAT, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 10);
+	lv_obj_set_style_local_pad_right(lvContCAT, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 10);
 	lv_cont_set_layout(lvContCAT, LV_LAYOUT_COLUMN_MID);
 	// 标签
 	lvLblBaudCAT = lv_label_create(lvContCAT, NULL);

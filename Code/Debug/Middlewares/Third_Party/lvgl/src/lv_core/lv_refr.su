@@ -18,7 +18,7 @@ lv_refr.c:166:6:_lv_refr_set_disp_refreshing	16	static
 lv_refr.c:175:6:_lv_disp_refr_task	88	static
 lv_refr.c:315:13:lv_refr_join_area	32	static
 lv_refr.c:352:13:lv_refr_areas	16	static
-lv_refr.c:388:13:lv_refr_area	72	static
+lv_refr.c:388:13:lv_refr_area	64	static
 lv_refr.c:476:13:lv_refr_area_part	32	static
 lv_refr.c:518:19:lv_refr_get_top_obj	32	static
 lv_refr.c:554:13:lv_refr_obj_and_children	32	static

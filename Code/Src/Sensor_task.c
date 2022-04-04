@@ -338,12 +338,12 @@ void HAL_ADC_ErrorCallback(ADC_HandleTypeDef *hadc)
 {
 	if (hadc == &hadc1)
 	{
-		lv_debug_log_error("Error: HADC1 DMA error\n", 0);
+		//lv_debug_log_error("Error: HADC1 DMA error\n", 0);
 //		printf("Error: HADC1 DMA error\n");
 	}
 	else if(hadc == &hadc3)
 	{
-		lv_debug_log_error("Error: HADC3 DMA error\n", 0);
+		//lv_debug_log_error("Error: HADC3 DMA error\n", 0);
 //		printf("Error: HADC3 DMA error\n");
 	}
 }

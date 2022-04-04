@@ -91,7 +91,7 @@ SRAM_HandleTypeDef hsram1;
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .stack_size = 512 * 4,
+  .stack_size = 512,
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for timerLVGL */
@@ -280,7 +280,7 @@ int main(void)
   lv_init();
   // init screen
   static lv_disp_buf_t disp_buf;
-  static lv_color_t lv_buf_mem[LV_HOR_RES_MAX * LV_VER_RES_MAX / 8];                     /*Declare a buffer for 48 lines*/
+  static lv_color_t lv_buf_mem[LV_HOR_RES_MAX * LV_VER_RES_MAX / 10];                     /*Declare a buffer for 48 lines*/
   lv_disp_buf_init(&disp_buf, lv_buf_mem, NULL, sizeof(lv_buf_mem) / sizeof(lv_color_t));    /*Initialize the display buffer*/
   lv_disp_drv_t disp_drv;               /*Descriptor of a display driver*/
   lv_disp_drv_init(&disp_drv);          /*Basic initialization*/

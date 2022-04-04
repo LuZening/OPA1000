@@ -17,13 +17,13 @@ uint8_t 							SU_DBaffer;
 
 const uint16_t BaudRates[] = {1200, 2400, 4800, 9600, 19200};
 
-inline GPIO_PinState SoftUartGpioReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
+GPIO_PinState SoftUartGpioReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
 {
 	//return HAL_GPIO_ReadPin(GPIOx,GPIO_Pin);
 	return (GPIO_PinState)(GPIOx->IDR & GPIO_Pin) != 0UL;
 }
 
-inline void SoftUartGpioWritePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState)
+void SoftUartGpioWritePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState)
 {
 	HAL_GPIO_WritePin(GPIOx,GPIO_Pin,PinState);
 }
@@ -63,7 +63,7 @@ SoftUartState_E SoftUartInit(uint8_t SoftUartNumber,GPIO_TypeDef *TxPort,uint16_
 	return SoftUart_OK;
 }
 
-inline void SoftUartTransmitBit(SoftUart_S *SU,uint8_t Bit0_1)
+void SoftUartTransmitBit(SoftUart_S *SU,uint8_t Bit0_1)
 {
 	SoftUartGpioWritePin(SU->TxPort,SU->TxPin,(GPIO_PinState)Bit0_1);
 }

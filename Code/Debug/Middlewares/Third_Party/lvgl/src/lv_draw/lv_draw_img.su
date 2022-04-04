@@ -6,11 +6,11 @@ lv_area.h:110:26:lv_area_get_width	16	static
 lv_area.h:120:26:lv_area_get_height	16	static
 lv_img_buf.h:276:20:_lv_img_buf_transform	64	static
 lv_draw_img.c:53:6:lv_draw_img_dsc_init	16	static
-lv_draw_img.c:74:6:lv_draw_img	40	static
+lv_draw_img.c:74:6:lv_draw_img	32	static
 lv_draw_img.c:99:9:lv_img_cf_get_px_size	24	static
 lv_draw_img.c:144:6:lv_img_cf_is_chroma_keyed	24	static
 lv_draw_img.c:171:6:lv_img_cf_has_alpha	24	static
-lv_draw_img.c:204:14:lv_img_src_get_type	32	static
+lv_draw_img.c:204:14:lv_img_src_get_type	24	static
 lv_draw_img.c:233:39:lv_img_draw_core	128	static
 lv_draw_img.c:339:35:lv_draw_map	272	static
 lv_draw_img.c:625:13:show_error	144	static

@@ -155,9 +155,12 @@ void COM_send_message(const char* s)
 }
 
 
+// TODO: define band decoder mode infer
 BandMode_t infer_band_mode(uint8_t* buf, uint16_t n)
 {
+	BandMode_t r = BAND_MODE_AUTO; // if infer failed, return BAND_MODE_AUTO
 
+	return r;
 }
 
 void StartCOMRecvTask()
@@ -234,10 +237,14 @@ void StartCOMRecvTask()
 		// osDelay(300);
 		bool isFreqRspnReceived = false;
 		uint8_t lenRecved = SoftUartReadRxBuffer(0, buf, lenBuf);
+		// Guess band mode from received buffer to check if config is correct
+		BandMode_t bandModeInfer = BAND_MODE_AUTO;
+		bandModeInfer = infer_band_mode(buf, lenRecved);
+		if (bandModeInfer != BAND_MODE_AUTO) // infer succeeded
+			cfg.bandMode = bandModeInfer;
+
 		switch(cfg.bandMode)
 		{
-		case BAND_MODE_AUTO:
-			BandMode_t bandModeInfer = infer_band_mode(buf, lenRecved);
 		case BAND_MODE_ICOM:
 			for(uint8_t i=0; i<lenRecved; ++i)
 			{

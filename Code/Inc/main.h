@@ -27,7 +27,13 @@
 extern "C" {
 #endif
 
+#ifndef OPA2000
 #define OPA2000
+#endif
+
+#ifndef LV_LVGL_H_INCLUDE_SIMPLE
+#define LV_LVGL_H_INCLUDE_SIMPLE
+#endif
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"

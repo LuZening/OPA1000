@@ -469,7 +469,11 @@ void init_main_widgets()
 //	lv_obj_align_ori(lvContBottomBanner, NULL, LV_ALIGN_IN_BOTTOM_LEFT, 0, 0);
 	lv_obj_reset_style_list(lvContBottomBanner, LV_OBJ_PART_MAIN);
 	lv_obj_add_style(lvContBottomBanner, LV_OBJ_PART_MAIN, &lvStyleBanner);
-	lv_obj_set_style_local_pad_all(lvContBottomBanner, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
+	lv_obj_set_style_local_pad_inner(lvContBottomBanner, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
+	lv_obj_set_style_local_pad_left(lvContBottomBanner, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
+	lv_obj_set_style_local_pad_right(lvContBottomBanner, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
+	lv_obj_set_style_local_pad_bottom(lvContBottomBanner, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
+	lv_obj_set_style_local_pad_top(lvContBottomBanner, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
 	lv_obj_align(lvContBottomBanner, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, 0);
 	lv_cont_set_layout(lvContBottomBanner, LV_LAYOUT_PRETTY_MID); // 设定布局: 行，居中，等距排列
 	// 底栏元素1：电压
@@ -477,7 +481,8 @@ void init_main_widgets()
 	lv_obj_t* lvContVmain = lv_cont_create(lvContBottomBanner, NULL);
 	lv_obj_set_style_local_bg_opa(lvContVmain, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
 	lv_obj_set_style_local_border_width(lvContVmain, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
-	lv_obj_set_style_local_pad_all(lvContVmain, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
+	lv_obj_set_style_local_pad_left(lvContVmain, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
+	lv_obj_set_style_local_pad_right(lvContVmain, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
 	lv_obj_set_style_local_pad_inner(lvContVmain, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 5);
 	lv_obj_set_size(lvContVmain, lv_obj_get_width(lvContBottomBanner) / N_BOTTOM_BANNER_SEGMENTS, lv_obj_get_height(lvContBottomBanner));
 	lv_cont_set_layout(lvContVmain, LV_LAYOUT_ROW_MID);
