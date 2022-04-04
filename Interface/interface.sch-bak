@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:interface-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -87,9 +86,9 @@ Back Panel
 Text Notes 2000 6550 0    80   ~ 0
 Control
 Text Notes 1900 7000 0    80   ~ 0
-Yaesu CAT
+BAND RS232
 Text Notes 4750 6800 0    80   ~ 0
-ICOM CI-V
+BAND\nICOM CI-V
 Text Notes 6400 6800 0    80   ~ 0
 ALC
 Text Notes 7750 6800 0    80   ~ 0
@@ -1462,16 +1461,16 @@ Wire Wire Line
 $Comp
 L Device:C_Small C4
 U 1 1 5FC87AF9
-P 1800 5200
-F 0 "C4" V 1650 5350 50  0000 C CNN
-F 1 "102" V 1750 5350 50  0000 C CNN
-F 2 "lc_lib:0805_C" H 1800 5200 50  0001 C CNN
-F 3 "~" H 1800 5200 50  0001 C CNN
-	1    1800 5200
+P 1700 5200
+F 0 "C4" V 1550 5350 50  0000 C CNN
+F 1 "100pF" V 1650 5350 50  0000 C CNN
+F 2 "lc_lib:0805_C" H 1700 5200 50  0001 C CNN
+F 3 "~" H 1700 5200 50  0001 C CNN
+	1    1700 5200
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	1900 5200 2000 5200
+	1800 5200 2000 5200
 Connection ~ 2000 5200
 Wire Wire Line
 	2000 5200 2000 5100
@@ -1488,8 +1487,6 @@ F 3 "" H 1600 5350 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1600 5350 1600 5200
-Wire Wire Line
-	1600 5200 1700 5200
 $Comp
 L power:GND #PWR012
 U 1 1 5FCC02B6
@@ -1510,7 +1507,7 @@ Wire Wire Line
 Wire Wire Line
 	2000 5100 2650 5100
 Text GLabel 2700 5000 2    50   Output ~ 0
-CAT232_IN
+BAND232_IN
 Wire Wire Line
 	5250 5050 5250 4950
 Wire Wire Line
@@ -1525,7 +1522,7 @@ L Device:R_Small R2
 U 1 1 5FD525C9
 P 3850 4400
 F 0 "R2" V 3950 4300 50  0000 C CNN
-F 1 "4.7K" V 3750 4350 50  0000 C CNN
+F 1 "1K" V 3750 4350 50  0000 C CNN
 F 2 "lc_lib:0805_R" H 3850 4400 50  0001 C CNN
 F 3 "~" H 3850 4400 50  0001 C CNN
 	1    3850 4400
@@ -1568,7 +1565,7 @@ L Device:R_Small R1
 U 1 1 5FDBE14F
 P 3300 5100
 F 0 "R1" V 3400 5000 50  0000 C CNN
-F 1 "10K" V 3200 5050 50  0000 C CNN
+F 1 "2.2K" V 3200 5050 50  0000 C CNN
 F 2 "lc_lib:0805_R" H 3300 5100 50  0001 C CNN
 F 3 "~" H 3300 5100 50  0001 C CNN
 	1    3300 5100
@@ -1944,4 +1941,12 @@ F 3 "" H 4050 2900 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4050 2900 4050 2750
+Text Notes 1400 4650 0    50   ~ 0
+Lower
+Text Notes 1300 5950 0    50   ~ 0
+Upper
+Text Notes 2000 6650 0    50   ~ 0
+Direct Cable
+Text Notes 2000 7100 0    50   ~ 0
+Cross Cable
 $EndSCHEMATC
