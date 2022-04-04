@@ -24,6 +24,17 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdlib.h"
+
+/*
+ * COM.h Manages softUART Band Decoder and CAT
+ * COM.h: handles OS task for all transceiving thru COM port
+ * SoftUART.h: soft UART for Band Deocder
+ * Architecture
+ * COM.h: OS Task handler
+ * 	- SoftUART.h Band Decoder
+ * 	- Hardware UART CAT for PC to remote control the PA
+ */
+
 #include "COM.h"
 #include "Flash_EEPROM.h"
 //#include "GUI.h"
@@ -1703,7 +1714,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   }
   else if (htim->Instance == TIM4)
   {
-	  // tick Software UART
+	  // tick Software Soft UART
 	  SoftUartHandler();
   }
   /* USER CODE END Callback 1 */
