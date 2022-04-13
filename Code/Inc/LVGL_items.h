@@ -18,7 +18,7 @@ extern "C" {
 #ifndef LVGL_SIM
 #include "MultiLinearValueMapper.h"
 #include "Sensor_task.h"
-#endif LVGL_SIM
+#endif
 
 	/* Sensor Calibration Window BEGIN */
 #ifndef LVGL_SIM
@@ -27,7 +27,8 @@ extern "C" {
 		MultiLinearValueMapper_t* pMapper;
 		lv_obj_t* pGUIObj; // NULL if not shown(or deleted)
 	} SensorCalibrationControl_t;
-#endif LVGL_SIM
+#endif
+
 
 #ifndef LVGL_SIM
 	void init_sensor_calibration_control_struct(SensorCalibrationControl_t* p, const char* name, MultiLinearValueMapper_t* pMapper);
@@ -39,7 +40,7 @@ extern "C" {
 	lv_obj_t* destory_sensor_calib_window(
 		SensorCalibrationControl_t* pControl
 	);
-#endif LVGL_SIM
+#endif
 	/* Sensor Calibration Window END */
 
 

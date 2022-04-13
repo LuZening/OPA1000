@@ -1,0 +1,15 @@
+lv_tabview.c:305:6:lv_tabview_clean_tab	8	static
+lv_tabview.c:323:6:lv_tabview_set_tab_act	40	static
+lv_tabview.c:798:13:tab_btnm_event_cb	24	static
+lv_tabview.c:832:13:tabview_realign	64	static
+lv_tabview.c:587:17:lv_tabview_signal	32	static
+lv_tabview.c:207:12:lv_tabview_add_tab	32	static
+lv_tabview.c:455:6:lv_tabview_set_anim_time	0	static
+lv_tabview.c:473:6:lv_tabview_set_btns_pos	16	static
+lv_tabview.c:500:10:lv_tabview_get_tab_act	8	static
+lv_tabview.c:513:10:lv_tabview_get_tab_count	8	static
+lv_tabview.c:527:12:lv_tabview_get_tab	24	static
+lv_tabview.c:696:17:tabview_scrl_signal	48	static
+lv_tabview.c:72:12:lv_tabview_create	48	static
+lv_tabview.c:551:10:lv_tabview_get_anim_time	0	static
+lv_tabview.c:568:23:lv_tabview_get_btns_pos	8	static

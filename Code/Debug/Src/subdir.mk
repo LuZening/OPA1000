@@ -5,9 +5,11 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+E:/Projects/RADIO/Projects/HF33/MCU/Drivers/ButtonDebouncer.c \
 ../Src/COM.c \
 ../Src/FS.c \
 ../Src/Flash_EEPROM.c \
+../Src/I2C_EEPROM.c \
 ../Src/ICOM_CIV.c \
 ../Src/Kenwood.c \
 ../Src/LVGL_GUI.c \
@@ -17,6 +19,7 @@ C_SRCS += \
 ../Src/NTC.c \
 ../Src/R61408.c \
 ../Src/RadioTypes.c \
+E:/Projects/RADIO/Projects/HF33/MCU/Drivers/RotEnc.c \
 ../Src/Sensor_task.c \
 ../Src/SoftPWMDriver.c \
 ../Src/SoftUART.c \
@@ -35,9 +38,11 @@ C_SRCS += \
 ../Src/touch_HR2046.c 
 
 OBJS += \
+./Src/ButtonDebouncer.o \
 ./Src/COM.o \
 ./Src/FS.o \
 ./Src/Flash_EEPROM.o \
+./Src/I2C_EEPROM.o \
 ./Src/ICOM_CIV.o \
 ./Src/Kenwood.o \
 ./Src/LVGL_GUI.o \
@@ -47,6 +52,7 @@ OBJS += \
 ./Src/NTC.o \
 ./Src/R61408.o \
 ./Src/RadioTypes.o \
+./Src/RotEnc.o \
 ./Src/Sensor_task.o \
 ./Src/SoftPWMDriver.o \
 ./Src/SoftUART.o \
@@ -65,9 +71,11 @@ OBJS += \
 ./Src/touch_HR2046.o 
 
 C_DEPS += \
+./Src/ButtonDebouncer.d \
 ./Src/COM.d \
 ./Src/FS.d \
 ./Src/Flash_EEPROM.d \
+./Src/I2C_EEPROM.d \
 ./Src/ICOM_CIV.d \
 ./Src/Kenwood.d \
 ./Src/LVGL_GUI.d \
@@ -77,6 +85,7 @@ C_DEPS += \
 ./Src/NTC.d \
 ./Src/R61408.d \
 ./Src/RadioTypes.d \
+./Src/RotEnc.d \
 ./Src/Sensor_task.d \
 ./Src/SoftPWMDriver.d \
 ./Src/SoftUART.d \
@@ -96,6 +105,10 @@ C_DEPS += \
 
 
 # Each subdirectory must supply rules for building sources it contributes
+Src/ButtonDebouncer.o: E:/Projects/RADIO/Projects/HF33/MCU/Drivers/ButtonDebouncer.c Src/subdir.mk
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -DOPA2000 -DLV_LVGL_H_INCLUDE_SIMPLE -DUSE_I2C_EEPROM -c -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/lvgl -I"E:/Projects/RADIO/Projects/HF33/MCU/Drivers" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Src/%.o: ../Src/%.c Src/subdir.mk
-	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -DOPA2000 -DLV_LVGL_H_INCLUDE_SIMPLE -c -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/lvgl -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -DOPA2000 -DLV_LVGL_H_INCLUDE_SIMPLE -DUSE_I2C_EEPROM -c -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/lvgl -I"E:/Projects/RADIO/Projects/HF33/MCU/Drivers" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+Src/RotEnc.o: E:/Projects/RADIO/Projects/HF33/MCU/Drivers/RotEnc.c Src/subdir.mk
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -DOPA2000 -DLV_LVGL_H_INCLUDE_SIMPLE -DUSE_I2C_EEPROM -c -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/lvgl -I"E:/Projects/RADIO/Projects/HF33/MCU/Drivers" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 

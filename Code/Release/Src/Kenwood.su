@@ -1,3 +1,3 @@
 Kenwood.c:16:6:Kenwood_CAT_init	0	static
-Kenwood.c:24:6:Kenwood_CAT_transfer_state	4	static
-Kenwood.c:52:10:Kenwood_CAT_parse_freq	0	static
+Kenwood.c:24:6:Kenwood_CAT_transfer_state	0	static
+Kenwood.c:51:10:Kenwood_CAT_parse_freq	0	static

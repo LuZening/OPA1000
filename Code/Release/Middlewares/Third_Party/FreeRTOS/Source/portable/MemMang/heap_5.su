@@ -1,6 +1,7 @@
-heap_5.c:332:13:prvInsertBlockIntoFreeList	4	static
-heap_5.c:132:7:pvPortMalloc	24	static,ignoring_inline_asm
-heap_5.c:272:6:vPortFree	8	static,ignoring_inline_asm
-heap_5.c:320:8:xPortGetFreeHeapSize	0	static
-heap_5.c:326:8:xPortGetMinimumEverFreeHeapSize	0	static
-heap_5.c:393:6:vPortDefineHeapRegions	28	static,ignoring_inline_asm
+heap_5.c:336:13:prvInsertBlockIntoFreeList	4	static
+heap_5.c:134:7:pvPortMalloc	24	static,ignoring_inline_asm
+heap_5.c:275:6:vPortFree	8	static,ignoring_inline_asm
+heap_5.c:324:8:xPortGetFreeHeapSize	0	static
+heap_5.c:330:8:xPortGetMinimumEverFreeHeapSize	0	static
+heap_5.c:397:6:vPortDefineHeapRegions	32	static,ignoring_inline_asm
+heap_5.c:491:6:vPortGetHeapStats	24	static

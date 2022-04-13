@@ -36,7 +36,13 @@
  */
 
 #include "COM.h"
+#ifdef USE_I2C_EEPROM
+#include "I2C_EEPROM.h"
+#define EEPROM_WriteBytes I2C_EEPROM_WriteBytes
+#define EEPROM_ReadBytes I2C_EEPROM_ReadBytes
+#else
 #include "Flash_EEPROM.h"
+#endif
 //#include "GUI.h"
 //#include "GUI_task.h"
 #include "R61408.h"
@@ -50,6 +56,7 @@
 #include "fan.h"
 #include "SoftUART.h"
 #include "MultiLinearValueMapper.h"
+#include "RotEnc.h"
 #include <time.h>
 /* USER CODE END Includes */
 
@@ -83,7 +90,6 @@ TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim4;
 
 UART_HandleTypeDef huart1;
-UART_HandleTypeDef huart2;
 
 SRAM_HandleTypeDef hsram1;
 
@@ -91,7 +97,7 @@ SRAM_HandleTypeDef hsram1;
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .stack_size = 512,
+  .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for timerLVGL */
@@ -116,6 +122,7 @@ osThreadId_t HumanInputTaskHandle;
 void StartHumanInputTask();
 osThreadId_t COMPortTaskHandle;
 
+/* Touch Screen */
 volatile bool TSCalibAfterStart = false;
 volatile bool isTSCalibrating = false;//indicate if the user is running touch screen calibration
 static volatile bool TS_touched = false;
@@ -125,6 +132,12 @@ osThreadId_t TouchScreenTaskHandle;
 void StartTouchScreenTask();
 osThreadId_t TouchScreenCalibHandle; // Touch screen calibration task, shows the calibration screen and takes 5 points
 void StartTouchScreenCalibTask();
+/* Touch Screen End */
+
+/* Rotary Encoder */
+RotEnc_t RotEnc;
+/* Rotary Encoder End */
+
 osMessageQueueId_t COMBytesToSendQHandle;
 osMessageQueueId_t COMBytesRecvedQHandle;
 //osSemaphoreId_t GUIDataUpdatedSemaphore_handle;
@@ -158,7 +171,6 @@ static void MX_DMA_Init(void);
 static void MX_FSMC_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USART1_UART_Init(void);
-static void MX_USART2_UART_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_ADC3_Init(void);
 static void MX_CAN2_Init(void);
@@ -189,7 +201,7 @@ void onTimerRandomValue(void *argument) // randomly update widgets
 //	osMutexRelease(mtxGUIWidgetsHandle);
 }
 
-bool lvGetTouchscreenXY(lv_indev_drv_t* drv, lv_indev_data_t* data);
+
 
 void startTouchScreenCalibTask()
 {
@@ -219,20 +231,20 @@ void power_on()
 
 void clear_fault_hold()
 {
-	HAL_GPIO_WritePin(CLEAR_FAULT_GPIO_Port, CLEAR_FAULT_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(RF_12V_ON_GPIO_Port, RF_12V_ON_Pin, GPIO_PIN_RESET);
 }
 
 void clear_fault_release()
 {
-	HAL_GPIO_WritePin(CLEAR_FAULT_GPIO_Port, CLEAR_FAULT_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(RF_12V_ON_GPIO_Port, RF_12V_ON_Pin, GPIO_PIN_SET);
 }
 
 void clear_fault()
 {
 	uint8_t i=100;
-	while(i--)
-		HAL_GPIO_WritePin(CLEAR_FAULT_GPIO_Port, CLEAR_FAULT_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(CLEAR_FAULT_GPIO_Port, CLEAR_FAULT_Pin, GPIO_PIN_SET);
+	clear_fault_hold();
+	while(i--);
+	clear_fault_release();
 }
 
 /* USER CODE END PFP */
@@ -277,23 +289,8 @@ int main(void)
   FS_begin(&FS, (uint32_t*)FS_BASE_ADDR);
 
   /* init LVGL */
-  lv_init();
-  // init screen
-  static lv_disp_buf_t disp_buf;
-  static lv_color_t lv_buf_mem[LV_HOR_RES_MAX * LV_VER_RES_MAX / 10];                     /*Declare a buffer for 48 lines*/
-  lv_disp_buf_init(&disp_buf, lv_buf_mem, NULL, sizeof(lv_buf_mem) / sizeof(lv_color_t));    /*Initialize the display buffer*/
-  lv_disp_drv_t disp_drv;               /*Descriptor of a display driver*/
-  lv_disp_drv_init(&disp_drv);          /*Basic initialization*/
-  disp_drv.flush_cb = LCD_LVGL_flush;    /*Set your driver function*/
-  disp_drv.buffer = &disp_buf;          /*Assign the buffer to the display*/
-  lv_disp_drv_register(&disp_drv);      /*Finally register the driver*/
-  // init touch screen
-  lv_indev_drv_t lvIndev_drv_touchscreen;
-  lv_indev_drv_init(&lvIndev_drv_touchscreen);      /*Basic initialization*/
-  lvIndev_drv_touchscreen.type = LV_INDEV_TYPE_POINTER;
-  lvIndev_drv_touchscreen.read_cb = lvGetTouchscreenXY;
-  /*Register the driver in LVGL and save the created input device object*/
-  lv_indev_t * lvIndev_touchscreen = lv_indev_drv_register(&lvIndev_drv_touchscreen);
+
+
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -309,7 +306,6 @@ int main(void)
   MX_FSMC_Init();
   MX_SPI1_Init();
   MX_USART1_UART_Init();
-  MX_USART2_UART_Init();
   MX_ADC1_Init();
   MX_ADC3_Init();
   MX_CAN2_Init();
@@ -320,8 +316,8 @@ int main(void)
   // Make sure main power is off (Vmain)
   power_off();
   //DEBUG: Invalidate Fault
-  clear_fault_release();
-  clear_fault_hold();
+  //clear_fault_release();
+  //clear_fault_hold();
   // Saved Config: Load previous Fan settings
   fan_init(&fan1, FAN1_GPIO_Port, FAN1_Pin);
   fan_init_automode(&fan1, N_SEGS_AUTO_FAN_SPEED, AutoFanSpeed_tempC1, AutoFanSpeed_speed1, AutoFanSpeed_hyst1);
@@ -332,14 +328,24 @@ int main(void)
 
   //while(1)
   LCD_Init();
+  // init Rotary Encoder (Debounce delay 10000us(10ms))
+  RotEnc_init(&RotEnc, 10000, ENC_AX_GPIO_Port, ENC_AX_Pin, ENC_BX_GPIO_Port, ENC_BX_Pin, ENC_SWX_GPIO_Port, ENC_SWX_Pin);
+  // RotEnc is ticked in onTimerLVGL, each 5ms
   // init GUI
+  init_LVGL_GUI();
+
 //  if(!TSCalibAfterStart)
-  init_main_widgets(); // 如果要求上电时就校准触摸屏，则不加载主界�???????????????
+  init_main_widgets(); // 如果要求上电时就校准触摸屏，则不加载主界�?????????????????
 //  else
 //	  init_touchscreen_calib_widgets();
   /* USER CODE END 2 */
 
   /* Init scheduler */
+  static HeapRegion_t xHeapRegions[] = {
+    { ucHeap, sizeof(ucHeap) },
+    { NULL,   0                     }
+  };
+  vPortDefineHeapRegions(xHeapRegions);
   osKernelInitialize();
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -935,39 +941,6 @@ static void MX_USART1_UART_Init(void)
 }
 
 /**
-  * @brief USART2 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_USART2_UART_Init(void)
-{
-
-  /* USER CODE BEGIN USART2_Init 0 */
-
-  /* USER CODE END USART2_Init 0 */
-
-  /* USER CODE BEGIN USART2_Init 1 */
-
-  /* USER CODE END USART2_Init 1 */
-  huart2.Instance = USART2;
-  huart2.Init.BaudRate = 9600;
-  huart2.Init.WordLength = UART_WORDLENGTH_8B;
-  huart2.Init.StopBits = UART_STOPBITS_1;
-  huart2.Init.Parity = UART_PARITY_NONE;
-  huart2.Init.Mode = UART_MODE_TX_RX;
-  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USART2_Init 2 */
-
-  /* USER CODE END USART2_Init 2 */
-
-}
-
-/**
   * Enable DMA controller clock
   */
 static void MX_DMA_Init(void)
@@ -1004,106 +977,123 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOE, BAND_SEL6_Pin|BAND_SEL5_Pin|BAND_SEL4_Pin|BAND_SEL3_Pin
-                          |BAND_SEL2_Pin|PWR_on_sig_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOE, BAND_SEL6X_Pin|BAND_SEL5X_Pin|BAND_SEL4X_Pin|BAND_SEL3X_Pin
+                          |BAND_SEL2X_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, BAND_SEL1_Pin|BAND_SEL_AUTO_Pin|LCD_RST_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOC, BAND_SEL1X_Pin|LCD_RESX_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, MCU_STATE_LED_Pin|CLEAR_FAULT_Pin|ALC_cancel_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOC, RF_bias_on_Pin|PrtctSig_Pin|EEP_WP_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LCD_BL_GPIO_Port, LCD_BL_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, MCU_STATE_LEDX_Pin|EEP_SDA_Pin|EEP_SCL_Pin|POT_SCL_Pin
+                          |POT_SDA_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, RF_12V_ON_Pin|BAND_TX_Pin|LCD_BL_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, FAN1_Pin|FAN2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(T_CS_GPIO_Port, T_CS_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(PTT_SUPPRESSX_GPIO_Port, PTT_SUPPRESSX_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pin : BAND_SEL6_Pin */
-  GPIO_InitStruct.Pin = BAND_SEL6_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(BAND_SEL6_GPIO_Port, &GPIO_InitStruct);
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(T_CSX_GPIO_Port, T_CSX_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pins : BAND_SEL5_Pin BAND_SEL4_Pin BAND_SEL3_Pin BAND_SEL2_Pin
-                           PWR_on_sig_Pin */
-  GPIO_InitStruct.Pin = BAND_SEL5_Pin|BAND_SEL4_Pin|BAND_SEL3_Pin|BAND_SEL2_Pin
-                          |PWR_on_sig_Pin;
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(PWR_on_sig_GPIO_Port, PWR_on_sig_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : BAND_SEL6X_Pin BAND_SEL5X_Pin BAND_SEL4X_Pin BAND_SEL3X_Pin
+                           BAND_SEL2X_Pin */
+  GPIO_InitStruct.Pin = BAND_SEL6X_Pin|BAND_SEL5X_Pin|BAND_SEL4X_Pin|BAND_SEL3X_Pin
+                          |BAND_SEL2X_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : BAND_SEL1_Pin BAND_SEL_AUTO_Pin LCD_RST_Pin */
-  GPIO_InitStruct.Pin = BAND_SEL1_Pin|BAND_SEL_AUTO_Pin|LCD_RST_Pin;
+  /*Configure GPIO pins : BAND_SEL1X_Pin LCD_RESX_Pin */
+  GPIO_InitStruct.Pin = BAND_SEL1X_Pin|LCD_RESX_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PC15 PC5 PC7 PC9 */
-  GPIO_InitStruct.Pin = GPIO_PIN_15|GPIO_PIN_5|GPIO_PIN_7|GPIO_PIN_9;
-  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  /*Configure GPIO pins : RF_bias_on_Pin PrtctSig_Pin EEP_WP_Pin */
+  GPIO_InitStruct.Pin = RF_bias_on_Pin|PrtctSig_Pin|EEP_WP_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : MCU_STATE_LED_Pin ALC_cancel_Pin */
-  GPIO_InitStruct.Pin = MCU_STATE_LED_Pin|ALC_cancel_Pin;
+  /*Configure GPIO pins : MCU_STATE_LEDX_Pin POT_SCL_Pin POT_SDA_Pin */
+  GPIO_InitStruct.Pin = MCU_STATE_LEDX_Pin|POT_SCL_Pin|POT_SDA_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : BAND_Pin Transmit_Pin TEMP2_HIGH_Pin */
-  GPIO_InitStruct.Pin = BAND_Pin|Transmit_Pin|TEMP2_HIGH_Pin;
+  /*Configure GPIO pins : EEP_SDA_Pin EEP_SCL_Pin */
+  GPIO_InitStruct.Pin = EEP_SDA_Pin|EEP_SCL_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : RF_12V_ON_Pin LCD_BL_Pin */
+  GPIO_InitStruct.Pin = RF_12V_ON_Pin|LCD_BL_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : BAND_TX_Pin */
+  GPIO_InitStruct.Pin = BAND_TX_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
+  HAL_GPIO_Init(BAND_TX_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : BAND_RX_Pin REV1_HIGHX_Pin T_BUSY_Pin */
+  GPIO_InitStruct.Pin = BAND_RX_Pin|REV1_HIGHX_Pin|T_BUSY_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : T_INTX_Pin */
+  GPIO_InitStruct.Pin = T_INTX_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(T_INTX_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : ENC_AX_Pin ENC_BX_Pin */
+  GPIO_InitStruct.Pin = ENC_AX_Pin|ENC_BX_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : ENC_SWX_Pin SpareSigX_Pin IMAIN_HIGHX_Pin */
+  GPIO_InitStruct.Pin = ENC_SWX_Pin|SpareSigX_Pin|IMAIN_HIGHX_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PC9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : Transmit_Pin TEMP2_HIGH_Pin */
+  GPIO_InitStruct.Pin = Transmit_Pin|TEMP2_HIGH_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB2 PB14 PB15 */
-  GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_14|GPIO_PIN_15;
-  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : LCD_BL_Pin T_CS_Pin */
-  GPIO_InitStruct.Pin = LCD_BL_Pin|T_CS_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : T_INT_Pin */
-  GPIO_InitStruct.Pin = T_INT_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(T_INT_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PD11 PD12 */
-  GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
-  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PC8 */
-  GPIO_InitStruct.Pin = GPIO_PIN_8;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : CLEAR_FAULT_Pin */
-  GPIO_InitStruct.Pin = CLEAR_FAULT_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(CLEAR_FAULT_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : TEMP1_HIGH_Pin IMAIN_HIGH_Pin VMAIN_HIGH_Pin */
-  GPIO_InitStruct.Pin = TEMP1_HIGH_Pin|IMAIN_HIGH_Pin|VMAIN_HIGH_Pin;
+  /*Configure GPIO pins : TEMP1_HIGH_Pin VMAIN_HIGH_Pin */
+  GPIO_InitStruct.Pin = TEMP1_HIGH_Pin|VMAIN_HIGH_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
@@ -1115,17 +1105,38 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : REV2_HIGH_Pin REV1_HIGH_Pin T_BUSY_Pin */
-  GPIO_InitStruct.Pin = REV2_HIGH_Pin|REV1_HIGH_Pin|T_BUSY_Pin;
+  /*Configure GPIO pin : PTT_SUPPRESSX_Pin */
+  GPIO_InitStruct.Pin = PTT_SUPPRESSX_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(PTT_SUPPRESSX_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : REV2_HIGH_Pin */
+  GPIO_InitStruct.Pin = REV2_HIGH_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  HAL_GPIO_Init(REV2_HIGH_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PE1 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1;
-  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  /*Configure GPIO pin : T_CSX_Pin */
+  GPIO_InitStruct.Pin = T_CSX_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(T_CSX_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PWR_on_sig_Pin */
+  GPIO_InitStruct.Pin = PWR_on_sig_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(PWR_on_sig_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : OverdriveX_Pin */
+  GPIO_InitStruct.Pin = OverdriveX_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(OverdriveX_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 7, 0);
@@ -1231,14 +1242,10 @@ void StartAlertTask()
 		// PTT
 		if(Transmit_GPIO_Port->IDR & Transmit_Pin)
 		{
-			// cancel ALC supression
-			ALC_cancel_GPIO_Port->BSRR = ALC_cancel_Pin;
 			trans_state_new = TRANSMITTING;
 		}
 		else
 		{
-			// Resume ALC supress voltage
-			HAL_GPIO_WritePin(ALC_cancel_GPIO_Port, ALC_cancel_Pin, GPIO_PIN_RESET);
 			if(!(PWR_on_sig_GPIO_Port->ODR & PWR_on_sig_Pin)) // if PWR_on_sig is low, the power is cut off. The state should be STANDBY
 				trans_state_new = STANDBY;
 			else
@@ -1246,30 +1253,30 @@ void StartAlertTask()
 		}
 		if(trans_state_new != trans_state) trans_state_changed= true;
 		trans_state = trans_state_new;
-		// Imain High
-		if(IMAIN_HIGH_GPIO_Port->IDR & IMAIN_HIGH_Pin)
+		// Imain HighX effective (Low)
+		if(IMAIN_HIGHX_GPIO_Port->IDR & IMAIN_HIGHX_Pin == 0)
 		{
 			Emergency_stop();
 			COM_send_message("Fault: Over-current protection triggered");
 			Imain_high = true;
 			osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-			show_msgbox_warning("警告", "主电流过�???????????????");
+			show_msgbox_warning("警告", "主电流过高");
 			osMutexRelease(mtxGUIWidgetsHandle);
 			osSemaphoreAcquire(sphWarnMsgBoxDismissed, osWaitForever);
 		}
 		// Vmain High
-		if(VMAIN_HIGH_GPIO_Port->IDR & VMAIN_HIGH_Pin)
+		if(VMAIN_HIGH_GPIO_Port->IDR & VMAIN_HIGH_Pin != 0)
 		{
 			Emergency_stop();
 			COM_send_message("Fault: Over-voltage protection triggered");
 			Vmain_high = true;
 			osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-			show_msgbox_warning("警告", "主电压过�???????????????");
+			show_msgbox_warning("警告", "主电压过高");
 			osMutexRelease(mtxGUIWidgetsHandle);
 			osSemaphoreAcquire(sphWarnMsgBoxDismissed, osWaitForever);
 		}
-		// RevPwr_high
-		if(REV1_HIGH_GPIO_Port->IDR & REV1_HIGH_Pin)
+		// RevPwr_high (Low effective)
+		if(REV1_HIGHX_GPIO_Port->IDR & REV1_HIGHX_Pin == 0)
 		{
 			Emergency_stop();
 			COM_send_message("Fault: Mismatch protection triggered (PA --> LPF)");
@@ -1285,7 +1292,7 @@ void StartAlertTask()
 			COM_send_message("Fault: Mismatch protection triggered (LPF --> ANT)");
 			SWR2_high = true;
 			osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-			show_msgbox_warning("警告", "来自天线的反射功率过�???????????????");
+			show_msgbox_warning("警告", "来自天线的反射功率过�?????????????????");
 			osMutexRelease(mtxGUIWidgetsHandle);
 			osSemaphoreAcquire(sphWarnMsgBoxDismissed, osWaitForever);
 		}
@@ -1321,28 +1328,28 @@ void StartAlertTask()
 void switch_band(band_t band)
 {
 	// Release all relays
-	HAL_GPIO_WritePin(BAND_SEL1_GPIO_Port, BAND_SEL1_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(BAND_SEL2_GPIO_Port, BAND_SEL2_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(BAND_SEL3_GPIO_Port, BAND_SEL3_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(BAND_SEL4_GPIO_Port, BAND_SEL4_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(BAND_SEL5_GPIO_Port, BAND_SEL5_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(BAND_SEL6_GPIO_Port, BAND_SEL6_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(BAND_SEL1X_GPIO_Port, BAND_SEL1X_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(BAND_SEL2X_GPIO_Port, BAND_SEL2X_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(BAND_SEL3X_GPIO_Port, BAND_SEL3X_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(BAND_SEL4X_GPIO_Port, BAND_SEL4X_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(BAND_SEL5X_GPIO_Port, BAND_SEL5X_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(BAND_SEL6X_GPIO_Port, BAND_SEL6X_Pin, GPIO_PIN_SET);
 	switch(band)
 	{
 //	case BAND_160M:
 //		HAL_GPIO_WritePin(BAND_SEL5_GPIO_Port, BAND_SEL5_Pin, GPIO_PIN_RESET);
 //		break;
 	case BAND_80M:
-		HAL_GPIO_WritePin(BAND_SEL4_GPIO_Port, BAND_SEL4_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(BAND_SEL4X_GPIO_Port, BAND_SEL4X_Pin, GPIO_PIN_RESET);
 		break;
 	case BAND_40M_30M:
-		HAL_GPIO_WritePin(BAND_SEL3_GPIO_Port, BAND_SEL3_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(BAND_SEL3X_GPIO_Port, BAND_SEL3X_Pin, GPIO_PIN_RESET);
 		break;
 	case BAND_20M_17M:
-		HAL_GPIO_WritePin(BAND_SEL2_GPIO_Port, BAND_SEL2_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(BAND_SEL2X_GPIO_Port, BAND_SEL2X_Pin, GPIO_PIN_RESET);
 		break;
 	case BAND_15M_10M:
-		HAL_GPIO_WritePin(BAND_SEL1_GPIO_Port, BAND_SEL1_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(BAND_SEL1X_GPIO_Port, BAND_SEL1X_Pin, GPIO_PIN_RESET);
 		break;
 	}
 }
@@ -1359,31 +1366,31 @@ void StartHumanInputTask()
 	 * SEL4 : 80M
 	 * SEL5,6 : 160m
 	 */
-	HAL_GPIO_WritePin(BAND_SEL1_GPIO_Port, BAND_SEL1_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(BAND_SEL2_GPIO_Port, BAND_SEL2_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(BAND_SEL3_GPIO_Port, BAND_SEL3_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(BAND_SEL4_GPIO_Port, BAND_SEL4_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(BAND_SEL5_GPIO_Port, BAND_SEL5_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(BAND_SEL6_GPIO_Port, BAND_SEL6_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(BAND_SEL_AUTO_GPIO_Port, BAND_SEL_AUTO_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(BAND_SEL1X_GPIO_Port, BAND_SEL1X_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(BAND_SEL2X_GPIO_Port, BAND_SEL2X_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(BAND_SEL3X_GPIO_Port, BAND_SEL3X_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(BAND_SEL4X_GPIO_Port, BAND_SEL4X_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(BAND_SEL5X_GPIO_Port, BAND_SEL5X_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(BAND_SEL6X_GPIO_Port, BAND_SEL6X_Pin, GPIO_PIN_SET);
+	//HAL_GPIO_WritePin(BAND_SEL_AUTO_GPIO_Port, BAND_SEL_AUTO_Pin, GPIO_PIN_SET);
 	switch_band(BAND_switch);
 	for(;;)
 	{
 		osMutexAcquire(mtxBandDataHandle, osWaitForever);
 		band_t BAND_switch_new = BAND_15M_10M;
-		if(!(BAND_SEL1_GPIO_Port->IDR & BAND_SEL1_Pin))
+		if(!(BAND_SEL1X_GPIO_Port->IDR & BAND_SEL1X_Pin))
 			BAND_switch_new = BAND_160M;
-		else if(!(BAND_SEL2_GPIO_Port->IDR & BAND_SEL2_Pin))
+		else if(!(BAND_SEL2X_GPIO_Port->IDR & BAND_SEL2X_Pin))
 			BAND_switch_new = BAND_80M;
-		else if(!(BAND_SEL3_GPIO_Port->IDR & BAND_SEL3_Pin))
+		else if(!(BAND_SEL3X_GPIO_Port->IDR & BAND_SEL3X_Pin))
 			BAND_switch_new = BAND_40M_30M;
-		else if(!(BAND_SEL4_GPIO_Port->IDR & BAND_SEL4_Pin))
+		else if(!(BAND_SEL4X_GPIO_Port->IDR & BAND_SEL4X_Pin))
 			BAND_switch_new = BAND_20M_17M;
-		else if(!(BAND_SEL5_GPIO_Port->IDR & BAND_SEL5_Pin))
+		else if(!(BAND_SEL5X_GPIO_Port->IDR & BAND_SEL5X_Pin))
 			BAND_switch_new = BAND_15M_10M;
-		else if(!(BAND_SEL6_GPIO_Port->IDR & BAND_SEL6_Pin))
+		else if(!(BAND_SEL6X_GPIO_Port->IDR & BAND_SEL6X_Pin))
 			BAND_switch_new = BAND_15M_10M;
-		else if(!(BAND_SEL_AUTO_GPIO_Port->IDR & BAND_SEL_AUTO_Pin))
+		else // No effective pin, then AUTO Band
 		{
 			if(Enable_band_remote)
 				cfg.Band_source = BAND_FROM_REMOTE;
@@ -1433,7 +1440,7 @@ void StartHumanInputTask()
 // Touch screen interrupt
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	if(HAL_GPIO_ReadPin(T_INT_GPIO_Port, T_INT_Pin) == GPIO_PIN_RESET)
+	if(HAL_GPIO_ReadPin(T_INTX_GPIO_Port, T_INTX_Pin) == GPIO_PIN_RESET)
 	{
 		osThreadFlagsSet(TouchScreenTaskHandle, 0x10); // awaken touch screen handle task
 	}
@@ -1576,12 +1583,36 @@ bool lvGetTouchscreenXY(lv_indev_drv_t* drv, lv_indev_data_t* data)
 	return false;
 }
 
+// TODO: implement the callback function for the rotary encoder
+bool lvGetRotEnc(lv_indev_drv_t* drv, lv_indev_data_t* data)
+{
+	// Rotary
+	static bool isInit = false;
+	static int32_t prevCnt;
+	if(!isInit)
+		prevCnt = RotEnc.cntRot;
+	int16_t encdiff = RotEnc.cntRot - prevCnt;
+	if(encdiff > 0)
+		data->enc_diff = 1;
+	else if(encdiff < 0)
+		data->enc_diff = -1;
+	else
+		data->enc_diff = 0;
+	// SW
+	if(RotEnc.SW.state == 0) // 0: Pressed (Button is low effective)
+		data->state = LV_INDEV_STATE_PR;
+	else
+		data->state = LV_INDEV_STATE_REL;
+	return false;
+
+}
+
 void vApplicationStackOverflowHook( TaskHandle_t xTask,
                                     signed char *pcTaskName )
 {
 	while(1);
 }
-/* 追踪Malloc失败的回调函�???????????? */
+/* 追踪Malloc失败的回调函�?????????????? */
 void vApplicationMallocFailedHook( void )
 {
 	while(1);
@@ -1621,6 +1652,7 @@ void StartDefaultTask(void *argument)
 }
 
 /* onTimerLVGL function */
+// 5ms OS timer
 void onTimerLVGL(void *argument)
 {
   /* USER CODE BEGIN onTimerLVGL */
@@ -1682,6 +1714,10 @@ void onTimerLVGL(void *argument)
 		  power_off();
 	  }
   }
+
+  /* Tick rotary encoder each 5ms */
+  RotEnc_tick(&RotEnc, 5000);
+
   /* USER CODE END onTimerLVGL */
 }
 
@@ -1702,15 +1738,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
-  // tick fan PWM drivers
   if (htim->Instance == TIM1) {
+	  // 1ms time base
+	  // tick fan PWM drivers
 	  fan_tick(&fan1, 1000, cfg.Fan1Auto, Temp1);
 	  fan_tick(&fan2, 1000, cfg.Fan2Auto, Temp2);
-	  // Auto Fan
-	  if(cfg.Fan1Auto) // core fan
-	  {
-		  // get current core temperature
-	  }
+
   }
   else if (htim->Instance == TIM4)
   {

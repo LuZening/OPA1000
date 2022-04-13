@@ -1,4 +1,4 @@
-stm32f4xx_hal_cortex.c:143:6:HAL_NVIC_SetPriorityGrouping	0	static
+stm32f4xx_hal_cortex.c:143:6:HAL_NVIC_SetPriorityGrouping	4	static
 stm32f4xx_hal_cortex.c:165:6:HAL_NVIC_SetPriority	8	static
 stm32f4xx_hal_cortex.c:187:6:HAL_NVIC_EnableIRQ	0	static
 stm32f4xx_hal_cortex.c:203:6:HAL_NVIC_DisableIRQ	0	static,ignoring_inline_asm

@@ -22,7 +22,7 @@ static uint16_t touch_read_data(uint8_t cmd)
 {
 	static uint8_t txData = 0xff;
 	// enable CS
-	HAL_GPIO_WritePin(T_CS_GPIO_Port, T_CS_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(T_CSX_GPIO_Port, T_CSX_Pin, GPIO_PIN_RESET);
 	//HAL_Delay(1);
 	// write command
 	uint8_t res = HAL_SPI_Transmit(&hspi, &cmd, 1, HAL_MAX_DELAY);
@@ -39,7 +39,7 @@ static uint16_t touch_read_data(uint8_t cmd)
 	res = HAL_SPI_TransmitReceive(&hspi, &txData, &l, 1, HAL_MAX_DELAY);
 	uint16_t r = (((uint16_t)h << 8) | l) >> 3;
 	// disable CS
-	HAL_GPIO_WritePin(T_CS_GPIO_Port, T_CS_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(T_CSX_GPIO_Port, T_CSX_Pin, GPIO_PIN_SET);
 	return r;
 }
 

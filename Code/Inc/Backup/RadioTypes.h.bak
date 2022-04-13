@@ -33,10 +33,11 @@ typedef enum {
 
 band_t freq_to_band(uint32_t freqHz);
 
-#define N_BAND_MODES 3
+#define N_BAND_MODES 4
 typedef enum
 {
-	BAND_MODE_ICOM = 0,
+	BAND_MODE_AUTO = 0,
+	BAND_MODE_ICOM,
 	BAND_MODE_YAESU,
 	BAND_MODE_KENWOOD
 } BandMode_t;

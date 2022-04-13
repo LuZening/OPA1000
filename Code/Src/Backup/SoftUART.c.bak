@@ -19,7 +19,8 @@ const uint16_t BaudRates[] = {1200, 2400, 4800, 9600, 19200};
 
 GPIO_PinState SoftUartGpioReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
 {
-	return HAL_GPIO_ReadPin(GPIOx,GPIO_Pin);
+	//return HAL_GPIO_ReadPin(GPIOx,GPIO_Pin);
+	return (GPIO_PinState)(GPIOx->IDR & GPIO_Pin) != 0UL;
 }
 
 void SoftUartGpioWritePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState)
@@ -81,7 +82,7 @@ SoftUartState_E SoftUartDisableRx(uint8_t SoftUartNumber)
 	return SoftUart_OK;
 }
 
-uint8_t SoftUartRxAlavailable(uint8_t SoftUartNumber)
+inline uint8_t SoftUartRxAlavailable(uint8_t SoftUartNumber)
 {
 	return SUart[SoftUartNumber].RxIndex;
 }

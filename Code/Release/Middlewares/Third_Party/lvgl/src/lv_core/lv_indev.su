@@ -1,8 +1,8 @@
-lv_indev.c:1028:13:indev_proc_reset_query_handler.part.0	8	static
-lv_indev.c:1405:19:get_dragged_obj.part.1	8	static
-lv_indev.c:1330:13:indev_drag_throw.part.2	40	static
+lv_indev.c:1028:13:indev_proc_reset_query_handler.part.0	4	static
+lv_indev.c:1405:19:get_dragged_obj.part.0	8	static
+lv_indev.c:1330:13:indev_drag_throw.part.0	40	static
 lv_indev.c:940:13:indev_proc_release	24	static
-lv_indev.c:159:6:lv_indev_reset.part.4	24	static
+lv_indev.c:159:6:lv_indev_reset.part.0	24	static
 lv_indev.c:66:6:_lv_indev_init	0	static
 lv_indev.c:137:14:lv_indev_get_act	0	static
 lv_indev.c:147:17:lv_indev_get_type	0	static
@@ -20,7 +20,7 @@ lv_indev.c:309:6:lv_indev_get_vect	0	static
 lv_indev.c:333:10:lv_indev_finish_drag	16	static
 lv_indev.c:361:6:lv_indev_wait_release	0	static
 lv_indev.c:371:12:lv_indev_get_obj_act	0	static
-lv_indev.c:382:13:lv_indev_get_read_task	16	static
+lv_indev.c:382:13:lv_indev_get_read_task	0	static
 lv_indev.c:1055:12:lv_indev_search_obj	24	static
 lv_indev.c:766:13:indev_proc_press	56	static
-lv_indev.c:75:6:_lv_indev_read_task	80	static
+lv_indev.c:75:6:_lv_indev_read_task	72	static

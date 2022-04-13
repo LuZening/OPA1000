@@ -68,7 +68,7 @@
 #define configMAX_PRIORITIES                     ( 56 )
 #define configMINIMAL_STACK_SIZE                 ((uint16_t)512)
 #define configTOTAL_HEAP_SIZE                    ((size_t)0x8000)
-#define configMAX_TASK_NAME_LEN                  ( 16 )
+#define configMAX_TASK_NAME_LEN                  ( 32 )
 #define configUSE_TRACE_FACILITY                 1
 #define configUSE_16_BIT_TICKS                   0
 #define configUSE_MUTEXES                        1
@@ -92,8 +92,10 @@
 #define configUSE_TIMERS                         1
 #define configTIMER_TASK_PRIORITY                ( 2 )
 #define configTIMER_QUEUE_LENGTH                 10
-//#define configTIMER_TASK_STACK_DEPTH             2048
-#define configTIMER_TASK_STACK_DEPTH             1024
+#define configTIMER_TASK_STACK_DEPTH             2048
+
+/* The following flag must be enabled only when using newlib */
+#define configUSE_NEWLIB_REENTRANT          1
 
 /* CMSIS-RTOS V2 flags */
 #define configUSE_OS2_THREAD_SUSPEND_RESUME  1
@@ -108,7 +110,7 @@ to exclude the API function. */
 #define INCLUDE_vTaskPrioritySet             1
 #define INCLUDE_uxTaskPriorityGet            1
 #define INCLUDE_vTaskDelete                  1
-#define INCLUDE_vTaskCleanUpResources        1
+#define INCLUDE_vTaskCleanUpResources        0
 #define INCLUDE_vTaskSuspend                 1
 #define INCLUDE_vTaskDelayUntil              1
 #define INCLUDE_vTaskDelay                   1
@@ -170,6 +172,7 @@ standard names. */
 /* Section where parameter definitions can be added (for instance, to override default ones in FreeRTOS.h) */
 // 使用自已声明的堆空间(可自由重定向到CCM内存)
 #define configAPPLICATION_ALLOCATED_HEAP 1
+extern uint8_t __attribute__((section(".CCMRAM_heap"))) ucHeap[configTOTAL_HEAP_SIZE];
 /* USER CODE END Defines */
 
 #endif /* FREERTOS_CONFIG_H */

@@ -1,6 +1,9 @@
 *.pdf
 *.zip
 *.rar
+*.bin
+*.elf
+*.hex
 reference
 Code_copy
 

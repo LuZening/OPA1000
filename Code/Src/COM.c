@@ -173,7 +173,7 @@ void StartCOMRecvTask()
 	uint16_t baudBand_old = 0;
 	uint16_t baudCAT_old = 0;
 	BandMode_t bandMode_old = 0;
-	SoftUartInit(0, BAND_GPIO_Port, BAND_Pin, BAND_GPIO_Port, BAND_Pin, NULL);
+	SoftUartInit(0, BAND_TX_GPIO_Port, BAND_TX_Pin, BAND_RX_GPIO_Port, BAND_RX_Pin, NULL);
 	SoftUartStart();
 	SoftUartEnableRx(0);
 	if(cfg.baudCAT > 19200)
@@ -210,7 +210,7 @@ void StartCOMRecvTask()
 //			if(cfg.baudCAT != cfg.baudBand)
 //			{
 //				needBaudResume = true;
-//				HAL_GPIO_WritePin(BAND_GPIO_Port, BAND_Pin, GPIO_PIN_SET);
+//				HAL_GPIO_WritePin(BAND_TX_GPIO_Port, BAND_TX_Pin, GPIO_PIN_SET);
 //				// temporarily Switch to USART1 baudrate to CIV baudrate
 //				HAL_UART_DeInit(&huart1);
 //				huart1.Instance->BRR = cfg.baudBand;

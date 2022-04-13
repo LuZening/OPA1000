@@ -11,7 +11,7 @@
 #ifndef LVGL_SIM
 #include "SoftUART.h"
 #include "fan.h"
-#endif LVGL_SIM
+#endif
 
 
 #ifndef LVGL_SIM
@@ -23,10 +23,11 @@ void init_sensor_calibration_control_struct(SensorCalibrationControl_t* p, const
 	p->pMapper = pMapper;
 	p->pGUIObj = NULL;
 }
-#endif LVGL_SIM
+#endif
 
 
 #ifndef LVGL_SIM
+lv_group_t *lvGroupSensorCalibWindow = NULL;
 // Display senosr calibration window (for Directional Coupler, NTC and etc)
 lv_obj_t* create_sensor_calib_window(
 		SensorCalibrationControl_t* pControl
@@ -39,6 +40,8 @@ lv_obj_t* create_sensor_calib_window(
 	osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
 
 	lv_obj_t* scr = lv_scr_act();
+	lvGroupSensorCalibWindow = lv_group_create();
+	register_group(lvGroupSensorCalibWindow);
 	// Create Background Obj
 	lv_obj_t* lvContSensorBg = lv_cont_create(scr, NULL);
 	lv_obj_set_size(lvContSensorBg, LV_HOR_RES_MAX, LV_VER_RES_MAX);
@@ -59,15 +62,20 @@ lv_obj_t* destory_sensor_calib_window(
 		SensorCalibrationControl_t* pControl
 		)
 {
+	osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
+	deregister_group(lvGroupSensorCalibWindow);
+	lvGroupSensorCalibWindow = NULL;
+	osMutexRelease(mtxGUIWidgetsHandle);
 	return NULL;
 }
 /* Sensor Calibration Window END */
-#endif LVGL_SIM
+#endif
 
 
 /* Sensor readings monitoring page BEGIN */
 lv_obj_t* lvBgSensorReadingsPage = NULL;
 lv_obj_t* lvTableSensorReadingsValues = NULL;
+lv_group_t* lvGroupSensorReadings = NULL;
 #ifndef N_SENSORS
 #define N_SENSORS 13
 #endif
@@ -87,7 +95,7 @@ static void lv_task_sensor_readings(lv_task_t * task)
 	static char s[5];
 #ifndef LVGL_SIM
 	osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-#endif LVGL_SIM
+#endif
 	// ADC1
 #if ADC1_N_CHANNELS
 	for(i = 0; i < ADC1_N_CHANNELS; ++i)
@@ -124,7 +132,7 @@ static void lv_task_sensor_readings(lv_task_t * task)
 
 #ifndef LVGL_SIM
 	osMutexRelease(mtxGUIWidgetsHandle);
-#endif LVGL_SIM
+#endif
 
 }
 
@@ -143,10 +151,12 @@ void show_sensor_readings_page()
 {
 #ifndef LVGL_SIM
 	osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-#endif LVGL_SIM
+#endif
 	lv_obj_t* scr = lv_scr_act();
 	if(lvBgSensorReadingsPage == NULL)
 	{
+		lvGroupSensorReadings = lv_group_create();
+		register_group(lvGroupSensorReadings);
 		lvBgSensorReadingsPage = lv_obj_create(scr, NULL);
 		lv_obj_set_size(lvBgSensorReadingsPage, LV_HOR_RES_MAX, LV_VER_RES_MAX);
 		//lv_obj_reset_style_list(lvBgSensorReadingsPage, LV_CONT_PART_MAIN);
@@ -154,6 +164,8 @@ void show_sensor_readings_page()
 		//lv_obj_set_style_local_bg_opa(lvBgSensorReadingsPage, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 0);
 		lv_obj_align(lvBgSensorReadingsPage, NULL, LV_ALIGN_IN_BOTTOM_LEFT, 0, 0);
 		lv_obj_set_event_cb(lvBgSensorReadingsPage, sensor_readings_page_event_handler);
+		lv_group_add_obj(lvGroupSensorReadings, lvBgSensorReadingsPage);
+		lv_group_focus_obj(lvBgSensorReadingsPage);
 	}
 	if(lvTableSensorReadingsValues == NULL)
 	{
@@ -199,16 +211,18 @@ void show_sensor_readings_page()
 	}
 #ifndef LVGL_SIM
 	osMutexRelease(mtxGUIWidgetsHandle);
-#endif LVGL_SIM
+#endif
 }
 
 void dismiss_sensor_readings_page()
 {
 #ifndef LVGL_SIM
 	osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-#endif LVGL_SIM
+#endif
 	if(lvBgSensorReadingsPage)
 	{
+		deregister_group(lvGroupSensorReadings);
+		lvGroupSensorReadings = NULL;
 		lv_obj_del_async(lvBgSensorReadingsPage);
 		lvBgSensorReadingsPage = NULL;
 		lvTableSensorReadingsValues = NULL;
@@ -220,7 +234,7 @@ void dismiss_sensor_readings_page()
 	}
 #ifndef LVGL_SIM
 	osMutexRelease(mtxGUIWidgetsHandle);
-#endif LVGL_SIM
+#endif
 }
 
 /* Sensor readings monitoring page END */
@@ -234,7 +248,7 @@ static const uint8_t FanSpeeds[] = {20, 40, 60, 80, 100};
 
 lv_obj_t* lvBgFanSettings = NULL;
 lv_obj_t* lvBtnmFanSettings = NULL;
-
+lv_group_t* lvGroupFanSettings = NULL;
 
 static void fan_settings_btnm_event_handler(lv_obj_t* pBtnm, lv_event_t e)
 {
@@ -252,7 +266,7 @@ static void fan_settings_btnm_event_handler(lv_obj_t* pBtnm, lv_event_t e)
 			cfg.Fan2Auto = false;
 			fan_set_speed(&fan1, fanspeed);
 			fan_set_speed(&fan2, fanspeed);
-#endif LVGL_SIM
+#endif
 		}
 		if(idxBtn == (sizeof(FanSpeeds) / sizeof(uint8_t))) // AUTO
 		{
@@ -260,7 +274,7 @@ static void fan_settings_btnm_event_handler(lv_obj_t* pBtnm, lv_event_t e)
 			cfg.Fan1Auto = true;
 			cfg.Fan2Auto = true;
 			// Autofan processor is ticked in main task by fixed interval
-#endif LVGL_SIM
+#endif
 		}
 		 // dismiss window
 		dismiss_fan_settings_page();
@@ -275,6 +289,8 @@ void show_fan_settings_page()
 	{
 		isFanSettingsShown = true;
 		lv_obj_t* scr = lv_scr_act();
+		lvGroupFanSettings = lv_group_create();
+		register_group(lvGroupFanSettings);
 		lvBtnmFanSettings = lv_btnmatrix_create(scr, NULL);
 		lv_obj_set_size(lvBtnmFanSettings, LV_HOR_RES_MAX * 3 / 4, LV_VER_RES_MAX * 3 / 8);
 		
@@ -291,27 +307,31 @@ void show_fan_settings_page()
 		lv_btnmatrix_set_map(lvBtnmFanSettings, sFanSettings);
 		lv_obj_align(lvBtnmFanSettings, lvContSettings, LV_ALIGN_CENTER, 0, 0);
 		lv_obj_set_event_cb(lvBtnmFanSettings, fan_settings_btnm_event_handler);
+		lv_group_add_obj(lvGroupFanSettings, lvBtnmFanSettings);
 	}
 }
 void dismiss_fan_settings_page()
 {
 #ifndef LVGL_SIM
 	osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-#endif LVGL_SIM
+#endif
 	isFanSettingsShown = false;
 	if(lvBtnmFanSettings != NULL)
 	{
+		deregister_group(lvGroupFanSettings);
+		lvGroupFanSettings = NULL;
 		lv_obj_del_async(lvBtnmFanSettings);
 		lvBtnmFanSettings = NULL;
 	}
 #ifndef LVGL_SIM
 	osMutexRelease(mtxGUIWidgetsHandle);
-#endif LVGL_SIM
+#endif
 }
 /* Fan settings page END */
 
 
 /* Communication settings page BEGIN */
+lv_group_t* lvGroupCommSettings = NULL;
 lv_obj_t* lvSolidCommSettings = NULL;
 lv_obj_t* lvContCommSettings = NULL;
 lv_obj_t* lvLblBaudCAT = NULL;
@@ -328,20 +348,22 @@ lv_obj_t* lvBtnCommSettingsCancel = NULL;
 
 static void comm_settings_event_handler(lv_obj_t * obj, lv_event_t event)
 {
-	if(obj == lvBtnCommSettingsOK && event == LV_EVENT_CLICKED)
-	{
-#ifndef LVGL_SIM
-		cfg.baudBand = BaudRates[lv_roller_get_selected(lvRollerBaudBandCIV)];
-		cfg.baudCAT = BaudRates[lv_roller_get_selected(lvRollerBaudCAT)];
-		cfg.bandMode = (BandMode_t)lv_roller_get_selected(lvRollerBandType);
-#endif LVGL_SIM
-		// All the changes will be effect by a timed task
-		dismiss_comm_Setting_page();
 
+if(obj == lvBtnCommSettingsOK && event == LV_EVENT_CLICKED)
+{
 #ifndef LVGL_SIM
-		osThreadFlagsSet(defaultTaskHandle, THREAD_FLAG_SAVE_CONFIG); // send a signal to save config
-#endif LVGL_SIM
-	}
+	cfg.baudBand = BaudRates[lv_roller_get_selected(lvRollerBaudBandCIV)];
+	cfg.baudCAT = BaudRates[lv_roller_get_selected(lvRollerBaudCAT)];
+	cfg.bandMode = (BandMode_t)lv_roller_get_selected(lvRollerBandType);
+	// All the changes will be effect by a timed task
+	osThreadFlagsSet(defaultTaskHandle, THREAD_FLAG_SAVE_CONFIG); // send a signal to save config
+#endif
+}
+
+dismiss_comm_Setting_page();
+
+
+
 }
 
 
@@ -355,6 +377,8 @@ void show_comm_setting_page()
 	lv_obj_add_style(lvSolidCommSettings, LV_OBJ_PART_MAIN, &lvStyleBackground);
 	lv_obj_align(lvSolidCommSettings, NULL, LV_ALIGN_CENTER, 0, 0);
 	*/
+	lvGroupCommSettings = lv_group_create();
+	register_group(lvGroupCommSettings);
 	// 容器 分4个子容器：CAT、波段、协议、确认按钮
 	lvContCommSettings = lv_cont_create(scr, NULL);
 	lv_obj_set_size(lvContCommSettings, LV_HOR_RES_MAX *3 / 4, LV_VER_RES_MAX *3 / 4);
@@ -391,7 +415,7 @@ void show_comm_setting_page()
 	int8_t idxBaudrateCAT =  baudrate2idx(cfg.baudCAT);
 #else
 	int8_t idxBaudrateCAT = 0;
-#endif LVGL_SIM
+#endif
 	if(idxBaudrateCAT < 0)
 	{
 #ifndef LVGL_SIM
@@ -399,10 +423,11 @@ void show_comm_setting_page()
 		idxBaudrateCAT = baudrate2idx(cfg.baudCAT);
 #else
 		idxBaudrateCAT = 0;
-#endif LVGL_SIM
+#endif
 	}
 	lv_roller_set_selected(lvRollerBaudCAT, idxBaudrateCAT, LV_ANIM_OFF);
 	lv_cont_set_fit(lvContCAT, LV_FIT_TIGHT);
+	lv_group_add_obj(lvGroupCommSettings, lvRollerBaudCAT);
 
 	//区域2：波段波特率设置
 	// 子窗口
@@ -422,7 +447,7 @@ void show_comm_setting_page()
 	int8_t idxBaudBandCIV = baudrate2idx(cfg.baudBand);
 #else
 	int8_t idxBaudBandCIV = 0;
-#endif LVGL_SIM
+#endif
 	if(idxBaudBandCIV < 0)
 	{
 #ifndef LVGL_SIM
@@ -430,10 +455,10 @@ void show_comm_setting_page()
 		idxBaudBandCIV = baudrate2idx(cfg.baudBand);
 #else
 		idxBaudBandCIV = 0;
-#endif LVGL_SIM
+#endif
 	}
 	lv_roller_set_selected(lvRollerBaudBandCIV, idxBaudBandCIV, LV_ANIM_OFF);
-
+	lv_group_add_obj(lvGroupCommSettings, lvRollerBaudBandCIV);
 
 	// 区域3：Band协议类型
 	//容器
@@ -453,7 +478,8 @@ void show_comm_setting_page()
 	if(cfg.bandMode >= N_BAND_MODES)
 		cfg.bandMode = 0;
 	lv_roller_set_selected(lvRollerBandType, (uint8_t)cfg.bandMode, LV_ANIM_OFF);
-#endif LVGL_SIM
+#endif
+	lv_group_add_obj(lvGroupCommSettings, lvRollerBandType);
 	// 区域4：确认、取消按钮
 	// 容器
 	lv_obj_t* lvContBtns = lv_cont_create(lvContCommSettings, lvContCAT);
@@ -461,6 +487,7 @@ void show_comm_setting_page()
 	lv_obj_set_style_local_pad_inner(lvContBtns, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 20);
 	// 确定按钮
 	lvBtnCommSettingsOK = lv_btn_create(lvContBtns, NULL);
+	lv_group_add_obj(lvGroupCommSettings, lvBtnCommSettingsOK);
 	//lv_obj_set_size(lvBtnCommSettingsOK, 80, 48);
 	//lv_obj_reset_style_list(lvBtnCommSettingsOK, LV_BTN_PART_MAIN);
 	lv_obj_add_style(lvBtnCommSettingsOK, LV_BTN_PART_MAIN, &lvStyleBtn);
@@ -474,7 +501,8 @@ void show_comm_setting_page()
 	lv_obj_align(lvLblBtnCommSettingsOK, lvBtnCommSettingsOK, LV_ALIGN_CENTER, 0, 0);
 	// 取消按钮
 	lvBtnCommSettingsCancel = lv_btn_create(lvContBtns, lvBtnCommSettingsOK);
-	lv_obj_set_event_cb(lvBtnCommSettingsCancel, dismiss_comm_Setting_page);
+	lv_group_add_obj(lvGroupCommSettings, lvBtnCommSettingsCancel);
+	lv_obj_set_event_cb(lvBtnCommSettingsCancel, comm_settings_event_handler);
 	// 取消标签
 	lv_obj_t* lvLblBtnCancel = lv_label_create(lvBtnCommSettingsCancel, lvLblBtnCommSettingsOK);
 	lv_label_set_text(lvLblBtnCancel, "取消");
@@ -488,11 +516,19 @@ void show_comm_setting_page()
 
 void dismiss_comm_Setting_page()
 {
+#ifndef LVGL_SIM
+	osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
+#endif
 	if(lvContCommSettings)
 	{
+		deregister_group(lvGroupCommSettings);
+		lvGroupCommSettings = NULL;
 		lv_obj_del_async(lvContCommSettings);
 		lvContCommSettings= NULL;
 	}
+#ifndef LVGL_SIM
+	osMutexRelease(mtxGUIWidgetsHandle);
+#endif
 }
 /* Communication settings page END */
 

@@ -31,6 +31,7 @@ void (*settingsBtnmContFuncs[])(void) = {
 		dismiss_settings_menu_widgets
 };
 
+lv_group_t *lvGroupSettings = NULL;
 static void settings_btnm_event_handler(lv_obj_t* pSettingsBtn, lv_event_t e)
 {
 	if(e == LV_EVENT_CLICKED)
@@ -58,14 +59,13 @@ void dismiss_settings_menu_widgets()
 	{
 #ifndef LVGL_SIM
 		osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-#endif LVGL_SIM
-
+#endif
+		deregister_group(lvGroupSettings);
+		lvGroupSettings = NULL;
 		lv_obj_del_async(lvContSettings);
-
 #ifndef LVGL_SIM
 		osMutexRelease(mtxGUIWidgetsHandle);
-#endif LVGL_SIM
-
+#endif
 		lvContSettings = NULL;
 		lvBtnmSettings = NULL;
 	}
@@ -77,11 +77,14 @@ void init_settings_menu_widgets()
 	// UTF8编码
 #ifndef LVGL_SIM
 	osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-#endif LVGL_SIM
+#endif
 	lv_obj_t* scr = lv_scr_act();
+	// 创建外部控制group
 	// Solid color fullscreen Background
 	if(lvContSettings == NULL)
 	{
+		lvGroupSettings = lv_group_create();
+		register_group(lvGroupSettings);
 		lvContSettings = lv_obj_create(scr, NULL);
 		lv_obj_set_size(lvContSettings, LV_HOR_RES_MAX, LV_VER_RES_MAX);
 		lv_obj_align(lvContSettings, NULL, LV_ALIGN_IN_BOTTOM_LEFT, 0, 0);
@@ -107,10 +110,11 @@ void init_settings_menu_widgets()
 		lv_obj_set_style_local_pad_bottom(lvBtnmSettings, LV_BTNMATRIX_PART_BTN, LV_STATE_DEFAULT, 6);
 		lv_obj_align(lvBtnmSettings, lvContSettings, LV_ALIGN_CENTER, 0, 0);
 		lv_btnmatrix_set_map(lvBtnmSettings, sSettingsBtns);
+		lv_group_add_obj(lvGroupSettings, lvBtnmSettings);
 		lv_obj_set_event_cb(lvBtnmSettings, settings_btnm_event_handler);
 //		lv_obj_set_pos(lvBtnmSettings, x, y);
 	}
 #ifndef LVGL_SIM
 	osMutexRelease(mtxGUIWidgetsHandle);
-#endif LVGL_SIM
+#endif
 }

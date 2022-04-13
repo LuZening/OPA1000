@@ -10,6 +10,8 @@
 
 #include "stm32f407xx.h"
 
+
+// OS Task: Handle Band Decoder and CAT
 extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart2;
 
