@@ -8,9 +8,9 @@
 
 #include "Flash_EEPROM.h"
 #if defined(STM32F4)
-EEPROM_typedef EEPROM = {.base_addr=(uint8_t*)(FLASH_LAST_SECTOR_BASE_ADDR), .size=FLASH_LAST_SECTOR_SIZE};
+EEPROM_typedef FlashEEPROM = {.base_addr=(uint8_t*)(FLASH_LAST_SECTOR_BASE_ADDR), .size=FLASH_LAST_SECTOR_SIZE};
 #else
-EEPROM_typedef EEPROM = {.base_addr=(uint8_t*)EEPROM_BASE_ADDR, .size=0x400};
+EEPROM_typedef FlashEEPROM = {.base_addr=(uint8_t*)EEPROM_BASE_ADDR, .size=0x400};
 #endif
 
 typedef union
@@ -20,7 +20,7 @@ typedef union
 } Quadbyte;
 
 // Notice: 4-byte alignment
-void EEPROM_WriteBytes(EEPROM_typedef *pEEPROM,uint8_t *Buffer,uint16_t Length)
+void Flash_EEPROM_WriteBytes(EEPROM_typedef *pEEPROM,uint8_t *Buffer,uint16_t Length)
 {
 	uint16_t i;
 	uint32_t* addr = (uint32_t*)pEEPROM->base_addr;
@@ -54,7 +54,7 @@ void EEPROM_WriteBytes(EEPROM_typedef *pEEPROM,uint8_t *Buffer,uint16_t Length)
     __enable_irq();
 }
 
-void EEPROM_ReadBytes(EEPROM_typedef* pEEPROM, uint8_t *Buffer,uint16_t Length)
+void Flash_EEPROM_ReadBytes(EEPROM_typedef* pEEPROM, uint8_t *Buffer,uint16_t Length)
 {
 	uint8_t* addr = pEEPROM->base_addr;
 	while(Length)

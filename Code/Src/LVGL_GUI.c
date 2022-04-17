@@ -6,8 +6,11 @@
  */
 
 #include "LVGL_GUI.h"
+#ifndef LVGL_SIM
 #include "R61408.h"
+#endif
 #include <RadioTypes.h>
+#ifndef LVGL_SIM
 /* display buffer */
 lv_disp_buf_t disp_buf;
 lv_color_t lv_buf_mem[LV_HOR_RES_MAX * LV_VER_RES_MAX / 8];
@@ -15,8 +18,9 @@ lv_disp_drv_t disp_drv;
 /* External Input Controllers */
 lv_indev_drv_t lvIndev_drv_touchscreen;
 lv_indev_t * lvIndev_touchscreen;
-lv_indev_drv_t lvIndev_drv_RotEnc;
+lv_indev_drv_t lvIndev_drv_RotEnc ;
 lv_indev_t * lvIndev_RotEnc;
+#endif
 /* Input Group management */
 // Current objects to control by external inputs
 // when modify, must be protected by Mutex
@@ -198,7 +202,7 @@ lv_obj_t* lvLblMenuBtn = NULL;
 
 
 
-
+#ifndef LVGL_SIM
 void init_LVGL_GUI()
 {
 	// init LVGL library
@@ -224,7 +228,7 @@ void init_LVGL_GUI()
 	lvIndev_RotEnc = lv_indev_drv_register(&lvIndev_drv_RotEnc);
 
 }
-
+#endif
 static void init_styles()
 {
 	static bool isStyleInitialized = false;
@@ -320,7 +324,9 @@ static void init_styles()
 	lv_style_set_bg_color(&lvStyleBtn, LV_BTN_STATE_CHECKED_PRESSED, COLOR_INTERACTED);
 	lv_style_set_text_color(&lvStyleBtn, LV_STATE_DEFAULT, COLOR_PLAIN_TEXT);
 	lv_style_set_border_width(&lvStyleBtn, LV_STATE_DEFAULT, 0);
-	lv_style_set_border_width(&lvStyleBtn, LV_STATE_FOCUSED, 2);
+	lv_style_set_border_width(&lvStyleBtn, LV_STATE_FOCUSED, 3);
+	lv_style_set_border_opa(&lvStyleBtn, LV_STATE_DEFAULT, LV_OPA_COVER);
+	lv_style_set_border_color(&lvStyleBtn, LV_STATE_FOCUSED, COLOR_ACCENT);
 
 	lv_style_init(&lvStyleRoller);
 	lv_style_set_radius(&lvStyleRoller, LV_STATE_DEFAULT, 3);
@@ -329,6 +335,9 @@ static void init_styles()
 	lv_style_set_text_color(&lvStyleRoller, LV_STATE_DEFAULT, LV_COLOR_BLACK);
 	lv_style_set_text_font(&lvStyleRoller, LV_STATE_DEFAULT, &LV_FONT_EN_24);
 	lv_style_set_text_line_space(&lvStyleRoller, LV_STATE_DEFAULT, 32);
+	lv_style_set_border_width(&lvStyleRoller, LV_STATE_FOCUSED, 3);
+	lv_style_set_border_color(&lvStyleRoller, LV_STATE_FOCUSED, COLOR_ACCENT);
+	lv_style_set_border_opa(&lvStyleRoller, LV_STATE_DEFAULT, LV_OPA_COVER);
 
 	lv_style_init(&lvStyleRollerSel);
 	lv_style_set_bg_opa(&lvStyleRollerSel, LV_STATE_DEFAULT, LV_OPA_COVER);
@@ -344,10 +353,10 @@ static void lbl_freq_range_event_handle(lv_obj_t* obj, lv_event_t e)
 {
 	if(e == LV_EVENT_CLICKED && !isBandSelectorShown)
 	{
-		isBandSelectorShown = true;
 #ifndef LVGL_SIM
 		osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
 #endif
+		isBandSelectorShown = true;
 		show_band_selector();
 #ifndef LVGL_SIM
 		osMutexRelease(mtxGUIWidgetsHandle);
@@ -410,11 +419,11 @@ bool isMainWidgetsCreated = false;
 lv_group_t * lvGroupMain = NULL;
 void init_main_widgets()
 {
-	if(isMainWidgetsCreated)
-		return;
 #ifndef LVGL_SIM
 	osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
 #endif
+	if(isMainWidgetsCreated)
+		goto EXIT_INIT_MAIN_WIDGETS;
 	init_styles();
 
 	lv_obj_t* scr = lv_scr_act();
@@ -558,12 +567,14 @@ void init_main_widgets()
 
 	// 中区容器
 	lvContCurrentInfo = lv_obj_create(scr, NULL);
+	lv_group_add_obj(lvGroupMain, lvContCurrentInfo);
 	lv_obj_align(lvContCurrentInfo, lvContRevPwr, LV_ALIGN_OUT_BOTTOM_LEFT, 0, 0);
 	lv_obj_set_size(lvContCurrentInfo, LV_HOR_RES_MAX, 160);
 	lv_obj_add_style(lvContCurrentInfo, LV_OBJ_PART_MAIN, &lvStyleBackground);
+	lv_obj_set_style_local_border_color(lvContCurrentInfo, LV_OBJ_PART_MAIN, LV_STATE_FOCUSED, COLOR_ACCENT);
+	lv_obj_set_style_local_border_width(lvContCurrentInfo, LV_OBJ_PART_MAIN, LV_STATE_FOCUSED, 3);
 	// lvLblFreqRange 频率范围
 	lvLblFreqRange = lv_label_create(lvContCurrentInfo, NULL);
-	lv_group_add_obj(lvGroupMain, lvLblFreqRange);
 #ifdef LVGL_SIM
 	lv_label_set_text(lvLblFreqRange, "7.000 - 7.150 MHz");
 #endif
@@ -663,9 +674,11 @@ void init_main_widgets()
 	lvLblMenuBtn = lv_label_create(lvBtnMenu, lvLblFwdPwrTitle);
 	lv_label_set_text(lvLblMenuBtn, "设置");
 
+EXIT_INIT_MAIN_WIDGETS:
 #ifndef LVGL_SIM
 	osMutexRelease(mtxGUIWidgetsHandle);
 #endif
+	return;
 }
 
 lv_obj_t* lvContCalib = NULL; // touch screen calibration background
@@ -677,7 +690,9 @@ static void btn_event_cb_dismiss_touchscreen_calib(lv_obj_t* obj, lv_event_t e)
 {
 	if(e == LV_EVENT_CLICKED)
 	{
+
 		dismiss_touchscreen_calib_widgets();
+
 	}
 }
 // create calibration scene
@@ -762,28 +777,31 @@ void dismiss_touchscreen_calib_widgets()
 osSemaphoreId_t sphWarnMsgBoxDismissed = NULL;
 #endif
 lv_group_t* lvGroupMsgboxWarning = NULL;
+lv_obj_t* lvMsgBoxWarning = NULL;
 static void msgbox_event_handler(lv_obj_t* pMsgBox, lv_event_t e)
 {
-	if(e == LV_EVENT_VALUE_CHANGED)
+	bool isDismissed = false;
+	if(e == LV_EVENT_CLICKED)
 	{
-		if(strcmp(lv_msgbox_get_active_btn_text(pMsgBox), "关闭") == 0 )
-		{
 #ifndef LVGL_SIM
-			osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
+		osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
 #endif
-			deregister_group(lvGroupMsgboxWarning);
-			lvGroupMsgboxWarning = NULL;
-			lv_obj_del(pMsgBox);
+		lv_obj_del(lvMsgBoxWarning);
+		lvMsgBoxWarning = NULL;
+		deregister_group(lvGroupMsgboxWarning);
+		lvGroupMsgboxWarning = NULL;
+		isDismissed = true;
 #ifndef LVGL_SIM
-			osMutexRelease(mtxGUIWidgetsHandle);
+		osMutexRelease(mtxGUIWidgetsHandle);
+		if(isDismissed)
 			osSemaphoreRelease(sphWarnMsgBoxDismissed);
 #endif
-		}
 	}
 }
+
 lv_obj_t* show_msgbox_warning(const char* title, const char* content)
 {
-	static const uint16_t MSGBOX_WIDTH = LV_HOR_RES_MAX / 4;
+	static const uint16_t MSGBOX_WIDTH = LV_HOR_RES_MAX / 3;
 	static const uint16_t MSGBOX_HEIGHT = LV_VER_RES_MAX / 4;
 	static const char* btns[] = {"关闭", ""};
 #ifndef LVGL_SIM
@@ -795,22 +813,37 @@ lv_obj_t* show_msgbox_warning(const char* title, const char* content)
 #endif
 	// use a semaphore to notify the Alert task that the popup window has been dismissed
 #ifndef LVGL_SIM
+	osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
 	if(sphWarnMsgBoxDismissed == NULL)
 	{
 		sphWarnMsgBoxDismissed = osSemaphoreNew(1, 0, &WarnMsgBoxDismissedSemaphore_attr);
 	}
 #endif
+	if (lvMsgBoxWarning != NULL)
+		goto CREATE_LV_MSGBOX_WARNING_EXIT;
 	lv_obj_t* scr = lv_scr_act();
 	lvGroupMsgboxWarning = lv_group_create();
 	register_group(lvGroupMsgboxWarning);
-	lv_obj_t* pMsgBox = lv_msgbox_create(scr, NULL);
-	lv_msgbox_set_text(pMsgBox, content);
-	lv_msgbox_add_btns(pMsgBox, btns);
-	lv_obj_set_width(pMsgBox, MSGBOX_WIDTH);
-	lv_obj_set_height(pMsgBox, MSGBOX_HEIGHT);
-	lv_obj_set_event_cb(pMsgBox, msgbox_event_handler);
-	lv_group_add_obj(lvGroupMsgboxWarning, pMsgBox);
-	return pMsgBox;
+	lvMsgBoxWarning = lv_msgbox_create(scr, NULL);
+	lv_obj_set_size(lvMsgBoxWarning, MSGBOX_WIDTH, MSGBOX_HEIGHT);
+	lv_obj_add_style(lvMsgBoxWarning, LV_MSGBOX_PART_BG, &lvStyleMsgBox);
+	lv_msgbox_set_text(lvMsgBoxWarning, content);
+	lv_obj_set_style_local_text_color(lvMsgBoxWarning, LV_MSGBOX_PART_BG, LV_STATE_DEFAULT, LV_COLOR_RED);
+	lv_msgbox_add_btns(lvMsgBoxWarning, btns);
+	lv_obj_add_style(lvMsgBoxWarning, LV_MSGBOX_PART_BTN, &lvStyleBtn);
+	lv_obj_set_style_local_bg_color(lvMsgBoxWarning, LV_MSGBOX_PART_BTN, LV_STATE_DEFAULT, COLOR_BANNER_TRANSMITTING);
+	lv_obj_set_style_local_bg_color(lvMsgBoxWarning, LV_MSGBOX_PART_BTN, LV_STATE_EDITED, COLOR_BANNER_TRANSMITTING);
+	lv_obj_align_origo(lvMsgBoxWarning, NULL, LV_ALIGN_CENTER, 0, 0);
+	lv_obj_set_event_cb(lvMsgBoxWarning, msgbox_event_handler);
+	//lv_obj_set_style_local_border_color(pMsgBox, LV_MSGBOX_PART_BTN, LV_STATE_DEFAULT, LV_COLOR_GRAY);
+	//lv_obj_set_style_local_radius(pMsgBox, LV_MSGBOX_PART_BTN, LV_STATE_DEFAULT, 0);
+	lv_group_add_obj(lvGroupMsgboxWarning, lvMsgBoxWarning);
+	lv_group_set_editing(lvGroupMsgboxWarning, true);
+CREATE_LV_MSGBOX_WARNING_EXIT:
+#ifndef LVGL_SIM
+	osMutexRelease(mtxGUIWidgetsHandle);
+#endif
+	return lvMsgBoxWarning;
 }
 /* 出错警告msgbox End */
 
@@ -819,10 +852,11 @@ lv_obj_t* show_msgbox_warning(const char* title, const char* content)
 lv_group_t* lvGroupBandSel = NULL;
 static void bandsel_event_handler(lv_obj_t* pBandsel, lv_event_t e)
 {
-	if(e == LV_EVENT_VALUE_CHANGED)
+	if(e == LV_EVENT_CLICKED && isBandSelectorShown)
 	{
 //		uint16_t nBtnID = lv_msgbox_get_active_btn(pBandsel);
 		const char* sBtnText = lv_msgbox_get_active_btn_text(pBandsel);
+		if (sBtnText == NULL) return;
 		if(strncmp(sBtnText, "取消", sizeof("取消")+1) == 0)
 		{
 		}
@@ -846,9 +880,9 @@ static void bandsel_event_handler(lv_obj_t* pBandsel, lv_event_t e)
 #ifndef LVGL_SIM
 		osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
 #endif
+		lv_obj_del(pBandsel);
 		deregister_group(lvGroupBandSel);
 		lvGroupBandSel = NULL;
-		lv_obj_del(pBandsel);
 #ifndef LVGL_SIM
 		osMutexRelease(mtxGUIWidgetsHandle);
 #endif
@@ -878,7 +912,6 @@ lv_obj_t* show_band_selector()
 	lvGroupBandSel = lv_group_create();
 	register_group(lvGroupBandSel);
 	lv_obj_t* lvMsgBox = lv_msgbox_create(scr, NULL);
-	lv_group_add_obj(lvGroupBandSel, lvMsgBox);
 	lv_obj_set_size(lvMsgBox, MSGBOX_WIDTH, MSGBOX_HEIGHT);
 	lv_obj_align(lvMsgBox, scr, LV_ALIGN_CENTER, 0, -MSGBOX_HEIGHT / 2);
 	lv_msgbox_set_text(lvMsgBox, "选择波段");
@@ -889,6 +922,9 @@ lv_obj_t* show_band_selector()
 	lv_obj_set_event_cb(lvMsgBox, bandsel_event_handler);
 	lv_obj_set_style_local_border_color(lvMsgBox, LV_MSGBOX_PART_BTN, LV_STATE_DEFAULT, LV_COLOR_GRAY);
 	lv_obj_set_style_local_radius(lvMsgBox, LV_MSGBOX_PART_BTN, LV_STATE_DEFAULT, 0);
+	lv_group_add_obj(lvGroupBandSel, lv_msgbox_get_btnmatrix(lvMsgBox));
+	lv_group_set_editing(lvGroupBandSel, true);
+
 #ifndef LVGL_SIM
 	osMutexRelease(mtxGUIWidgetsHandle);
 #endif

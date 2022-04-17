@@ -14,7 +14,7 @@ lv_obj_t* lvBtnmSettings = NULL;
 
 const char* sSettingsBtns[] = {
 		"校准FWD1", "校准REV1","\n",
-		"校准FWD2","校准REV2","\n",
+		"校准FWD2","校准REV2", "\n",
 		"检查传感器","\n",
 		"风扇","\n",
 		"波段通信","\n",
@@ -60,9 +60,9 @@ void dismiss_settings_menu_widgets()
 #ifndef LVGL_SIM
 		osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
 #endif
+		lv_obj_del(lvContSettings);
 		deregister_group(lvGroupSettings);
 		lvGroupSettings = NULL;
-		lv_obj_del_async(lvContSettings);
 #ifndef LVGL_SIM
 		osMutexRelease(mtxGUIWidgetsHandle);
 #endif
@@ -111,6 +111,7 @@ void init_settings_menu_widgets()
 		lv_obj_align(lvBtnmSettings, lvContSettings, LV_ALIGN_CENTER, 0, 0);
 		lv_btnmatrix_set_map(lvBtnmSettings, sSettingsBtns);
 		lv_group_add_obj(lvGroupSettings, lvBtnmSettings);
+		lv_group_set_editing(lvGroupSettings, true);
 		lv_obj_set_event_cb(lvBtnmSettings, settings_btnm_event_handler);
 //		lv_obj_set_pos(lvBtnmSettings, x, y);
 	}

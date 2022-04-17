@@ -270,7 +270,14 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-  // Load Config
+  /* init EEPROM begin */
+  // Load Config from EEPROM
+#if sizeof(cfg) > 256
+#error ("The size of persistent config content is too big to fit in the EEPROM 256Bytes max")
+#endif
+#ifdef USE_I2C_EEPROM
+  I2C_EEPROM_init(&EEPROM, AT24C02, EEP_SCL_GPIO_Port, EEP_SCL_Pin, EEP_SDA_GPIO_Port, EEP_SDA_Pin, EEP_WP_GPIO_Port, EEP_WP_Pin, 0x00);
+#endif
   EEPROM_ReadBytes(&EEPROM, (uint8_t*)&cfg, sizeof(cfg));
   isCfgValid = isPersistentVarsValid(&cfg); // check if config is valid
   if(!isCfgValid)
@@ -287,7 +294,7 @@ int main(void)
   pTSCalib = &cfg.TSCalibInfo;
   // init FS
   FS_begin(&FS, (uint32_t*)FS_BASE_ADDR);
-
+  /* init EEPROM end */
   /* init LVGL */
 
 
@@ -1199,26 +1206,80 @@ static void MX_FSMC_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-void Emergency_stop()
+void suppress_PTT()
 {
-	HAL_GPIO_WritePin(PWR_on_sig_GPIO_Port, PWR_on_sig_Pin, GPIO_PIN_RESET);
+	//HAL_GPIO_WritePin(PWR_on_sig_GPIO_Port, PWR_on_sig_Pin, GPIO_PIN_RESET);
+	// Suppress PTT
+	HAL_GPIO_WritePin(PTT_SUPPRESSX_GPIO_Port, PTT_SUPPRESSX_Pin, GPIO_PIN_RESET);
+}
+
+void allow_PTT()
+{
+	// Suppress PTT
+	HAL_GPIO_WritePin(PTT_SUPPRESSX_GPIO_Port, PTT_SUPPRESSX_Pin, GPIO_PIN_SET);
 }
 // Alert handling task, where binary inputs are processed
 // TODO design Alert window
+const GPIO_TypeDef* AlertInputGPIOPorts[] = {
+		IMAIN_HIGHX_GPIO_Port,
+		VMAIN_HIGH_GPIO_Port,
+		REV1_HIGHX_GPIO_Port,
+		REV2_HIGH_GPIO_Port,
+		TEMP1_HIGH_GPIO_Port,
+		TEMP2_HIGH_GPIO_Port,
+		OverdriveX_GPIO_Port,
+};
+const uint16_t AlertInputGPIOPins[] = {
+		IMAIN_HIGHX_Pin,
+		VMAIN_HIGH_Pin,
+		REV1_HIGHX_Pin,
+		REV2_HIGH_Pin,
+		TEMP1_HIGH_Pin,
+		TEMP2_HIGH_Pin,
+		OverdriveX_Pin,
+};
+const char* AlertDebugMessages[] = {
+		"Fault: Main current (Imain) too high",
+		"Fault: Main Voltage (Vmain) too high",
+		"Fault: Reverse Power 1 (Rev1) too high",
+		"Fault: Reverse Power 2 (Rev2) too high",
+		"Fault: Core Temperature (Temp1) too high",
+		"Fault: Ambient Temperature (Temp2) too high",
+		"Fault: RF Input Overdrive",
+};
+const char* AlertGUIMessages[] = {
+		"主电流过高",
+		"主电压过高",
+		"反射功率1过高",
+		"反射功率2过高",
+		"核心温度过高",
+		"周边温度过高",
+		"RF输入过载",
+};
+const uint8_t AlertInputActiveLevels[] = {
+		GPIO_PIN_RESET,
+		GPIO_PIN_SET,
+		GPIO_PIN_RESET,
+		GPIO_PIN_SET,
+		GPIO_PIN_SET,
+		GPIO_PIN_SET,
+		GPIO_PIN_RESET,
+};
+const uint8_t AlertTrigThresholds[] = {
+		1,
+		1,
+		2,
+		2,
+		5,
+		5,
+		2,
+};
+#define N_INPUT_LOGIC_ALERT_SIGS (sizeof(AlertInputActiveLevels) / sizeof(uint8_t))
+
 void StartAlertTask()
 {
-	for(;;)
-	{
-		osDelay(10000);
-	}
-	bool Imain_high = false;
-	bool Vmain_high = false;
-	bool SWR1_high = false;
-	bool SWR2_high = false;
-	bool Temp1_high = false;
-	bool Temp2_high = false;
-	Transmission_State_t trans_state_new;
-	bool trans_state_changed = false;
+	static uint8_t AlertTrigCounts[N_INPUT_LOGIC_ALERT_SIGS] = {0};
+	uint8_t i;
 #ifdef USING_MY_GUI
 	// open files in advance
 	const uint16_t* BMP_standby = (const uint16_t*)FS_open(&FS, FILENAME_BMP_STANDBY).p_content;
@@ -1231,96 +1292,48 @@ void StartAlertTask()
 	const uint16_t* BMP_Temp1_High = (const uint16_t*)FS_open(&FS, FILENAME_BMP_ALERT_CONTENT_TEMP1HIGH).p_content;
 	const uint16_t* BMP_Temp2_High = (const uint16_t*)FS_open(&FS, FILENAME_BMP_ALERT_CONTENT_TEMP2HIGH).p_content;
 #endif
+
 	for(;;)
 	{
-		Imain_high = false;
-		Vmain_high = false;
-		SWR1_high = false;
-		SWR2_high = false;
-		Temp1_high = false;
-		Temp2_high = false;
-		// PTT
-		if(Transmit_GPIO_Port->IDR & Transmit_Pin)
+		/* Update Trans state */
+		// GUI widgets will be updated in onTimerLVGL
+		// to avoid spending too much time in alert processing
+		if(HAL_GPIO_ReadPin(Transmit_GPIO_Port, Transmit_Pin) == GPIO_PIN_SET)
 		{
-			trans_state_new = TRANSMITTING;
+			trans_state = TRANSMITTING;
 		}
 		else
 		{
 			if(!(PWR_on_sig_GPIO_Port->ODR & PWR_on_sig_Pin)) // if PWR_on_sig is low, the power is cut off. The state should be STANDBY
-				trans_state_new = STANDBY;
+				trans_state = STANDBY;
 			else
-				trans_state_new = RECEIVING;
+				trans_state = RECEIVING;
 		}
-		if(trans_state_new != trans_state) trans_state_changed= true;
-		trans_state = trans_state_new;
-		// Imain HighX effective (Low)
-		if(IMAIN_HIGHX_GPIO_Port->IDR & IMAIN_HIGHX_Pin == 0)
-		{
-			Emergency_stop();
-			COM_send_message("Fault: Over-current protection triggered");
-			Imain_high = true;
-			osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-			show_msgbox_warning("警告", "主电流过高");
-			osMutexRelease(mtxGUIWidgetsHandle);
-			osSemaphoreAcquire(sphWarnMsgBoxDismissed, osWaitForever);
-		}
-		// Vmain High
-		if(VMAIN_HIGH_GPIO_Port->IDR & VMAIN_HIGH_Pin != 0)
-		{
-			Emergency_stop();
-			COM_send_message("Fault: Over-voltage protection triggered");
-			Vmain_high = true;
-			osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-			show_msgbox_warning("警告", "主电压过高");
-			osMutexRelease(mtxGUIWidgetsHandle);
-			osSemaphoreAcquire(sphWarnMsgBoxDismissed, osWaitForever);
-		}
-		// RevPwr_high (Low effective)
-		if(REV1_HIGHX_GPIO_Port->IDR & REV1_HIGHX_Pin == 0)
-		{
-			Emergency_stop();
-			COM_send_message("Fault: Mismatch protection triggered (PA --> LPF)");
-			SWR1_high = true;
-			osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-			show_msgbox_warning("警告", "来自滤波器的反射功率过高");
-			osMutexRelease(mtxGUIWidgetsHandle);
-			osSemaphoreAcquire(sphWarnMsgBoxDismissed, osWaitForever);
-		}
-		if(REV2_HIGH_GPIO_Port->IDR & REV2_HIGH_Pin)
-		{
-			Emergency_stop();
-			COM_send_message("Fault: Mismatch protection triggered (LPF --> ANT)");
-			SWR2_high = true;
-			osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-			show_msgbox_warning("警告", "来自天线的反射功率过�?????????????????");
-			osMutexRelease(mtxGUIWidgetsHandle);
-			osSemaphoreAcquire(sphWarnMsgBoxDismissed, osWaitForever);
-		}
-		// Temp1_high
-		if(TEMP1_HIGH_GPIO_Port->IDR & TEMP1_HIGH_Pin)
-		{
-			Emergency_stop();
-			COM_send_message("Fault: Over temperature protection triggered (Core)");
-			Temp1_high = true;
-			osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-			show_msgbox_warning("警告", "核心温度过高");
-			osMutexRelease(mtxGUIWidgetsHandle);
-			osSemaphoreAcquire(sphWarnMsgBoxDismissed, osWaitForever);
-		}
-		// Temp2_high
-		if(TEMP2_HIGH_GPIO_Port->IDR & TEMP2_HIGH_Pin)
-		{
-			Emergency_stop();
-			COM_send_message("Fault: Over temperature protection triggered (Ambient)");
-			Temp2_high = true;
-			osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-			show_msgbox_warning("警告", "电压过高");
-			osMutexRelease(mtxGUIWidgetsHandle);
-			osSemaphoreAcquire(sphWarnMsgBoxDismissed, osWaitForever);
-		}
-		// Overdrive
 
-		osDelay(pdMS_TO_TICKS(100));
+		/* Imain HighX effective (Low) */
+		for(i = 0; i < N_INPUT_LOGIC_ALERT_SIGS; ++i)
+		{
+			if(HAL_GPIO_ReadPin(AlertInputGPIOPorts[i], AlertInputGPIOPins[i]) == AlertInputActiveLevels[i])
+			{
+				if(++AlertTrigCounts[i] >= AlertTrigThresholds[i])
+				{
+					// Triggered
+					suppress_PTT();
+				//	osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
+					show_msgbox_warning("警告", AlertGUIMessages[i]);
+					//osMutexRelease(mtxGUIWidgetsHandle);
+					COM_send_message(AlertDebugMessages[i]);
+					AlertTrigCounts[i] = 0;
+					osSemaphoreAcquire(sphWarnMsgBoxDismissed, osWaitForever);
+					allow_PTT();
+				}
+			}
+			else
+			{
+				AlertTrigCounts[i] = 0;
+			}
+		}
+		//osDelay(pdMS_TO_TICKS(100));
 	}
 }
 
@@ -1612,7 +1625,7 @@ void vApplicationStackOverflowHook( TaskHandle_t xTask,
 {
 	while(1);
 }
-/* 追踪Malloc失败的回调函�?????????????? */
+
 void vApplicationMallocFailedHook( void )
 {
 	while(1);
@@ -1657,7 +1670,7 @@ void onTimerLVGL(void *argument)
 {
   /* USER CODE BEGIN onTimerLVGL */
   static uint16_t n = 0;
-  static bool isTransmitting_old = false;
+  static Transmission_State_t trans_state_old = STANDBY;
   lv_tick_inc(5);
   if((++n) % 3 == 0)
   {
@@ -1667,13 +1680,12 @@ void onTimerLVGL(void *argument)
 //	  HAL_IWDG_Refresh(&hiwdg); // feed dog
   }
   /* Check transmitting state*/
-  isTransmitting = (HAL_GPIO_ReadPin(Transmit_GPIO_Port, Transmit_Pin) == GPIO_PIN_SET);
-  if(isTransmitting != isTransmitting_old) // Transmitting state changed
+  if(trans_state != trans_state_old) // Transmitting state changed
   {
+	  osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
 	  if(isMainWidgetsCreated)
 	  {
-		  osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-		  if(MainPowerEnabled && isTransmitting)
+		  if(MainPowerEnabled && trans_state == TRANSMITTING)
 		  {
 			  lv_obj_set_style_local_bg_color(lvContTopBanner, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, COLOR_BANNER_TRANSMITTING);
 			  lv_obj_set_style_local_bg_color(lvContBottomBanner, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, COLOR_BANNER_TRANSMITTING);
@@ -1697,13 +1709,13 @@ void onTimerLVGL(void *argument)
 				  lv_label_set_text_static(lvLblTransmissionState, strTransmissionStateOnAir);
 			  }
 		  }
-		  osMutexRelease(mtxGUIWidgetsHandle);
 	  }
-	  isTransmitting_old = isTransmitting;
+	  osMutexRelease(mtxGUIWidgetsHandle);
+	  trans_state_old = trans_state;
   }
-  /* Check MAIN main power state each 1 second */
+  /* Check MAIN main power state each 500ms */
   // Never change power state when transmitting
-  if(n % 200 == 0 && !isTransmitting) // check main power state each 1 sec
+  if(n % 100 == 0 && !isTransmitting) // check main power state each 1 sec
   {
 	  if(MainPowerEnabled)
 	  {

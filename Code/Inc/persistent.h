@@ -9,7 +9,11 @@
 #include "band.h"
 
 #define THREAD_FLAG_SAVE_CONFIG 0x01
+#ifdef OPA1000
 #define VALIDATE_CODE "OPA1000"
+#elif defined(OPA2000)
+#define VALIDATE_CODE "OPA2000"
+#endif
 /* Pust persistent variables here*/
 // Load at power up
 // Save when required

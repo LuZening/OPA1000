@@ -308,6 +308,7 @@ void show_fan_settings_page()
 		lv_obj_align(lvBtnmFanSettings, lvContSettings, LV_ALIGN_CENTER, 0, 0);
 		lv_obj_set_event_cb(lvBtnmFanSettings, fan_settings_btnm_event_handler);
 		lv_group_add_obj(lvGroupFanSettings, lvBtnmFanSettings);
+		lv_group_set_editing(lvGroupFanSettings, true);
 	}
 }
 void dismiss_fan_settings_page()
@@ -318,10 +319,10 @@ void dismiss_fan_settings_page()
 	isFanSettingsShown = false;
 	if(lvBtnmFanSettings != NULL)
 	{
+		lv_obj_del(lvBtnmFanSettings);
+		lvBtnmFanSettings = NULL;
 		deregister_group(lvGroupFanSettings);
 		lvGroupFanSettings = NULL;
-		lv_obj_del_async(lvBtnmFanSettings);
-		lvBtnmFanSettings = NULL;
 	}
 #ifndef LVGL_SIM
 	osMutexRelease(mtxGUIWidgetsHandle);
@@ -349,20 +350,20 @@ lv_obj_t* lvBtnCommSettingsCancel = NULL;
 static void comm_settings_event_handler(lv_obj_t * obj, lv_event_t event)
 {
 
-if(obj == lvBtnCommSettingsOK && event == LV_EVENT_CLICKED)
-{
-#ifndef LVGL_SIM
-	cfg.baudBand = BaudRates[lv_roller_get_selected(lvRollerBaudBandCIV)];
-	cfg.baudCAT = BaudRates[lv_roller_get_selected(lvRollerBaudCAT)];
-	cfg.bandMode = (BandMode_t)lv_roller_get_selected(lvRollerBandType);
-	// All the changes will be effect by a timed task
-	osThreadFlagsSet(defaultTaskHandle, THREAD_FLAG_SAVE_CONFIG); // send a signal to save config
-#endif
-}
-
-dismiss_comm_Setting_page();
-
-
+	if( event == LV_EVENT_CLICKED)
+	{
+	#ifndef LVGL_SIM
+		if (obj == lvBtnCommSettingsOK)
+		{
+			cfg.baudBand = BaudRates[lv_roller_get_selected(lvRollerBaudBandCIV)];
+			cfg.baudCAT = BaudRates[lv_roller_get_selected(lvRollerBaudCAT)];
+			cfg.bandMode = (BandMode_t)lv_roller_get_selected(lvRollerBandType);
+			// All the changes will be effect by a timed task
+			osThreadFlagsSet(defaultTaskHandle, THREAD_FLAG_SAVE_CONFIG); // send a signal to save config
+		}
+	#endif
+		dismiss_comm_Setting_page();
+	}
 
 }
 
