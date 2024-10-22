@@ -1,12 +1,13 @@
 lv_style.c:61:6:lv_style_init	0	static
 lv_style.c:136:6:lv_style_list_init	0	static
-lv_style.c:233:6:_lv_style_list_remove_style	32	static
-lv_style.c:195:6:_lv_style_list_add_style	32	static
-lv_style.c:1070:21:get_alloc_local_style	24	static
+lv_style.c:233:6:_lv_style_list_remove_style	24	static
+lv_style.c:195:6:_lv_style_list_add_style.part.0	24	static
+lv_style.c:195:6:_lv_style_list_add_style	0	static
+lv_style.c:1070:21:get_alloc_local_style	16	static
 lv_style.c:282:6:_lv_style_list_reset	16	static
 lv_style.c:319:6:lv_style_reset	8	static
 lv_style.c:332:10:_lv_style_get_mem_size	0	static
-lv_style.c:74:6:lv_style_copy.part.1	16	static
+lv_style.c:74:6:lv_style_copy.part.0	24	static
 lv_style.c:74:6:lv_style_copy	0	static
 lv_style.c:149:6:lv_style_list_copy	16	static
 lv_style.c:95:6:lv_style_remove_prop	32	static
@@ -20,7 +21,7 @@ lv_style.c:623:9:_lv_style_get_color	0	static
 lv_style.c:657:9:_lv_style_get_ptr	28	static
 lv_style.c:684:14:lv_style_list_get_local_style	0	static
 lv_style.c:698:14:_lv_style_list_get_transition_style	0	static
-lv_style.c:711:14:_lv_style_list_add_trans_style	24	static
+lv_style.c:711:14:_lv_style_list_add_trans_style	16	static
 lv_style.c:746:6:_lv_style_list_set_local_int	16	static
 lv_style.c:762:6:_lv_style_list_set_local_opa	16	static
 lv_style.c:778:6:_lv_style_list_set_local_color	16	static

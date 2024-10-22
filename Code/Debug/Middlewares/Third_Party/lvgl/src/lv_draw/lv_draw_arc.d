@@ -5,10 +5,10 @@ Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_arc.o: \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/lv_style.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/lv_font.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/../lv_conf_internal.h \
- ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/../../../lv_conf.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lv_conf.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/lv_symbol_def.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/../lv_misc/lv_area.h \
- ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/../lv_misc/../lv_conf_internal.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/../lv_misc/lv_mem.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/../lv_misc/lv_log.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/../lv_misc/lv_types.h \
@@ -37,13 +37,13 @@ Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_arc.o: \
 
 ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/../lv_conf_internal.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/../../../lv_conf.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lv_conf.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/lv_symbol_def.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/../lv_misc/lv_area.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/../lv_misc/../lv_conf_internal.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_font/../lv_misc/lv_mem.h:
 

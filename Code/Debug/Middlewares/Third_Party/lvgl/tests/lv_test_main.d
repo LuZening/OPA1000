@@ -47,10 +47,10 @@ Middlewares/Third_Party/lvgl/tests/lv_test_main.o: \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/../lv_core/lv_style.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/lv_draw_label.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/../lv_misc/lv_bidi.h \
- ../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/../lv_misc/../lv_conf_internal.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/../lv_misc/lv_txt.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/../lv_misc/lv_area.h \
- ../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/../lv_misc/../lv_font/lv_font.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_font\lv_font.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/lv_draw_line.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/lv_draw_img.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/lv_img_decoder.h \
@@ -115,6 +115,7 @@ Middlewares/Third_Party/lvgl/tests/lv_test_main.o: \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_page.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_img.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_chart.h \
+ ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_line.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_table.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_checkbox.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_cpicker.h \
@@ -133,6 +134,7 @@ Middlewares/Third_Party/lvgl/tests/lv_test_main.o: \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/../lv_widgets/lv_img.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_win.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_tabview.h \
+ ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/../lv_widgets/lv_win.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_tileview.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_msgbox.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_btnmatrix.h \
@@ -143,7 +145,6 @@ Middlewares/Third_Party/lvgl/tests/lv_test_main.o: \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_switch.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_arc.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_spinner.h \
- ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_arc.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_calendar.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_spinbox.h \
  ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/../lv_widgets/lv_textarea.h \
@@ -247,13 +248,13 @@ Middlewares/Third_Party/lvgl/tests/lv_test_main.o: \
 
 ../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/../lv_misc/lv_bidi.h:
 
-../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/../lv_misc/../lv_conf_internal.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h:
 
 ../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/../lv_misc/lv_txt.h:
 
 ../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/../lv_misc/lv_area.h:
 
-../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/../lv_misc/../lv_font/lv_font.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_font\lv_font.h:
 
 ../Middlewares/Third_Party/lvgl/tests/../src/lv_core/../lv_draw/lv_draw_line.h:
 
@@ -383,6 +384,8 @@ Middlewares/Third_Party/lvgl/tests/lv_test_main.o: \
 
 ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_chart.h:
 
+../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_line.h:
+
 ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_table.h:
 
 ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_checkbox.h:
@@ -419,6 +422,8 @@ Middlewares/Third_Party/lvgl/tests/lv_test_main.o: \
 
 ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_tabview.h:
 
+../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/../lv_widgets/lv_win.h:
+
 ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_tileview.h:
 
 ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_msgbox.h:
@@ -438,8 +443,6 @@ Middlewares/Third_Party/lvgl/tests/lv_test_main.o: \
 ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_arc.h:
 
 ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_spinner.h:
-
-../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_arc.h:
 
 ../Middlewares/Third_Party/lvgl/tests/../src/lv_widgets/lv_calendar.h:
 

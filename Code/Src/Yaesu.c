@@ -7,11 +7,26 @@
 
 
 #include "Yaesu.h"
+#include <string.h>
+#include "COM_task.h"
+const char YAESU_CMD_GET_FREQ_VFO_A[3] = "FA";
+const char YAESU_CMD_POWER_SWITCH[3] = "PS";
+const char YAESU_CMD_TRANSMIT_POWER[3] = "PC";
+const char YAESU_CMD_READ_METER[3] = "RM";
+const char* YAESU_CMDS[] = {
+		YAESU_CMD_GET_FREQ_VFO_A,
+		YAESU_CMD_POWER_SWITCH,
+		YAESU_CMD_TRANSMIT_POWER
+};
 
-char YAESU_CMD_GET_FREQ_VFO_A[4] = "FA";
 
-Yaesu_CAT_t Yaesu_CAT = {.received = false, .overflow = false, .idxCMD = 0, .idxData = 0};
 
+Yaesu_CAT_t Yaesu_CAT = {
+		.received = false,
+		.overflow = false,
+		.idxCMD = 0,
+		.idxData = 0
+};
 
 void Yaesu_CAT_init(Yaesu_CAT_t* p)
 {
@@ -24,7 +39,7 @@ void Yaesu_CAT_init(Yaesu_CAT_t* p)
 bool Yaesu_CAT_transfer_state(Yaesu_CAT_t* p, char d)
 {
 	bool r = false;
-	if(d == ';') // End of transmission
+	if(d == YAESU_END_OF_CMD) // End of transmission
 	{
 		r = !p->overflow; // return true if buffer has not been overflowed
 		p->received = r;
@@ -34,7 +49,7 @@ bool Yaesu_CAT_transfer_state(Yaesu_CAT_t* p, char d)
 	else if(d >= '0' && d <= '9') // data
 	{
 		if(p->idxData < LEN_YAESU_DATA)
-			p->data[p->idxData++] = (d - '0');
+			p->data[p->idxData++] = (d);
 		else
 			p->overflow = true;
 	}
@@ -52,13 +67,101 @@ bool Yaesu_CAT_transfer_state(Yaesu_CAT_t* p, char d)
 uint32_t Yaesu_parse_freq(Yaesu_CAT_t* p)
 {
 	uint32_t freq = 0;
-	if(p->idxData == 8)
+	if(p->idxData == 8) // unit is kHz
 	{
-		for(int8_t i = 0; i < 8; ++i)
-		{
-			freq = 10 * freq + p->data[i];
-		}
+		freq = my_atou(p->data, 8);
+		freq *= 1000; // kHz to Hz
 	}
-	freq *= 1000; // kHz to Hz
+	else if(p->idxData == 9) // unit is Hz
+	{
+		freq = my_atou(p->data, 9);
+	}
 	return freq;
+}
+
+
+size_t Yaesu_answer_freq(uint32_t freqHz, char* buf)
+{
+	char* p = buf;
+	strcpy(p, YAESU_CMD_GET_FREQ_VFO_A);
+	p += sizeof(YAESU_CMD_GET_FREQ_VFO_A) - 1;
+	p += utoaz(freqHz, p, 9);
+	*(p++) = YAESU_END_OF_CMD;
+	*p = 0;
+	return (p - buf);
+}
+
+
+uint32_t Yaesu_parse_power_switch(Yaesu_CAT_t* p)
+{
+	uint32_t r = 255; // invalid
+	if(p->idxData > 0)
+	{
+		r = *(p->data) - '0'; // '0' off, '1' on
+	}
+	return r;
+}
+
+
+size_t Yaesu_answer_power_switch(bool isOn, char* buf)
+{
+	char* p = buf;
+	strcpy(p, YAESU_CMD_POWER_SWITCH);
+	p += sizeof(YAESU_CMD_POWER_SWITCH) - 1;
+	*(p++) = '0' + (isOn)?(1):(0);
+	*(p++) = YAESU_END_OF_CMD;
+	*p = 0;
+	return (p - buf);
+}
+
+// get set TX power
+uint32_t Yaesu_parse_tx_power(Yaesu_CAT_t* p)
+{
+	uint32_t targetPower = 0;
+	if(p->idxData >= 3) // unit is kHz
+	{
+		targetPower = my_atou(p->data, p->idxData);
+	}
+	return targetPower;
+}
+
+size_t Yaesu_answer_tx_power(uint32_t powerW, char* buf)
+{
+	char* p = buf;
+	strcpy(p, YAESU_CMD_TRANSMIT_POWER);
+	p += sizeof(YAESU_CMD_TRANSMIT_POWER) - 1;
+	p += utoaz(powerW, p, 4);
+	*(p++) = YAESU_END_OF_CMD;
+	*p = 0;
+	return (p - buf);
+}
+
+// parse which meter to read, note: not the meter reading.
+uint32_t Yaesu_parse_read_meter(Yaesu_CAT_t* p)
+{
+	uint32_t r = 0;
+	if(p->idxData > 0)
+	{
+		r = *(p->data) - '0';
+	}
+	return r;
+}
+
+// send meter reading
+size_t Yaesu_answer_read_meter(Yaesu_read_meter_t rmType , uint32_t value, char* buf)
+{
+	char* p = buf;
+	strcpy(p, YAESU_CMD_READ_METER);
+	p += sizeof(YAESU_CMD_READ_METER) - 1;
+	*(p++) = '0' + (uint8_t)rmType;
+	if (value < 1000) // by default 3 digits
+	{
+		p += utoaz(value, p, 3);
+	}
+	else // at most 4 digits
+		p += utoaz(value, p, 4);
+
+	*(p++) = YAESU_END_OF_CMD;
+	*p = 0;
+	return (p - buf);
 }

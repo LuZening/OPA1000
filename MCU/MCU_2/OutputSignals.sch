@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:MCU-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -368,7 +367,7 @@ F 3 "~" H 4250 4150 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	2850 2850 2850 3250
+	2850 2850 2850 2950
 Wire Wire Line
 	2450 4150 2550 4150
 Wire Wire Line
@@ -438,8 +437,6 @@ Wire Wire Line
 	5150 2400 5150 2500
 Wire Wire Line
 	5500 2200 5450 2200
-Text GLabel 5750 2200 2    50   Input ~ 0
-Transmit
 Wire Wire Line
 	5750 2200 5700 2200
 Text Notes 3800 2200 0    50   ~ 0
@@ -792,4 +789,11 @@ F 3 "https://www.diodes.com/assets/Datasheets/ds30896.pdf" H 5250 4600 50  0001 
 	1    5250 4600
 	1    0    0    -1  
 $EndComp
+Connection ~ 2850 2950
+Wire Wire Line
+	2850 2950 2850 3250
+Wire Wire Line
+	5750 2200 5750 2950
+Wire Wire Line
+	2850 2950 5750 2950
 $EndSCHEMATC

@@ -53,10 +53,10 @@ Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_img.o: \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_core/lv_style.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/lv_draw_label.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/lv_bidi.h \
- ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/../lv_conf_internal.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/lv_txt.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/lv_area.h \
- ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/../lv_font/lv_font.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_font\lv_font.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/lv_draw_line.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/lv_draw_img.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/lv_obj_style_dec.h \
@@ -172,13 +172,13 @@ Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_img.o: \
 
 ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/lv_bidi.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/../lv_conf_internal.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/lv_txt.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/lv_area.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/../lv_font/lv_font.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_font\lv_font.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/lv_draw_line.h:
 

@@ -5,15 +5,36 @@
  *      Author: Zening
  */
 
+/* Yaesu protocol is not only for band decoder,
+ * but also for the CAT control of the OPA2000 itself.  */
 #ifndef YAESU_H_
 #define YAESU_H_
 
+#include <stddef.h>
 #include <stdint.h>
 #include <stdbool.h>
+
 #define LEN_YAESU_CMD 4
 #define LEN_YAESU_DATA 12
+#define YAESU_END_OF_CMD ';'
+#define YAESU_ARG_DELIM  ' '
 
-extern char YAESU_CMD_GET_FREQ_VFO_A[4];
+extern const char YAESU_CMD_GET_FREQ_VFO_A[3];
+extern const char YAESU_CMD_POWER_SWITCH[3];
+extern const char YAESU_CMD_TRANSMIT_POWER[3];
+extern const char YAESU_CMD_READ_METER[3];
+extern const char* YAESU_CMDS[];
+
+typedef enum
+{
+	YAESU_RM_ALC = 4,
+	YAESU_RM_PO = 5,
+	YAESU_RM_SWR = 6,
+	OPA_RM_PR1 =7, // reverse power 1
+	OPA_RM_PR2 =8, // reverse power 2
+	OPA_RM_TEMP1 = 9,
+	OPA_RM_TEMP2 = 10,
+} Yaesu_read_meter_t;
 
 typedef struct
 {
@@ -28,8 +49,30 @@ typedef struct
 extern Yaesu_CAT_t Yaesu_CAT;
 
 void Yaesu_CAT_init(Yaesu_CAT_t* p);
+// return true if a command is received
 bool Yaesu_CAT_transfer_state(Yaesu_CAT_t* p, char d);
+
 // Yaesu radios report frequency in kHz
 uint32_t Yaesu_parse_freq(Yaesu_CAT_t* p);
+// buf[14]
+size_t Yaesu_answer_freq(uint32_t freqHz, char* buf);
+
+
+// 0: power off, 1: power on; other: bad command
+uint32_t Yaesu_parse_power_switch(Yaesu_CAT_t* p);
+// buf[
+size_t Yaesu_answer_power_switch(bool isOn, char* buf);
+
+// get set tx power, which is determined by ALC level
+// not current output power
+uint32_t Yaesu_parse_tx_power(Yaesu_CAT_t* p);
+// buf[8]
+size_t Yaesu_answer_tx_power(uint32_t powerW, char* buf);
+
+// parse which meter to read, note: not the meter reading.
+uint32_t Yaesu_parse_read_meter(Yaesu_CAT_t* p);
+// buf[9]
+size_t Yaesu_answer_read_meter(Yaesu_read_meter_t rmType , uint32_t value, char* buf);
+
 
 #endif /* YAESU_H_ */

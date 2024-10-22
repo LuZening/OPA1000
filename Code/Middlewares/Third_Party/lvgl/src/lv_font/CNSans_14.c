@@ -1285,7 +1285,6 @@ static LV_ATTRIBUTE_LARGE_CONST const uint8_t gylph_bitmap[] = {
     0xe, 0x8c, 0x70
 };
 
-
 /*---------------------
  *  GLYPH DESCRIPTION
  *--------------------*/

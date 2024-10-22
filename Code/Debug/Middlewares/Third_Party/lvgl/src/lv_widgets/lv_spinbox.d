@@ -10,7 +10,7 @@ Middlewares/Third_Party/lvgl/src/lv_widgets/lv_spinbox.o: \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_font/../lv_conf_internal.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_font/lv_symbol_def.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_font/../lv_misc/lv_area.h \
- ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_font/../lv_misc/../lv_conf_internal.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_font/../lv_misc/lv_mem.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_font/../lv_misc/lv_log.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_font/../lv_misc/lv_types.h \
@@ -33,7 +33,7 @@ Middlewares/Third_Party/lvgl/src/lv_widgets/lv_spinbox.o: \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_hal/../lv_misc/lv_ll.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_hal/../lv_misc/lv_mem.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_hal/../lv_misc/lv_task.h \
- ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_hal/../lv_misc/../lv_conf_internal.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_hal/../lv_misc/lv_ll.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_hal/lv_hal_indev.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_hal/../lv_conf_internal.h \
@@ -42,10 +42,10 @@ Middlewares/Third_Party/lvgl/src/lv_widgets/lv_spinbox.o: \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/../lv_core/lv_style.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/lv_draw_label.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/../lv_misc/lv_bidi.h \
- ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/../lv_misc/../lv_conf_internal.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/../lv_misc/lv_txt.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/../lv_misc/lv_area.h \
- ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/../lv_misc/../lv_font/lv_font.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_font\lv_font.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/lv_draw_line.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/lv_draw_img.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/lv_img_decoder.h \
@@ -62,18 +62,18 @@ Middlewares/Third_Party/lvgl/src/lv_widgets/lv_spinbox.o: \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/lv_cont.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_core/lv_indev.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_core/lv_obj.h \
- ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_core/../lv_hal/lv_hal_indev.h \
- ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_core/../lv_core/lv_group.h \
- ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_core/../lv_core/lv_obj.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_hal\lv_hal_indev.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_core\lv_group.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_core\lv_obj.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_misc/lv_anim.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/lv_label.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_font/lv_font.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_font/lv_symbol_def.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_misc/lv_txt.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_draw/lv_draw.h \
- ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_draw/../lv_conf_internal.h \
- ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_draw/../lv_core/lv_style.h \
- ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_draw/../lv_misc/lv_txt.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_core\lv_style.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_misc\lv_txt.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_draw/lv_img_decoder.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_draw/lv_draw_rect.h \
  ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_draw/lv_draw_label.h \
@@ -116,7 +116,7 @@ Middlewares/Third_Party/lvgl/src/lv_widgets/lv_spinbox.o: \
 
 ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_font/../lv_misc/lv_area.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_font/../lv_misc/../lv_conf_internal.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_font/../lv_misc/lv_mem.h:
 
@@ -162,7 +162,7 @@ Middlewares/Third_Party/lvgl/src/lv_widgets/lv_spinbox.o: \
 
 ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_hal/../lv_misc/lv_task.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_hal/../lv_misc/../lv_conf_internal.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_hal/../lv_misc/lv_ll.h:
 
@@ -180,13 +180,13 @@ Middlewares/Third_Party/lvgl/src/lv_widgets/lv_spinbox.o: \
 
 ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/../lv_misc/lv_bidi.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/../lv_misc/../lv_conf_internal.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/../lv_misc/lv_txt.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/../lv_misc/lv_area.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/../lv_misc/../lv_font/lv_font.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_font\lv_font.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_core/../lv_draw/lv_draw_line.h:
 
@@ -220,11 +220,11 @@ Middlewares/Third_Party/lvgl/src/lv_widgets/lv_spinbox.o: \
 
 ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_core/../lv_hal/lv_hal_indev.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_hal\lv_hal_indev.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_core/../lv_core/lv_group.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_core\lv_group.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_core/../lv_core/lv_obj.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_core\lv_obj.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_misc/lv_anim.h:
 
@@ -238,11 +238,11 @@ Middlewares/Third_Party/lvgl/src/lv_widgets/lv_spinbox.o: \
 
 ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_draw/lv_draw.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_draw/../lv_conf_internal.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_draw/../lv_core/lv_style.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_core\lv_style.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_draw/../lv_misc/lv_txt.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_misc\lv_txt.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_widgets/../lv_widgets/../lv_draw/lv_img_decoder.h:
 

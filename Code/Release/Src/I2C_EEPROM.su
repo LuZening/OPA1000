@@ -1,0 +1,12 @@
+I2C_EEPROM.c:80:13:start_AT24C	16	static
+I2C_EEPROM.c:90:13:stop_AT24C	32	static
+I2C_EEPROM.c:115:13:send_byte_AT24C	56	static
+I2C_EEPROM.c:28:6:SET_PIN	0	static
+I2C_EEPROM.c:33:6:CLEAR_PIN	0	static
+I2C_EEPROM.c:38:9:GET_PIN	0	static
+I2C_EEPROM.c:44:9:get_op_AT24C	0	static
+I2C_EEPROM.c:70:6:WP_AT24C	0	static
+I2C_EEPROM.c:75:6:release_WP_AT24C	0	static
+I2C_EEPROM.c:301:6:I2C_EEPROM_init	24	static
+I2C_EEPROM.c:325:8:I2C_EEPROM_WriteBytes	32	static
+I2C_EEPROM.c:339:8:I2C_EEPROM_ReadBytes	56	static

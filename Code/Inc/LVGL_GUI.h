@@ -1,15 +1,42 @@
 #ifndef __LVGL_GUI_H
 #define __LVGL_GUI_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifndef LVGL_SIM
 #include "main.h"
-#include "lvgl.h"
 #include "RadioTypes.h"
-#include "math.h"
 #include "cmsis_os.h"
+#endif
+#include "math.h"
+#include "lvgl.h"
 #include <string.h>
 
-// acuqire this mutex before modifying LVGL GUI contents
-extern osMutexId_t mtxGUIWidgetsHandle;
+	// acuqire this mutex before modifying LVGL GUI contents
+#ifndef LVGL_SIM
+	extern osMutexId_t mtxGUIWidgetsHandle;
+#endif
+
+/* display buffer */
+extern lv_disp_buf_t disp_buf;
+extern lv_color_t lv_buf_mem[LV_HOR_RES_MAX * LV_VER_RES_MAX / 8];
+extern lv_disp_drv_t disp_drv;
+
+/* External Input Controllers */
+extern lv_indev_drv_t lvIndev_drv_touchscreen;
+extern lv_indev_t * lvIndev_touchscreen;
+extern bool lvGetTouchscreenXY(lv_indev_drv_t* drv, lv_indev_data_t* data);
+extern lv_indev_drv_t lvIndev_drv_RotEnc;
+extern lv_indev_t * lvIndev_RotEnc;
+extern bool lvGetRotEnc(lv_indev_drv_t* drv, lv_indev_data_t* data);
+lv_group_t* get_current_group();
+bool register_group(lv_group_t* p);
+bool deregister_group(lv_group_t* p);
+
+
+void init_LVGL_GUI();
 
 #define COLOR_PLAIN_TEXT LV_COLOR_WHITE
 #define COLOR_BACKGROUND LV_COLOR_MAKE(37, 40, 42)
@@ -18,7 +45,9 @@ extern osMutexId_t mtxGUIWidgetsHandle;
 #define COLOR_INTERACTABLE LV_COLOR_MAKE(0, 160, 225) // cyan blue
 #define COLOR_INTERACTED LV_COLOR_MAKE(0, 120, 180) // darkened cyan blue
 #define COLOR_BANNER_IDLE LV_COLOR_BLUE
-#define COLOR_BANNER_ACTIVE LV_COLOR_MAKE(0xfa,0xcc,0x2e) // dark yellow
+//#define COLOR_BANNER_ACTIVE LV_COLOR_MAKE(0xfa,0xcc,0x2e) // dark yellow
+#define COLOR_BANNER_ACTIVE LV_COLOR_MAKE(0xea, 0xb9, 0x06) // dark yellow
+#define COLOR_BANNER_ACTIVE_DARKENED LV_COLOR_MAKE(0xea-10, 0xb9-10, 0x06)
 #define COLOR_BANNER_TRANSMITTING LV_COLOR_MAKE(0xdf,0x01,0x01) // dark red
 #define COLOR_ROLLER_BACKGROUND LV_COLOR_MAKE(0xee, 0xee, 0xee)
 
@@ -27,11 +56,28 @@ extern osMutexId_t mtxGUIWidgetsHandle;
 #define PROGBAR_MAX_VALUE_REVPWR 1000
 #define PROGBAR_MAX_VALUE_SWR 1000 // maps 0.0f-1.0f to 0-1000
 
-//LV_FONT_DECLARE(CNSans_14);
-LV_FONT_DECLARE(CNSans_24);
-LV_FONT_DECLARE(lv_font_montserrat_16);
-LV_FONT_DECLARE(lv_font_montserrat_24);
-LV_FONT_DECLARE(lv_font_montserrat_48);
+	LV_FONT_DECLARE(CNSans_18);
+#define LV_FONT_CN_18 CNSans_18
+	LV_FONT_DECLARE(CNSans_24);
+#define LV_FONT_CN_24 CNSans_24
+	//LV_FONT_DECLARE(lv_font_montserrat_16);
+	//LV_FONT_DECLARE(lv_font_montserrat_24);
+	//LV_FONT_DECLARE(lv_font_montserrat_48);
+//	LV_FONT_DECLARE(font_montserrat_16_tiny);
+	LV_FONT_DECLARE(font_montserrat_24_tiny);
+	LV_FONT_DECLARE(font_montserrat_48_tiny);
+#define LV_FONT_EN_16 lv_font_montserrat_16
+#define LV_FONT_EN_24 font_montserrat_24_tiny
+#define LV_FONT_EN_48 font_montserrat_48_tiny
+
+#define	UNICODE_DEGREE_CELSIUS "℃"
+#define UNICODE_DEGREE_FAHRENHEIT "℉"
+#define	UNICODE_DEGREE "°"
+#ifndef USE_DEGREE_FAHRENHEIT
+	#define UNICODE_DEGREE_TEMPERATURE UNICODE_DEGREE_CELSIUS
+#else
+	#define UNICODE_DEGREE_TEMPERATURE UNICODE_DEGREE_FAHRENHEIT
+#endif
 /* Styles */
 extern lv_style_t lvStyleBackground;
 // 上下栏syle
@@ -116,12 +162,13 @@ extern lv_obj_t* lvLblImain;
 // 电压
 extern lv_obj_t* lvLblVmain;
 
+
 // create main scene
 void init_main_widgets();
 
 
 // show pop-up warnings
-typedef struct{
+typedef struct {
 	lv_obj_t* lvContTitle;
 	lv_obj_t* lvContBody;
 	lv_obj_t* lvLblTitle;
@@ -130,8 +177,11 @@ typedef struct{
 	lv_obj_t* lvBtnCancel;
 } MsgBox_t;
 
-// create a message box object and show it
-extern osSemaphoreId_t sphWarnMsgBoxDismissed;
+#ifndef LVGL_SIM
+	// create a message box object and show it
+	extern osSemaphoreId_t sphWarnMsgBoxDismissed;
+#endif
+
 #define FLAG_WARNING_MSG_BOX_DISMISSED 0x02
 lv_obj_t* show_msgbox_warning(const char* title, const char* content);
 
@@ -154,18 +204,20 @@ lv_obj_t* show_band_selector();
 #define SWR_LOGSCALE_ANCHORPOINT_RANGE (SWR_LOGSCALE_X1 - SWR_LOGSCALE_X0)
 
 void number2text(char* dest,
-		int number, // value without decimal point
-		uint8_t decimal, // digits of decimals (0: integer, 1: 1.1, 2: 1.10)
-		char suffix);
+	int number, // value without decimal point
+	uint8_t decimal, // digits of decimals (0: integer, 1: 1.1, 2: 1.10)
+	char suffix);
 
 void my_utoa(char* dest, uint16_t num);
 void my_i16toa(char* dest, int16_t num);
 
-void GUI_set_transmission_state(Transmission_State_t state);
+#ifndef LVGL_SIM
+	void GUI_set_transmission_state(Transmission_State_t state);
 
-void GUI_set_band_info(band_t band);
+	void GUI_set_band_info(band_t band);
 
-void GUI_set_band_decoder_info(BandMode_t mode);
+	void GUI_set_band_decoder_info(BandMode_t mode);
+#endif
 
 void GUI_set_FWD_progbar(uint16_t watt);
 
@@ -208,5 +260,10 @@ void dismiss_settings_menu_widgets();
 /* Settings Menu Scene end */
 
 
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

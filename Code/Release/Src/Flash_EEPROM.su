@@ -1,2 +1,2 @@
-Flash_EEPROM.c:23:6:EEPROM_WriteBytes	56	static,ignoring_inline_asm
-Flash_EEPROM.c:57:6:EEPROM_ReadBytes	0	static
+Flash_EEPROM.c:23:6:Flash_EEPROM_WriteBytes	56	static,ignoring_inline_asm
+Flash_EEPROM.c:57:6:Flash_EEPROM_ReadBytes	0	static

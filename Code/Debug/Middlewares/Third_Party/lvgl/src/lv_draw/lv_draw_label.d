@@ -54,7 +54,7 @@ Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o: \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_conf_internal.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/lv_img_buf.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/lv_fs.h \
- ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/../lv_conf_internal.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/lv_mem.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/lv_types.h \
  ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/lv_obj_style_dec.h \
@@ -168,7 +168,7 @@ Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o: \
 
 ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/lv_fs.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/../lv_conf_internal.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lvgl\src\lv_conf_internal.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_draw/../lv_core/../lv_draw/../lv_misc/lv_mem.h:
 

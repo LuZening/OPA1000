@@ -16,11 +16,11 @@ lv_indev.c:309:6:lv_indev_get_vect	16	static
 lv_indev.c:333:10:lv_indev_finish_drag	24	static
 lv_indev.c:361:6:lv_indev_wait_release	16	static
 lv_indev.c:371:12:lv_indev_get_obj_act	4	static
-lv_indev.c:382:13:lv_indev_get_read_task	24	static
+lv_indev.c:382:13:lv_indev_get_read_task	16	static
 lv_indev.c:401:13:indev_pointer_proc	16	static
 lv_indev.c:428:13:indev_keypad_proc	32	static
 lv_indev.c:585:13:indev_encoder_proc	40	static
-lv_indev.c:736:13:indev_button_proc	24	static
+lv_indev.c:736:13:indev_button_proc	16	static
 lv_indev.c:766:13:indev_proc_press	40	static
 lv_indev.c:940:13:indev_proc_release	24	static
 lv_indev.c:1028:13:indev_proc_reset_query_handler	16	static

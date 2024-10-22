@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name RF_input-rescue)(type Legacy)(uri ${KIPRJMOD}/RF_input-rescue.lib)(options "")(descr ""))
+)

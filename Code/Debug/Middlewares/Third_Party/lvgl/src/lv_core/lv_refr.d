@@ -78,14 +78,7 @@ Middlewares/Third_Party/lvgl/src/lv_core/lv_refr.o: \
  ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_font/lv_font.h \
  ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_gpu/lv_gpu_stm32_dma2d.h \
  ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_gpu/../lv_misc/lv_area.h \
- ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_gpu/../lv_misc/lv_color.h \
- ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_widgets/lv_label.h \
- ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_widgets/../lv_conf_internal.h \
- ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_widgets/../lv_core/lv_obj.h \
- ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_widgets/../lv_font/lv_font.h \
- ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_widgets/../lv_font/lv_symbol_def.h \
- ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_widgets/../lv_misc/lv_txt.h \
- ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_widgets/../lv_draw/lv_draw.h
+ ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_gpu/../lv_misc/lv_color.h
 
 ../Middlewares/Third_Party/lvgl/src/lv_core/lv_refr.h:
 
@@ -244,17 +237,3 @@ Middlewares/Third_Party/lvgl/src/lv_core/lv_refr.o: \
 ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_gpu/../lv_misc/lv_area.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_gpu/../lv_misc/lv_color.h:
-
-../Middlewares/Third_Party/lvgl/src/lv_core/../lv_widgets/lv_label.h:
-
-../Middlewares/Third_Party/lvgl/src/lv_core/../lv_widgets/../lv_conf_internal.h:
-
-../Middlewares/Third_Party/lvgl/src/lv_core/../lv_widgets/../lv_core/lv_obj.h:
-
-../Middlewares/Third_Party/lvgl/src/lv_core/../lv_widgets/../lv_font/lv_font.h:
-
-../Middlewares/Third_Party/lvgl/src/lv_core/../lv_widgets/../lv_font/lv_symbol_def.h:
-
-../Middlewares/Third_Party/lvgl/src/lv_core/../lv_widgets/../lv_misc/lv_txt.h:
-
-../Middlewares/Third_Party/lvgl/src/lv_core/../lv_widgets/../lv_draw/lv_draw.h:

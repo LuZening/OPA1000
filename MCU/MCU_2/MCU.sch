@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:MCU-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -385,8 +384,6 @@ Wire Wire Line
 	5700 4950 5800 4950
 Wire Wire Line
 	5800 1750 5700 1750
-Text Label 5800 1650 0    50   ~ 0
-ADC3_1
 Wire Wire Line
 	5800 1650 5700 1650
 Wire Wire Line
@@ -1101,10 +1098,6 @@ Text Label 5800 4350 0    50   ~ 0
 T_INT
 Wire Wire Line
 	5800 4350 5700 4350
-Text Label 7800 5700 2    50   ~ 0
-ADC3_1
-Wire Wire Line
-	7800 5700 7950 5700
 Wire Wire Line
 	7950 5950 7700 5950
 $Comp
@@ -1798,8 +1791,6 @@ Text Label 3700 5550 0    50   ~ 0
 RX2
 Wire Wire Line
 	3700 5550 3900 5550
-Text Label 5800 1750 0    50   ~ 0
-TX2
 Text Label 6050 1200 1    50   ~ 0
 MCU_STATE
 Wire Wire Line
@@ -1878,4 +1869,10 @@ Text GLabel 5800 3450 2    50   Output ~ 0
 BIAS_ON
 Wire Wire Line
 	5800 3450 5700 3450
+Text Label 5800 1650 0    50   ~ 0
+BAND_RX
+Text Label 7550 5700 0    50   ~ 0
+BAND_RX
+Wire Wire Line
+	7550 5700 7950 5700
 $EndSCHEMATC

@@ -1,5 +1,5 @@
 lv_color.c:40:28:lv_color_fill	8	static
-lv_color.c:131:12:lv_color_lighten	12	static
+lv_color.c:131:12:lv_color_lighten	16	static
 lv_color.c:137:12:lv_color_darken	4	static
 lv_color.c:149:12:lv_color_hsv_to_rgb	8	static
 lv_color.c:214:16:lv_color_rgb_to_hsv	32	static

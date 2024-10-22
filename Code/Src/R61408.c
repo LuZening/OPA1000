@@ -10,9 +10,9 @@ void LCD_Init()
 {
 	LCD_Back_Light_ON;
 	// Reset LCD
-	HAL_GPIO_WritePin(LCD_RST_GPIO_Port, LCD_RST_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LCD_RESX_GPIO_Port, LCD_RESX_Pin, GPIO_PIN_RESET);
 	HAL_Delay(20);
-	HAL_GPIO_WritePin(LCD_RST_GPIO_Port, LCD_RST_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(LCD_RESX_GPIO_Port, LCD_RESX_Pin, GPIO_PIN_SET);
 	HAL_Delay(20);
 	LCD_Send_Command(0x11);
 	LCD_Send_Data(0x00);
@@ -331,7 +331,7 @@ void LCD_Init()
 
 	// flush the screen
 //	LCD_FillRect_2P(0, 0, 800, 480, 0xffff);
-//	LCD_test();
+	LCD_test();
 	LCD_FillRect_2P(0, 0, 800, 480, 0xffff);
 }
 

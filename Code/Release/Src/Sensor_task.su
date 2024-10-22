@@ -12,4 +12,4 @@ Sensor_task.c:246:5:convert_Temp2Str	16	static
 Sensor_task.c:270:7:calc_SWR	0	static
 Sensor_task.c:323:6:HAL_ADC_ConvCpltCallback	0	static
 Sensor_task.c:337:6:HAL_ADC_ErrorCallback	0	static
-Sensor_task.c:351:6:StartSensorTask	56	static
+Sensor_task.c:351:6:StartSensorTask	64	static

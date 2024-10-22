@@ -24,8 +24,8 @@ void NTC_init(NTC_t *p, NTCResistorDividerTopology_t topology, uint16_t mV_divid
 int16_t NTC_get_C(NTC_t* p, uint16_t vADC)
 {
 	// calc R
-	uint32_t R;
-	int16_t C;
+	uint32_t R =0;
+	int16_t C = 0;
 	uint32_t mV = (uint32_t)(vADC) * NTC_ADC_mVREF / FULL_SCALE_ADC_VALUE;
 	switch(p->topology)
 	{

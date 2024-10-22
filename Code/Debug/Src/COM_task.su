@@ -1,0 +1,12 @@
+COM_task.c:23:8:utoaz	32	static
+COM_task.c:44:8:itoaz	32	static
+COM_task.c:72:10:my_atou	24	static
+COM_task.c:85:9:my_atoi	32	static
+COM_task.c:117:6:Command_init	16	static
+COM_task.c:126:6:command_band	32	static
+COM_task.c:186:6:command_moni	24	static
+COM_task.c:206:8:OPA_get_moni_info	32	static
+COM_task.c:225:6:CAT_parse_command	40	static
+COM_task.c:256:6:CAT_execute_command	24	static
+COM_task.c:281:12:infer_band_mode	24	static
+COM_task.c:288:6:StartCOMRecvTask	56	dynamic

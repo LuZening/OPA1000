@@ -37,6 +37,8 @@ lv_obj_style_dec.h:161:1:lv_style_set_text_line_space	16	static
 lv_obj_style_dec.h:164:1:lv_style_set_text_color	16	static
 lv_obj_style_dec.h:167:1:lv_style_set_text_font	24	static
 lv_obj_style_dec.h:168:1:lv_style_set_line_width	16	static
+lv_obj_style_dec.h:170:1:lv_style_set_line_dash_width	16	static
+lv_obj_style_dec.h:171:1:lv_style_set_line_dash_gap	16	static
 lv_obj_style_dec.h:172:1:lv_style_set_line_rounded	16	static
 lv_obj_style_dec.h:173:1:lv_style_set_line_color	16	static
 lv_obj_style_dec.h:176:1:lv_style_set_image_recolor	16	static
@@ -45,7 +47,6 @@ lv_obj_style_dec.h:180:1:lv_style_set_transition_delay	16	static
 lv_obj_style_dec.h:184:1:lv_style_set_transition_prop_4	16	static
 lv_obj_style_dec.h:185:1:lv_style_set_transition_prop_5	16	static
 lv_obj_style_dec.h:186:1:lv_style_set_transition_prop_6	16	static
-lv_obj_style_dec.h:193:1:lv_style_set_scale_width	16	static
 lv_theme_material.c:199:13:basic_init	24	static
 lv_theme_material.c:328:13:cont_init	4	static
 lv_theme_material.c:335:13:btn_init	4	static
@@ -60,9 +61,9 @@ lv_theme_material.c:440:13:linemeter_init	4	static
 lv_theme_material.c:459:13:gauge_init	4	static
 lv_theme_material.c:495:13:arc_init	16	static
 lv_theme_material.c:510:13:spinner_init	4	static
-lv_theme_material.c:516:13:chart_init	4	static
+lv_theme_material.c:516:13:chart_init	16	static
 lv_theme_material.c:537:13:calendar_init	4	static
-lv_theme_material.c:575:13:cpicker_init	16	static
+lv_theme_material.c:575:13:cpicker_init	4	static
 lv_theme_material.c:600:13:checkbox_init	16	static
 lv_theme_material.c:627:13:btnmatrix_init	4	static
 lv_theme_material.c:631:13:keyboard_init	4	static
@@ -73,7 +74,7 @@ lv_theme_material.c:691:13:spinbox_init	16	static
 lv_theme_material.c:705:13:list_init	16	static
 lv_theme_material.c:754:13:ddlist_init	16	static
 lv_theme_material.c:771:13:roller_init	16	static
-lv_theme_material.c:784:13:tabview_init	4	static
+lv_theme_material.c:784:13:tabview_init	16	static
 lv_theme_material.c:826:13:tileview_init	4	static
 lv_theme_material.c:832:13:table_init	16	static
 lv_theme_material.c:847:13:win_init	4	static

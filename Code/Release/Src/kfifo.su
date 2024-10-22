@@ -1,0 +1,3 @@
+kfifo.c:37:6:kfifo_static_init	0	static
+kfifo.c:96:14:__kfifo_put	24	static
+kfifo.c:149:14:__kfifo_get	24	static

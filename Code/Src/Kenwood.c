@@ -38,7 +38,7 @@ bool Kenwood_CAT_transfer_state(Kenwood_CAT_t* p, char d)
 		else
 			p->overflow = true;
 	}
-	else // command
+	else if(d >= 'A' && d <= 'Z') // command
 	{
 		if(p->idxCMD < LEN_KENWOOD_CMD)
 			p->CMD[p->idxCMD++] = d;
@@ -47,7 +47,6 @@ bool Kenwood_CAT_transfer_state(Kenwood_CAT_t* p, char d)
 	}
 	return r;
 }
-
 
 uint32_t Kenwood_CAT_parse_freq(Kenwood_CAT_t* p)
 {

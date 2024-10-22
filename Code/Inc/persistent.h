@@ -9,7 +9,11 @@
 #include "band.h"
 
 #define THREAD_FLAG_SAVE_CONFIG 0x01
+#ifdef OPA1000
 #define VALIDATE_CODE "OPA1000"
+#elif defined(OPA2000)
+#define VALIDATE_CODE "OPA2000"
+#endif
 /* Pust persistent variables here*/
 // Load at power up
 // Save when required
@@ -35,6 +39,8 @@ typedef struct
 	uint16_t baudBand;
 	// Band Mode
 	BandMode_t bandMode;
+	// PTT delay ms
+	uint8_t PTT_delay_ms;
 } PersistentVars_t;
 
 void init_config(PersistentVars_t* p);

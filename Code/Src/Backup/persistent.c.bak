@@ -13,8 +13,8 @@ void init_config(PersistentVars_t* p)
 {
 	init_touch_screen_calib_info(&p->TSCalibInfo);
 	strncpy(p->validator, "OPA1000", sizeof(VALIDATE_CODE));
-	p->Band_source = BAND_FROM_SWITCH;
-	p->Band_soft = BAND_160M;
+	p->Band_source = BAND_FROM_SOFT;
+	p->Band_soft = BAND_15M_10M;
 	p->Fan1Auto = true;
 	p->Fan1Speed = 0;
 	p->Fan2Auto = true;
@@ -22,6 +22,7 @@ void init_config(PersistentVars_t* p)
 	p->baudCAT = 9600;
 	p->baudBand = 1200;
 	p->bandMode = BAND_MODE_ICOM;
+	p->PTT_delay_ms = 10;
 }
 
 bool isPersistentVarsValid(const PersistentVars_t* p)

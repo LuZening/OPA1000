@@ -23,20 +23,23 @@ typedef enum {
 
 
 typedef enum {
-	BAND_160M = 0,
-	BAND_80M = 1,
-	BAND_40M_30M = 2,
-	BAND_20M_17M = 3,
-	BAND_15M_10M = 4,
+	BAND_FAULT = 0,
+	BAND_160M = 1,
+	BAND_80M = 2,
+	BAND_40M_30M = 3,
+	BAND_20M_17M = 4,
+	BAND_15M_10M = 5,
 } band_t;
 #define N_BANDS 5
+#define BAND_MAX BAND_15M_10M
 
 band_t freq_to_band(uint32_t freqHz);
 
-#define N_BAND_MODES 3
+#define N_BAND_MODES 4
 typedef enum
 {
-	BAND_MODE_ICOM = 0,
+	BAND_MODE_AUTO = 0,
+	BAND_MODE_ICOM,
 	BAND_MODE_YAESU,
 	BAND_MODE_KENWOOD
 } BandMode_t;

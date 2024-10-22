@@ -6,7 +6,7 @@ Middlewares/Third_Party/lvgl/src/lv_core/lv_disp.o: \
  ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_hal/lv_hal.h \
  ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_hal/../lv_misc/lv_color.h \
  ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_hal/../lv_misc/../lv_conf_internal.h \
- ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_hal/../lv_misc/../../../lv_conf.h \
+ e:\projects\radio\projects\opa1000\code\middlewares\third_party\lv_conf.h \
  ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_hal/../lv_misc/lv_math.h \
  ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_hal/../lv_misc/lv_area.h \
  ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_hal/../lv_misc/lv_mem.h \
@@ -66,7 +66,7 @@ Middlewares/Third_Party/lvgl/src/lv_core/lv_disp.o: \
 
 ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_hal/../lv_misc/../lv_conf_internal.h:
 
-../Middlewares/Third_Party/lvgl/src/lv_core/../lv_hal/../lv_misc/../../../lv_conf.h:
+e:\projects\radio\projects\opa1000\code\middlewares\third_party\lv_conf.h:
 
 ../Middlewares/Third_Party/lvgl/src/lv_core/../lv_hal/../lv_misc/lv_math.h:
 

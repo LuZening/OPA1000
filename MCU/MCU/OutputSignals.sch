@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:MCU-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -286,8 +285,6 @@ Text GLabel 3850 4550 3    50   Input ~ 0
 Fault_Low
 Text HLabel 4900 2450 3    50   Input ~ 0
 ALC_trig
-Text HLabel 2850 2850 1    50   Output ~ 0
-Transmit
 Text Notes 1250 4100 0    50   ~ 0
 Output Relay
 Text Notes 1250 3150 0    50   ~ 0
@@ -535,10 +532,6 @@ $EndComp
 Wire Wire Line
 	4100 3150 4200 3150
 Wire Wire Line
-	2850 2850 2850 3250
-Wire Wire Line
-	2850 3250 2900 3250
-Wire Wire Line
 	2450 4150 2550 4150
 Wire Wire Line
 	3750 4150 3850 4150
@@ -588,9 +581,6 @@ F 3 "~" H 2650 3250 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	2750 3250 2850 3250
-Connection ~ 2850 3250
-Wire Wire Line
 	2550 3250 2450 3250
 $Comp
 L MySchLib:8050 Q5
@@ -636,7 +626,7 @@ L Device:C_Small C33
 U 1 1 5E24DAAD
 P 2450 3450
 F 0 "C33" H 2542 3496 50  0000 L CNN
-F 1 "C_Small" H 2542 3405 50  0000 L CNN
+F 1 "1nF" H 2542 3405 50  0000 L CNN
 F 2 "Capacitors_SMD:C_0805" H 2450 3450 50  0001 C CNN
 F 3 "~" H 2450 3450 50  0001 C CNN
 	1    2450 3450
@@ -761,7 +751,7 @@ L Device:R_Small R81
 U 1 1 5E4B7601
 P 2550 4400
 F 0 "R81" V 2354 4400 50  0000 C CNN
-F 1 "R_Small" V 2445 4400 50  0000 C CNN
+F 1 "100K" V 2445 4400 50  0000 C CNN
 F 2 "Resistors_SMD:R_0805" H 2550 4400 50  0001 C CNN
 F 3 "~" H 2550 4400 50  0001 C CNN
 	1    2550 4400
@@ -828,4 +818,15 @@ Wire Wire Line
 	2200 1600 2200 1750
 Text Notes 4800 3350 0    50   ~ 0
 Add a diode between C37 and PTT to discharge
+Text HLabel 2350 2650 0    50   Output ~ 0
+Transmit
+Wire Wire Line
+	2750 3250 2800 3250
+Wire Wire Line
+	2800 2650 2800 3250
+Wire Wire Line
+	2350 2650 2800 2650
+Connection ~ 2800 3250
+Wire Wire Line
+	2800 3250 2900 3250
 $EndSCHEMATC

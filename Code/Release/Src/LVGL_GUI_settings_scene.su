@@ -1,4 +1,4 @@
-LVGL_GUI_settings_scene.c:55:6:dismiss_settings_menu_widgets.part.0	16	static
-LVGL_GUI_settings_scene.c:55:6:dismiss_settings_menu_widgets	0	static
-LVGL_GUI_settings_scene.c:34:13:settings_btnm_event_handler	8	static
-LVGL_GUI_settings_scene.c:67:6:init_settings_menu_widgets	32	static
+LVGL_GUI_settings_scene.c:56:6:dismiss_settings_menu_widgets.part.0	24	static
+LVGL_GUI_settings_scene.c:56:6:dismiss_settings_menu_widgets	0	static
+LVGL_GUI_settings_scene.c:35:13:settings_btnm_event_handler	8	static
+LVGL_GUI_settings_scene.c:74:6:init_settings_menu_widgets	32	static

@@ -1,3 +1,10 @@
-Yaesu.c:16:6:Yaesu_CAT_init	0	static
-Yaesu.c:24:6:Yaesu_CAT_transfer_state	4	static
-Yaesu.c:52:10:Yaesu_parse_freq	0	static
+Yaesu.c:31:6:Yaesu_CAT_init	0	static
+Yaesu.c:39:6:Yaesu_CAT_transfer_state	0	static
+Yaesu.c:67:10:Yaesu_parse_freq	8	static
+Yaesu.c:83:8:Yaesu_answer_freq	16	static
+Yaesu.c:95:10:Yaesu_parse_power_switch	0	static
+Yaesu.c:106:8:Yaesu_answer_power_switch	0	static
+Yaesu.c:118:10:Yaesu_parse_tx_power	0	static
+Yaesu.c:128:8:Yaesu_answer_tx_power	16	static
+Yaesu.c:140:10:Yaesu_parse_read_meter	0	static
+Yaesu.c:151:8:Yaesu_answer_read_meter	16	static

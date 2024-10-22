@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>OPA1000_controller</name>
+	<name>OPA2000_controller</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -28,4 +28,26 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>com.st.stm32cube.ide.mcu.MCUCubeIdeServicesRevAev2ProjectNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Inc/ButtonDebouncer.h</name>
+			<type>1</type>
+			<location>E:/Projects/RADIO/Projects/HF33/MCU/Drivers/ButtonDebouncer.h</location>
+		</link>
+		<link>
+			<name>Inc/RotEnc.h</name>
+			<type>1</type>
+			<location>E:/Projects/RADIO/Projects/HF33/MCU/Drivers/RotEnc.h</location>
+		</link>
+		<link>
+			<name>Src/ButtonDebouncer.c</name>
+			<type>1</type>
+			<location>E:/Projects/RADIO/Projects/HF33/MCU/Drivers/ButtonDebouncer.c</location>
+		</link>
+		<link>
+			<name>Src/RotEnc.c</name>
+			<type>1</type>
+			<location>E:/Projects/RADIO/Projects/HF33/MCU/Drivers/RotEnc.c</location>
+		</link>
+	</linkedResources>
 </projectDescription>

@@ -1,7 +1,7 @@
 lv_task.c:57:6:_lv_task_core_init	8	static
 lv_task.c:70:36:lv_task_handler	32	static
-lv_task.c:200:13:lv_task_create_basic	32	static
-lv_task.c:259:13:lv_task_create	48	static
+lv_task.c:200:13:lv_task_create_basic	16	static
+lv_task.c:259:13:lv_task_create	32	static
 lv_task.c:278:6:lv_task_set_cb	16	static
 lv_task.c:287:6:lv_task_del	16	static
 lv_task.c:302:6:lv_task_set_prio	24	static

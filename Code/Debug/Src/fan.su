@@ -1,0 +1,7 @@
+fan.c:11:6:fan_init	32	static
+fan.c:22:6:fan_init_automode	24	static
+fan.c:31:9:fan_get_speed	16	static
+fan.c:36:9:fan_speed_transfer_func	24	static
+fan.c:76:6:fan_enabled	16	static
+fan.c:81:6:fan_set_speed	16	static
+fan.c:87:6:fan_tick	32	static

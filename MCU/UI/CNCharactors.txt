@@ -1,4 +1,4 @@
-0123456789-+,/\.!()
+0123456789-+,/\.!():"
 abcdefghijklmnopqrstuvwxyz
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
 波段
@@ -16,6 +16,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ
 发射中
 主电压
 ℃
+℉
+°
 的
 一
 警告
@@ -45,3 +47,13 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ
 退出
 关闭
 结束
+校准
+检查
+风扇
+波段通信
+波特率
+远程控制
+自动波段
+协议
+取消
+已激活

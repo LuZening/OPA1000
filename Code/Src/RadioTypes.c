@@ -8,10 +8,11 @@
 
 #include "RadioTypes.h"
 
-
 band_t freq_to_band(uint32_t freqHz)
 {
 	band_t band = BAND_15M_10M;
+	if(freqHz < 1800000)
+		band = BAND_FAULT;
 	if(freqHz < 2000000)
 		band = BAND_160M;
 	else if(freqHz < 3900000)
@@ -22,5 +23,7 @@ band_t freq_to_band(uint32_t freqHz)
 		band = BAND_20M_17M;
 	else if(freqHz < 29600000)
 		band = BAND_15M_10M;
+	else
+		band = BAND_FAULT;
 	return band;
 }
