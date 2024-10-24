@@ -366,6 +366,8 @@ static void lbl_freq_range_event_handle(lv_obj_t* obj, lv_event_t e)
 // Button Event: toggle main power
 bool MainPowerEnabled = false;
 bool isTransmitting = false;
+
+
 static void toggle_main_power(lv_obj_t* obj, lv_event_t e)
 {
 	if(e == LV_EVENT_CLICKED)
@@ -379,20 +381,7 @@ static void toggle_main_power(lv_obj_t* obj, lv_event_t e)
 			osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
 #endif
 			// change style FROM IDLE to ACTIVE
-			if(MainPowerEnabled)
-			{
-				lv_obj_set_style_local_bg_color(lvContTopBanner, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, COLOR_BANNER_ACTIVE);
-				lv_obj_set_style_local_bg_color(lvContBottomBanner, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, COLOR_BANNER_ACTIVE);
-				lv_obj_set_style_local_bg_color(lvBtnEnableMainPower, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, COLOR_BANNER_ACTIVE_DARKENED);
-				//lv_label_set_text(lvLblEnableMainPowerBtn, "已激活");
-			}
-			else
-			{
-				lv_obj_set_style_local_bg_color(lvContTopBanner, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, COLOR_BANNER_IDLE);
-				lv_obj_set_style_local_bg_color(lvContBottomBanner, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, COLOR_BANNER_IDLE);
-				lv_obj_set_style_local_bg_color(lvBtnEnableMainPower, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, COLOR_INTERACTABLE);
-				//lv_label_set_text(lvLblEnableMainPowerBtn, "激活");
-			}
+			GUI_change_idle_status_indication(MainPowerEnabled);
 #ifndef	LVGL_SIM
 			osMutexRelease(mtxGUIWidgetsHandle);
 #endif
@@ -1236,6 +1225,23 @@ void GUI_set_TSCalib_touchpoint_pos(uint16_t real_X, uint16_t real_Y)
 }
 /* TS Calib Scene Methods end */
 
+void GUI_change_idle_status_indication(bool MainPowerEnabled)
+{
+	if(MainPowerEnabled)
+	{
+		lv_obj_set_style_local_bg_color(lvContTopBanner, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, COLOR_BANNER_ACTIVE);
+		lv_obj_set_style_local_bg_color(lvContBottomBanner, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, COLOR_BANNER_ACTIVE);
+		lv_obj_set_style_local_bg_color(lvBtnEnableMainPower, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, COLOR_BANNER_ACTIVE_DARKENED);
+		//lv_label_set_text(lvLblEnableMainPowerBtn, "已激活");
+	}
+	else
+	{
+		lv_obj_set_style_local_bg_color(lvContTopBanner, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, COLOR_BANNER_IDLE);
+		lv_obj_set_style_local_bg_color(lvContBottomBanner, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, COLOR_BANNER_IDLE);
+		lv_obj_set_style_local_bg_color(lvBtnEnableMainPower, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, COLOR_INTERACTABLE);
+		//lv_label_set_text(lvLblEnableMainPowerBtn, "激活");
+	}
+}
 
 
 

@@ -58,9 +58,30 @@ bool ADC3DataReady = false;
 #define DC_ATTEN_RATIO  ((DC_RUPPER + DC_RLOWER) / DC_RLOWER)
 const float Vf = 0.3; // drop down voltage of the RF rectifier diode BAT54
 
+
+
+// ADC1 channel order:
+#define IDX_FWD1 0
+
+#define IDX_FWDpeak1 1
+
+#define IDX_REVpeak1 2
+
+#define IDX_REV1 3
+
+#define IDX_FWD2 4
+
+#define IDX_FWDpeak2 5
+
+#define IDX_REVpeak2 6
+
+#define IDX_REV2 7
+
+//
 // ADC1_3: FWD1 forward power 1
 uint32_t FWD1_raw;
 int FWD1 = 0; // Unit 1 Watt
+
 
 // ADC1_4: FWDpeak1 forward power 1 peak value
 uint32_t FWDpeak1_raw;
@@ -71,25 +92,44 @@ uint32_t REVpeak1_raw;
 int REVpeak1 = 0;
 
 // ADC1_6: REV1 reverse power 1 peak value
+
 uint32_t REV1_raw;
 int REV1 = 0;
 
 // ADC1_7:FWD2
+
 uint32_t FWD2_raw;
 int FWD2 = 0;
 
 // ADC1_8: FWDpeak2
+
 uint32_t FWDpeak2_raw;
 int FWDpeak2 = 0;
 
 // ADC1_9: REVpeak2
+
 uint32_t REVpeak2_raw;
 int REVpeak2 = 0;
 
 // ADC1_14: REV2
+
 uint32_t REV2_raw;
 int REV2 = 0;
 
+
+// ADC3 channel order
+#define IDX_band 0
+
+#define IDX_Vmain 1
+
+#define IDX_Imain 2
+
+#define IDX_Temp1 3
+
+#define IDX_Temp2 4
+
+// ADC3_1: band
+uint16_t Band_decoder_raw;
 
 // ADC3_10: Vmain
 uint32_t Vmain_raw;
@@ -118,6 +158,7 @@ PeakDetector PD_Temp2;
 
 // Temperature sensing NTC
 NTC_t NTC1, NTC2;
+
 
 static void init_NTC()
 {
@@ -148,27 +189,26 @@ int convert_ADC2FwdPower1(uint32_t d)
 	float VRF = 0.;
 	if (d >= 100)
 	{
+		// 100W : d = 560
+		// 200W : d = 1000
 		VRF = (d / 4095.f * MAX_ADC_VOLTAGE + 0.3) * DC_ATTEN_RATIO * DC_TURNS;
 	}
+
 	return (int)((VRF * VRF) / Z0 / 2.); // P = U^2/R
 #endif
 }
 
+
+int convert_FwdPower12ADC(uint32_t adc)
+{
+	return 1000;
+}
+
+
+
 int convert_ADC2FwdPower2(uint32_t d)
 {
-#ifdef LOG_DETECTOR
-	float v = (d / 4096.f * MAX_ADC_VOLTAGE);
-	// ADC8307 0 dBm = 2.25V
-	float dBm = ((v - 2.25) / 0.025f);
-	dBm += 53.45; // Compensate for the attenuation
-	// dBm to Watt
-	return (int)(powf(10.f, dBm / 10.f) / 1000.f);
-#else
-	float VRF = 0.;
-	if (d >= 100)
-		VRF = (d / 4095.f * MAX_ADC_VOLTAGE + 0.3) * DC_ATTEN_RATIO * DC_TURNS;
-	return (int)((VRF * VRF) / Z0 / 2.); // P = 0.5 U^2 / R
-#endif
+	return convert_ADC2FwdPower1(d);
 }
 
 band_t convert_ADC2Band(uint32_t d)
@@ -217,8 +257,8 @@ const char* convert_Band_to_Name(band_t band)
 
 int convert_ADC2Vmain(uint32_t d)
 {
-	float v = d / 4095.f * MAX_ADC_VOLTAGE; // Volt
-	v = v / 2.2f * 49.2f; // v is attenuated by 2.2K and 47K voltage divider
+	float v = (d-60) / 4095.f * MAX_ADC_VOLTAGE; // Volt
+	v = v / 2.4f * 49.4f; // v is attenuated by 2.2K and 47K voltage divider
 	return (int)(v + 0.5);
 }
 
@@ -228,6 +268,9 @@ int convert_ADC2Vmain(uint32_t d)
 // 0A = 2.5V centered, 20mV/A ratio
 int convert_ADC2Imain(int16_t d)
 {
+	// 20A: d=1000
+	// 30A: d=1500
+	// 40A: d=2000
 	float v = (float)d / 4095. * MAX_ADC_VOLTAGE;
 	int mA = (v * 25 * 1000);
 	return (mA >= 500 || mA <= -500) ? mA : 0;
@@ -320,12 +363,40 @@ static uint8_t fan_autospeed_transfer_function(int16_t Temp1Real, uint8_t FanDut
 	return FanDutyNew;
 }
 
+const int ALERT_ID_IMAIN = 0;
+const int ALERT_ID_REVPWR2= 3;
+
+extern void power_off(); // defined in main.c
+void trigger_alert(int id)
+{
+	MainPowerEnabled = 0;
+	power_off();
+	osMessageQueuePut(qAlerts, &id, 0, 0);
+
+}
+
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) // the callback function when ADC1 DMA transmission Totally Completed
 {
+	int16_t adc;
 	if(hadc == &hadc1)
 	{
 //		osEventFlagsSet(SensorDataReadyEvents_handle, 0b001);
+		/* important : do protections REALTIME */
+		// case1 : REV too high
+		adc = uhADC1ConvertedValues[IDX_REVpeak2];
+		if(adc >= REV_RAW_ALERT_THRESHOLD)
+		{
+			trigger_alert(ALERT_ID_REVPWR2);
+		}
+		// case2 : Imain too high
+		adc = (int16_t)uhADC3ConvertedValues[IDX_Imain] - (int16_t)Imain_ADC0;
+		if(adc >= IMAIN_RAW_ALERT_THRESHOLD)
+		{
+			trigger_alert(ALERT_ID_IMAIN);
+		}
+
 		osThreadFlagsSet(SensorTaskHandle, 0b001);
+
 	}
 	else if(hadc == &hadc3)
 	{
@@ -360,7 +431,7 @@ void StartSensorTask()
 	init_PeakDetector(&PD_Temp1, 10);
 	init_PeakDetector(&PD_Temp2, 10);
 	// Start ADC trigger timer on TIM2 CH2:
-	// 20Hz 50% duty cycle
+	// 1kHz 50% duty cycle
 	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
 	// Start ADC DMA transmission
 	HAL_ADC_Start_DMA(&hadc1, (uint16_t*)uhADC1ConvertedValues, ADC1_N_CHANNELS);
@@ -385,7 +456,7 @@ void StartSensorTask()
 		REVpeak2_raw = *(p++);
 		REV2_raw = *(p++);
 		p = (uhADC3ConvertedValues);
-		uint16_t Band_decoder_raw = *(p++);
+		Band_decoder_raw = *(p++);
 		Vmain_raw = *(p++);
 		Imain_raw = *(p++);
 		Temp1_raw = *(p++);
@@ -404,8 +475,10 @@ void StartSensorTask()
 		// TODO: implement ADC DMA ISR
 		osThreadFlagsClear(0xffff);
 		osThreadFlagsWait(0b101, osFlagsWaitAll, osWaitForever);
+
 //		osEventFlagsWait(SensorDataReadyEvents_handle, 0b101, osFlagsWaitAll, osWaitForever);
 		{
+			/* ADC 1*/
 			uint16_t* p = (uhADC1ConvertedValues);
 			FWD1_raw = *(p++);
 			FWDpeak1_raw = *(p++);
@@ -415,8 +488,9 @@ void StartSensorTask()
 			FWDpeak2_raw = *(p++);
 			REVpeak2_raw = *(p++);
 			REV2_raw = *(p++);
+			/* ADC3 */
 			p = (uhADC3ConvertedValues);
-			uint16_t Band_decoder_raw = *(p++);
+			Band_decoder_raw = *(p++);
 			Vmain_raw = *(p++);
 			Imain_raw = *(p++);
 			Temp1_raw = *(p++);
@@ -509,7 +583,7 @@ void StartSensorTask()
 			}
 			osMutexRelease(mtxGUIWidgetsHandle);
 //			osSemaphoreRelease(GUIDataUpdatedSemaphore_handle); // signal the GUI redrawing task
-//			osDelay(20);
+			osDelay(30);
 		}
 		++counter;
 	}

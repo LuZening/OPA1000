@@ -53,7 +53,7 @@ void init_LVGL_GUI();
 
 
 #define PROGBAR_MAX_VALUE_FWDPWR 1000
-#define PROGBAR_MAX_VALUE_REVPWR 1000
+#define PROGBAR_MAX_VALUE_REVPWR 300
 #define PROGBAR_MAX_VALUE_SWR 1000 // maps 0.0f-1.0f to 0-1000
 
 	LV_FONT_DECLARE(CNSans_18);
@@ -238,6 +238,8 @@ void GUI_set_ambient_temperature(int16_t C);
 void GUI_set_Vmain(int V);
 
 void GUI_set_Imain(int mA);
+
+void GUI_change_idle_status_indication(bool MainPowerEnabled);
 /* Main Scene Methods end*/
 
 

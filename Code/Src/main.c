@@ -424,6 +424,7 @@ int main(void)
   /* add mutexes, ... */
 //  const osMutexAttr_t mtxBandData_attr = {.name = "mtxBandData"};
   mtxBandDataHandle = osMutexNew(NULL);
+  qAlerts = osMessageQueueNew(8, sizeof(int), NULL);
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
@@ -900,9 +901,9 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 8400;
+  htim2.Init.Prescaler = 83; // CLOCKED AT 84MHz
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 500;
+  htim2.Init.Period = 1000; // EACH 1000us = 1kHz
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -1219,11 +1220,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : FAN1_Pin FAN2_Pin */
-  GPIO_InitStruct.Pin = FAN1_Pin|FAN2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  /*Configure GPIO pins : FAN1_Pin */
+  GPIO_InitStruct.Pin = FAN1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PTT_SUPPRESSX_Pin */
@@ -1495,24 +1496,7 @@ const uint16_t AlertInputGPIOPins[] = {
 		TEMP2_HIGH_Pin,
 		OverdriveX_Pin,
 };
-const char* AlertDebugMessages[] = {
-		"Fault: Main current (Imain) too high",
-		"Fault: Main Voltage (Vmain) too high",
-		"Fault: Reverse Power 1 (Rev1) too high",
-		"Fault: Reverse Power 2 (Rev2) too high",
-		"Fault: Core Temperature (Temp1) too high",
-		"Fault: Ambient Temperature (Temp2) too high",
-		"Fault: RF Input Overdrive",
-};
-const char* AlertGUIMessages[] = {
-		"主电流过",
-		"主电压过",
-		"反射功率1过高",
-		"反射功率2过高",
-		"核心温度过高",
-		"周边温度过高",
-		"RF输入过载",
-};
+
 const uint8_t AlertInputActiveLevels[] = {
 		GPIO_PIN_RESET,
 		GPIO_PIN_SET,
@@ -1533,6 +1517,29 @@ const uint8_t AlertTrigThresholds[] = {
 };
 #define N_INPUT_LOGIC_ALERT_SIGS (sizeof(AlertInputActiveLevels) / sizeof(uint8_t))
 
+
+
+const char* AlertDebugMessages[] = {
+		"Fault: Main current (Imain) too high", // 0
+		"Fault: Main Voltage (Vmain) too high", // 1
+		"Fault: Reverse Power 1 (Rev1) too high", // 2
+		"Fault: Reverse Power 2 (Rev2) too high", // 3
+		"Fault: Core Temperature (Temp1) too high",// 4
+		"Fault: Ambient Temperature (Temp2) too high", // 5
+		"Fault: RF Input Overdrive", // 6
+};
+const char* AlertGUIMessages[] = {
+		"主电流过高",
+		"主电压过高",
+		"反射功率1过高",
+		"反射功率2过高",
+		"核心温度过高",
+		"周边温度过高",
+		"RF输入过载",
+};
+
+
+osMessageQueueId_t qAlerts;
 void StartAlertTask()
 {
 	static uint8_t AlertTrigCounts[N_INPUT_LOGIC_ALERT_SIGS] = {0};
@@ -1567,30 +1574,15 @@ void StartAlertTask()
 				trans_state = RECEIVING;
 		}
 
-		/* Imain HighX effective (Low) */
-		/*
-		for(i = 0; i < N_INPUT_LOGIC_ALERT_SIGS; ++i)
+		/* alert according to ISR mail box*/
+		int alert_id;
+		osStatus r = osMessageQueueGet(qAlerts, &alert_id, 0, 0);
+		if(r == osOK)
 		{
-			if(HAL_GPIO_ReadPin(AlertInputGPIOPorts[i], AlertInputGPIOPins[i]) == AlertInputActiveLevels[i])
-			{
-				if(++AlertTrigCounts[i] >= AlertTrigThresholds[i])
-				{
-					allowPTT = false;
-				//	osMutexAcquire(mtxGUIWidgetsHandle, osWaitForever);
-					show_msgbox_warning("警告", AlertGUIMessages[i]);
-					//osMutexRelease(mtxGUIWidgetsHandle);
-					COM_send_message(&COM1, AlertDebugMessages[i], strlen(AlertDebugMessages[i]));
-					AlertTrigCounts[i] = 0;
-					osSemaphoreAcquire(sphWarnMsgBoxDismissed, osWaitForever);
-					allowPTT = true;
-				}
-			}
-			else
-			{
-				AlertTrigCounts[i] = 0;
-			}
+			show_msgbox_warning("警告", AlertGUIMessages[alert_id]);
+			GUI_change_idle_status_indication(MainPowerEnabled);
 		}
-		*/
+
 		osDelay(pdMS_TO_TICKS(100));
 	}
 }
@@ -1935,11 +1927,7 @@ void StartDefaultTask(void *argument)
 //  }
 	for(;;)
 	{
-//		osThreadFlagsWait(OS_FLAG_POWEROFF, osFlagsWaitAll, osWaitForever);
-//		taskENTER_CRITICAL();
-//		EEPROM_WriteBytes(&EEPROM, &cfg, sizeof(cfg)); // save config
-//		taskEXIT_CRITICAL();
-//		power_off();
+		LCD_Back_Light_ON;
 		osThreadFlagsWait(THREAD_FLAG_SAVE_CONFIG, osFlagsWaitAll, osWaitForever);
 		taskENTER_CRITICAL();
 //		EEPROM_WriteBytes(&EEPROM, &cfg, sizeof(cfg)); // save config

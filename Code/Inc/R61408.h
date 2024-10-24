@@ -18,8 +18,8 @@
 #define BANK1_LCD_DATA    (BANK1_LCD_CMD | ((uint32_t) 1<<(LCD_RS+1)))    //Disp Data ADDR
 
 
-#define LCD_Back_Light_ON   LCD_BL_GPIO_Port->BSRR = LCD_BL_Pin
-#define LCD_Back_Light_OFF  LCD_BL_GPIO_Port->BRR  = LCD_BL_Pin
+#define LCD_Back_Light_ON   HAL_GPIO_WritePin(LCD_BL_GPIO_Port, LCD_BL_Pin, 1)
+#define LCD_Back_Light_OFF  HAL_GPIO_WritePin(LCD_BL_GPIO_Port, LCD_BL_Pin, 0)
 
 
 #define Set_LCD_CS  LCD_CS_GPIO_Port->BSRR = (LCD_CS_Pin)

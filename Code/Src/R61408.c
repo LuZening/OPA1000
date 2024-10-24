@@ -8,7 +8,7 @@
 #include "R61408.h"
 void LCD_Init()
 {
-	LCD_Back_Light_ON;
+	LCD_Back_Light_OFF;
 	// Reset LCD
 	HAL_GPIO_WritePin(LCD_RESX_GPIO_Port, LCD_RESX_Pin, GPIO_PIN_RESET);
 	HAL_Delay(20);
@@ -331,8 +331,9 @@ void LCD_Init()
 
 	// flush the screen
 //	LCD_FillRect_2P(0, 0, 800, 480, 0xffff);
-	LCD_test();
-	LCD_FillRect_2P(0, 0, 800, 480, 0xffff);
+//	LCD_test();
+	LCD_FillRect_2P(0, 0, 800, 480, 0x0000U);
+
 }
 
 int LCD_test()

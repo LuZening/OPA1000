@@ -47,6 +47,7 @@ extern "C" {
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
 extern  osMutexId_t mtxBandDataHandle;
+extern osMessageQueueId_t qAlerts;
 extern osEventFlagsId_t SensorDataReadyEvents_handle;
 //extern osSemaphoreId_t GUIDataUpdatedSemaphore_handle;
 extern osMessageQueueId_t COMBytesToSendQHandle;
@@ -114,9 +115,9 @@ void Error_Handler(void);
 #define ENC_SWX_GPIO_Port GPIOC
 #define SpareSigX_Pin GPIO_PIN_8
 #define SpareSigX_GPIO_Port GPIOC
-#define PTTX_Pin GPIO_PIN_9
-#define PTTX_GPIO_Port GPIOC
-#define PTTX_EXTI_IRQn EXTI9_5_IRQn
+#define PTTX_Pin GPIO_PIN_2
+#define PTTX_GPIO_Port GPIOD
+#define PTTX_EXTI_IRQn EXTI2_IRQn
 #define POT_SCL_Pin GPIO_PIN_8
 #define POT_SCL_GPIO_Port GPIOA
 #define POT_SDA_Pin GPIO_PIN_11
@@ -131,10 +132,8 @@ void Error_Handler(void);
 #define IMAIN_HIGHX_GPIO_Port GPIOC
 #define VMAIN_HIGH_Pin GPIO_PIN_12
 #define VMAIN_HIGH_GPIO_Port GPIOC
-#define FAN1_Pin GPIO_PIN_2
-#define FAN1_GPIO_Port GPIOD
-#define FAN2_Pin GPIO_PIN_3
-#define FAN2_GPIO_Port GPIOD
+#define FAN1_Pin GPIO_PIN_9
+#define FAN1_GPIO_Port GPIOC
 #define LCD_RD_Pin GPIO_PIN_4
 #define LCD_RD_GPIO_Port GPIOD
 #define LCD_WR_Pin GPIO_PIN_5
@@ -182,6 +181,10 @@ void Error_Handler(void);
 #define T_INTX_Pin GPIO_PIN_11
 #define T_INTX_GPIO_Port GPIOB
 #define T_INTX_EXTI_IRQn EXTI15_10_IRQn
+#define FAN1_Pin GPIO_PIN_2
+#define FAN1_GPIO_Port GPIOD
+#define FAN2_Pin GPIO_PIN_3
+#define FAN2_GPIO_Port GPIOD
 //#define ENC_AX_Pin GPIO_PIN_11
 //#define ENC_AX_GPIO_Port GPIOD
 //#define ENC_BX_Pin GPIO_PIN_12

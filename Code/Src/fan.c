@@ -12,7 +12,7 @@ void fan_init(Fan_t* p, GPIO_TypeDef* portGPIO, uint16_t pinGPIO)
 {
 	// 10000us = 10ms period, levels = 10
 	soft_pwm_driver_init(&p->PWM, portGPIO, pinGPIO, 1, 100, 10000);
-	soft_pwm_driver_set_duty(&p->PWM, 30);
+	soft_pwm_driver_set_duty(&p->PWM, 60);
 	soft_pwm_driver_enable(&p->PWM);
 	p->AutoFanSpeed_NSegments = 0;
 	p->AutoFanSpeed_speed = NULL;
