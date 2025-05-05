@@ -13,5 +13,5 @@ Sensor_task.c:313:7:calc_SWR	24	static
 Sensor_task.c:324:16:fan_autospeed_transfer_function	24	static
 Sensor_task.c:370:6:trigger_alert	16	static
 Sensor_task.c:378:6:HAL_ADC_ConvCpltCallback	24	static
-Sensor_task.c:408:6:HAL_ADC_ErrorCallback	16	static
-Sensor_task.c:422:6:StartSensorTask	32	static
+Sensor_task.c:418:6:HAL_ADC_ErrorCallback	16	static
+Sensor_task.c:432:6:StartSensorTask	32	static

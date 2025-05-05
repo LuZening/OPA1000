@@ -256,25 +256,31 @@ bool power_on()
 //		r = false;
 //	else
 	HAL_GPIO_WritePin(RF_12V_ON_GPIO_Port, RF_12V_ON_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(PWR_on_sig_GPIO_Port, PWR_on_sig_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(PWR_on_sig_GPIO_Port, PWR_on_sig_Pin, GPIO_PIN_RESET);
 	return r;
 }
 
 void clear_fault_hold()
 {
-	HAL_GPIO_WritePin(RF_12V_ON_GPIO_Port, RF_12V_ON_Pin, GPIO_PIN_RESET);
+#ifdef OPA1000
+	HAL_GPIO_WritePin(ClearFault_GPIO_Port, ClearFault_Pin, GPIO_PIN_RESET);
+//	HAL_GPIO_WritePin(RF_12V_ON_GPIO_Port, RF_12V_ON_Pin, GPIO_PIN_SET);
+#endif
+
 }
 
 void clear_fault_release()
 {
-	HAL_GPIO_WritePin(RF_12V_ON_GPIO_Port, RF_12V_ON_Pin, GPIO_PIN_SET);
+#ifdef OPA1000
+	HAL_GPIO_WritePin(ClearFault_GPIO_Port, ClearFault_Pin, GPIO_PIN_SET);
+//	HAL_GPIO_WritePin(RF_12V_ON_GPIO_Port, RF_12V_ON_Pin, GPIO_PIN_RESET);
+#endif
 }
 
 void clear_fault()
 {
-	uint8_t i=100;
 	clear_fault_hold();
-	while(i--);
+	HAL_Delay(10);
 	clear_fault_release();
 }
 
@@ -358,8 +364,10 @@ int main(void)
   // Make sure main power is off (Vmain)
   power_off();
   //DEBUG: Invalidate Fault
-  clear_fault_release();
-  //clear_fault_hold();
+  clear_fault();
+#ifdef OPA1000
+  clear_fault_hold();
+#endif
   // Saved Config: Load previous Fan settings
   /* **********	Init Fan	********** */
   fan_init(&fan1, FAN1_GPIO_Port, FAN1_Pin);
@@ -1362,6 +1370,9 @@ static void OPA1000_MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(PWR_on_sig_GPIO_Port, PWR_on_sig_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(ClearFault_GPIO_Port, ClearFault_Pin, GPIO_PIN_RESET);
+
   /*Configure GPIO pins : BAND_SEL6X_Pin BAND_SEL5X_Pin BAND_SEL4X_Pin BAND_SEL3X_Pin
                            BAND_SEL2X_Pin */
   GPIO_InitStruct.Pin = BAND_SEL6X_Pin|BAND_SEL5X_Pin|BAND_SEL4X_Pin|BAND_SEL3X_Pin
@@ -1380,7 +1391,7 @@ static void OPA1000_MX_GPIO_Init(void)
 
 
   /*Configure GPIO pins : MCU_STATE_LEDX_Pin POT_SCL_Pin POT_SDA_Pin */
-  GPIO_InitStruct.Pin = MCU_STATE_LEDX_Pin;
+  GPIO_InitStruct.Pin = MCU_STATE_LEDX_Pin | ClearFault_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

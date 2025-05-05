@@ -191,6 +191,8 @@ int convert_ADC2FwdPower1(uint32_t d)
 	{
 		// 100W : d = 560
 		// 200W : d = 1000
+		// 250W : d = 1100
+		// 400W : d = 1400
 		VRF = (d / 4095.f * MAX_ADC_VOLTAGE + 0.3) * DC_ATTEN_RATIO * DC_TURNS;
 	}
 
@@ -378,19 +380,29 @@ void trigger_alert(int id)
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) // the callback function when ADC1 DMA transmission Totally Completed
 {
 	int16_t adc;
+	static int adc_smoothed_REV = -1;
+	static int adc_smoothed_Imain = -1;
 	if(hadc == &hadc1)
 	{
 //		osEventFlagsSet(SensorDataReadyEvents_handle, 0b001);
 		/* important : do protections REALTIME */
 		// case1 : REV too high
 		adc = uhADC1ConvertedValues[IDX_REVpeak2];
-		if(adc >= REV_RAW_ALERT_THRESHOLD)
+		if(adc_smoothed_REV < 0)
+			adc_smoothed_REV = adc;
+		else
+			adc_smoothed_REV = (adc_smoothed_REV +  adc * 3)  >> 2;
+		if(adc_smoothed_REV >= REV_RAW_ALERT_THRESHOLD)
 		{
 			trigger_alert(ALERT_ID_REVPWR2);
 		}
 		// case2 : Imain too high
 		adc = (int16_t)uhADC3ConvertedValues[IDX_Imain] - (int16_t)Imain_ADC0;
-		if(adc >= IMAIN_RAW_ALERT_THRESHOLD)
+		if(adc_smoothed_Imain < 0)
+			adc_smoothed_Imain = adc;
+		else
+			adc_smoothed_Imain = (adc_smoothed_Imain +  adc * 3)  >> 2;
+		if(adc_smoothed_Imain >= IMAIN_RAW_ALERT_THRESHOLD)
 		{
 			trigger_alert(ALERT_ID_IMAIN);
 		}

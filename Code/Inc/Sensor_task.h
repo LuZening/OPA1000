@@ -25,7 +25,7 @@
 //#define LOG_DETECTOR # uncomment to use logarithm power detector
 
 //#define REV_RAW_ALERT_THRESHOLD 560 // 100W
-#define REV_RAW_ALERT_THRESHOLD 950 // 200W
+#define REV_RAW_ALERT_THRESHOLD 1100 // 250W
 
 #define IMAIN_RAW_ALERT_THRESHOLD 1500 // 30A
 

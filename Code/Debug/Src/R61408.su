@@ -1,6 +1,6 @@
 R61408.c:9:6:LCD_Init	16	static
-R61408.c:338:5:LCD_test	48	static
-R61408.c:355:6:LCD_Set_Write_Range	16	static
-R61408.c:371:6:LCD_FillRect_2P	32	static
-R61408.c:380:6:LCD_PutPixels	32	static
-R61408.c:391:6:LCD_LVGL_flush	56	static
+R61408.c:339:5:LCD_test	48	static
+R61408.c:356:6:LCD_Set_Write_Range	16	static
+R61408.c:372:6:LCD_FillRect_2P	32	static
+R61408.c:381:6:LCD_PutPixels	32	static
+R61408.c:392:6:LCD_LVGL_flush	56	static

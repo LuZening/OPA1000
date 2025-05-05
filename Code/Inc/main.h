@@ -172,6 +172,8 @@ void Error_Handler(void);
 //#define EEP_WP_GPIO_Port GPIOC
 #define RF_12V_ON_Pin GPIO_PIN_2
 #define RF_12V_ON_GPIO_Port GPIOB
+#define ClearFault_Pin GPIO_PIN_8
+#define ClearFault_GPIO_Port GPIOA
 //#define BAND_TX_Pin GPIO_PIN_10
 //#define BAND_TX_GPIO_Port GPIOB
 #define BAND_RX_Pin GPIO_PIN_1

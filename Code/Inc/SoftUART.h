@@ -17,11 +17,11 @@ int8_t baudrate2idx(uint16_t baudrate); // return -1 if not found
 
 
 #ifndef TIM4_CLK_FREQ
-#define TIM4_CLK_FREQ 60000000LL
+#define TIM4_CLK_FREQ 84000000LL
 #endif
 
 #ifndef TIM4_PRESCALER
-#define TIM4_PRESCALER 5
+#define TIM4_PRESCALER (4+1)
 #endif
 
 #define Number_Of_SoftUarts	1

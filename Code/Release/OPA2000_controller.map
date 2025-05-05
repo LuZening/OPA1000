@@ -3611,7 +3611,7 @@ Discarded input sections
                 0x0000000000000000        0x4 ./Src/Sensor_task.o
  .rodata.ALERT_ID_REVPWR2
                 0x0000000000000000        0x4 ./Src/Sensor_task.o
- .rodata.CSWTCH.75
+ .rodata.CSWTCH.81
                 0x0000000000000000        0x7 ./Src/Sensor_task.o
  .rodata.ICOM_BANDCODE_VOLTAGES
                 0x0000000000000000       0x1c ./Src/Sensor_task.o
@@ -3712,8 +3712,6 @@ Discarded input sections
                 0x0000000000000000       0x10 ./Src/main.o
  .text.clear_fault_release
                 0x0000000000000000       0x10 ./Src/main.o
- .text.clear_fault
-                0x0000000000000000       0x20 ./Src/main.o
  .bss.Enable_band_remote
                 0x0000000000000000        0x1 ./Src/main.o
  .bss.allowPTT  0x0000000000000000        0x1 ./Src/main.o
@@ -4509,7 +4507,7 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000008000000                g_pfnVectors
                 0x0000000008000188                . = ALIGN (0x4)
 
-.text           0x0000000008000190    0x24a9c
+.text           0x0000000008000190    0x24b08
                 0x0000000008000190                . = ALIGN (0x4)
  *(.text)
  .text          0x0000000008000190       0x40 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
@@ -6428,779 +6426,783 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000008021de8       0x2c ./Src/Sensor_task.o
                 0x0000000008021de8                trigger_alert
  .text.HAL_ADC_ConvCpltCallback
-                0x0000000008021e14       0x78 ./Src/Sensor_task.o
+                0x0000000008021e14       0xa4 ./Src/Sensor_task.o
                 0x0000000008021e14                HAL_ADC_ConvCpltCallback
  .text.HAL_ADC_ErrorCallback
-                0x0000000008021e8c        0x4 ./Src/Sensor_task.o
-                0x0000000008021e8c                HAL_ADC_ErrorCallback
+                0x0000000008021eb8        0x4 ./Src/Sensor_task.o
+                0x0000000008021eb8                HAL_ADC_ErrorCallback
+ *fill*         0x0000000008021ebc        0x4 
  .text.StartSensorTask
-                0x0000000008021e90      0x7bc ./Src/Sensor_task.o
-                0x0000000008021e90                StartSensorTask
+                0x0000000008021ec0      0x7bc ./Src/Sensor_task.o
+                0x0000000008021ec0                StartSensorTask
  .text.soft_pwm_driver_init
-                0x000000000802264c       0x20 ./Src/SoftPWMDriver.o
-                0x000000000802264c                soft_pwm_driver_init
+                0x000000000802267c       0x20 ./Src/SoftPWMDriver.o
+                0x000000000802267c                soft_pwm_driver_init
  .text.soft_pwm_driver_tick
-                0x000000000802266c       0x74 ./Src/SoftPWMDriver.o
-                0x000000000802266c                soft_pwm_driver_tick
+                0x000000000802269c       0x74 ./Src/SoftPWMDriver.o
+                0x000000000802269c                soft_pwm_driver_tick
  .text.soft_pwm_driver_set_duty
-                0x00000000080226e0       0x14 ./Src/SoftPWMDriver.o
-                0x00000000080226e0                soft_pwm_driver_set_duty
+                0x0000000008022710       0x14 ./Src/SoftPWMDriver.o
+                0x0000000008022710                soft_pwm_driver_set_duty
  .text.soft_pwm_driver_enable
-                0x00000000080226f4       0x14 ./Src/SoftPWMDriver.o
-                0x00000000080226f4                soft_pwm_driver_enable
+                0x0000000008022724       0x14 ./Src/SoftPWMDriver.o
+                0x0000000008022724                soft_pwm_driver_enable
  .text.SoftUartTxProcess.part.0
-                0x0000000008022708       0x74 ./Src/SoftUART.o
+                0x0000000008022738       0x74 ./Src/SoftUART.o
  .text.SoftUartInit
-                0x000000000802277c       0x48 ./Src/SoftUART.o
-                0x000000000802277c                SoftUartInit
+                0x00000000080227ac       0x48 ./Src/SoftUART.o
+                0x00000000080227ac                SoftUartInit
  .text.SoftUartEnableRx
-                0x00000000080227c4       0x14 ./Src/SoftUART.o
-                0x00000000080227c4                SoftUartEnableRx
+                0x00000000080227f4       0x14 ./Src/SoftUART.o
+                0x00000000080227f4                SoftUartEnableRx
  .text.SoftUartReadRxBuffer
-                0x00000000080227d8       0x78 ./Src/SoftUART.o
-                0x00000000080227d8                SoftUartReadRxBuffer
+                0x0000000008022808       0x78 ./Src/SoftUART.o
+                0x0000000008022808                SoftUartReadRxBuffer
  .text.SoftUartRxDataBitProcess
-                0x0000000008022850       0x70 ./Src/SoftUART.o
-                0x0000000008022850                SoftUartRxDataBitProcess
+                0x0000000008022880       0x70 ./Src/SoftUART.o
+                0x0000000008022880                SoftUartRxDataBitProcess
  .text.SoftUartScanRxPorts
-                0x00000000080228c0       0x4c ./Src/SoftUART.o
-                0x00000000080228c0                SoftUartScanRxPorts
+                0x00000000080228f0       0x4c ./Src/SoftUART.o
+                0x00000000080228f0                SoftUartScanRxPorts
  .text.SoftUartHandler
-                0x000000000802290c       0x50 ./Src/SoftUART.o
-                0x000000000802290c                SoftUartHandler
+                0x000000000802293c       0x50 ./Src/SoftUART.o
+                0x000000000802293c                SoftUartHandler
  .text.baudrate2idx
-                0x000000000802295c       0x38 ./Src/SoftUART.o
-                0x000000000802295c                baudrate2idx
+                0x000000000802298c       0x38 ./Src/SoftUART.o
+                0x000000000802298c                baudrate2idx
  .text.SoftUartChangeBaud
-                0x0000000008022994       0x44 ./Src/SoftUART.o
-                0x0000000008022994                SoftUartChangeBaud
+                0x00000000080229c4       0x44 ./Src/SoftUART.o
+                0x00000000080229c4                SoftUartChangeBaud
  .text.SoftUartStart
-                0x00000000080229d8        0xc ./Src/SoftUART.o
-                0x00000000080229d8                SoftUartStart
+                0x0000000008022a08        0xc ./Src/SoftUART.o
+                0x0000000008022a08                SoftUartStart
  .text.Yaesu_CAT_init
-                0x00000000080229e4        0xc ./Src/Yaesu.o
-                0x00000000080229e4                Yaesu_CAT_init
+                0x0000000008022a14        0xc ./Src/Yaesu.o
+                0x0000000008022a14                Yaesu_CAT_init
  .text.Yaesu_CAT_transfer_state
-                0x00000000080229f0       0x58 ./Src/Yaesu.o
-                0x00000000080229f0                Yaesu_CAT_transfer_state
+                0x0000000008022a20       0x58 ./Src/Yaesu.o
+                0x0000000008022a20                Yaesu_CAT_transfer_state
  .text.Yaesu_parse_freq
-                0x0000000008022a48       0x28 ./Src/Yaesu.o
-                0x0000000008022a48                Yaesu_parse_freq
+                0x0000000008022a78       0x28 ./Src/Yaesu.o
+                0x0000000008022a78                Yaesu_parse_freq
  .text.fan_init
-                0x0000000008022a70       0x30 ./Src/fan.o
-                0x0000000008022a70                fan_init
+                0x0000000008022aa0       0x30 ./Src/fan.o
+                0x0000000008022aa0                fan_init
  .text.fan_init_automode
-                0x0000000008022aa0       0x18 ./Src/fan.o
-                0x0000000008022aa0                fan_init_automode
+                0x0000000008022ad0       0x18 ./Src/fan.o
+                0x0000000008022ad0                fan_init_automode
  .text.fan_speed_transfer_func
-                0x0000000008022ab8       0x74 ./Src/fan.o
-                0x0000000008022ab8                fan_speed_transfer_func
+                0x0000000008022ae8       0x74 ./Src/fan.o
+                0x0000000008022ae8                fan_speed_transfer_func
  .text.fan_set_speed
-                0x0000000008022b2c        0x4 ./Src/fan.o
-                0x0000000008022b2c                fan_set_speed
+                0x0000000008022b5c        0x4 ./Src/fan.o
+                0x0000000008022b5c                fan_set_speed
  .text.fan_tick
-                0x0000000008022b30       0x30 ./Src/fan.o
-                0x0000000008022b30                fan_tick
+                0x0000000008022b60       0x30 ./Src/fan.o
+                0x0000000008022b60                fan_tick
  .text.kfifo_static_init
-                0x0000000008022b60        0xc ./Src/kfifo.o
-                0x0000000008022b60                kfifo_static_init
+                0x0000000008022b90        0xc ./Src/kfifo.o
+                0x0000000008022b90                kfifo_static_init
  .text.StartAlertTask
-                0x0000000008022b6c       0x84 ./Src/main.o
-                0x0000000008022b6c                StartAlertTask
+                0x0000000008022b9c       0x84 ./Src/main.o
+                0x0000000008022b9c                StartAlertTask
  .text.StartDefaultTask
-                0x0000000008022bf0       0x48 ./Src/main.o
-                0x0000000008022bf0                StartDefaultTask
+                0x0000000008022c20       0x48 ./Src/main.o
+                0x0000000008022c20                StartDefaultTask
  .text.StartTouchScreenTask
-                0x0000000008022c38      0x164 ./Src/main.o
-                0x0000000008022c38                StartTouchScreenTask
+                0x0000000008022c68      0x164 ./Src/main.o
+                0x0000000008022c68                StartTouchScreenTask
  .text.StartTouchScreenCalibTask
-                0x0000000008022d9c      0x144 ./Src/main.o
-                0x0000000008022d9c                StartTouchScreenCalibTask
+                0x0000000008022dcc      0x144 ./Src/main.o
+                0x0000000008022dcc                StartTouchScreenCalibTask
  .text.power_off
-                0x0000000008022ee0       0x24 ./Src/main.o
-                0x0000000008022ee0                power_off
+                0x0000000008022f10       0x24 ./Src/main.o
+                0x0000000008022f10                power_off
  .text.power_on
-                0x0000000008022f04       0x24 ./Src/main.o
-                0x0000000008022f04                power_on
+                0x0000000008022f34       0x24 ./Src/main.o
+                0x0000000008022f34                power_on
  .text.onTimerLVGL
-                0x0000000008022f28      0x1dc ./Src/main.o
-                0x0000000008022f28                onTimerLVGL
+                0x0000000008022f58      0x1dc ./Src/main.o
+                0x0000000008022f58                onTimerLVGL
+ .text.clear_fault
+                0x0000000008023134       0x2c ./Src/main.o
+                0x0000000008023134                clear_fault
  .text.SystemClock_Config
-                0x0000000008023104       0x94 ./Src/main.o
-                0x0000000008023104                SystemClock_Config
+                0x0000000008023160       0x94 ./Src/main.o
+                0x0000000008023160                SystemClock_Config
  .text.startup.main
-                0x0000000008023198      0x8d8 ./Src/main.o
-                0x0000000008023198                main
+                0x00000000080231f4      0x8e8 ./Src/main.o
+                0x00000000080231f4                main
  .text.switch_band
-                0x0000000008023a70       0x98 ./Src/main.o
-                0x0000000008023a70                switch_band
+                0x0000000008023adc       0x98 ./Src/main.o
+                0x0000000008023adc                switch_band
  .text.StartHumanInputTask
-                0x0000000008023b08      0x110 ./Src/main.o
-                0x0000000008023b08                StartHumanInputTask
+                0x0000000008023b74      0x110 ./Src/main.o
+                0x0000000008023b74                StartHumanInputTask
  .text.HAL_GPIO_EXTI_Callback
-                0x0000000008023c18       0x18 ./Src/main.o
-                0x0000000008023c18                HAL_GPIO_EXTI_Callback
+                0x0000000008023c84       0x18 ./Src/main.o
+                0x0000000008023c84                HAL_GPIO_EXTI_Callback
  .text.lvGetTouchscreenXY
-                0x0000000008023c30       0x30 ./Src/main.o
-                0x0000000008023c30                lvGetTouchscreenXY
+                0x0000000008023c9c       0x30 ./Src/main.o
+                0x0000000008023c9c                lvGetTouchscreenXY
  .text.lvGetRotEnc
-                0x0000000008023c60       0x40 ./Src/main.o
-                0x0000000008023c60                lvGetRotEnc
+                0x0000000008023ccc       0x40 ./Src/main.o
+                0x0000000008023ccc                lvGetRotEnc
  .text.vApplicationStackOverflowHook
-                0x0000000008023ca0        0x4 ./Src/main.o
-                0x0000000008023ca0                vApplicationStackOverflowHook
+                0x0000000008023d0c        0x4 ./Src/main.o
+                0x0000000008023d0c                vApplicationStackOverflowHook
  .text.vApplicationMallocFailedHook
-                0x0000000008023ca4        0x4 ./Src/main.o
-                0x0000000008023ca4                vApplicationMallocFailedHook
+                0x0000000008023d10        0x4 ./Src/main.o
+                0x0000000008023d10                vApplicationMallocFailedHook
  .text.HAL_TIM_PeriodElapsedCallback
-                0x0000000008023ca8       0x70 ./Src/main.o
-                0x0000000008023ca8                HAL_TIM_PeriodElapsedCallback
+                0x0000000008023d14       0x70 ./Src/main.o
+                0x0000000008023d14                HAL_TIM_PeriodElapsedCallback
  .text.Error_Handler
-                0x0000000008023d18        0x4 ./Src/main.o
-                0x0000000008023d18                Error_Handler
+                0x0000000008023d84        0x4 ./Src/main.o
+                0x0000000008023d84                Error_Handler
  .text.init_PeakDetector
-                0x0000000008023d1c       0x24 ./Src/peak_detector.o
-                0x0000000008023d1c                init_PeakDetector
+                0x0000000008023d88       0x24 ./Src/peak_detector.o
+                0x0000000008023d88                init_PeakDetector
  .text.append_PeakDetector
-                0x0000000008023d40       0x44 ./Src/peak_detector.o
-                0x0000000008023d40                append_PeakDetector
+                0x0000000008023dac       0x44 ./Src/peak_detector.o
+                0x0000000008023dac                append_PeakDetector
  .text.max_PeakDetector
-                0x0000000008023d84       0x34 ./Src/peak_detector.o
-                0x0000000008023d84                max_PeakDetector
+                0x0000000008023df0       0x34 ./Src/peak_detector.o
+                0x0000000008023df0                max_PeakDetector
  .text.avg_top_quantile_PeakDetector
-                0x0000000008023db8       0x9c ./Src/peak_detector.o
-                0x0000000008023db8                avg_top_quantile_PeakDetector
+                0x0000000008023e24       0x9c ./Src/peak_detector.o
+                0x0000000008023e24                avg_top_quantile_PeakDetector
  .text.init_config
-                0x0000000008023e54       0x30 ./Src/persistent.o
-                0x0000000008023e54                init_config
+                0x0000000008023ec0       0x30 ./Src/persistent.o
+                0x0000000008023ec0                init_config
  .text.isPersistentVarsValid
-                0x0000000008023e84       0x18 ./Src/persistent.o
-                0x0000000008023e84                isPersistentVarsValid
+                0x0000000008023ef0       0x18 ./Src/persistent.o
+                0x0000000008023ef0                isPersistentVarsValid
  .text.HAL_MspInit
-                0x0000000008023e9c       0x54 ./Src/stm32f4xx_hal_msp.o
-                0x0000000008023e9c                HAL_MspInit
+                0x0000000008023f08       0x54 ./Src/stm32f4xx_hal_msp.o
+                0x0000000008023f08                HAL_MspInit
  .text.HAL_ADC_MspInit
-                0x0000000008023ef0      0x188 ./Src/stm32f4xx_hal_msp.o
-                0x0000000008023ef0                HAL_ADC_MspInit
+                0x0000000008023f5c      0x188 ./Src/stm32f4xx_hal_msp.o
+                0x0000000008023f5c                HAL_ADC_MspInit
  .text.HAL_CAN_MspInit
-                0x0000000008024078       0x84 ./Src/stm32f4xx_hal_msp.o
-                0x0000000008024078                HAL_CAN_MspInit
+                0x00000000080240e4       0x84 ./Src/stm32f4xx_hal_msp.o
+                0x00000000080240e4                HAL_CAN_MspInit
  .text.HAL_CRC_MspInit
-                0x00000000080240fc       0x34 ./Src/stm32f4xx_hal_msp.o
-                0x00000000080240fc                HAL_CRC_MspInit
+                0x0000000008024168       0x34 ./Src/stm32f4xx_hal_msp.o
+                0x0000000008024168                HAL_CRC_MspInit
  .text.HAL_SPI_MspInit
-                0x0000000008024130       0x70 ./Src/stm32f4xx_hal_msp.o
-                0x0000000008024130                HAL_SPI_MspInit
+                0x000000000802419c       0x70 ./Src/stm32f4xx_hal_msp.o
+                0x000000000802419c                HAL_SPI_MspInit
  .text.HAL_TIM_Base_MspInit
-                0x00000000080241a0       0xa4 ./Src/stm32f4xx_hal_msp.o
-                0x00000000080241a0                HAL_TIM_Base_MspInit
+                0x000000000802420c       0xa4 ./Src/stm32f4xx_hal_msp.o
+                0x000000000802420c                HAL_TIM_Base_MspInit
  .text.HAL_UART_MspInit
-                0x0000000008024244       0x80 ./Src/stm32f4xx_hal_msp.o
-                0x0000000008024244                HAL_UART_MspInit
+                0x00000000080242b0       0x80 ./Src/stm32f4xx_hal_msp.o
+                0x00000000080242b0                HAL_UART_MspInit
  .text.HAL_UART_MspDeInit
-                0x00000000080242c4       0x38 ./Src/stm32f4xx_hal_msp.o
-                0x00000000080242c4                HAL_UART_MspDeInit
+                0x0000000008024330       0x38 ./Src/stm32f4xx_hal_msp.o
+                0x0000000008024330                HAL_UART_MspDeInit
  .text.HAL_SRAM_MspInit
-                0x00000000080242fc       0x8c ./Src/stm32f4xx_hal_msp.o
-                0x00000000080242fc                HAL_SRAM_MspInit
+                0x0000000008024368       0x8c ./Src/stm32f4xx_hal_msp.o
+                0x0000000008024368                HAL_SRAM_MspInit
  .text.HAL_InitTick
-                0x0000000008024388       0x80 ./Src/stm32f4xx_hal_timebase_tim.o
-                0x0000000008024388                HAL_InitTick
+                0x00000000080243f4       0x80 ./Src/stm32f4xx_hal_timebase_tim.o
+                0x00000000080243f4                HAL_InitTick
  .text.NMI_Handler
-                0x0000000008024408        0x4 ./Src/stm32f4xx_it.o
-                0x0000000008024408                NMI_Handler
+                0x0000000008024474        0x4 ./Src/stm32f4xx_it.o
+                0x0000000008024474                NMI_Handler
  .text.HardFault_Handler
-                0x000000000802440c        0x4 ./Src/stm32f4xx_it.o
-                0x000000000802440c                HardFault_Handler
+                0x0000000008024478        0x4 ./Src/stm32f4xx_it.o
+                0x0000000008024478                HardFault_Handler
  .text.MemManage_Handler
-                0x0000000008024410        0x4 ./Src/stm32f4xx_it.o
-                0x0000000008024410                MemManage_Handler
+                0x000000000802447c        0x4 ./Src/stm32f4xx_it.o
+                0x000000000802447c                MemManage_Handler
  .text.BusFault_Handler
-                0x0000000008024414        0x4 ./Src/stm32f4xx_it.o
-                0x0000000008024414                BusFault_Handler
+                0x0000000008024480        0x4 ./Src/stm32f4xx_it.o
+                0x0000000008024480                BusFault_Handler
  .text.UsageFault_Handler
-                0x0000000008024418        0x4 ./Src/stm32f4xx_it.o
-                0x0000000008024418                UsageFault_Handler
+                0x0000000008024484        0x4 ./Src/stm32f4xx_it.o
+                0x0000000008024484                UsageFault_Handler
  .text.DebugMon_Handler
-                0x000000000802441c        0x4 ./Src/stm32f4xx_it.o
-                0x000000000802441c                DebugMon_Handler
+                0x0000000008024488        0x4 ./Src/stm32f4xx_it.o
+                0x0000000008024488                DebugMon_Handler
  .text.EXTI9_5_IRQHandler
-                0x0000000008024420        0x8 ./Src/stm32f4xx_it.o
-                0x0000000008024420                EXTI9_5_IRQHandler
+                0x000000000802448c        0x8 ./Src/stm32f4xx_it.o
+                0x000000000802448c                EXTI9_5_IRQHandler
  .text.TIM1_UP_TIM10_IRQHandler
-                0x0000000008024428        0xc ./Src/stm32f4xx_it.o
-                0x0000000008024428                TIM1_UP_TIM10_IRQHandler
+                0x0000000008024494        0xc ./Src/stm32f4xx_it.o
+                0x0000000008024494                TIM1_UP_TIM10_IRQHandler
  .text.TIM3_IRQHandler
-                0x0000000008024434        0xc ./Src/stm32f4xx_it.o
-                0x0000000008024434                TIM3_IRQHandler
+                0x00000000080244a0        0xc ./Src/stm32f4xx_it.o
+                0x00000000080244a0                TIM3_IRQHandler
  .text.TIM4_IRQHandler
-                0x0000000008024440        0xc ./Src/stm32f4xx_it.o
-                0x0000000008024440                TIM4_IRQHandler
+                0x00000000080244ac        0xc ./Src/stm32f4xx_it.o
+                0x00000000080244ac                TIM4_IRQHandler
  .text.USART1_IRQHandler
-                0x000000000802444c        0x4 ./Src/stm32f4xx_it.o
-                0x000000000802444c                USART1_IRQHandler
+                0x00000000080244b8        0x4 ./Src/stm32f4xx_it.o
+                0x00000000080244b8                USART1_IRQHandler
  .text.EXTI15_10_IRQHandler
-                0x0000000008024450        0x8 ./Src/stm32f4xx_it.o
-                0x0000000008024450                EXTI15_10_IRQHandler
+                0x00000000080244bc        0x8 ./Src/stm32f4xx_it.o
+                0x00000000080244bc                EXTI15_10_IRQHandler
  .text.DMA2_Stream0_IRQHandler
-                0x0000000008024458        0xc ./Src/stm32f4xx_it.o
-                0x0000000008024458                DMA2_Stream0_IRQHandler
+                0x00000000080244c4        0xc ./Src/stm32f4xx_it.o
+                0x00000000080244c4                DMA2_Stream0_IRQHandler
  .text.DMA2_Stream1_IRQHandler
-                0x0000000008024464        0xc ./Src/stm32f4xx_it.o
-                0x0000000008024464                DMA2_Stream1_IRQHandler
+                0x00000000080244d0        0xc ./Src/stm32f4xx_it.o
+                0x00000000080244d0                DMA2_Stream1_IRQHandler
  .text.SystemInit
-                0x0000000008024470       0x50 ./Src/system_stm32f4xx.o
-                0x0000000008024470                SystemInit
+                0x00000000080244dc       0x50 ./Src/system_stm32f4xx.o
+                0x00000000080244dc                SystemInit
  .text.touch_read_data
-                0x00000000080244c0       0x80 ./Src/touch_HR2046.o
+                0x000000000802452c       0x80 ./Src/touch_HR2046.o
  .text.init_touch_screen_calib_info
-                0x0000000008024540        0x8 ./Src/touch_HR2046.o
-                0x0000000008024540                init_touch_screen_calib_info
+                0x00000000080245ac        0x8 ./Src/touch_HR2046.o
+                0x00000000080245ac                init_touch_screen_calib_info
  .text.touch_set_calibrate
-                0x0000000008024548       0xf0 ./Src/touch_HR2046.o
-                0x0000000008024548                touch_set_calibrate
+                0x00000000080245b4       0xf0 ./Src/touch_HR2046.o
+                0x00000000080245b4                touch_set_calibrate
  .text.touch_read_XY_ADC
-                0x0000000008024638       0x18 ./Src/touch_HR2046.o
-                0x0000000008024638                touch_read_XY_ADC
+                0x00000000080246a4       0x18 ./Src/touch_HR2046.o
+                0x00000000080246a4                touch_read_XY_ADC
  .text.touch_read_XY_physical
-                0x0000000008024650       0x80 ./Src/touch_HR2046.o
-                0x0000000008024650                touch_read_XY_physical
+                0x00000000080246bc       0x80 ./Src/touch_HR2046.o
+                0x00000000080246bc                touch_read_XY_physical
  .text.Reset_Handler
-                0x00000000080246d0       0x50 ./Startup/startup_stm32f407vetx.o
-                0x00000000080246d0                Reset_Handler
+                0x000000000802473c       0x50 ./Startup/startup_stm32f407vetx.o
+                0x000000000802473c                Reset_Handler
  .text.Default_Handler
-                0x0000000008024720        0x2 ./Startup/startup_stm32f407vetx.o
-                0x0000000008024720                RTC_Alarm_IRQHandler
-                0x0000000008024720                HASH_RNG_IRQHandler
-                0x0000000008024720                EXTI2_IRQHandler
-                0x0000000008024720                TIM8_CC_IRQHandler
-                0x0000000008024720                TIM1_CC_IRQHandler
-                0x0000000008024720                DMA2_Stream5_IRQHandler
-                0x0000000008024720                DMA1_Stream5_IRQHandler
-                0x0000000008024720                PVD_IRQHandler
-                0x0000000008024720                SDIO_IRQHandler
-                0x0000000008024720                TAMP_STAMP_IRQHandler
-                0x0000000008024720                CAN2_RX1_IRQHandler
-                0x0000000008024720                EXTI3_IRQHandler
-                0x0000000008024720                TIM8_TRG_COM_TIM14_IRQHandler
-                0x0000000008024720                TIM8_UP_TIM13_IRQHandler
-                0x0000000008024720                I2C3_ER_IRQHandler
-                0x0000000008024720                EXTI0_IRQHandler
-                0x0000000008024720                I2C2_EV_IRQHandler
-                0x0000000008024720                DMA1_Stream2_IRQHandler
-                0x0000000008024720                CAN1_RX0_IRQHandler
-                0x0000000008024720                FPU_IRQHandler
-                0x0000000008024720                OTG_HS_WKUP_IRQHandler
-                0x0000000008024720                CAN2_SCE_IRQHandler
-                0x0000000008024720                DMA2_Stream2_IRQHandler
-                0x0000000008024720                SPI1_IRQHandler
-                0x0000000008024720                TIM6_DAC_IRQHandler
-                0x0000000008024720                TIM1_BRK_TIM9_IRQHandler
-                0x0000000008024720                DCMI_IRQHandler
-                0x0000000008024720                CAN2_RX0_IRQHandler
-                0x0000000008024720                DMA2_Stream3_IRQHandler
-                0x0000000008024720                USART6_IRQHandler
-                0x0000000008024720                USART3_IRQHandler
-                0x0000000008024720                CAN1_RX1_IRQHandler
-                0x0000000008024720                UART5_IRQHandler
-                0x0000000008024720                I2C1_EV_IRQHandler
-                0x0000000008024720                DMA1_Stream6_IRQHandler
-                0x0000000008024720                DMA1_Stream1_IRQHandler
-                0x0000000008024720                UART4_IRQHandler
-                0x0000000008024720                RCC_IRQHandler
-                0x0000000008024720                TIM8_BRK_TIM12_IRQHandler
-                0x0000000008024720                Default_Handler
-                0x0000000008024720                ADC_IRQHandler
-                0x0000000008024720                DMA1_Stream7_IRQHandler
-                0x0000000008024720                TIM7_IRQHandler
-                0x0000000008024720                CAN2_TX_IRQHandler
-                0x0000000008024720                TIM5_IRQHandler
-                0x0000000008024720                DMA2_Stream7_IRQHandler
-                0x0000000008024720                I2C3_EV_IRQHandler
-                0x0000000008024720                RTC_WKUP_IRQHandler
-                0x0000000008024720                ETH_WKUP_IRQHandler
-                0x0000000008024720                SPI2_IRQHandler
-                0x0000000008024720                OTG_HS_EP1_IN_IRQHandler
-                0x0000000008024720                DMA1_Stream0_IRQHandler
-                0x0000000008024720                CAN1_TX_IRQHandler
-                0x0000000008024720                EXTI4_IRQHandler
-                0x0000000008024720                FSMC_IRQHandler
-                0x0000000008024720                ETH_IRQHandler
-                0x0000000008024720                OTG_HS_EP1_OUT_IRQHandler
-                0x0000000008024720                WWDG_IRQHandler
-                0x0000000008024720                TIM2_IRQHandler
-                0x0000000008024720                OTG_FS_WKUP_IRQHandler
-                0x0000000008024720                TIM1_TRG_COM_TIM11_IRQHandler
-                0x0000000008024720                OTG_HS_IRQHandler
-                0x0000000008024720                EXTI1_IRQHandler
-                0x0000000008024720                USART2_IRQHandler
-                0x0000000008024720                I2C2_ER_IRQHandler
-                0x0000000008024720                CAN1_SCE_IRQHandler
-                0x0000000008024720                FLASH_IRQHandler
-                0x0000000008024720                DMA2_Stream4_IRQHandler
-                0x0000000008024720                OTG_FS_IRQHandler
-                0x0000000008024720                SPI3_IRQHandler
-                0x0000000008024720                DMA1_Stream4_IRQHandler
-                0x0000000008024720                I2C1_ER_IRQHandler
-                0x0000000008024720                DMA2_Stream6_IRQHandler
-                0x0000000008024720                DMA1_Stream3_IRQHandler
- *fill*         0x0000000008024722        0x2 
- .text.__errno  0x0000000008024724        0xc c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-errno.o)
-                0x0000000008024724                __errno
+                0x000000000802478c        0x2 ./Startup/startup_stm32f407vetx.o
+                0x000000000802478c                RTC_Alarm_IRQHandler
+                0x000000000802478c                HASH_RNG_IRQHandler
+                0x000000000802478c                EXTI2_IRQHandler
+                0x000000000802478c                TIM8_CC_IRQHandler
+                0x000000000802478c                TIM1_CC_IRQHandler
+                0x000000000802478c                DMA2_Stream5_IRQHandler
+                0x000000000802478c                DMA1_Stream5_IRQHandler
+                0x000000000802478c                PVD_IRQHandler
+                0x000000000802478c                SDIO_IRQHandler
+                0x000000000802478c                TAMP_STAMP_IRQHandler
+                0x000000000802478c                CAN2_RX1_IRQHandler
+                0x000000000802478c                EXTI3_IRQHandler
+                0x000000000802478c                TIM8_TRG_COM_TIM14_IRQHandler
+                0x000000000802478c                TIM8_UP_TIM13_IRQHandler
+                0x000000000802478c                I2C3_ER_IRQHandler
+                0x000000000802478c                EXTI0_IRQHandler
+                0x000000000802478c                I2C2_EV_IRQHandler
+                0x000000000802478c                DMA1_Stream2_IRQHandler
+                0x000000000802478c                CAN1_RX0_IRQHandler
+                0x000000000802478c                FPU_IRQHandler
+                0x000000000802478c                OTG_HS_WKUP_IRQHandler
+                0x000000000802478c                CAN2_SCE_IRQHandler
+                0x000000000802478c                DMA2_Stream2_IRQHandler
+                0x000000000802478c                SPI1_IRQHandler
+                0x000000000802478c                TIM6_DAC_IRQHandler
+                0x000000000802478c                TIM1_BRK_TIM9_IRQHandler
+                0x000000000802478c                DCMI_IRQHandler
+                0x000000000802478c                CAN2_RX0_IRQHandler
+                0x000000000802478c                DMA2_Stream3_IRQHandler
+                0x000000000802478c                USART6_IRQHandler
+                0x000000000802478c                USART3_IRQHandler
+                0x000000000802478c                CAN1_RX1_IRQHandler
+                0x000000000802478c                UART5_IRQHandler
+                0x000000000802478c                I2C1_EV_IRQHandler
+                0x000000000802478c                DMA1_Stream6_IRQHandler
+                0x000000000802478c                DMA1_Stream1_IRQHandler
+                0x000000000802478c                UART4_IRQHandler
+                0x000000000802478c                RCC_IRQHandler
+                0x000000000802478c                TIM8_BRK_TIM12_IRQHandler
+                0x000000000802478c                Default_Handler
+                0x000000000802478c                ADC_IRQHandler
+                0x000000000802478c                DMA1_Stream7_IRQHandler
+                0x000000000802478c                TIM7_IRQHandler
+                0x000000000802478c                CAN2_TX_IRQHandler
+                0x000000000802478c                TIM5_IRQHandler
+                0x000000000802478c                DMA2_Stream7_IRQHandler
+                0x000000000802478c                I2C3_EV_IRQHandler
+                0x000000000802478c                RTC_WKUP_IRQHandler
+                0x000000000802478c                ETH_WKUP_IRQHandler
+                0x000000000802478c                SPI2_IRQHandler
+                0x000000000802478c                OTG_HS_EP1_IN_IRQHandler
+                0x000000000802478c                DMA1_Stream0_IRQHandler
+                0x000000000802478c                CAN1_TX_IRQHandler
+                0x000000000802478c                EXTI4_IRQHandler
+                0x000000000802478c                FSMC_IRQHandler
+                0x000000000802478c                ETH_IRQHandler
+                0x000000000802478c                OTG_HS_EP1_OUT_IRQHandler
+                0x000000000802478c                WWDG_IRQHandler
+                0x000000000802478c                TIM2_IRQHandler
+                0x000000000802478c                OTG_FS_WKUP_IRQHandler
+                0x000000000802478c                TIM1_TRG_COM_TIM11_IRQHandler
+                0x000000000802478c                OTG_HS_IRQHandler
+                0x000000000802478c                EXTI1_IRQHandler
+                0x000000000802478c                USART2_IRQHandler
+                0x000000000802478c                I2C2_ER_IRQHandler
+                0x000000000802478c                CAN1_SCE_IRQHandler
+                0x000000000802478c                FLASH_IRQHandler
+                0x000000000802478c                DMA2_Stream4_IRQHandler
+                0x000000000802478c                OTG_FS_IRQHandler
+                0x000000000802478c                SPI3_IRQHandler
+                0x000000000802478c                DMA1_Stream4_IRQHandler
+                0x000000000802478c                I2C1_ER_IRQHandler
+                0x000000000802478c                DMA2_Stream6_IRQHandler
+                0x000000000802478c                DMA1_Stream3_IRQHandler
+ *fill*         0x000000000802478e        0x2 
+ .text.__errno  0x0000000008024790        0xc c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-errno.o)
+                0x0000000008024790                __errno
  .text.__libc_init_array
-                0x0000000008024730       0x48 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-init.o)
-                0x0000000008024730                __libc_init_array
+                0x000000000802479c       0x48 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-init.o)
+                0x000000000802479c                __libc_init_array
  .text.__retarget_lock_acquire_recursive
-                0x0000000008024778        0x2 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-lock.o)
-                0x0000000008024778                __retarget_lock_acquire_recursive
+                0x00000000080247e4        0x2 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-lock.o)
+                0x00000000080247e4                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x000000000802477a        0x2 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-lock.o)
-                0x000000000802477a                __retarget_lock_release_recursive
- .text.memcpy   0x000000000802477c       0x1c c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-memcpy-stub.o)
-                0x000000000802477c                memcpy
- .text.memset   0x0000000008024798       0x10 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-memset.o)
-                0x0000000008024798                memset
+                0x00000000080247e6        0x2 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-lock.o)
+                0x00000000080247e6                __retarget_lock_release_recursive
+ .text.memcpy   0x00000000080247e8       0x1c c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-memcpy-stub.o)
+                0x00000000080247e8                memcpy
+ .text.memset   0x0000000008024804       0x10 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-memset.o)
+                0x0000000008024804                memset
  .text.cleanup_glue
-                0x00000000080247a8       0x1a c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-reent.o)
-                0x00000000080247a8                cleanup_glue
- *fill*         0x00000000080247c2        0x2 
+                0x0000000008024814       0x1a c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-reent.o)
+                0x0000000008024814                cleanup_glue
+ *fill*         0x000000000802482e        0x2 
  .text._reclaim_reent
-                0x00000000080247c4       0xb8 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-reent.o)
-                0x00000000080247c4                _reclaim_reent
- .text.strcpy   0x000000000802487c       0x10 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-strcpy.o)
-                0x000000000802487c                strcpy
- .text.strncmp  0x000000000802488c       0x24 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-strncmp.o)
-                0x000000000802488c                strncmp
+                0x0000000008024830       0xb8 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-reent.o)
+                0x0000000008024830                _reclaim_reent
+ .text.strcpy   0x00000000080248e8       0x10 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-strcpy.o)
+                0x00000000080248e8                strcpy
+ .text.strncmp  0x00000000080248f8       0x24 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-strncmp.o)
+                0x00000000080248f8                strncmp
  .text.__malloc_lock
-                0x00000000080248b0        0xc c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-mlock.o)
-                0x00000000080248b0                __malloc_lock
+                0x000000000802491c        0xc c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-mlock.o)
+                0x000000000802491c                __malloc_lock
  .text.__malloc_unlock
-                0x00000000080248bc        0xc c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-mlock.o)
-                0x00000000080248bc                __malloc_unlock
- .text._free_r  0x00000000080248c8       0xa0 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-nano-freer.o)
-                0x00000000080248c8                _free_r
- .text.logf     0x0000000008024968       0x6c c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_log.o)
-                0x0000000008024968                logf
- .text.sqrtf    0x00000000080249d4       0x4c c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_sqrt.o)
-                0x00000000080249d4                sqrtf
+                0x0000000008024928        0xc c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-mlock.o)
+                0x0000000008024928                __malloc_unlock
+ .text._free_r  0x0000000008024934       0xa0 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-nano-freer.o)
+                0x0000000008024934                _free_r
+ .text.logf     0x00000000080249d4       0x6c c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_log.o)
+                0x00000000080249d4                logf
+ .text.sqrtf    0x0000000008024a40       0x4c c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_sqrt.o)
+                0x0000000008024a40                sqrtf
  .text.__ieee754_logf
-                0x0000000008024a20      0x1e0 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_log.o)
-                0x0000000008024a20                __ieee754_logf
+                0x0000000008024a8c      0x1e0 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_log.o)
+                0x0000000008024a8c                __ieee754_logf
  .text.__ieee754_sqrtf
-                0x0000000008024c00        0x6 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_sqrt.o)
-                0x0000000008024c00                __ieee754_sqrtf
- *fill*         0x0000000008024c06        0x2 
- .text.nanf     0x0000000008024c08        0xc c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_nan.o)
-                0x0000000008024c08                nanf
- *(.glue_7)
- .glue_7        0x0000000008024c14        0x0 linker stubs
- *(.glue_7t)
- .glue_7t       0x0000000008024c14        0x0 linker stubs
- *(.eh_frame)
- .eh_frame      0x0000000008024c14        0x0 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
- *(.init)
- .init          0x0000000008024c14        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x0000000008024c14                _init
- .init          0x0000000008024c18        0x8 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
- *(.fini)
- .fini          0x0000000008024c20        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x0000000008024c20                _fini
- .fini          0x0000000008024c24        0x8 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
-                0x0000000008024c2c                . = ALIGN (0x4)
-                0x0000000008024c2c                _etext = .
-
-.vfp11_veneer   0x0000000008024c2c        0x0
- .vfp11_veneer  0x0000000008024c2c        0x0 linker stubs
-
-.v4_bx          0x0000000008024c2c        0x0
- .v4_bx         0x0000000008024c2c        0x0 linker stubs
-
-.iplt           0x0000000008024c2c        0x0
- .iplt          0x0000000008024c2c        0x0 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-
-.rodata         0x0000000008024c2c    0x1c2c8
-                0x0000000008024c2c                . = ALIGN (0x4)
- *(.rodata)
- .rodata        0x0000000008024c2c        0x2 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_obj.o
- *fill*         0x0000000008024c2e        0x2 
- .rodata        0x0000000008024c30        0x2 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_img.o
- *fill*         0x0000000008024c32        0x2 
- .rodata        0x0000000008024c34        0x2 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_rect.o
- *fill*         0x0000000008024c36        0x2 
- .rodata        0x0000000008024c38       0x10 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_img_buf.o
- .rodata        0x0000000008024c48       0x10 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_img_decoder.o
- .rodata        0x0000000008024c58        0x2 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_color.o
- *fill*         0x0000000008024c5a        0x2 
- .rodata        0x0000000008024c5c        0x2 ./Middlewares/Third_Party/lvgl/src/lv_themes/lv_theme_material.o
- *fill*         0x0000000008024c5e        0x2 
- .rodata        0x0000000008024c60        0xe ./Src/LVGL_GUI.o
- *fill*         0x0000000008024c6e        0x2 
- .rodata        0x0000000008024c70        0x2 ./Src/LVGL_GUI_settings_scene.o
+                0x0000000008024c6c        0x6 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_sqrt.o)
+                0x0000000008024c6c                __ieee754_sqrtf
  *fill*         0x0000000008024c72        0x2 
- .rodata        0x0000000008024c74        0x2 ./Src/LVGL_items.o
- *fill*         0x0000000008024c76        0x2 
- .rodata        0x0000000008024c78       0x10 ./Src/main.o
+ .text.nanf     0x0000000008024c74        0xc c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_nan.o)
+                0x0000000008024c74                nanf
+ *(.glue_7)
+ .glue_7        0x0000000008024c80        0x0 linker stubs
+ *(.glue_7t)
+ .glue_7t       0x0000000008024c80        0x0 linker stubs
+ *(.eh_frame)
+ .eh_frame      0x0000000008024c80        0x0 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ *(.init)
+ .init          0x0000000008024c80        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x0000000008024c80                _init
+ .init          0x0000000008024c84        0x8 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+ *(.fini)
+ .fini          0x0000000008024c8c        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x0000000008024c8c                _fini
+ .fini          0x0000000008024c90        0x8 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x0000000008024c98                . = ALIGN (0x4)
+                0x0000000008024c98                _etext = .
+
+.vfp11_veneer   0x0000000008024c98        0x0
+ .vfp11_veneer  0x0000000008024c98        0x0 linker stubs
+
+.v4_bx          0x0000000008024c98        0x0
+ .v4_bx         0x0000000008024c98        0x0 linker stubs
+
+.iplt           0x0000000008024c98        0x0
+ .iplt          0x0000000008024c98        0x0 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+
+.rodata         0x0000000008024c98    0x1c2c8
+                0x0000000008024c98                . = ALIGN (0x4)
+ *(.rodata)
+ .rodata        0x0000000008024c98        0x2 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_obj.o
+ *fill*         0x0000000008024c9a        0x2 
+ .rodata        0x0000000008024c9c        0x2 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_img.o
+ *fill*         0x0000000008024c9e        0x2 
+ .rodata        0x0000000008024ca0        0x2 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_rect.o
+ *fill*         0x0000000008024ca2        0x2 
+ .rodata        0x0000000008024ca4       0x10 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_img_buf.o
+ .rodata        0x0000000008024cb4       0x10 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_img_decoder.o
+ .rodata        0x0000000008024cc4        0x2 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_color.o
+ *fill*         0x0000000008024cc6        0x2 
+ .rodata        0x0000000008024cc8        0x2 ./Middlewares/Third_Party/lvgl/src/lv_themes/lv_theme_material.o
+ *fill*         0x0000000008024cca        0x2 
+ .rodata        0x0000000008024ccc        0xe ./Src/LVGL_GUI.o
+ *fill*         0x0000000008024cda        0x2 
+ .rodata        0x0000000008024cdc        0x2 ./Src/LVGL_GUI_settings_scene.o
+ *fill*         0x0000000008024cde        0x2 
+ .rodata        0x0000000008024ce0        0x2 ./Src/LVGL_items.o
+ *fill*         0x0000000008024ce2        0x2 
+ .rodata        0x0000000008024ce4       0x10 ./Src/main.o
  *(.rodata*)
  .rodata.flagBitshiftOffset.9301
-                0x0000000008024c88        0x8 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+                0x0000000008024cf4        0x8 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
  .rodata.vTaskStartScheduler.str1.4
-                0x0000000008024c90        0x5 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- *fill*         0x0000000008024c95        0x3 
+                0x0000000008024cfc        0x5 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ *fill*         0x0000000008024d01        0x3 
  .rodata.prvCheckForValidListAndQueue.str1.4
-                0x0000000008024c98        0x5 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
- *fill*         0x0000000008024c9d        0x3 
+                0x0000000008024d04        0x5 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ *fill*         0x0000000008024d09        0x3 
  .rodata.xTimerCreateTimerTask.str1.4
-                0x0000000008024ca0        0x8 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+                0x0000000008024d0c        0x8 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
  .rodata.lv_obj_signal.str1.4
-                0x0000000008024ca8        0x7 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_obj.o
- *fill*         0x0000000008024caf        0x1 
+                0x0000000008024d14        0x7 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_obj.o
+ *fill*         0x0000000008024d1b        0x1 
  .rodata.lv_draw_img.str1.4
-                0x0000000008024cb0        0x8 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_img.o
+                0x0000000008024d1c        0x8 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_img.o
  .rodata.CSWTCH.28
-                0x0000000008024cb8        0xb ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_img.o
- *fill*         0x0000000008024cc3        0x1 
+                0x0000000008024d24        0xb ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_img.o
+ *fill*         0x0000000008024d2f        0x1 
  .rodata._lv_bpp1_opa_table
-                0x0000000008024cc4        0x2 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o
-                0x0000000008024cc4                _lv_bpp1_opa_table
- *fill*         0x0000000008024cc6        0x2 
+                0x0000000008024d30        0x2 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o
+                0x0000000008024d30                _lv_bpp1_opa_table
+ *fill*         0x0000000008024d32        0x2 
  .rodata._lv_bpp2_opa_table
-                0x0000000008024cc8        0x4 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o
-                0x0000000008024cc8                _lv_bpp2_opa_table
+                0x0000000008024d34        0x4 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o
+                0x0000000008024d34                _lv_bpp2_opa_table
  .rodata._lv_bpp4_opa_table
-                0x0000000008024ccc       0x10 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o
-                0x0000000008024ccc                _lv_bpp4_opa_table
+                0x0000000008024d38       0x10 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o
+                0x0000000008024d38                _lv_bpp4_opa_table
  .rodata._lv_bpp8_opa_table
-                0x0000000008024cdc      0x100 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o
-                0x0000000008024cdc                _lv_bpp8_opa_table
+                0x0000000008024d48      0x100 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o
+                0x0000000008024d48                _lv_bpp8_opa_table
  .rodata.wcorr.10553
-                0x0000000008024ddc       0x21 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_line.o
- *fill*         0x0000000008024dfd        0x3 
+                0x0000000008024e48       0x21 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_line.o
+ *fill*         0x0000000008024e69        0x3 
  .rodata.lv_img_decoder_built_in_open.str1.4
-                0x0000000008024e00        0x4 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_img_decoder.o
- .rodata.cmaps  0x0000000008024e04       0x78 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
+                0x0000000008024e6c        0x4 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_img_decoder.o
+ .rodata.cmaps  0x0000000008024e70       0x78 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
  .rodata.glyph_bitmap
-                0x0000000008024e7c     0x468d ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
- *fill*         0x0000000008029509        0x3 
+                0x0000000008024ee8     0x468d ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
+ *fill*         0x0000000008029575        0x3 
  .rodata.glyph_dsc
-                0x000000000802950c      0x550 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
+                0x0000000008029578      0x550 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
  .rodata.kern_class_values
-                0x0000000008029a5c      0x627 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
- *fill*         0x000000000802a083        0x1 
+                0x0000000008029ac8      0x627 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
+ *fill*         0x000000000802a0ef        0x1 
  .rodata.kern_classes
-                0x000000000802a084       0x10 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
+                0x000000000802a0f0       0x10 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
  .rodata.kern_left_class_mapping
-                0x000000000802a094       0xaa ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
- *fill*         0x000000000802a13e        0x2 
+                0x000000000802a100       0xaa ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
+ *fill*         0x000000000802a1aa        0x2 
  .rodata.kern_right_class_mapping
-                0x000000000802a140       0xaa ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
- *fill*         0x000000000802a1ea        0x2 
+                0x000000000802a1ac       0xaa ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
+ *fill*         0x000000000802a256        0x2 
  .rodata.unicode_list_0
-                0x000000000802a1ec        0x8 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
+                0x000000000802a258        0x8 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
  .rodata.unicode_list_5
-                0x000000000802a1f4       0xc0 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
- .rodata.cmaps  0x000000000802a2b4       0x78 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
+                0x000000000802a260       0xc0 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_18.o
+ .rodata.cmaps  0x000000000802a320       0x78 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
  .rodata.glyph_bitmap
-                0x000000000802a32c     0x7d5c ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
+                0x000000000802a398     0x7d5c ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
  .rodata.glyph_dsc
-                0x0000000008032088      0x550 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
+                0x00000000080320f4      0x550 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
  .rodata.kern_class_values
-                0x00000000080325d8      0x627 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
- *fill*         0x0000000008032bff        0x1 
+                0x0000000008032644      0x627 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
+ *fill*         0x0000000008032c6b        0x1 
  .rodata.kern_classes
-                0x0000000008032c00       0x10 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
+                0x0000000008032c6c       0x10 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
  .rodata.kern_left_class_mapping
-                0x0000000008032c10       0xaa ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
- *fill*         0x0000000008032cba        0x2 
+                0x0000000008032c7c       0xaa ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
+ *fill*         0x0000000008032d26        0x2 
  .rodata.kern_right_class_mapping
-                0x0000000008032cbc       0xaa ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
- *fill*         0x0000000008032d66        0x2 
+                0x0000000008032d28       0xaa ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
+ *fill*         0x0000000008032dd2        0x2 
  .rodata.unicode_list_0
-                0x0000000008032d68        0x8 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
+                0x0000000008032dd4        0x8 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
  .rodata.unicode_list_5
-                0x0000000008032d70       0xc0 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
- .rodata.cmaps  0x0000000008032e30       0x50 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
+                0x0000000008032ddc       0xc0 ./Middlewares/Third_Party/lvgl/src/lv_font/CNSans_24.o
+ .rodata.cmaps  0x0000000008032e9c       0x50 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
  .rodata.glyph_bitmap
-                0x0000000008032e80     0x1c63 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
- *fill*         0x0000000008034ae3        0x1 
+                0x0000000008032eec     0x1c63 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
+ *fill*         0x0000000008034b4f        0x1 
  .rodata.glyph_dsc
-                0x0000000008034ae4      0x228 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
+                0x0000000008034b50      0x228 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
  .rodata.glyph_id_ofs_list_0
-                0x0000000008034d0c       0x1a ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
- *fill*         0x0000000008034d26        0x2 
+                0x0000000008034d78       0x1a ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
+ *fill*         0x0000000008034d92        0x2 
  .rodata.kern_class_values
-                0x0000000008034d28      0x627 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
- *fill*         0x000000000803534f        0x1 
+                0x0000000008034d94      0x627 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
+ *fill*         0x00000000080353bb        0x1 
  .rodata.kern_classes
-                0x0000000008035350       0x10 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
+                0x00000000080353bc       0x10 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
  .rodata.kern_left_class_mapping
-                0x0000000008035360       0x45 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
- *fill*         0x00000000080353a5        0x3 
+                0x00000000080353cc       0x45 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
+ *fill*         0x0000000008035411        0x3 
  .rodata.kern_right_class_mapping
-                0x00000000080353a8       0x45 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
- *fill*         0x00000000080353ed        0x3 
- .rodata.cmaps  0x00000000080353f0       0x50 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
+                0x0000000008035414       0x45 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_24_tiny.o
+ *fill*         0x0000000008035459        0x3 
+ .rodata.cmaps  0x000000000803545c       0x50 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
  .rodata.glyph_bitmap
-                0x0000000008035440     0x6cf5 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
- *fill*         0x000000000803c135        0x3 
+                0x00000000080354ac     0x6cf5 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
+ *fill*         0x000000000803c1a1        0x3 
  .rodata.glyph_dsc
-                0x000000000803c138      0x228 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
+                0x000000000803c1a4      0x228 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
  .rodata.glyph_id_ofs_list_0
-                0x000000000803c360       0x1a ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
- *fill*         0x000000000803c37a        0x2 
+                0x000000000803c3cc       0x1a ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
+ *fill*         0x000000000803c3e6        0x2 
  .rodata.kern_class_values
-                0x000000000803c37c      0x627 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
- *fill*         0x000000000803c9a3        0x1 
+                0x000000000803c3e8      0x627 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
+ *fill*         0x000000000803ca0f        0x1 
  .rodata.kern_classes
-                0x000000000803c9a4       0x10 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
+                0x000000000803ca10       0x10 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
  .rodata.kern_left_class_mapping
-                0x000000000803c9b4       0x45 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
- *fill*         0x000000000803c9f9        0x3 
+                0x000000000803ca20       0x45 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
+ *fill*         0x000000000803ca65        0x3 
  .rodata.kern_right_class_mapping
-                0x000000000803c9fc       0x45 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
- *fill*         0x000000000803ca41        0x3 
+                0x000000000803ca68       0x45 ./Middlewares/Third_Party/lvgl/src/lv_font/font_montserrat_48_tiny.o
+ *fill*         0x000000000803caad        0x3 
  .rodata.CSWTCH.63
-                0x000000000803ca44        0x8 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
- .rodata.cmaps  0x000000000803ca4c       0x28 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
+                0x000000000803cab0        0x8 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
+ .rodata.cmaps  0x000000000803cab8       0x28 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
  .rodata.glyph_dsc
-                0x000000000803ca74      0x4d8 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
+                0x000000000803cae0      0x4d8 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
  .rodata.gylph_bitmap
-                0x000000000803cf4c     0x2a38 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
+                0x000000000803cfb8     0x2a38 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
  .rodata.kern_class_values
-                0x000000000803f984      0xbad ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
- *fill*         0x0000000008040531        0x3 
+                0x000000000803f9f0      0xbad ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
+ *fill*         0x000000000804059d        0x3 
  .rodata.kern_classes
-                0x0000000008040534       0x10 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
+                0x00000000080405a0       0x10 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
  .rodata.kern_left_class_mapping
-                0x0000000008040544       0x9b ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
- *fill*         0x00000000080405df        0x1 
+                0x00000000080405b0       0x9b ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
+ *fill*         0x000000000804064b        0x1 
  .rodata.kern_right_class_mapping
-                0x00000000080405e0       0x9b ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
- *fill*         0x000000000804067b        0x1 
+                0x000000000804064c       0x9b ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
+ *fill*         0x00000000080406e7        0x1 
  .rodata.unicode_list_1
-                0x000000000804067c       0x76 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
+                0x00000000080406e8       0x76 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_montserrat_16.o
  .rodata.lv_fs_get_ext.str1.4
-                0x00000000080406f2        0x4 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_fs.o
+                0x000000000804075e        0x4 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_fs.o
                                           0x1 (size before relaxing)
- *fill*         0x00000000080406f2        0x2 
+ *fill*         0x000000000804075e        0x2 
  .rodata.sin0_90_table
-                0x00000000080406f4       0xb6 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_math.o
- *fill*         0x00000000080407aa        0x2 
+                0x0000000008040760       0xb6 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_math.o
+ *fill*         0x0000000008040816        0x2 
  .rodata._lv_txt_get_next_line.str1.4
-                0x00000000080407ac        0x8 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_txt.o
+                0x0000000008040818        0x8 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_txt.o
  .rodata.lv_theme_material_init.str1.4
-                0x00000000080407b4        0x4 ./Middlewares/Third_Party/lvgl/src/lv_themes/lv_theme_material.o
+                0x0000000008040820        0x4 ./Middlewares/Third_Party/lvgl/src/lv_themes/lv_theme_material.o
  .rodata.lv_bar_signal.str1.4
-                0x00000000080407b8        0x7 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_bar.o
- *fill*         0x00000000080407bf        0x1 
+                0x0000000008040824        0x7 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_bar.o
+ *fill*         0x000000000804082b        0x1 
  .rodata.lv_btn_signal.str1.4
-                0x00000000080407c0        0x7 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_btn.o
- *fill*         0x00000000080407c7        0x1 
+                0x000000000804082c        0x7 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_btn.o
+ *fill*         0x0000000008040833        0x1 
  .rodata.lv_btnmatrix_signal.str1.4
-                0x00000000080407c8        0xd ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_btnmatrix.o
- *fill*         0x00000000080407d5        0x3 
+                0x0000000008040834        0xd ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_btnmatrix.o
+ *fill*         0x0000000008040841        0x3 
  .rodata.str1.4
-                0x00000000080407d8       0x29 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_btnmatrix.o
+                0x0000000008040844       0x29 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_btnmatrix.o
                                          0x2d (size before relaxing)
- *fill*         0x0000000008040801        0x3 
+ *fill*         0x000000000804086d        0x3 
  .rodata.lv_cont_signal.str1.4
-                0x0000000008040804        0x8 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_cont.o
+                0x0000000008040870        0x8 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_cont.o
  .rodata.lv_label_create.str1.4
-                0x000000000804080c        0x5 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_label.o
- *fill*         0x0000000008040811        0x3 
- .rodata.lv_label_signal.str1.4
-                0x0000000008040814        0x9 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_label.o
- *fill*         0x000000000804081d        0x3 
- .rodata.lv_led_signal.str1.4
-                0x0000000008040820        0x7 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_led.o
- *fill*         0x0000000008040827        0x1 
- .rodata.lv_msgbox_signal.str1.4
-                0x0000000008040828        0xa ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_msgbox.o
- *fill*         0x0000000008040832        0x2 
- .rodata.lv_msgbox_create.str1.4
-                0x0000000008040834        0x8 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_msgbox.o
- .rodata.lv_page_scrollable_signal.str1.4
-                0x000000000804083c        0x1 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_page.o
- .rodata.lv_page_signal.str1.4
-                0x000000000804083c        0x8 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_page.o
- .rodata.lv_roller_scrl_signal.str1.4
-                0x0000000008040844        0xa ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_roller.o
- *fill*         0x000000000804084e        0x2 
- .rodata.lv_roller_create.str1.4
-                0x0000000008040850       0x2d ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_roller.o
+                0x0000000008040878        0x5 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_label.o
  *fill*         0x000000000804087d        0x3 
- .rodata.lv_table_signal.str1.4
-                0x0000000008040880        0x9 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_table.o
+ .rodata.lv_label_signal.str1.4
+                0x0000000008040880        0x9 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_label.o
  *fill*         0x0000000008040889        0x3 
- .rodata.bandsel_event_handler.str1.4
-                0x000000000804088c        0x7 ./Src/LVGL_GUI.o
+ .rodata.lv_led_signal.str1.4
+                0x000000000804088c        0x7 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_led.o
  *fill*         0x0000000008040893        0x1 
+ .rodata.lv_msgbox_signal.str1.4
+                0x0000000008040894        0xa ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_msgbox.o
+ *fill*         0x000000000804089e        0x2 
+ .rodata.lv_msgbox_create.str1.4
+                0x00000000080408a0        0x8 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_msgbox.o
+ .rodata.lv_page_scrollable_signal.str1.4
+                0x00000000080408a8        0x1 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_page.o
+ .rodata.lv_page_signal.str1.4
+                0x00000000080408a8        0x8 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_page.o
+ .rodata.lv_roller_scrl_signal.str1.4
+                0x00000000080408b0        0xa ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_roller.o
+ *fill*         0x00000000080408ba        0x2 
+ .rodata.lv_roller_create.str1.4
+                0x00000000080408bc       0x2d ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_roller.o
+ *fill*         0x00000000080408e9        0x3 
+ .rodata.lv_table_signal.str1.4
+                0x00000000080408ec        0x9 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_table.o
+ *fill*         0x00000000080408f5        0x3 
+ .rodata.bandsel_event_handler.str1.4
+                0x00000000080408f8        0x7 ./Src/LVGL_GUI.o
+ *fill*         0x00000000080408ff        0x1 
  .rodata.init_main_widgets.str1.4
-                0x0000000008040894       0x5f ./Src/LVGL_GUI.o
- *fill*         0x00000000080408f3        0x1 
+                0x0000000008040900       0x5f ./Src/LVGL_GUI.o
+ *fill*         0x000000000804095f        0x1 
  .rodata.init_touchscreen_calib_widgets.str1.4
-                0x00000000080408f4        0xd ./Src/LVGL_GUI.o
- *fill*         0x0000000008040901        0x3 
+                0x0000000008040960        0xd ./Src/LVGL_GUI.o
+ *fill*         0x000000000804096d        0x3 
  .rodata.show_band_selector.str1.4
-                0x0000000008040904        0xd ./Src/LVGL_GUI.o
- *fill*         0x0000000008040911        0x3 
+                0x0000000008040970        0xd ./Src/LVGL_GUI.o
+ *fill*         0x000000000804097d        0x3 
  .rodata.GUI_set_band_decoder_info.str1.4
-                0x0000000008040914       0x18 ./Src/LVGL_GUI.o
+                0x0000000008040980       0x18 ./Src/LVGL_GUI.o
  .rodata.str1.4
-                0x000000000804092c       0xa6 ./Src/LVGL_GUI.o
+                0x0000000008040998       0xa6 ./Src/LVGL_GUI.o
                                          0xae (size before relaxing)
- *fill*         0x00000000080409d2        0x2 
+ *fill*         0x0000000008040a3e        0x2 
  .rodata.WarnMsgBoxDismissedSemaphore_attr.17281
-                0x00000000080409d4       0x10 ./Src/LVGL_GUI.o
+                0x0000000008040a40       0x10 ./Src/LVGL_GUI.o
  .rodata.strTransmissionStateActive
-                0x00000000080409e4        0xa ./Src/LVGL_GUI.o
-                0x00000000080409e4                strTransmissionStateActive
- *fill*         0x00000000080409ee        0x2 
+                0x0000000008040a50        0xa ./Src/LVGL_GUI.o
+                0x0000000008040a50                strTransmissionStateActive
+ *fill*         0x0000000008040a5a        0x2 
  .rodata.strTransmissionStateIdle
-                0x00000000080409f0        0x7 ./Src/LVGL_GUI.o
-                0x00000000080409f0                strTransmissionStateIdle
- *fill*         0x00000000080409f7        0x1 
+                0x0000000008040a5c        0x7 ./Src/LVGL_GUI.o
+                0x0000000008040a5c                strTransmissionStateIdle
+ *fill*         0x0000000008040a63        0x1 
  .rodata.strTransmissionStateOnAir
-                0x00000000080409f8        0xa ./Src/LVGL_GUI.o
-                0x00000000080409f8                strTransmissionStateOnAir
- *fill*         0x0000000008040a02        0x2 
+                0x0000000008040a64        0xa ./Src/LVGL_GUI.o
+                0x0000000008040a64                strTransmissionStateOnAir
+ *fill*         0x0000000008040a6e        0x2 
  .rodata.str1.4
-                0x0000000008040a04       0x55 ./Src/LVGL_GUI_settings_scene.o
+                0x0000000008040a70       0x55 ./Src/LVGL_GUI_settings_scene.o
                                          0x65 (size before relaxing)
- *fill*         0x0000000008040a59        0x3 
+ *fill*         0x0000000008040ac5        0x3 
  .rodata.show_sensor_readings_page.str1.4
-                0x0000000008040a5c        0x5 ./Src/LVGL_items.o
- *fill*         0x0000000008040a61        0x3 
+                0x0000000008040ac8        0x5 ./Src/LVGL_items.o
+ *fill*         0x0000000008040acd        0x3 
  .rodata.show_comm_setting_page.str1.4
-                0x0000000008040a64       0x33 ./Src/LVGL_items.o
+                0x0000000008040ad0       0x33 ./Src/LVGL_items.o
                                          0x3b (size before relaxing)
- *fill*         0x0000000008040a97        0x1 
- .rodata.str1.4
-                0x0000000008040a98       0x51 ./Src/LVGL_items.o
-                                         0x55 (size before relaxing)
- *fill*         0x0000000008040ae9        0x3 
- .rodata.FanSpeeds
-                0x0000000008040aec        0x5 ./Src/LVGL_items.o
- *fill*         0x0000000008040af1        0x3 
- .rodata.TableSensorReadingHeaders
-                0x0000000008040af4        0xf ./Src/LVGL_items.o
-                0x0000000008040af4                TableSensorReadingHeaders
  *fill*         0x0000000008040b03        0x1 
- .rodata.sADCNumers
-                0x0000000008040b04       0x41 ./Src/LVGL_items.o
-                0x0000000008040b04                sADCNumers
- *fill*         0x0000000008040b45        0x3 
- .rodata.sSensorNames
-                0x0000000008040b48       0x4e ./Src/LVGL_items.o
-                0x0000000008040b48                sSensorNames
- *fill*         0x0000000008040b96        0x2 
- .rodata.NTC_CAnchors.17543
-                0x0000000008040b98       0x12 ./Src/Sensor_task.o
- *fill*         0x0000000008040baa        0x2 
- .rodata.NTC_RAnchors.17544
-                0x0000000008040bac       0x24 ./Src/Sensor_task.o
- .rodata.BaudRates
-                0x0000000008040bd0        0xa ./Src/SoftUART.o
-                0x0000000008040bd0                BaudRates
- *fill*         0x0000000008040bda        0x2 
- .rodata.YAESU_CMD_GET_FREQ_VFO_A
-                0x0000000008040bdc        0x3 ./Src/Yaesu.o
-                0x0000000008040bdc                YAESU_CMD_GET_FREQ_VFO_A
- *fill*         0x0000000008040bdf        0x1 
- .rodata.StartAlertTask.str1.4
-                0x0000000008040be0        0x7 ./Src/main.o
- *fill*         0x0000000008040be7        0x1 
- .rodata.onTimerLVGL.str1.4
-                0x0000000008040be8        0xd ./Src/main.o
- *fill*         0x0000000008040bf5        0x3 
- .rodata.main.str1.4
-                0x0000000008040bf8       0x4c ./Src/main.o
  .rodata.str1.4
-                0x0000000008040c44      0x1c4 ./Src/main.o
+                0x0000000008040b04       0x51 ./Src/LVGL_items.o
+                                         0x55 (size before relaxing)
+ *fill*         0x0000000008040b55        0x3 
+ .rodata.FanSpeeds
+                0x0000000008040b58        0x5 ./Src/LVGL_items.o
+ *fill*         0x0000000008040b5d        0x3 
+ .rodata.TableSensorReadingHeaders
+                0x0000000008040b60        0xf ./Src/LVGL_items.o
+                0x0000000008040b60                TableSensorReadingHeaders
+ *fill*         0x0000000008040b6f        0x1 
+ .rodata.sADCNumers
+                0x0000000008040b70       0x41 ./Src/LVGL_items.o
+                0x0000000008040b70                sADCNumers
+ *fill*         0x0000000008040bb1        0x3 
+ .rodata.sSensorNames
+                0x0000000008040bb4       0x4e ./Src/LVGL_items.o
+                0x0000000008040bb4                sSensorNames
+ *fill*         0x0000000008040c02        0x2 
+ .rodata.NTC_CAnchors.17543
+                0x0000000008040c04       0x12 ./Src/Sensor_task.o
+ *fill*         0x0000000008040c16        0x2 
+ .rodata.NTC_RAnchors.17544
+                0x0000000008040c18       0x24 ./Src/Sensor_task.o
+ .rodata.BaudRates
+                0x0000000008040c3c        0xa ./Src/SoftUART.o
+                0x0000000008040c3c                BaudRates
+ *fill*         0x0000000008040c46        0x2 
+ .rodata.YAESU_CMD_GET_FREQ_VFO_A
+                0x0000000008040c48        0x3 ./Src/Yaesu.o
+                0x0000000008040c48                YAESU_CMD_GET_FREQ_VFO_A
+ *fill*         0x0000000008040c4b        0x1 
+ .rodata.StartAlertTask.str1.4
+                0x0000000008040c4c        0x7 ./Src/main.o
+ *fill*         0x0000000008040c53        0x1 
+ .rodata.onTimerLVGL.str1.4
+                0x0000000008040c54        0xd ./Src/main.o
+ *fill*         0x0000000008040c61        0x3 
+ .rodata.main.str1.4
+                0x0000000008040c64       0x4c ./Src/main.o
+ .rodata.str1.4
+                0x0000000008040cb0      0x1c4 ./Src/main.o
  .rodata.AutoFanSpeed_speed1
-                0x0000000008040e08        0x4 ./Src/main.o
-                0x0000000008040e08                AutoFanSpeed_speed1
+                0x0000000008040e74        0x4 ./Src/main.o
+                0x0000000008040e74                AutoFanSpeed_speed1
  .rodata.AutoFanSpeed_speed2
-                0x0000000008040e0c        0x4 ./Src/main.o
-                0x0000000008040e0c                AutoFanSpeed_speed2
+                0x0000000008040e78        0x4 ./Src/main.o
+                0x0000000008040e78                AutoFanSpeed_speed2
  .rodata.AutoFanSpeed_tempC1
-                0x0000000008040e10        0x8 ./Src/main.o
-                0x0000000008040e10                AutoFanSpeed_tempC1
+                0x0000000008040e7c        0x8 ./Src/main.o
+                0x0000000008040e7c                AutoFanSpeed_tempC1
  .rodata.AutoFanSpeed_tempC2
-                0x0000000008040e18        0x8 ./Src/main.o
-                0x0000000008040e18                AutoFanSpeed_tempC2
- .rodata.TouchScreenCalibTask_attr.18190
-                0x0000000008040e20       0x24 ./Src/main.o
+                0x0000000008040e84        0x8 ./Src/main.o
+                0x0000000008040e84                AutoFanSpeed_tempC2
+ .rodata.TouchScreenCalibTask_attr.18186
+                0x0000000008040e8c       0x24 ./Src/main.o
  .rodata.defaultTask_attributes
-                0x0000000008040e44       0x24 ./Src/main.o
-                0x0000000008040e44                defaultTask_attributes
+                0x0000000008040eb0       0x24 ./Src/main.o
+                0x0000000008040eb0                defaultTask_attributes
  .rodata.timerLVGL_attributes
-                0x0000000008040e68       0x10 ./Src/main.o
-                0x0000000008040e68                timerLVGL_attributes
+                0x0000000008040ed4       0x10 ./Src/main.o
+                0x0000000008040ed4                timerLVGL_attributes
  .rodata.init_config.str1.4
-                0x0000000008040e78        0x8 ./Src/persistent.o
+                0x0000000008040ee4        0x8 ./Src/persistent.o
  .rodata.AHBPrescTable
-                0x0000000008040e78       0x10 ./Src/system_stm32f4xx.o
-                0x0000000008040e78                AHBPrescTable
+                0x0000000008040ee4       0x10 ./Src/system_stm32f4xx.o
+                0x0000000008040ee4                AHBPrescTable
  .rodata.APBPrescTable
-                0x0000000008040e88        0x8 ./Src/system_stm32f4xx.o
-                0x0000000008040e88                APBPrescTable
+                0x0000000008040ef4        0x8 ./Src/system_stm32f4xx.o
+                0x0000000008040ef4                APBPrescTable
  .rodata.__sf_fake_stderr
-                0x0000000008040e90       0x20 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-findfp.o)
-                0x0000000008040e90                __sf_fake_stderr
+                0x0000000008040efc       0x20 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-findfp.o)
+                0x0000000008040efc                __sf_fake_stderr
  .rodata.__sf_fake_stdin
-                0x0000000008040eb0       0x20 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-findfp.o)
-                0x0000000008040eb0                __sf_fake_stdin
+                0x0000000008040f1c       0x20 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-findfp.o)
+                0x0000000008040f1c                __sf_fake_stdin
  .rodata.__sf_fake_stdout
-                0x0000000008040ed0       0x20 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-findfp.o)
-                0x0000000008040ed0                __sf_fake_stdout
+                0x0000000008040f3c       0x20 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-findfp.o)
+                0x0000000008040f3c                __sf_fake_stdout
  .rodata.logf.str1.1
-                0x0000000008040ef0        0x1 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_log.o)
-                0x0000000008040ef4                . = ALIGN (0x4)
- *fill*         0x0000000008040ef1        0x3 
+                0x0000000008040f5c        0x1 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_log.o)
+                0x0000000008040f60                . = ALIGN (0x4)
+ *fill*         0x0000000008040f5d        0x3 
 
-.ARM.extab      0x0000000008040ef4        0x0
-                0x0000000008040ef4                . = ALIGN (0x4)
+.ARM.extab      0x0000000008040f60        0x0
+                0x0000000008040f60                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000000008040ef4                . = ALIGN (0x4)
+                0x0000000008040f60                . = ALIGN (0x4)
 
-.ARM            0x0000000008040ef4        0x8
-                0x0000000008040ef4                . = ALIGN (0x4)
-                0x0000000008040ef4                __exidx_start = .
+.ARM            0x0000000008040f60        0x8
+                0x0000000008040f60                . = ALIGN (0x4)
+                0x0000000008040f60                __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x0000000008040ef4        0x8 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
-                0x0000000008040efc                __exidx_end = .
-                0x0000000008040efc                . = ALIGN (0x4)
+ .ARM.exidx     0x0000000008040f60        0x8 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x0000000008040f68                __exidx_end = .
+                0x0000000008040f68                . = ALIGN (0x4)
 
-.rel.dyn        0x0000000008040efc        0x0
- .rel.iplt      0x0000000008040efc        0x0 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x0000000008040f68        0x0
+ .rel.iplt      0x0000000008040f68        0x0 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.preinit_array  0x0000000008040efc        0x0
-                0x0000000008040efc                . = ALIGN (0x4)
-                0x0000000008040efc                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0000000008040f68        0x0
+                0x0000000008040f68                . = ALIGN (0x4)
+                0x0000000008040f68                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0000000008040efc                PROVIDE (__preinit_array_end = .)
-                0x0000000008040efc                . = ALIGN (0x4)
+                0x0000000008040f68                PROVIDE (__preinit_array_end = .)
+                0x0000000008040f68                . = ALIGN (0x4)
 
-.init_array     0x0000000008040efc        0x4
-                0x0000000008040efc                . = ALIGN (0x4)
-                0x0000000008040efc                PROVIDE (__init_array_start = .)
+.init_array     0x0000000008040f68        0x4
+                0x0000000008040f68                . = ALIGN (0x4)
+                0x0000000008040f68                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0000000008040efc        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x0000000008040f00                PROVIDE (__init_array_end = .)
-                0x0000000008040f00                . = ALIGN (0x4)
+ .init_array    0x0000000008040f68        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x0000000008040f6c                PROVIDE (__init_array_end = .)
+                0x0000000008040f6c                . = ALIGN (0x4)
 
-.fini_array     0x0000000008040f00        0x4
-                0x0000000008040f00                . = ALIGN (0x4)
+.fini_array     0x0000000008040f6c        0x4
+                0x0000000008040f6c                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0000000008040f00        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .fini_array    0x0000000008040f6c        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x0000000008040f04                . = ALIGN (0x4)
-                0x0000000008040f04                _sidata = LOADADDR (.data)
+                0x0000000008040f70                . = ALIGN (0x4)
+                0x0000000008040f70                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000      0x2fc load address 0x0000000008040f04
+.data           0x0000000020000000      0x304 load address 0x0000000008040f70
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -7314,648 +7316,652 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x000000002000024c                optsRollerBaudrates
  .data.sFanSettings
                 0x0000000020000250       0x1c ./Src/LVGL_items.o
+ .data.adc_smoothed_Imain.17629
+                0x000000002000026c        0x4 ./Src/Sensor_task.o
+ .data.adc_smoothed_REV.17628
+                0x0000000020000270        0x4 ./Src/Sensor_task.o
  .data.AlertGUIMessages
-                0x000000002000026c       0x1c ./Src/main.o
-                0x000000002000026c                AlertGUIMessages
+                0x0000000020000274       0x1c ./Src/main.o
+                0x0000000020000274                AlertGUIMessages
  .data.BAND_switch
-                0x0000000020000288        0x1 ./Src/main.o
-                0x0000000020000288                BAND_switch
- .data.band_old.18289
-                0x0000000020000289        0x1 ./Src/main.o
- *fill*         0x000000002000028a        0x2 
+                0x0000000020000290        0x1 ./Src/main.o
+                0x0000000020000290                BAND_switch
+ .data.band_old.18285
+                0x0000000020000291        0x1 ./Src/main.o
+ *fill*         0x0000000020000292        0x2 
  .data.SystemCoreClock
-                0x000000002000028c        0x4 ./Src/system_stm32f4xx.o
-                0x000000002000028c                SystemCoreClock
+                0x0000000020000294        0x4 ./Src/system_stm32f4xx.o
+                0x0000000020000294                SystemCoreClock
  .data.txData.10729
-                0x0000000020000290        0x1 ./Src/touch_HR2046.o
- *fill*         0x0000000020000291        0x3 
+                0x0000000020000298        0x1 ./Src/touch_HR2046.o
+ *fill*         0x0000000020000299        0x3 
  .data._impure_ptr
-                0x0000000020000294        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-impure.o)
-                0x0000000020000294                _impure_ptr
+                0x000000002000029c        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-impure.o)
+                0x000000002000029c                _impure_ptr
  .data.impure_data
-                0x0000000020000298       0x60 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-impure.o)
+                0x00000000200002a0       0x60 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-impure.o)
  .data.__fdlib_version
-                0x00000000200002f8        0x1 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-s_lib_ver.o)
-                0x00000000200002f8                __fdlib_version
-                0x00000000200002fc                . = ALIGN (0x4)
- *fill*         0x00000000200002f9        0x3 
-                0x00000000200002fc                _edata = .
+                0x0000000020000300        0x1 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-s_lib_ver.o)
+                0x0000000020000300                __fdlib_version
+                0x0000000020000304                . = ALIGN (0x4)
+ *fill*         0x0000000020000301        0x3 
+                0x0000000020000304                _edata = .
 
-.igot.plt       0x00000000200002fc        0x0 load address 0x0000000008041200
- .igot.plt      0x00000000200002fc        0x0 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x00000000200002fc                . = ALIGN (0x4)
+.igot.plt       0x0000000020000304        0x0 load address 0x0000000008041274
+ .igot.plt      0x0000000020000304        0x0 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x0000000020000304                . = ALIGN (0x4)
 
-.bss            0x00000000200002fc    0x1c050 load address 0x0000000008041200
-                0x00000000200002fc                _sbss = .
-                0x00000000200002fc                __bss_start__ = _sbss
+.bss            0x0000000020000304    0x1c050 load address 0x0000000008041274
+                0x0000000020000304                _sbss = .
+                0x0000000020000304                __bss_start__ = _sbss
  *(.bss)
- .bss           0x00000000200002fc       0x1c c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .bss           0x0000000020000304       0x1c c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.bss*)
  .bss.Idle_Stack.11194
-                0x0000000020000318      0x800 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+                0x0000000020000320      0x800 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
  .bss.Idle_TCB.11193
-                0x0000000020000b18       0xcc ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+                0x0000000020000b20       0xcc ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
  .bss.KernelState
-                0x0000000020000be4        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+                0x0000000020000bec        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
  .bss.Timer_Stack.11201
-                0x0000000020000be8     0x2000 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+                0x0000000020000bf0     0x2000 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
  .bss.Timer_TCB.11200
-                0x0000000020002be8       0xcc ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+                0x0000000020002bf0       0xcc ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
  .bss.pxCurrentTCB
-                0x0000000020002cb4        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
-                0x0000000020002cb4                pxCurrentTCB
- .bss.pxDelayedTaskList
-                0x0000000020002cb8        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .bss.pxOverflowDelayedTaskList
                 0x0000000020002cbc        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+                0x0000000020002cbc                pxCurrentTCB
+ .bss.pxDelayedTaskList
+                0x0000000020002cc0        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .bss.pxOverflowDelayedTaskList
+                0x0000000020002cc4        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
  .bss.pxReadyTasksLists
-                0x0000000020002cc0      0x460 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+                0x0000000020002cc8      0x460 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
  .bss.uxCurrentNumberOfTasks
-                0x0000000020003120        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .bss.uxDeletedTasksWaitingCleanUp
-                0x0000000020003124        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .bss.uxSchedulerSuspended
                 0x0000000020003128        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .bss.uxTaskNumber
+ .bss.uxDeletedTasksWaitingCleanUp
                 0x000000002000312c        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .bss.uxTopReadyPriority
+ .bss.uxSchedulerSuspended
                 0x0000000020003130        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .bss.uxTaskNumber
+                0x0000000020003134        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .bss.uxTopReadyPriority
+                0x0000000020003138        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
  .bss.xDelayedTaskList1
-                0x0000000020003134       0x14 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+                0x000000002000313c       0x14 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
  .bss.xDelayedTaskList2
-                0x0000000020003148       0x14 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+                0x0000000020003150       0x14 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
  .bss.xNextTaskUnblockTime
-                0x000000002000315c        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .bss.xNumOfOverflows
-                0x0000000020003160        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .bss.xPendedTicks
                 0x0000000020003164        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .bss.xNumOfOverflows
+                0x0000000020003168        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .bss.xPendedTicks
+                0x000000002000316c        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
  .bss.xPendingReadyList
-                0x0000000020003168       0x14 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+                0x0000000020003170       0x14 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
  .bss.xSchedulerRunning
-                0x000000002000317c        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+                0x0000000020003184        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
  .bss.xSuspendedTaskList
-                0x0000000020003180       0x14 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+                0x0000000020003188       0x14 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
  .bss.xTasksWaitingTermination
-                0x0000000020003194       0x14 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+                0x000000002000319c       0x14 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
  .bss.xTickCount
-                0x00000000200031a8        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+                0x00000000200031b0        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
  .bss.xYieldPending
-                0x00000000200031ac        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+                0x00000000200031b4        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
  .bss.pxCurrentTimerList
-                0x00000000200031b0        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+                0x00000000200031b8        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
  .bss.pxOverflowTimerList
-                0x00000000200031b4        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+                0x00000000200031bc        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
  .bss.ucStaticTimerQueueStorage.7062
-                0x00000000200031b8       0xa0 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+                0x00000000200031c0       0xa0 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
  .bss.xActiveTimerList1
-                0x0000000020003258       0x14 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+                0x0000000020003260       0x14 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
  .bss.xActiveTimerList2
-                0x000000002000326c       0x14 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+                0x0000000020003274       0x14 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
  .bss.xLastTime.7011
-                0x0000000020003280        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+                0x0000000020003288        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
  .bss.xStaticTimerQueue.7061
-                0x0000000020003284       0x50 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+                0x000000002000328c       0x50 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
  .bss.xTimerQueue
-                0x00000000200032d4        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+                0x00000000200032dc        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
  .bss.xTimerTaskHandle
-                0x00000000200032d8        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+                0x00000000200032e0        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
  .bss.ucMaxSysCallPriority
-                0x00000000200032dc        0x1 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
- *fill*         0x00000000200032dd        0x3 
+                0x00000000200032e4        0x1 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ *fill*         0x00000000200032e5        0x3 
  .bss.ulMaxPRIGROUPValue
-                0x00000000200032e0        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
- .bss.pxEnd     0x00000000200032e4        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_5.o
+                0x00000000200032e8        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .bss.pxEnd     0x00000000200032ec        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_5.o
  .bss.xBlockAllocatedBit
-                0x00000000200032e8        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_5.o
- .bss.xFreeBytesRemaining
-                0x00000000200032ec        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_5.o
- .bss.xMinimumEverFreeBytesRemaining
                 0x00000000200032f0        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_5.o
- .bss.xNumberOfSuccessfulAllocations
+ .bss.xFreeBytesRemaining
                 0x00000000200032f4        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_5.o
- .bss.xNumberOfSuccessfulFrees
+ .bss.xMinimumEverFreeBytesRemaining
                 0x00000000200032f8        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_5.o
- .bss.xStart    0x00000000200032fc        0x8 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_5.o
+ .bss.xNumberOfSuccessfulAllocations
+                0x00000000200032fc        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_5.o
+ .bss.xNumberOfSuccessfulFrees
+                0x0000000020003300        0x4 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_5.o
+ .bss.xStart    0x0000000020003304        0x8 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_5.o
  .bss.indev_act
-                0x0000000020003304        0x4 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_indev.o
+                0x000000002000330c        0x4 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_indev.o
  .bss.indev_obj_act
-                0x0000000020003308        0x4 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_indev.o
+                0x0000000020003310        0x4 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_indev.o
  .bss.event_act_data
-                0x000000002000330c        0x4 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_obj.o
+                0x0000000020003314        0x4 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_obj.o
  .bss.event_temp_data_head
-                0x0000000020003310        0x4 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_obj.o
+                0x0000000020003318        0x4 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_obj.o
  .bss.lv_initialized
-                0x0000000020003314        0x1 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_obj.o
- *fill*         0x0000000020003315        0x3 
+                0x000000002000331c        0x1 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_obj.o
+ *fill*         0x000000002000331d        0x3 
  .bss.disp_refr
-                0x0000000020003318        0x4 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_refr.o
- .bss.px_num    0x000000002000331c        0x4 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_refr.o
+                0x0000000020003320        0x4 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_refr.o
+ .bss.px_num    0x0000000020003324        0x4 ./Middlewares/Third_Party/lvgl/src/lv_core/lv_refr.o
  .bss.blend_buf.9811
-                0x0000000020003320      0x640 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_blend.o
+                0x0000000020003328      0x640 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_blend.o
  .bss.opa_table.9769
-                0x0000000020003960      0x100 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o
+                0x0000000020003968      0x100 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o
  .bss.prev_bpp.9771
-                0x0000000020003a60        0x4 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o
+                0x0000000020003a68        0x4 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o
  .bss.prev_opa.9770
-                0x0000000020003a64        0x1 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o
- *fill*         0x0000000020003a65        0x1 
+                0x0000000020003a6c        0x1 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_draw_label.o
+ *fill*         0x0000000020003a6d        0x1 
  .bss.entry_cnt
-                0x0000000020003a66        0x2 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_img_cache.o
+                0x0000000020003a6e        0x2 ./Middlewares/Third_Party/lvgl/src/lv_draw/lv_img_cache.o
  .bss.decompr_buf
-                0x0000000020003a68        0x4 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
- .bss.rle_bpp   0x0000000020003a6c        0x1 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
- .bss.rle_cnt   0x0000000020003a6d        0x1 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
- *fill*         0x0000000020003a6e        0x2 
- .bss.rle_in    0x0000000020003a70        0x4 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
+                0x0000000020003a70        0x4 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
+ .bss.rle_bpp   0x0000000020003a74        0x1 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
+ .bss.rle_cnt   0x0000000020003a75        0x1 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
+ *fill*         0x0000000020003a76        0x2 
+ .bss.rle_in    0x0000000020003a78        0x4 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
  .bss.rle_prev_v
-                0x0000000020003a74        0x1 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
- *fill*         0x0000000020003a75        0x3 
- .bss.rle_rdp   0x0000000020003a78        0x4 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
- .bss.rle_state
                 0x0000000020003a7c        0x1 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
  *fill*         0x0000000020003a7d        0x3 
- .bss.disp_def  0x0000000020003a80        0x4 ./Middlewares/Third_Party/lvgl/src/lv_hal/lv_hal_disp.o
- .bss.sys_time  0x0000000020003a84        0x4 ./Middlewares/Third_Party/lvgl/src/lv_hal/lv_hal_tick.o
+ .bss.rle_rdp   0x0000000020003a80        0x4 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
+ .bss.rle_state
+                0x0000000020003a84        0x1 ./Middlewares/Third_Party/lvgl/src/lv_font/lv_font_fmt_txt.o
+ *fill*         0x0000000020003a85        0x3 
+ .bss.disp_def  0x0000000020003a88        0x4 ./Middlewares/Third_Party/lvgl/src/lv_hal/lv_hal_disp.o
+ .bss.sys_time  0x0000000020003a8c        0x4 ./Middlewares/Third_Party/lvgl/src/lv_hal/lv_hal_tick.o
  .bss.tick_irq_flag
-                0x0000000020003a88        0x1 ./Middlewares/Third_Party/lvgl/src/lv_hal/lv_hal_tick.o
- *fill*         0x0000000020003a89        0x1 
+                0x0000000020003a90        0x1 ./Middlewares/Third_Party/lvgl/src/lv_hal/lv_hal_tick.o
+ *fill*         0x0000000020003a91        0x1 
  .bss.full_defrag_cnt.7374
-                0x0000000020003a8a        0x2 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_mem.o
+                0x0000000020003a92        0x2 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_mem.o
  .bss.mem_buf1_32
-                0x0000000020003a8c       0x10 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_mem.o
+                0x0000000020003a94       0x10 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_mem.o
  .bss.mem_buf2_32
-                0x0000000020003a9c       0x10 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_mem.o
- .bss.work_mem  0x0000000020003aac        0x4 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_mem.o
- .bss.zero_mem  0x0000000020003ab0        0x4 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_mem.o
+                0x0000000020003aa4       0x10 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_mem.o
+ .bss.work_mem  0x0000000020003ab4        0x4 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_mem.o
+ .bss.zero_mem  0x0000000020003ab8        0x4 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_mem.o
  .bss.already_running.9667
-                0x0000000020003ab4        0x1 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
- *fill*         0x0000000020003ab5        0x3 
+                0x0000000020003abc        0x1 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
+ *fill*         0x0000000020003abd        0x3 
  .bss.busy_time.9670
-                0x0000000020003ab8        0x4 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
+                0x0000000020003ac0        0x4 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
  .bss.handler_start.9669
-                0x0000000020003abc        0x4 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
- .bss.idle_last
-                0x0000000020003ac0        0x1 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
- *fill*         0x0000000020003ac1        0x3 
- .bss.idle_period_start.9668
                 0x0000000020003ac4        0x4 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
- .bss.lv_task_run
+ .bss.idle_last
                 0x0000000020003ac8        0x1 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
- .bss.task_created
-                0x0000000020003ac9        0x1 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
- .bss.task_deleted
-                0x0000000020003aca        0x1 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
- .bss.task_list_changed
-                0x0000000020003acb        0x1 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
- .bss.time_till_next.9671
+ *fill*         0x0000000020003ac9        0x3 
+ .bss.idle_period_start.9668
                 0x0000000020003acc        0x4 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
+ .bss.lv_task_run
+                0x0000000020003ad0        0x1 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
+ .bss.task_created
+                0x0000000020003ad1        0x1 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
+ .bss.task_deleted
+                0x0000000020003ad2        0x1 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
+ .bss.task_list_changed
+                0x0000000020003ad3        0x1 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
+ .bss.time_till_next.9671
+                0x0000000020003ad4        0x4 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_task.o
  .bss.act_theme
-                0x0000000020003ad0        0x4 ./Middlewares/Third_Party/lvgl/src/lv_themes/lv_theme.o
- .bss.inited    0x0000000020003ad4        0x1 ./Middlewares/Third_Party/lvgl/src/lv_themes/lv_theme_material.o
- *fill*         0x0000000020003ad5        0x3 
- .bss.styles    0x0000000020003ad8        0x4 ./Middlewares/Third_Party/lvgl/src/lv_themes/lv_theme_material.o
- .bss.theme     0x0000000020003adc       0x1c ./Middlewares/Third_Party/lvgl/src/lv_themes/lv_theme_material.o
+                0x0000000020003ad8        0x4 ./Middlewares/Third_Party/lvgl/src/lv_themes/lv_theme.o
+ .bss.inited    0x0000000020003adc        0x1 ./Middlewares/Third_Party/lvgl/src/lv_themes/lv_theme_material.o
+ *fill*         0x0000000020003add        0x3 
+ .bss.styles    0x0000000020003ae0        0x4 ./Middlewares/Third_Party/lvgl/src/lv_themes/lv_theme_material.o
+ .bss.theme     0x0000000020003ae4       0x1c ./Middlewares/Third_Party/lvgl/src/lv_themes/lv_theme_material.o
  .bss.ancestor_design_f
-                0x0000000020003af8        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_bar.o
+                0x0000000020003b00        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_bar.o
  .bss.ancestor_signal
-                0x0000000020003afc        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_bar.o
+                0x0000000020003b04        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_bar.o
  .bss.ancestor_design
-                0x0000000020003b00        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_btn.o
+                0x0000000020003b08        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_btn.o
  .bss.ancestor_signal
-                0x0000000020003b04        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_btn.o
+                0x0000000020003b0c        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_btn.o
  .bss.ancestor_design_f
-                0x0000000020003b08        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_btnmatrix.o
+                0x0000000020003b10        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_btnmatrix.o
  .bss.ancestor_signal
-                0x0000000020003b0c        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_btnmatrix.o
+                0x0000000020003b14        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_btnmatrix.o
  .bss.ancestor_design
-                0x0000000020003b10        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_cont.o
+                0x0000000020003b18        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_cont.o
  .bss.ancestor_signal
-                0x0000000020003b14        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_cont.o
+                0x0000000020003b1c        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_cont.o
  .bss.ancestor_signal
-                0x0000000020003b18        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_label.o
+                0x0000000020003b20        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_label.o
  .bss.ancestor_design
-                0x0000000020003b1c        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_led.o
+                0x0000000020003b24        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_led.o
  .bss.ancestor_signal
-                0x0000000020003b20        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_led.o
+                0x0000000020003b28        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_led.o
  .bss.ancestor_signal
-                0x0000000020003b24        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_msgbox.o
+                0x0000000020003b2c        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_msgbox.o
  .bss.ancestor_design
-                0x0000000020003b28        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_page.o
+                0x0000000020003b30        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_page.o
  .bss.ancestor_signal
-                0x0000000020003b2c        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_page.o
+                0x0000000020003b34        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_page.o
  .bss.ancestor_scrl_signal
-                0x0000000020003b30        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_roller.o
+                0x0000000020003b38        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_roller.o
  .bss.ancestor_signal
-                0x0000000020003b34        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_roller.o
+                0x0000000020003b3c        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_roller.o
  .bss.ancestor_design
-                0x0000000020003b38        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_table.o
+                0x0000000020003b40        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_table.o
  .bss.ancestor_signal
-                0x0000000020003b3c        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_table.o
- .bss.Command   0x0000000020003b40      0x41c ./Src/COM_task.o
- .bss.ICOM_CIV  0x0000000020003f5c       0x15 ./Src/ICOM_CIV.o
-                0x0000000020003f5c                ICOM_CIV
- *fill*         0x0000000020003f71        0x3 
+                0x0000000020003b44        0x4 ./Middlewares/Third_Party/lvgl/src/lv_widgets/lv_table.o
+ .bss.Command   0x0000000020003b48      0x41c ./Src/COM_task.o
+ .bss.ICOM_CIV  0x0000000020003f64       0x15 ./Src/ICOM_CIV.o
+                0x0000000020003f64                ICOM_CIV
+ *fill*         0x0000000020003f79        0x3 
  .bss.Kenwood_CAT
-                0x0000000020003f74       0x14 ./Src/Kenwood.o
-                0x0000000020003f74                Kenwood_CAT
+                0x0000000020003f7c       0x14 ./Src/Kenwood.o
+                0x0000000020003f7c                Kenwood_CAT
  .bss.MainPowerEnabled
-                0x0000000020003f88        0x1 ./Src/LVGL_GUI.o
-                0x0000000020003f88                MainPowerEnabled
+                0x0000000020003f90        0x1 ./Src/LVGL_GUI.o
+                0x0000000020003f90                MainPowerEnabled
  .bss.idxGroups
-                0x0000000020003f89        0x1 ./Src/LVGL_GUI.o
-                0x0000000020003f89                idxGroups
+                0x0000000020003f91        0x1 ./Src/LVGL_GUI.o
+                0x0000000020003f91                idxGroups
  .bss.isBandSelectorShown
-                0x0000000020003f8a        0x1 ./Src/LVGL_GUI.o
-                0x0000000020003f8a                isBandSelectorShown
+                0x0000000020003f92        0x1 ./Src/LVGL_GUI.o
+                0x0000000020003f92                isBandSelectorShown
  .bss.isMainWidgetsCreated
-                0x0000000020003f8b        0x1 ./Src/LVGL_GUI.o
-                0x0000000020003f8b                isMainWidgetsCreated
+                0x0000000020003f93        0x1 ./Src/LVGL_GUI.o
+                0x0000000020003f93                isMainWidgetsCreated
  .bss.isStyleInitialized.17180
-                0x0000000020003f8c        0x1 ./Src/LVGL_GUI.o
+                0x0000000020003f94        0x1 ./Src/LVGL_GUI.o
  .bss.isTransmitting
-                0x0000000020003f8d        0x1 ./Src/LVGL_GUI.o
-                0x0000000020003f8d                isTransmitting
- *fill*         0x0000000020003f8e        0x2 
+                0x0000000020003f95        0x1 ./Src/LVGL_GUI.o
+                0x0000000020003f95                isTransmitting
+ *fill*         0x0000000020003f96        0x2 
  .bss.lvBtnEnableMainPower
-                0x0000000020003f90        0x4 ./Src/LVGL_GUI.o
-                0x0000000020003f90                lvBtnEnableMainPower
- .bss.lvBtnMenu
-                0x0000000020003f94        0x4 ./Src/LVGL_GUI.o
-                0x0000000020003f94                lvBtnMenu
- .bss.lvCircTouchPoint
                 0x0000000020003f98        0x4 ./Src/LVGL_GUI.o
-                0x0000000020003f98                lvCircTouchPoint
- .bss.lvContBottomBanner
+                0x0000000020003f98                lvBtnEnableMainPower
+ .bss.lvBtnMenu
                 0x0000000020003f9c        0x4 ./Src/LVGL_GUI.o
-                0x0000000020003f9c                lvContBottomBanner
- .bss.lvContCalib
+                0x0000000020003f9c                lvBtnMenu
+ .bss.lvCircTouchPoint
                 0x0000000020003fa0        0x4 ./Src/LVGL_GUI.o
-                0x0000000020003fa0                lvContCalib
- .bss.lvContCurrentInfo
+                0x0000000020003fa0                lvCircTouchPoint
+ .bss.lvContBottomBanner
                 0x0000000020003fa4        0x4 ./Src/LVGL_GUI.o
-                0x0000000020003fa4                lvContCurrentInfo
- .bss.lvContFwdPwr
+                0x0000000020003fa4                lvContBottomBanner
+ .bss.lvContCalib
                 0x0000000020003fa8        0x4 ./Src/LVGL_GUI.o
-                0x0000000020003fa8                lvContFwdPwr
- .bss.lvContRevPwr
+                0x0000000020003fa8                lvContCalib
+ .bss.lvContCurrentInfo
                 0x0000000020003fac        0x4 ./Src/LVGL_GUI.o
-                0x0000000020003fac                lvContRevPwr
- .bss.lvContSWR
+                0x0000000020003fac                lvContCurrentInfo
+ .bss.lvContFwdPwr
                 0x0000000020003fb0        0x4 ./Src/LVGL_GUI.o
-                0x0000000020003fb0                lvContSWR
- .bss.lvContTopBanner
+                0x0000000020003fb0                lvContFwdPwr
+ .bss.lvContRevPwr
                 0x0000000020003fb4        0x4 ./Src/LVGL_GUI.o
-                0x0000000020003fb4                lvContTopBanner
- .bss.lvGroupBandSel
+                0x0000000020003fb4                lvContRevPwr
+ .bss.lvContSWR
                 0x0000000020003fb8        0x4 ./Src/LVGL_GUI.o
-                0x0000000020003fb8                lvGroupBandSel
- .bss.lvGroupMain
+                0x0000000020003fb8                lvContSWR
+ .bss.lvContTopBanner
                 0x0000000020003fbc        0x4 ./Src/LVGL_GUI.o
-                0x0000000020003fbc                lvGroupMain
- .bss.lvGroupMsgboxWarning
+                0x0000000020003fbc                lvContTopBanner
+ .bss.lvGroupBandSel
                 0x0000000020003fc0        0x4 ./Src/LVGL_GUI.o
-                0x0000000020003fc0                lvGroupMsgboxWarning
- .bss.lvGroupTouchScreenCalib
+                0x0000000020003fc0                lvGroupBandSel
+ .bss.lvGroupMain
                 0x0000000020003fc4        0x4 ./Src/LVGL_GUI.o
-                0x0000000020003fc4                lvGroupTouchScreenCalib
- .bss.lvGroups  0x0000000020003fc8       0x40 ./Src/LVGL_GUI.o
-                0x0000000020003fc8                lvGroups
+                0x0000000020003fc4                lvGroupMain
+ .bss.lvGroupMsgboxWarning
+                0x0000000020003fc8        0x4 ./Src/LVGL_GUI.o
+                0x0000000020003fc8                lvGroupMsgboxWarning
+ .bss.lvGroupTouchScreenCalib
+                0x0000000020003fcc        0x4 ./Src/LVGL_GUI.o
+                0x0000000020003fcc                lvGroupTouchScreenCalib
+ .bss.lvGroups  0x0000000020003fd0       0x40 ./Src/LVGL_GUI.o
+                0x0000000020003fd0                lvGroups
  .bss.lvLblAmbTemp
-                0x0000000020004008        0x4 ./Src/LVGL_GUI.o
-                0x0000000020004008                lvLblAmbTemp
- .bss.lvLblCalibPrompt
-                0x000000002000400c        0x4 ./Src/LVGL_GUI.o
-                0x000000002000400c                lvLblCalibPrompt
- .bss.lvLblCoreTemp
                 0x0000000020004010        0x4 ./Src/LVGL_GUI.o
-                0x0000000020004010                lvLblCoreTemp
- .bss.lvLblFreqRange
+                0x0000000020004010                lvLblAmbTemp
+ .bss.lvLblCalibPrompt
                 0x0000000020004014        0x4 ./Src/LVGL_GUI.o
-                0x0000000020004014                lvLblFreqRange
- .bss.lvLblFwdPwrTitle
+                0x0000000020004014                lvLblCalibPrompt
+ .bss.lvLblCoreTemp
                 0x0000000020004018        0x4 ./Src/LVGL_GUI.o
-                0x0000000020004018                lvLblFwdPwrTitle
- .bss.lvLblFwdPwrValue
+                0x0000000020004018                lvLblCoreTemp
+ .bss.lvLblFreqRange
                 0x000000002000401c        0x4 ./Src/LVGL_GUI.o
-                0x000000002000401c                lvLblFwdPwrValue
- .bss.lvLblImain
+                0x000000002000401c                lvLblFreqRange
+ .bss.lvLblFwdPwrTitle
                 0x0000000020004020        0x4 ./Src/LVGL_GUI.o
-                0x0000000020004020                lvLblImain
- .bss.lvLblMenuBtn
+                0x0000000020004020                lvLblFwdPwrTitle
+ .bss.lvLblFwdPwrValue
                 0x0000000020004024        0x4 ./Src/LVGL_GUI.o
-                0x0000000020004024                lvLblMenuBtn
- .bss.lvLblRevPwrTitle
+                0x0000000020004024                lvLblFwdPwrValue
+ .bss.lvLblImain
                 0x0000000020004028        0x4 ./Src/LVGL_GUI.o
-                0x0000000020004028                lvLblRevPwrTitle
- .bss.lvLblRevPwrValue
+                0x0000000020004028                lvLblImain
+ .bss.lvLblMenuBtn
                 0x000000002000402c        0x4 ./Src/LVGL_GUI.o
-                0x000000002000402c                lvLblRevPwrValue
- .bss.lvLblSWRTitle
+                0x000000002000402c                lvLblMenuBtn
+ .bss.lvLblRevPwrTitle
                 0x0000000020004030        0x4 ./Src/LVGL_GUI.o
-                0x0000000020004030                lvLblSWRTitle
- .bss.lvLblSWRValue
+                0x0000000020004030                lvLblRevPwrTitle
+ .bss.lvLblRevPwrValue
                 0x0000000020004034        0x4 ./Src/LVGL_GUI.o
-                0x0000000020004034                lvLblSWRValue
- .bss.lvLblTransmissionState
+                0x0000000020004034                lvLblRevPwrValue
+ .bss.lvLblSWRTitle
                 0x0000000020004038        0x4 ./Src/LVGL_GUI.o
-                0x0000000020004038                lvLblTransmissionState
- .bss.lvLblVmain
+                0x0000000020004038                lvLblSWRTitle
+ .bss.lvLblSWRValue
                 0x000000002000403c        0x4 ./Src/LVGL_GUI.o
-                0x000000002000403c                lvLblVmain
- .bss.lvMsgBoxWarning
+                0x000000002000403c                lvLblSWRValue
+ .bss.lvLblTransmissionState
                 0x0000000020004040        0x4 ./Src/LVGL_GUI.o
-                0x0000000020004040                lvMsgBoxWarning
- .bss.lvProgbarFwdPwr
+                0x0000000020004040                lvLblTransmissionState
+ .bss.lvLblVmain
                 0x0000000020004044        0x4 ./Src/LVGL_GUI.o
-                0x0000000020004044                lvProgbarFwdPwr
- .bss.lvProgbarRevPwr
+                0x0000000020004044                lvLblVmain
+ .bss.lvMsgBoxWarning
                 0x0000000020004048        0x4 ./Src/LVGL_GUI.o
-                0x0000000020004048                lvProgbarRevPwr
- .bss.lvProgbarSWR
+                0x0000000020004048                lvMsgBoxWarning
+ .bss.lvProgbarFwdPwr
                 0x000000002000404c        0x4 ./Src/LVGL_GUI.o
-                0x000000002000404c                lvProgbarSWR
- .bss.sphWarnMsgBoxDismissed
+                0x000000002000404c                lvProgbarFwdPwr
+ .bss.lvProgbarRevPwr
                 0x0000000020004050        0x4 ./Src/LVGL_GUI.o
-                0x0000000020004050                sphWarnMsgBoxDismissed
+                0x0000000020004050                lvProgbarRevPwr
+ .bss.lvProgbarSWR
+                0x0000000020004054        0x4 ./Src/LVGL_GUI.o
+                0x0000000020004054                lvProgbarSWR
+ .bss.sphWarnMsgBoxDismissed
+                0x0000000020004058        0x4 ./Src/LVGL_GUI.o
+                0x0000000020004058                sphWarnMsgBoxDismissed
  .bss.strBandDecoderMode
-                0x0000000020004054       0x10 ./Src/LVGL_GUI.o
-                0x0000000020004054                strBandDecoderMode
+                0x000000002000405c       0x10 ./Src/LVGL_GUI.o
+                0x000000002000405c                strBandDecoderMode
  .bss.lvBtnmSettings
-                0x0000000020004064        0x4 ./Src/LVGL_GUI_settings_scene.o
-                0x0000000020004064                lvBtnmSettings
- .bss.lvContSettings
-                0x0000000020004068        0x4 ./Src/LVGL_GUI_settings_scene.o
-                0x0000000020004068                lvContSettings
- .bss.lvGroupSettings
                 0x000000002000406c        0x4 ./Src/LVGL_GUI_settings_scene.o
-                0x000000002000406c                lvGroupSettings
+                0x000000002000406c                lvBtnmSettings
+ .bss.lvContSettings
+                0x0000000020004070        0x4 ./Src/LVGL_GUI_settings_scene.o
+                0x0000000020004070                lvContSettings
+ .bss.lvGroupSettings
+                0x0000000020004074        0x4 ./Src/LVGL_GUI_settings_scene.o
+                0x0000000020004074                lvGroupSettings
  .bss.isFanSettingsShown
-                0x0000000020004070        0x1 ./Src/LVGL_items.o
-                0x0000000020004070                isFanSettingsShown
- *fill*         0x0000000020004071        0x3 
+                0x0000000020004078        0x1 ./Src/LVGL_items.o
+                0x0000000020004078                isFanSettingsShown
+ *fill*         0x0000000020004079        0x3 
  .bss.lvBgSensorReadingsPage
-                0x0000000020004074        0x4 ./Src/LVGL_items.o
-                0x0000000020004074                lvBgSensorReadingsPage
- .bss.lvBtnCommSettingsCancel
-                0x0000000020004078        0x4 ./Src/LVGL_items.o
-                0x0000000020004078                lvBtnCommSettingsCancel
- .bss.lvBtnCommSettingsOK
                 0x000000002000407c        0x4 ./Src/LVGL_items.o
-                0x000000002000407c                lvBtnCommSettingsOK
- .bss.lvBtnmFanSettings
+                0x000000002000407c                lvBgSensorReadingsPage
+ .bss.lvBtnCommSettingsCancel
                 0x0000000020004080        0x4 ./Src/LVGL_items.o
-                0x0000000020004080                lvBtnmFanSettings
- .bss.lvContCommSettings
+                0x0000000020004080                lvBtnCommSettingsCancel
+ .bss.lvBtnCommSettingsOK
                 0x0000000020004084        0x4 ./Src/LVGL_items.o
-                0x0000000020004084                lvContCommSettings
- .bss.lvGroupCommSettings
+                0x0000000020004084                lvBtnCommSettingsOK
+ .bss.lvBtnmFanSettings
                 0x0000000020004088        0x4 ./Src/LVGL_items.o
-                0x0000000020004088                lvGroupCommSettings
- .bss.lvGroupFanSettings
+                0x0000000020004088                lvBtnmFanSettings
+ .bss.lvContCommSettings
                 0x000000002000408c        0x4 ./Src/LVGL_items.o
-                0x000000002000408c                lvGroupFanSettings
- .bss.lvGroupSensorReadings
+                0x000000002000408c                lvContCommSettings
+ .bss.lvGroupCommSettings
                 0x0000000020004090        0x4 ./Src/LVGL_items.o
-                0x0000000020004090                lvGroupSensorReadings
- .bss.lvLblBandType
+                0x0000000020004090                lvGroupCommSettings
+ .bss.lvGroupFanSettings
                 0x0000000020004094        0x4 ./Src/LVGL_items.o
-                0x0000000020004094                lvLblBandType
- .bss.lvLblBaudCAT
+                0x0000000020004094                lvGroupFanSettings
+ .bss.lvGroupSensorReadings
                 0x0000000020004098        0x4 ./Src/LVGL_items.o
-                0x0000000020004098                lvLblBaudCAT
- .bss.lvLblBaudCIV
+                0x0000000020004098                lvGroupSensorReadings
+ .bss.lvLblBandType
                 0x000000002000409c        0x4 ./Src/LVGL_items.o
-                0x000000002000409c                lvLblBaudCIV
- .bss.lvRollerBandType
+                0x000000002000409c                lvLblBandType
+ .bss.lvLblBaudCAT
                 0x00000000200040a0        0x4 ./Src/LVGL_items.o
-                0x00000000200040a0                lvRollerBandType
- .bss.lvRollerBaudBandCIV
+                0x00000000200040a0                lvLblBaudCAT
+ .bss.lvLblBaudCIV
                 0x00000000200040a4        0x4 ./Src/LVGL_items.o
-                0x00000000200040a4                lvRollerBaudBandCIV
- .bss.lvRollerBaudCAT
+                0x00000000200040a4                lvLblBaudCIV
+ .bss.lvRollerBandType
                 0x00000000200040a8        0x4 ./Src/LVGL_items.o
-                0x00000000200040a8                lvRollerBaudCAT
- .bss.lvTableSensorReadingsValues
+                0x00000000200040a8                lvRollerBandType
+ .bss.lvRollerBaudBandCIV
                 0x00000000200040ac        0x4 ./Src/LVGL_items.o
-                0x00000000200040ac                lvTableSensorReadingsValues
- .bss.lvTaskSensorReadings
+                0x00000000200040ac                lvRollerBaudBandCIV
+ .bss.lvRollerBaudCAT
                 0x00000000200040b0        0x4 ./Src/LVGL_items.o
-                0x00000000200040b0                lvTaskSensorReadings
- .bss.s.17292   0x00000000200040b4        0x5 ./Src/LVGL_items.o
+                0x00000000200040b0                lvRollerBaudCAT
+ .bss.lvTableSensorReadingsValues
+                0x00000000200040b4        0x4 ./Src/LVGL_items.o
+                0x00000000200040b4                lvTableSensorReadingsValues
+ .bss.lvTaskSensorReadings
+                0x00000000200040b8        0x4 ./Src/LVGL_items.o
+                0x00000000200040b8                lvTaskSensorReadings
+ .bss.s.17292   0x00000000200040bc        0x5 ./Src/LVGL_items.o
  .bss.isFlipA.10602
-                0x00000000200040b9        0x1 ./Src/RotEnc.o
- *fill*         0x00000000200040ba        0x2 
- .bss.FWDpeak1  0x00000000200040bc        0x4 ./Src/Sensor_task.o
-                0x00000000200040bc                FWDpeak1
- .bss.FWDpeak2  0x00000000200040c0        0x4 ./Src/Sensor_task.o
-                0x00000000200040c0                FWDpeak2
- .bss.Imain     0x00000000200040c4        0x4 ./Src/Sensor_task.o
-                0x00000000200040c4                Imain
+                0x00000000200040c1        0x1 ./Src/RotEnc.o
+ *fill*         0x00000000200040c2        0x2 
+ .bss.FWDpeak1  0x00000000200040c4        0x4 ./Src/Sensor_task.o
+                0x00000000200040c4                FWDpeak1
+ .bss.FWDpeak2  0x00000000200040c8        0x4 ./Src/Sensor_task.o
+                0x00000000200040c8                FWDpeak2
+ .bss.Imain     0x00000000200040cc        0x4 ./Src/Sensor_task.o
+                0x00000000200040cc                Imain
  .bss.Imain_ADC0
-                0x00000000200040c8        0x2 ./Src/Sensor_task.o
-                0x00000000200040c8                Imain_ADC0
- *fill*         0x00000000200040ca        0x2 
- .bss.REVpeak1  0x00000000200040cc        0x4 ./Src/Sensor_task.o
-                0x00000000200040cc                REVpeak1
- .bss.REVpeak2  0x00000000200040d0        0x4 ./Src/Sensor_task.o
-                0x00000000200040d0                REVpeak2
- .bss.Temp1     0x00000000200040d4        0x4 ./Src/Sensor_task.o
-                0x00000000200040d4                Temp1
- .bss.Temp2     0x00000000200040d8        0x4 ./Src/Sensor_task.o
-                0x00000000200040d8                Temp2
- .bss.Vmain     0x00000000200040dc        0x4 ./Src/Sensor_task.o
-                0x00000000200040dc                Vmain
- .bss.counter.17634
-                0x00000000200040e0        0x2 ./Src/Sensor_task.o
- .bss.SU_Timer  0x00000000200040e2        0x1 ./Src/SoftUART.o
-                0x00000000200040e2                SU_Timer
- *fill*         0x00000000200040e3        0x1 
+                0x00000000200040d0        0x2 ./Src/Sensor_task.o
+                0x00000000200040d0                Imain_ADC0
+ *fill*         0x00000000200040d2        0x2 
+ .bss.REVpeak1  0x00000000200040d4        0x4 ./Src/Sensor_task.o
+                0x00000000200040d4                REVpeak1
+ .bss.REVpeak2  0x00000000200040d8        0x4 ./Src/Sensor_task.o
+                0x00000000200040d8                REVpeak2
+ .bss.Temp1     0x00000000200040dc        0x4 ./Src/Sensor_task.o
+                0x00000000200040dc                Temp1
+ .bss.Temp2     0x00000000200040e0        0x4 ./Src/Sensor_task.o
+                0x00000000200040e0                Temp2
+ .bss.Vmain     0x00000000200040e4        0x4 ./Src/Sensor_task.o
+                0x00000000200040e4                Vmain
+ .bss.counter.17636
+                0x00000000200040e8        0x2 ./Src/Sensor_task.o
+ .bss.SU_Timer  0x00000000200040ea        0x1 ./Src/SoftUART.o
+                0x00000000200040ea                SU_Timer
+ *fill*         0x00000000200040eb        0x1 
  .bss.Yaesu_CAT
-                0x00000000200040e4       0x14 ./Src/Yaesu.o
-                0x00000000200040e4                Yaesu_CAT
+                0x00000000200040ec       0x14 ./Src/Yaesu.o
+                0x00000000200040ec                Yaesu_CAT
  .bss.TSCalibAfterStart
-                0x00000000200040f8        0x1 ./Src/main.o
-                0x00000000200040f8                TSCalibAfterStart
- *fill*         0x00000000200040f9        0x1 
- .bss.TS_X      0x00000000200040fa        0x2 ./Src/main.o
- .bss.TS_X_ADC  0x00000000200040fc        0x2 ./Src/main.o
- .bss.TS_Y      0x00000000200040fe        0x2 ./Src/main.o
- .bss.TS_Y_ADC  0x0000000020004100        0x2 ./Src/main.o
+                0x0000000020004100        0x1 ./Src/main.o
+                0x0000000020004100                TSCalibAfterStart
+ *fill*         0x0000000020004101        0x1 
+ .bss.TS_X      0x0000000020004102        0x2 ./Src/main.o
+ .bss.TS_X_ADC  0x0000000020004104        0x2 ./Src/main.o
+ .bss.TS_Y      0x0000000020004106        0x2 ./Src/main.o
+ .bss.TS_Y_ADC  0x0000000020004108        0x2 ./Src/main.o
  .bss.TS_touched
-                0x0000000020004102        0x1 ./Src/main.o
- *fill*         0x0000000020004103        0x1 
- .bss.X.18304   0x0000000020004104        0xa ./Src/main.o
- *fill*         0x000000002000410e        0x2 
- .bss.Y.18305   0x0000000020004110        0xa ./Src/main.o
- *fill*         0x000000002000411a        0x2 
- .bss.avg_X.18306
-                0x000000002000411c        0x4 ./Src/main.o
- .bss.avg_Y.18307
-                0x0000000020004120        0x4 ./Src/main.o
+                0x000000002000410a        0x1 ./Src/main.o
+ *fill*         0x000000002000410b        0x1 
+ .bss.X.18300   0x000000002000410c        0xa ./Src/main.o
+ *fill*         0x0000000020004116        0x2 
+ .bss.Y.18301   0x0000000020004118        0xa ./Src/main.o
+ *fill*         0x0000000020004122        0x2 
+ .bss.avg_X.18302
+                0x0000000020004124        0x4 ./Src/main.o
+ .bss.avg_Y.18303
+                0x0000000020004128        0x4 ./Src/main.o
  .bss.isCfgValid
-                0x0000000020004124        0x1 ./Src/main.o
-                0x0000000020004124                isCfgValid
- .bss.isPointConfirmed.18320
-                0x0000000020004125        0x1 ./Src/main.o
+                0x000000002000412c        0x1 ./Src/main.o
+                0x000000002000412c                isCfgValid
+ .bss.isPointConfirmed.18316
+                0x000000002000412d        0x1 ./Src/main.o
  .bss.isTSCalibrating
-                0x0000000020004126        0x1 ./Src/main.o
-                0x0000000020004126                isTSCalibrating
- *fill*         0x0000000020004127        0x1 
- .bss.n.18356   0x0000000020004128        0x2 ./Src/main.o
- *fill*         0x000000002000412a        0x2 
- .bss.prevCnt.18338
-                0x000000002000412c        0x4 ./Src/main.o
- .bss.trans_state
-                0x0000000020004130        0x1 ./Src/main.o
-                0x0000000020004130                trans_state
- .bss.trans_state_old.18357
-                0x0000000020004131        0x1 ./Src/main.o
+                0x000000002000412e        0x1 ./Src/main.o
+                0x000000002000412e                isTSCalibrating
+ *fill*         0x000000002000412f        0x1 
+ .bss.n.18352   0x0000000020004130        0x2 ./Src/main.o
  *fill*         0x0000000020004132        0x2 
+ .bss.prevCnt.18334
+                0x0000000020004134        0x4 ./Src/main.o
+ .bss.trans_state
+                0x0000000020004138        0x1 ./Src/main.o
+                0x0000000020004138                trans_state
+ .bss.trans_state_old.18353
+                0x0000000020004139        0x1 ./Src/main.o
+ *fill*         0x000000002000413a        0x2 
  .bss.FSMC_Initialized
-                0x0000000020004134        0x4 ./Src/stm32f4xx_hal_msp.o
- .bss.pTSCalib  0x0000000020004138        0x4 ./Src/touch_HR2046.o
-                0x0000000020004138                pTSCalib
+                0x000000002000413c        0x4 ./Src/stm32f4xx_hal_msp.o
+ .bss.pTSCalib  0x0000000020004140        0x4 ./Src/touch_HR2046.o
+                0x0000000020004140                pTSCalib
  .bss.__malloc_free_list
-                0x000000002000413c        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-nano-mallocr.o)
-                0x000000002000413c                __malloc_free_list
+                0x0000000020004144        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-nano-mallocr.o)
+                0x0000000020004144                __malloc_free_list
  *(COMMON)
- COMMON         0x0000000020004140        0x4 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
-                0x0000000020004140                uwTick
- COMMON         0x0000000020004144       0x20 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
-                0x0000000020004144                pFlash
- COMMON         0x0000000020004164       0x40 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
-                0x0000000020004164                xQueueRegistry
- COMMON         0x00000000200041a4      0x184 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_gc.o
-                0x00000000200041a4                _lv_task_ll
-                0x00000000200041b0                _lv_indev_ll
-                0x00000000200041bc                _lv_disp_ll
-                0x00000000200041c8                _lv_img_defoder_ll
-                0x00000000200041d4                _lv_mem_buf
-                0x0000000020004254                _lv_drv_ll
-                0x0000000020004260                _lv_obj_style_trans_ll
-                0x000000002000426c                _lv_theme_material_styles
-                0x0000000020004270                _lv_task_act
-                0x0000000020004274                _lv_theme_mono_styles
-                0x0000000020004278                _lv_theme_template_styles
-                0x000000002000427c                _lv_img_cache_array
-                0x0000000020004280                _lv_anim_ll
-                0x000000002000428c                _lv_theme_empty_styles
-                0x0000000020004290                _lv_draw_mask_list
-                0x0000000020004310                _lv_group_ll
-                0x000000002000431c                _lv_file_ll
- COMMON         0x0000000020004328        0x8 ./Src/FS.o
-                0x0000000020004328                FS
- COMMON         0x0000000020004330    0x177c8 ./Src/LVGL_GUI.o
-                0x0000000020004330                lvStyleBackground
-                0x0000000020004334                lvIndev_RotEnc
-                0x0000000020004338                lvIndev_drv_RotEnc
-                0x0000000020004354                lvStyleCHNTextSmall
-                0x0000000020004358                lvStyleCHNTextLarge
-                0x000000002000435c                lv_buf_mem
-                0x000000002001ba5c                disp_buf
-                0x000000002001ba80                lvStyleProgBarBg
-                0x000000002001ba84                lvIndev_touchscreen
-                0x000000002001ba88                lvStyleSubWindow
-                0x000000002001ba8c                lvStyleRollerSel
-                0x000000002001ba90                lvStyleBtn
-                0x000000002001ba94                lvStyleMsgBox
-                0x000000002001ba98                lvLblBandDecoderMode
-                0x000000002001ba9c                lvStyleAlphabetsTextSmall
-                0x000000002001baa0                disp_drv
-                0x000000002001bacc                lvStyleBanner
-                0x000000002001bad0                lvIndev_drv_touchscreen
-                0x000000002001baec                lvStyleRoller
-                0x000000002001baf0                lvStyleProgBarInd
-                0x000000002001baf4                lvStyleAlphabetsTextLarge
- COMMON         0x000000002001baf8      0x1d0 ./Src/Sensor_task.o
-                0x000000002001baf8                FWD2_raw
-                0x000000002001bafc                Band_decoder_raw
-                0x000000002001bb00                REVpeak2_raw
-                0x000000002001bb04                PD_FWD2
-                0x000000002001bb34                uhADC3ConvertedValues
-                0x000000002001bb40                FWD1_raw
-                0x000000002001bb44                Vmain_raw
-                0x000000002001bb48                Temp1_raw
-                0x000000002001bb4c                FWDpeak2_raw
-                0x000000002001bb50                Imain_raw
-                0x000000002001bb54                PD_SWR2
-                0x000000002001bb84                PD_Temp2
-                0x000000002001bbb4                REV2_raw
-                0x000000002001bbb8                uhADC1ConvertedValues
-                0x000000002001bbc8                REVpeak1_raw
-                0x000000002001bbcc                Temp2_raw
-                0x000000002001bbd0                FWDpeak1_raw
-                0x000000002001bbd4                NTC1
-                0x000000002001bbec                PD_Vmain
-                0x000000002001bc1c                NTC2
-                0x000000002001bc34                PD_Imain
-                0x000000002001bc64                REV1_raw
-                0x000000002001bc68                PD_REV2
-                0x000000002001bc98                PD_Temp1
- COMMON         0x000000002001bcc8       0x88 ./Src/SoftUART.o
-                0x000000002001bcc8                SU_DBaffer
-                0x000000002001bccc                SUBuffer
-                0x000000002001bd2c                SUart
- COMMON         0x000000002001bd50      0x5a8 ./Src/main.o
-                0x000000002001bd50                SensorTaskHandle
-                0x000000002001bd54                bufFIFORX1
-                0x000000002001bdd4                defaultTaskHandle
-                0x000000002001bdd8                HumanInputTaskHandle
-                0x000000002001bddc                htim4
-                0x000000002001be24                qAlerts
-                0x000000002001be28                hcrc
-                0x000000002001be30                RotEnc
-                0x000000002001beac                timerLVGLHandle
-                0x000000002001beb0                hdma_adc3
-                0x000000002001bf10                mtxBandDataHandle
-                0x000000002001bf14                hsram1
-                0x000000002001bf64                htim3
-                0x000000002001bfac                hadc1
-                0x000000002001bff4                hcan2
-                0x000000002001c01c                AlertTaskHandle
-                0x000000002001c020                hadc3
-                0x000000002001c068                huart1
-                0x000000002001c0ac                fan2
-                0x000000002001c0d4                TouchScreenTaskHandle
-                0x000000002001c0d8                COMPortTaskHandle
-                0x000000002001c0dc                cfg
-                0x000000002001c124                hdma_adc1
-                0x000000002001c184                COM1
-                0x000000002001c1a8                mtxGUIWidgetsHandle
-                0x000000002001c1ac                hspi1
-                0x000000002001c204                htim2
-                0x000000002001c24c                fan1
-                0x000000002001c274                bufFIFOTX1
-                0x000000002001c2f4                TouchScreenCalibHandle
- COMMON         0x000000002001c2f8       0x48 ./Src/stm32f4xx_hal_timebase_tim.o
-                0x000000002001c2f8                htim1
- COMMON         0x000000002001c340        0x9 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-lock.o)
-                0x000000002001c340                __lock___atexit_recursive_mutex
-                0x000000002001c341                __lock___arc4random_mutex
-                0x000000002001c342                __lock___env_recursive_mutex
-                0x000000002001c343                __lock___sinit_recursive_mutex
-                0x000000002001c344                __lock___malloc_recursive_mutex
-                0x000000002001c345                __lock___at_quick_exit_mutex
-                0x000000002001c346                __lock___dd_hash_mutex
-                0x000000002001c347                __lock___tz_mutex
-                0x000000002001c348                __lock___sfp_recursive_mutex
-                0x000000002001c34c                . = ALIGN (0x4)
- *fill*         0x000000002001c349        0x3 
-                0x000000002001c34c                _ebss = .
-                0x000000002001c34c                __bss_end__ = _ebss
+ COMMON         0x0000000020004148        0x4 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+                0x0000000020004148                uwTick
+ COMMON         0x000000002000414c       0x20 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
+                0x000000002000414c                pFlash
+ COMMON         0x000000002000416c       0x40 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
+                0x000000002000416c                xQueueRegistry
+ COMMON         0x00000000200041ac      0x184 ./Middlewares/Third_Party/lvgl/src/lv_misc/lv_gc.o
+                0x00000000200041ac                _lv_task_ll
+                0x00000000200041b8                _lv_indev_ll
+                0x00000000200041c4                _lv_disp_ll
+                0x00000000200041d0                _lv_img_defoder_ll
+                0x00000000200041dc                _lv_mem_buf
+                0x000000002000425c                _lv_drv_ll
+                0x0000000020004268                _lv_obj_style_trans_ll
+                0x0000000020004274                _lv_theme_material_styles
+                0x0000000020004278                _lv_task_act
+                0x000000002000427c                _lv_theme_mono_styles
+                0x0000000020004280                _lv_theme_template_styles
+                0x0000000020004284                _lv_img_cache_array
+                0x0000000020004288                _lv_anim_ll
+                0x0000000020004294                _lv_theme_empty_styles
+                0x0000000020004298                _lv_draw_mask_list
+                0x0000000020004318                _lv_group_ll
+                0x0000000020004324                _lv_file_ll
+ COMMON         0x0000000020004330        0x8 ./Src/FS.o
+                0x0000000020004330                FS
+ COMMON         0x0000000020004338    0x177c8 ./Src/LVGL_GUI.o
+                0x0000000020004338                lvStyleBackground
+                0x000000002000433c                lvIndev_RotEnc
+                0x0000000020004340                lvIndev_drv_RotEnc
+                0x000000002000435c                lvStyleCHNTextSmall
+                0x0000000020004360                lvStyleCHNTextLarge
+                0x0000000020004364                lv_buf_mem
+                0x000000002001ba64                disp_buf
+                0x000000002001ba88                lvStyleProgBarBg
+                0x000000002001ba8c                lvIndev_touchscreen
+                0x000000002001ba90                lvStyleSubWindow
+                0x000000002001ba94                lvStyleRollerSel
+                0x000000002001ba98                lvStyleBtn
+                0x000000002001ba9c                lvStyleMsgBox
+                0x000000002001baa0                lvLblBandDecoderMode
+                0x000000002001baa4                lvStyleAlphabetsTextSmall
+                0x000000002001baa8                disp_drv
+                0x000000002001bad4                lvStyleBanner
+                0x000000002001bad8                lvIndev_drv_touchscreen
+                0x000000002001baf4                lvStyleRoller
+                0x000000002001baf8                lvStyleProgBarInd
+                0x000000002001bafc                lvStyleAlphabetsTextLarge
+ COMMON         0x000000002001bb00      0x1d0 ./Src/Sensor_task.o
+                0x000000002001bb00                FWD2_raw
+                0x000000002001bb04                Band_decoder_raw
+                0x000000002001bb08                REVpeak2_raw
+                0x000000002001bb0c                PD_FWD2
+                0x000000002001bb3c                uhADC3ConvertedValues
+                0x000000002001bb48                FWD1_raw
+                0x000000002001bb4c                Vmain_raw
+                0x000000002001bb50                Temp1_raw
+                0x000000002001bb54                FWDpeak2_raw
+                0x000000002001bb58                Imain_raw
+                0x000000002001bb5c                PD_SWR2
+                0x000000002001bb8c                PD_Temp2
+                0x000000002001bbbc                REV2_raw
+                0x000000002001bbc0                uhADC1ConvertedValues
+                0x000000002001bbd0                REVpeak1_raw
+                0x000000002001bbd4                Temp2_raw
+                0x000000002001bbd8                FWDpeak1_raw
+                0x000000002001bbdc                NTC1
+                0x000000002001bbf4                PD_Vmain
+                0x000000002001bc24                NTC2
+                0x000000002001bc3c                PD_Imain
+                0x000000002001bc6c                REV1_raw
+                0x000000002001bc70                PD_REV2
+                0x000000002001bca0                PD_Temp1
+ COMMON         0x000000002001bcd0       0x88 ./Src/SoftUART.o
+                0x000000002001bcd0                SU_DBaffer
+                0x000000002001bcd4                SUBuffer
+                0x000000002001bd34                SUart
+ COMMON         0x000000002001bd58      0x5a8 ./Src/main.o
+                0x000000002001bd58                SensorTaskHandle
+                0x000000002001bd5c                bufFIFORX1
+                0x000000002001bddc                defaultTaskHandle
+                0x000000002001bde0                HumanInputTaskHandle
+                0x000000002001bde4                htim4
+                0x000000002001be2c                qAlerts
+                0x000000002001be30                hcrc
+                0x000000002001be38                RotEnc
+                0x000000002001beb4                timerLVGLHandle
+                0x000000002001beb8                hdma_adc3
+                0x000000002001bf18                mtxBandDataHandle
+                0x000000002001bf1c                hsram1
+                0x000000002001bf6c                htim3
+                0x000000002001bfb4                hadc1
+                0x000000002001bffc                hcan2
+                0x000000002001c024                AlertTaskHandle
+                0x000000002001c028                hadc3
+                0x000000002001c070                huart1
+                0x000000002001c0b4                fan2
+                0x000000002001c0dc                TouchScreenTaskHandle
+                0x000000002001c0e0                COMPortTaskHandle
+                0x000000002001c0e4                cfg
+                0x000000002001c12c                hdma_adc1
+                0x000000002001c18c                COM1
+                0x000000002001c1b0                mtxGUIWidgetsHandle
+                0x000000002001c1b4                hspi1
+                0x000000002001c20c                htim2
+                0x000000002001c254                fan1
+                0x000000002001c27c                bufFIFOTX1
+                0x000000002001c2fc                TouchScreenCalibHandle
+ COMMON         0x000000002001c300       0x48 ./Src/stm32f4xx_hal_timebase_tim.o
+                0x000000002001c300                htim1
+ COMMON         0x000000002001c348        0x9 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-lock.o)
+                0x000000002001c348                __lock___atexit_recursive_mutex
+                0x000000002001c349                __lock___arc4random_mutex
+                0x000000002001c34a                __lock___env_recursive_mutex
+                0x000000002001c34b                __lock___sinit_recursive_mutex
+                0x000000002001c34c                __lock___malloc_recursive_mutex
+                0x000000002001c34d                __lock___at_quick_exit_mutex
+                0x000000002001c34e                __lock___dd_hash_mutex
+                0x000000002001c34f                __lock___tz_mutex
+                0x000000002001c350                __lock___sfp_recursive_mutex
+                0x000000002001c354                . = ALIGN (0x4)
+ *fill*         0x000000002001c351        0x3 
+                0x000000002001c354                _ebss = .
+                0x000000002001c354                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x000000002001c34c      0x304 load address 0x0000000008041200
-                0x000000002001c350                . = ALIGN (0x8)
- *fill*         0x000000002001c34c        0x4 
-                0x000000002001c350                PROVIDE (end = .)
+                0x000000002001c354      0x304 load address 0x0000000008041274
+                0x000000002001c358                . = ALIGN (0x8)
+ *fill*         0x000000002001c354        0x4 
+                0x000000002001c358                PROVIDE (end = .)
                 [!provide]                        PROVIDE (_end = .)
-                0x000000002001c450                . = (. + _Min_Heap_Size)
- *fill*         0x000000002001c350      0x100 
-                0x000000002001c650                . = (. + _Min_Stack_Size)
- *fill*         0x000000002001c450      0x200 
-                0x000000002001c650                . = ALIGN (0x8)
+                0x000000002001c458                . = (. + _Min_Heap_Size)
+ *fill*         0x000000002001c358      0x100 
+                0x000000002001c658                . = (. + _Min_Stack_Size)
+ *fill*         0x000000002001c458      0x200 
+                0x000000002001c658                . = ALIGN (0x8)
 
 .CCMRAM_heap    0x0000000010000000    0x10000
                 0x0000000010000000                . = ALIGN (0x8)
