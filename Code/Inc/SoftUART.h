@@ -30,7 +30,8 @@ int8_t baudrate2idx(uint16_t baudrate); // return -1 if not found
 #define	SoftUartRxBufferSize	64
 
 // MAX baud rate: 19200
-#define BAUD_TO_TIM_ARR_VALUE(baud) (TIM4_CLK_FREQ / TIM4_PRESCALER / baud / 5 )
+#define SOFTSEARIAL_OVERSAMPLE 5U
+#define BAUD_TO_TIM_ARR_VALUE(baud) ((TIM4_CLK_FREQ / TIM4_PRESCALER / SOFTSEARIAL_OVERSAMPLE) / baud)
 
 typedef enum {
 	SoftUart_OK,
@@ -69,14 +70,14 @@ typedef struct {
 	void (*cbFuncByteRecved)(uint8_t); // Call back function when one byte received
 } SoftUart_S;
 
-//Call Every (0.2)*(1/9600) = 20.83 uS
+SoftUartState_E SoftUartInit(uint8_t SoftUartNumber,GPIO_TypeDef *TxPort,uint16_t TxPin,GPIO_TypeDef *RxPort,uint16_t RxPin, void (*cbFuncRecvByte)(uint8_t));
+// SoftUartHandler: Call Every (0.2)*(1/9600) = 20.83 uS
 void 			SoftUartHandler(void);
 void 			SoftUartWaitUntilTxComplate(uint8_t SoftUartNumber);
 uint8_t 		SoftUartRxAlavailable(uint8_t SoftUartNumber);
 SoftUartState_E SoftUartPuts(uint8_t SoftUartNumber,uint8_t *Str,uint8_t Len);
 SoftUartState_E SoftUartEnableRx(uint8_t SoftUartNumber);
 SoftUartState_E SoftUartDisableRx(uint8_t SoftUartNumber);
-SoftUartState_E SoftUartInit(uint8_t SoftUartNumber,GPIO_TypeDef *TxPort,uint16_t TxPin,GPIO_TypeDef *RxPort,uint16_t RxPin, void (*cbFuncRecvByte)(uint8_t));
 // Thread Unsafe
 uint8_t SoftUartReadRxBuffer(uint8_t SoftUartNumber,uint8_t *Buffer,uint8_t Len);
 void SoftUartStop();

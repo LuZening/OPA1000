@@ -156,6 +156,7 @@ void Error_Handler(void);
 #define OverdriveX_GPIO_Port GPIOE
 /* USER CODE BEGIN Private defines */
 
+/****************** OPA1000 pins allocation BEGIN ******************************/
 #if defined(OPA1000)
 /*commented by "//" means exists in OPA2000 only */
 #define AUTO_BAND_Pin GPIO_PIN_14
@@ -176,7 +177,7 @@ void Error_Handler(void);
 #define ClearFault_GPIO_Port GPIOA
 //#define BAND_TX_Pin GPIO_PIN_10
 //#define BAND_TX_GPIO_Port GPIOB
-#define BAND_RX_Pin GPIO_PIN_1
+#define BAND_RX_Pin GPIO_PIN_1  // BAND_RX moved to PB11 in OPA2000
 #define BAND_RX_GPIO_Port GPIOA
 #define LCD_BL_Pin GPIO_PIN_10
 #define LCD_BL_GPIO_Port GPIOB
@@ -222,6 +223,8 @@ void Error_Handler(void);
 #define OverdriveX_Pin GPIO_PIN_1
 #define OverdriveX_GPIO_Port GPIOE
 #endif
+/****************** OPA1000 pins allocation END ******************************/
+
 
 // Band selector
 extern uint8_t BAND_source; // select the control source of auto band

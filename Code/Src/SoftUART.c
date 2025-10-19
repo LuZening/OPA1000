@@ -216,7 +216,7 @@ uint8_t SoftUartScanRxPorts(void)
 	Bit=SoftUartGpioReadPin(S->RxPort,S->RxPin);
 	if(!S->RxBitConter && !S->RxTimingFlag && !Bit)
 	{
-		S->RxBitOffset=((SU_Timer+2)%5);
+		S->RxBitOffset=((SU_Timer+2)%SOFTSEARIAL_OVERSAMPLE);
 		S->RxTimingFlag=1;
 	}
 	return Bit;
@@ -242,7 +242,7 @@ void SoftUartHandler(void)
 	}
 
 	SU_Timer++;
-	if(SU_Timer>=5)SU_Timer=0;
+	if(SU_Timer>=SOFTSEARIAL_OVERSAMPLE)SU_Timer=0;
 }
 
 int8_t baudrate2idx(uint16_t baudrate)
@@ -257,7 +257,7 @@ int8_t baudrate2idx(uint16_t baudrate)
 
 void SoftUartChangeBaud(uint16_t baud)
 {
-	if(baud >= 19200)
+	if(baud > 19200)
 		baud = 19200; // limit max baud rate
 	uint32_t newARRValue = BAUD_TO_TIM_ARR_VALUE(baud);
 	SoftUartStop();

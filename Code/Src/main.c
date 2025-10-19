@@ -23,7 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stdlib.h"
+#include <stdlib.h>
 
 /*
  * COM.h Manages softUART Band Decoder and CAT
@@ -164,6 +164,7 @@ const int16_t AutoFanSpeed_tempC2[N_SEGS_AUTO_FAN_SPEED] = {400, 500, 600, 700};
 const uint8_t AutoFanSpeed_speed2[N_SEGS_AUTO_FAN_SPEED] = {30, 50, 80, 100};
 const uint8_t AutoFanSpeed_hyst2 = 50;
 Fan_t fan1, fan2;
+bool isFanInit = false;
 /* *****************   End of  Fan  ********************************************** */
 
 /* *****************	COM		************************************************** */
@@ -309,20 +310,19 @@ int main(void)
   /* USER CODE BEGIN Init */
   /* init EEPROM begin */
   // Load Config from EEPROM
-//#if (sizeof(cfg) > 256)
-//#error("The size of persistent config content is too big to fit in the EEPROM 256Bytes max")
-//#endif
-#ifdef USE_I2C_EEPROM
+  assert(sizeof(cfg) < 256); // config size cannot exceed 1 page
+
+#ifdef USE_I2C_EEPROM // store config in external I2C EEPROM
   I2C_EEPROM_init(&EEPROM, AT24C02, EEP_SCL_GPIO_Port, EEP_SCL_Pin, EEP_SDA_GPIO_Port, EEP_SDA_Pin, EEP_WP_GPIO_Port, EEP_WP_Pin, 0x00);
   EEPROM_ReadBytes(&EEPROM, (uint8_t*)&cfg, sizeof(cfg));
-#endif
+#else // store config in FLASH
   Flash_EEPROM_ReadBytes(&FlashEEPROM, (uint8_t*)&cfg, sizeof(cfg));
+#endif
   isCfgValid = isPersistentVarsValid(&cfg); // check if config is valid
   if(!isCfgValid)
   {
 	  // Lost config data
 	  // step 1: rebuild
-	  strcpy(cfg.validator, VALIDATE_CODE);
 	  // initialize config parameters
 	  init_config(&cfg);
 	  // step 2: set a flag to execute Touch Screen Calib task after startup
@@ -343,12 +343,12 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
 #ifdef OPA1000
-  OPA1000_MX_GPIO_Init();
+  OPA1000_MX_GPIO_Init(); // compatibility with OPA1000
+#else
+  MX_GPIO_Init(); // by default written for OPA2000
+#endif
   /* USER CODE END SysInit */
   /* Initialize all configured peripherals */
-#else
-  MX_GPIO_Init();
-#endif
   MX_DMA_Init();
   MX_FSMC_Init();
   MX_SPI1_Init();
@@ -365,15 +365,20 @@ int main(void)
   power_off();
   //DEBUG: Invalidate Fault
   clear_fault();
+
+  /* STOP BEEPER !!!! */
 #ifdef OPA1000
   clear_fault_hold();
 #endif
+  /* STOP BEEPER !!!! */
+
   // Saved Config: Load previous Fan settings
   /* **********	Init Fan	********** */
   fan_init(&fan1, FAN1_GPIO_Port, FAN1_Pin);
   fan_init_automode(&fan1, N_SEGS_AUTO_FAN_SPEED, AutoFanSpeed_tempC1, AutoFanSpeed_speed1, AutoFanSpeed_hyst1);
   fan_init(&fan2, FAN2_GPIO_Port, FAN2_Pin);
   fan_init_automode(&fan1, N_SEGS_AUTO_FAN_SPEED, AutoFanSpeed_tempC2, AutoFanSpeed_speed2, AutoFanSpeed_hyst2);
+  isFanInit = true;
   /* **********	End of Init Fan	********** */
   //  soft_pwm_driver_set_duty(&fan1, cfg.Fan1Speed);
 //  soft_pwm_driver_set_duty(&fan2, cfg.Fan2Speed);
@@ -1405,8 +1410,8 @@ static void OPA1000_MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 
-  /*Configure GPIO pins : BAND_RX_Pin REV1_HIGHX_Pin T_BUSY_Pin */
-  GPIO_InitStruct.Pin = BAND_RX_Pin|REV1_HIGHX_Pin|T_BUSY_Pin;
+  /*Configure GPIOB pins :  REV1_HIGHX_Pin T_BUSY_Pin */
+  GPIO_InitStruct.Pin =REV1_HIGHX_Pin|T_BUSY_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -1476,6 +1481,15 @@ static void OPA1000_MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(OverdriveX_GPIO_Port, &GPIO_InitStruct);
+
+
+  /*Configure GPIOA pin : BAND_RX_Pin */
+  GPIO_InitStruct.Pin = BAND_RX_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(BAND_RX_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_WritePin(BAND_RX_GPIO_Port, BAND_RX_Pin, GPIO_PIN_SET);
+
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI9_5_IRQn, 1, 0);
@@ -2039,6 +2053,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   /* USER CODE END Callback 0 */
   if (htim->Instance == TIM1) {
     HAL_IncTick();
+    /* tick fan PWM */
+    if(isFanInit)
+    {
+		fan_tick(&fan1, 1000, cfg.Fan1Auto, Temp1);
+		fan_tick(&fan2, 1000, cfg.Fan2Auto, Temp2);
+    }
   }
   /* USER CODE BEGIN Callback 1 */
   if(htim->Instance == TIM3)
@@ -2048,9 +2068,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   // use TIM4 as 1ms time base
   if (htim->Instance == TIM4)
   {
-	  /* tick fan PWM */
-	  fan_tick(&fan1, 1000, cfg.Fan1Auto, Temp1);
-	  fan_tick(&fan2, 1000, cfg.Fan2Auto, Temp2);
 	  /* tick Software Soft UART */
 	  SoftUartHandler();
   }
